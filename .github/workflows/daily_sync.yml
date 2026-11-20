@@ -1,0 +1,47 @@
+name: Đồng Bộ Kho Nhà & Báo Cáo Hàng Ngày 24/7
+
+on:
+  schedule:
+    # Chạy tự động lúc 20:00 tối hàng ngày theo giờ Việt Nam (UTC+7 -> 13:00 UTC)
+    - cron: '0 13 * * *'
+  workflow_dispatch: # Cho phép kích hoạt thủ công bất kỳ lúc nào
+
+jobs:
+  daily-sync:
+    name: Quét tin, so khớp khách & gửi báo cáo Telegram
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cài đặt Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Cài đặt thư viện phụ thuộc
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Thực thi chu kỳ đồng bộ & Báo cáo hàng ngày
+        env:
+          BROKER_URL: ${{ secrets.BROKER_URL || 'https://nhadat247.vn/moi-gioi/nguyenthihongchau.355' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GAS_WEBAPP_URL: ${{ secrets.GAS_WEBAPP_URL }}
+          GAS_API_KEY: ${{ secrets.GAS_API_KEY || 'HongChauNhaUngY2026' }}
+          BROKER_PHONE: ${{ secrets.BROKER_PHONE || '0783515486' }}
+        run: |
+          python main.py
+
+      - name: Tự động Commit & Push dữ liệu mới lên GitHub
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/
+          git diff --staged --quiet || (git commit -m "Auto sync listings & daily report [skip ci]" && git push)

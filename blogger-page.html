@@ -1,0 +1,2531 @@
+<!--
+==============================================================================
+HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT TƯ VẤN (PRO V5)
+3 Nhóm Nhu Cầu Cốt Lõi: Mua để ở • BĐS Dòng tiền (Trọ/CHDV) • Kinh doanh
+==============================================================================
+-->
+<meta name="referrer" content="no-referrer" />
+<!-- 1. BỘ CSS RESET BLOGGER THEME TRIỆT ĐỂ -->
+<style>
+  #sidebar-wrapper,
+  .sidebar-wrapper,
+  aside,
+  #sidebar,
+  .widget.BlogArchive,
+  .widget.Label,
+  .widget.FeaturedPost,
+  .widget.PopularPosts,
+  .widget.Profile,
+  .widget.BlogList,
+  .blog-pager,
+  .post-footer,
+  .comments,
+  #comments,
+  .post-feeds,
+  .post-title,
+  .entry-title,
+  .post-header,
+  .post-share-buttons {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .main-inner,
+  .content-inner,
+  #main-wrapper,
+  .main-wrapper,
+  .main.section,
+  #main,
+  .post-outer,
+  .post,
+  .entry-content,
+  .post-body,
+  article {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    float: none !important;
+    background: transparent !important;
+  }
+</style>
+
+<!-- 2. BỘ CSS THUẦN TỰ TRỊ (SCOPED #hc-bds-root) -->
+<style>
+  #hc-bds-root {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 10px 16px 90px 16px !important;
+    box-sizing: border-box !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    color: #1e293b !important;
+    line-height: 1.45 !important;
+    font-size: 14px !important;
+    position: relative !important;
+  }
+
+  #hc-bds-root * {
+    box-sizing: border-box !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* --- COMPACT HERO BANNER --- */
+  #hc-bds-root .hc-hero {
+    background: linear-gradient(135deg, #064e3b 0%, #059669 65%, #0d9488 100%) !important;
+    border-radius: 14px !important;
+    padding: 14px 20px !important;
+    color: #ffffff !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 6px 18px -4px rgba(5, 150, 105, 0.28) !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+  }
+
+  #hc-bds-root .hc-hero-left {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+    text-align: left !important;
+  }
+
+  #hc-bds-root .hc-hero-title {
+    font-size: 19px !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.3px !important;
+    text-transform: uppercase !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  #hc-bds-root .hc-hero-subtitle {
+    font-size: 12.5px !important;
+    opacity: 0.94 !important;
+    line-height: 1.4 !important;
+  }
+
+  #hc-bds-root .hc-hero-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+
+  #hc-bds-root .hc-hero-blog-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.38) !important;
+    color: #ffffff !important;
+    padding: 7px 13px !important;
+    border-radius: 9999px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: background 0.2s ease !important;
+    cursor: pointer !important;
+  }
+
+  #hc-bds-root .hc-hero-blog-btn:hover {
+    background: rgba(255, 255, 255, 0.32) !important;
+  }
+
+  #hc-bds-root .hc-hero-zalo-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: rgba(255, 255, 255, 0.18) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    color: #ffffff !important;
+    padding: 7px 14px !important;
+    border-radius: 9999px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: background 0.2s ease !important;
+  }
+
+  #hc-bds-root .hc-hero-zalo-btn:hover {
+    background: rgba(255, 255, 255, 0.28) !important;
+  }
+
+  /* --- COMPACT CATEGORY BAR (GỘP GỌN 1 HÀNG DUY NHẤT) --- */
+  #hc-bds-root .hc-category-nav {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  @media (max-width: 640px) {
+    #hc-bds-root .hc-category-nav {
+      display: flex !important;
+      overflow-x: auto !important;
+      gap: 6px !important;
+      white-space: nowrap !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: none !important;
+    }
+    #hc-bds-root .hc-category-nav::-webkit-scrollbar {
+      display: none !important;
+    }
+    #hc-bds-root .hc-cat-btn {
+      flex: 1 0 auto !important;
+      padding: 0 10px !important;
+      font-size: 12px !important;
+    }
+  }
+
+  #hc-bds-root .hc-cat-btn {
+    height: 40px !important;
+    border-radius: 10px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    color: #334155 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  #hc-bds-root .hc-cat-btn:hover {
+    border-color: #059669 !important;
+    color: #059669 !important;
+  }
+
+  #hc-bds-root .hc-cat-btn.active {
+    background: #059669 !important;
+    color: #ffffff !important;
+    border-color: #059669 !important;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25) !important;
+  }
+
+  #hc-bds-root .hc-cat-badge {
+    background: #e11d48 !important;
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    padding: 2px 7px !important;
+    border-radius: 9999px !important;
+  }
+
+  #hc-bds-root .hc-cat-btn.active .hc-cat-badge {
+    background: #ffffff !important;
+    color: #047857 !important;
+  }
+
+  /* --- SUB-FILTER DÒNG TIỀN (XỔ NHẸ KHI BẬT NÚT DÒNG TIỀN) --- */
+  #hc-bds-root .hc-subfilter-row {
+    display: none !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    padding: 4px 0 8px 0 !important;
+    margin-bottom: 8px !important;
+    scrollbar-width: none !important;
+  }
+
+  #hc-bds-root .hc-subfilter-row.show {
+    display: flex !important;
+  }
+
+  #hc-bds-root .hc-subfilter-row::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  #hc-bds-root .hc-sub-pill {
+    padding: 6px 14px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    color: #334155 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: all 0.18s ease !important;
+  }
+
+  #hc-bds-root .hc-sub-pill:hover,
+  #hc-bds-root .hc-sub-pill.active {
+    background: #065f46 !important;
+    color: #ffffff !important;
+    border-color: #065f46 !important;
+  }
+
+  /* --- THANH BỘ LỌC STICKY --- */
+  #hc-bds-root .hc-filter-box {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.07) !important;
+    padding: 12px 14px !important;
+    margin-bottom: 14px !important;
+    position: sticky !important;
+    top: 8px !important;
+    z-index: 40 !important;
+  }
+
+  #hc-bds-root .hc-search-wrap {
+    position: relative !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  #hc-bds-root .hc-search-icon {
+    position: absolute !important;
+    left: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    pointer-events: none !important;
+    width: 17px !important;
+    height: 17px !important;
+    color: #64748b !important;
+    z-index: 10 !important;
+  }
+
+  #hc-bds-root input.hc-search-input,
+  #hc-bds-root #hc-search-input {
+    width: 100% !important;
+    height: 40px !important;
+    padding-left: 42px !important;
+    padding-right: 14px !important;
+    font-size: 13.5px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+  }
+
+  #hc-bds-root input.hc-search-input:focus,
+  #hc-bds-root #hc-search-input:focus {
+    border-color: #059669 !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.14) !important;
+  }
+
+  #hc-bds-root .hc-filters-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  @media (min-width: 768px) {
+    #hc-bds-root .hc-filters-row {
+      grid-template-columns: repeat(5, 1fr) auto auto !important;
+    }
+  }
+
+  #hc-bds-root select.hc-select {
+    width: 100% !important;
+    height: 38px !important;
+    padding: 0 10px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #1e293b !important;
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 9px !important;
+    cursor: pointer !important;
+    outline: none !important;
+  }
+
+  #hc-bds-root select.hc-select:focus,
+  #hc-bds-root select.hc-select:hover {
+    border-color: #059669 !important;
+  }
+
+  #hc-bds-root .hc-btn-filter {
+    height: 38px !important;
+    padding: 0 13px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    border-radius: 9px !important;
+    border: 1px solid #cbd5e1 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+    background: #ffffff !important;
+  }
+
+  #hc-bds-root .hc-btn-drop-price {
+    background: #fff1f2 !important;
+    color: #e11d48 !important;
+    border-color: #fda4af !important;
+  }
+
+  #hc-bds-root .hc-btn-drop-price.active {
+    background: #e11d48 !important;
+    color: #ffffff !important;
+    border-color: #e11d48 !important;
+  }
+
+  #hc-bds-root .hc-btn-reset {
+    background: #f1f5f9 !important;
+    color: #64748b !important;
+  }
+
+  #hc-bds-root .hc-btn-reset:hover {
+    background: #e2e8f0 !important;
+    color: #0f172a !important;
+  }
+
+  /* --- THANH TRẠNG THÁI & HƯỚNG DẪN 3 BƯỚC --- */
+  #hc-bds-root .hc-status-bar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+    font-size: 13px !important;
+    color: #475569 !important;
+    background: #f8fafc !important;
+    padding: 10px 14px !important;
+    border-radius: 12px !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  #hc-bds-root .hc-status-left {
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    color: #334155 !important;
+  }
+
+  #hc-bds-root .hc-status-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+    font-size: 12.5px !important;
+  }
+
+  #hc-bds-root .hc-steps-guide {
+    color: #334155 !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+  }
+
+  #hc-bds-root .hc-btn-request-custom {
+    background: #ecfdf5 !important;
+    color: #047857 !important;
+    border: 1px solid #a7f3d0 !important;
+    padding: 5px 12px !important;
+    border-radius: 9999px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+  }
+
+  #hc-bds-root .hc-btn-request-custom:hover {
+    background: #059669 !important;
+    color: #ffffff !important;
+    border-color: #059669 !important;
+  }
+
+  @media (max-width: 768px) {
+    #hc-bds-root .hc-status-bar {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 8px !important;
+      padding: 10px 12px !important;
+    }
+
+    #hc-bds-root .hc-status-right {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 8px !important;
+      width: 100% !important;
+    }
+
+    #hc-bds-root .hc-btn-request-custom {
+      align-self: flex-start !important;
+    }
+  }
+
+  /* --- LƯỚI CARD CĂN NHÀ --- */
+  #hc-bds-root .hc-listings-grid {
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 18px !important;
+    margin-bottom: 28px !important;
+  }
+
+  @media (min-width: 640px) {
+    #hc-bds-root .hc-listings-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  @media (min-width: 992px) {
+    #hc-bds-root .hc-listings-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 22px !important;
+    }
+  }
+
+  /* --- CARD CĂN NHÀ --- */
+  #hc-bds-root .hc-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+    position: relative !important;
+  }
+
+  #hc-bds-root .hc-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.14) !important;
+    border-color: #94a3b8 !important;
+  }
+
+  #hc-bds-root .hc-card-img-wrap {
+    width: 100% !important;
+    height: 220px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: #f1f5f9 !important;
+    cursor: pointer !important;
+  }
+
+  #hc-bds-root .hc-card-img-wrap img.hc-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.4s ease !important;
+  }
+
+  #hc-bds-root .hc-card:hover img.hc-card-img {
+    transform: scale(1.06) !important;
+  }
+
+  #hc-bds-root .hc-card-img-overlay {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    padding: 24px 12px 10px !important;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.3) 60%, transparent 100%) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    z-index: 2 !important;
+  }
+
+  #hc-bds-root .hc-img-price-tag {
+    color: #ffffff !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    line-height: 1.1 !important;
+  }
+
+  #hc-bds-root .hc-img-price-old {
+    display: block !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: #cbd5e1 !important;
+    text-decoration: line-through !important;
+  }
+
+  #hc-bds-root .hc-img-photo-badge {
+    background: rgba(15, 23, 42, 0.75) !important;
+    backdrop-filter: blur(4px) !important;
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+  }
+
+  #hc-bds-root .hc-badge-drop {
+    position: absolute !important;
+    top: 10px !important;
+    left: 10px !important;
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%) !important;
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    padding: 4px 10px !important;
+    border-radius: 6px !important;
+    z-index: 3 !important;
+  }
+
+  #hc-bds-root .hc-badge-id {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    background: rgba(15, 23, 42, 0.75) !important;
+    color: #f8fafc !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    padding: 3px 8px !important;
+    border-radius: 6px !important;
+    z-index: 3 !important;
+  }
+
+  /* PHẦN THÂN CARD (ĐÃ SỬA TRIỆT ĐỂ LỖI CẮT CHỮ PHƯỜNG/QUẬN) */
+  #hc-bds-root .hc-card-body {
+    padding: 14px 16px 16px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+  }
+
+  /* DÒNG 1: ĐỊA ĐIỂM CHIẾM 100% CHIỀU RỘNG, HIỂN THỊ ĐỦ CHỮ KHÔNG BỊ TRÚNG DẤU ... */
+  #hc-bds-root .hc-card-location {
+    width: 100% !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    color: #047857 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: unset !important;
+    line-height: 1.35 !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* DÒNG 2: BADGES 3 NHÓM MỤC ĐÍCH ĐẶT NGAY DƯỚI DÒNG ĐỊA ĐIỂM */
+  #hc-bds-root .hc-card-purposes-wrap {
+    display: flex !important;
+    gap: 5px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 8px !important;
+  }
+
+  #hc-bds-root .hc-purpose-tag {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    padding: 2px 8px !important;
+    border-radius: 6px !important;
+    background: #f1f5f9 !important;
+    color: #475569 !important;
+  }
+
+  #hc-bds-root .hc-purpose-tag.de_o {
+    background: #f0fdf4 !important;
+    color: #15803d !important;
+    border: 1px solid #bbf7d0 !important;
+  }
+
+  #hc-bds-root .hc-purpose-tag.dong_tien {
+    background: #ecfdf5 !important;
+    color: #047857 !important;
+    border: 1px solid #a7f3d0 !important;
+  }
+
+  #hc-bds-root .hc-purpose-tag.kinh_doanh {
+    background: #fef3c7 !important;
+    color: #b45309 !important;
+    border: 1px solid #fde68a !important;
+  }
+
+  /* Dải highlight BĐS dòng tiền */
+  #hc-bds-root .hc-cashflow-highlight {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
+    border: 1px solid #93c5fd !important;
+    border-radius: 8px !important;
+    padding: 5px 10px !important;
+    margin-bottom: 10px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    color: #1d4ed8 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  #hc-bds-root a.hc-card-title {
+    font-size: 14.5px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    color: #0f172a !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    min-height: 40px !important;
+    margin-bottom: 8px !important;
+    text-decoration: none !important;
+  }
+
+  #hc-bds-root a.hc-card-title:hover {
+    color: #059669 !important;
+  }
+
+  #hc-bds-root .hc-card-desc {
+    font-size: 12px !important;
+    color: #64748b !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    margin-bottom: 12px !important;
+  }
+
+  #hc-bds-root .hc-specs-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
+    padding: 8px 12px !important;
+    margin-bottom: 14px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+  }
+
+  #hc-bds-root .hc-spec-divider {
+    width: 1px !important;
+    height: 14px !important;
+    background: #cbd5e1 !important;
+  }
+
+  #hc-bds-root .hc-card-actions {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 8px !important;
+    margin-top: auto !important;
+  }
+
+  /* Nút chính bên trái: Nổi bật, nền xanh #059669, chữ trắng */
+  #hc-bds-root a.hc-btn-detail-main {
+    height: 38px !important;
+    padding: 0 14px !important;
+    border-radius: 10px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    background: #059669 !important;
+    border: 1px solid #059669 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25) !important;
+    white-space: nowrap !important;
+  }
+
+  #hc-bds-root a.hc-btn-detail-main:hover {
+    background: #047857 !important;
+    border-color: #047857 !important;
+    box-shadow: 0 4px 10px rgba(5, 150, 105, 0.35) !important;
+  }
+
+  /* Nút phụ bên phải: Viền mảnh trung tính #cbd5e1, nền trắng */
+  #hc-bds-root .hc-btn-cart {
+    height: 38px !important;
+    padding: 0 12px !important;
+    border-radius: 10px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    color: #475569 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+  }
+
+  #hc-bds-root .hc-btn-cart:hover {
+    border-color: #059669 !important;
+    color: #059669 !important;
+    background: #f0fdf4 !important;
+  }
+
+  #hc-bds-root .hc-btn-cart.added {
+    background: #047857 !important;
+    color: #ffffff !important;
+    border-color: #047857 !important;
+    box-shadow: 0 2px 6px rgba(4, 120, 87, 0.3) !important;
+  }
+
+  /* --- LIGHTBOX --- */
+  #hc-lightbox {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(15, 23, 42, 0.94) !important;
+    z-index: 9999 !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 16px !important;
+  }
+
+  #hc-lightbox.open {
+    display: flex !important;
+  }
+
+  #hc-lightbox-img {
+    max-width: 95vw !important;
+    max-height: 75vh !important;
+    border-radius: 12px !important;
+    object-fit: contain !important;
+  }
+
+  #hc-lightbox-caption {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    margin-top: 12px !important;
+    text-align: center !important;
+  }
+
+  #hc-lightbox-thumbs {
+    display: flex !important;
+    gap: 8px !important;
+    margin-top: 12px !important;
+    overflow-x: auto !important;
+    max-width: 95vw !important;
+  }
+
+  .hc-lightbox-thumb {
+    width: 60px !important;
+    height: 45px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    opacity: 0.55 !important;
+    border: 2px solid transparent !important;
+  }
+
+  .hc-lightbox-thumb.active {
+    opacity: 1 !important;
+    border-color: #10b981 !important;
+  }
+
+  .hc-lightbox-close {
+    position: absolute !important;
+    top: 16px !important;
+    right: 20px !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: #ffffff !important;
+    border: none !important;
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    font-size: 22px !important;
+    cursor: pointer !important;
+  }
+
+  /* --- DANH SÁCH CHỌN XEM & KHẢO SÁT DRAWER --- */
+  #hc-floating-cart-btn {
+    position: fixed !important;
+    bottom: 24px !important;
+    right: 20px !important;
+    z-index: 500 !important;
+    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    color: #ffffff !important;
+    padding: 12px 20px !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 10px 25px -3px rgba(5, 150, 105, 0.45) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-weight: 700 !important;
+    font-size: 13.5px !important;
+    cursor: pointer !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  #hc-floating-cart-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 28px rgba(5, 150, 105, 0.55) !important;
+  }
+
+  @keyframes hc-pulse-attention {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 10px 25px -3px rgba(5, 150, 105, 0.45);
+    }
+
+    50% {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 10px rgba(5, 150, 105, 0.35), 0 15px 30px rgba(5, 150, 105, 0.5);
+    }
+
+    100% {
+      transform: scale(1);
+      box-shadow: 0 10px 25px -3px rgba(5, 150, 105, 0.45);
+    }
+  }
+
+  #hc-floating-cart-btn.hc-pulse {
+    animation: hc-pulse-attention 0.8s ease-in-out 2 !important;
+  }
+
+  .hc-floating-cart-cta {
+    font-weight: 800 !important;
+    color: #fef08a !important;
+  }
+
+  #hc-cart-counter {
+    background: #e11d48 !important;
+    color: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    padding: 2px 8px !important;
+    border-radius: 9999px !important;
+  }
+
+  .hc-drawer-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(3px) !important;
+    z-index: 600 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.3s ease !important;
+  }
+
+  .hc-drawer-backdrop.open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .hc-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    background: #ffffff !important;
+    z-index: 601 !important;
+    transform: translateX(100%) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .hc-drawer.open {
+    transform: translateX(0) !important;
+  }
+
+  .hc-drawer-header {
+    padding: 16px 20px !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .hc-drawer-title {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+  }
+
+  .hc-btn-close-drawer {
+    background: #f1f5f9 !important;
+    border: none !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    color: #64748b !important;
+  }
+
+  .hc-drawer-body {
+    padding: 16px 20px !important;
+    overflow-y: auto !important;
+    flex: 1 !important;
+  }
+
+  .hc-cart-item {
+    display: flex !important;
+    gap: 12px !important;
+    padding: 10px !important;
+    border-radius: 12px !important;
+    border: 1px solid #e2e8f0 !important;
+    background: #f8fafc !important;
+    align-items: center !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hc-cart-item-img {
+    width: 72px !important;
+    height: 54px !important;
+    border-radius: 8px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hc-cart-item-info {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .hc-cart-item-title {
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    color: #0f172a !important;
+  }
+
+  .hc-cart-item-price {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: #e11d48 !important;
+  }
+
+  .hc-btn-remove-cart {
+    background: transparent !important;
+    border: none !important;
+    color: #ef4444 !important;
+    cursor: pointer !important;
+    padding: 6px !important;
+    font-size: 18px !important;
+  }
+
+  /* KHẢO SÁT ĐỀ BÀI FORM */
+  .hc-survey-box {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+    margin-top: 14px !important;
+  }
+
+  .hc-survey-title {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .hc-survey-label {
+    display: block !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    margin-bottom: 4px !important;
+    color: #0f172a !important;
+  }
+
+  .hc-survey-input {
+    width: 100% !important;
+    padding: 10px 12px !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    outline: none !important;
+    background: #ffffff !important;
+  }
+
+  .hc-survey-input:focus {
+    border-color: #059669 !important;
+  }
+
+  .hc-dynamic-prompt-box {
+    background: #eff6ff !important;
+    border: 1.5px solid #93c5fd !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hc-dynamic-prompt-title {
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    color: #1d4ed8 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .hc-dynamic-prompt-textarea {
+    width: 100% !important;
+    padding: 8px 10px !important;
+    border: 1px solid #bfdbfe !important;
+    border-radius: 6px !important;
+    font-size: 12px !important;
+    outline: none !important;
+    background: #ffffff !important;
+    min-height: 60px !important;
+    line-height: 1.4 !important;
+    resize: vertical !important;
+  }
+
+  /* HỘP XÁC NHẬN ĐÃ COPY + MỞ ZALO */
+  #hc-zalo-ready-box {
+    display: none !important;
+    background: #eff6ff !important;
+    border: 1.5px solid #3b82f6 !important;
+    border-radius: 12px !important;
+    padding: 14px !important;
+    margin-top: 12px !important;
+  }
+
+  #hc-zalo-ready-box.show {
+    display: block !important;
+  }
+
+  .hc-drawer-footer {
+    padding: 16px 20px !important;
+    border-top: 1px solid #e2e8f0 !important;
+    background: #f8fafc !important;
+  }
+
+  .hc-btn-submit-zalo {
+    width: 100% !important;
+    height: 48px !important;
+    border-radius: 12px !important;
+    background: linear-gradient(135deg, #0068ff 0%, #0052cc 100%) !important;
+    color: #ffffff !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    border: none !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-shadow: 0 4px 14px rgba(0, 104, 255, 0.35) !important;
+  }
+
+  #hc-toast {
+    position: fixed !important;
+    bottom: 88px !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(20px) !important;
+    background: #0f172a !important;
+    color: #ffffff !important;
+    padding: 8px 14px 8px 18px !important;
+    border-radius: 9999px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    z-index: 1000 !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    border: 1px solid #334155 !important;
+  }
+
+  #hc-toast.show {
+    opacity: 1 !important;
+    transform: translateX(-50%) translateY(0) !important;
+    pointer-events: auto !important;
+  }
+
+  #hc-toast-action-btn {
+    background: #059669 !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 6px 14px !important;
+    border-radius: 9999px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 6px rgba(5, 150, 105, 0.4) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
+
+  #hc-toast-action-btn:hover {
+    background: #10b981 !important;
+    transform: scale(1.03) !important;
+  }
+
+  @media (max-width: 640px) {
+    #hc-toast {
+      bottom: 80px !important;
+      width: calc(100% - 32px) !important;
+      max-width: 380px !important;
+      justify-content: space-between !important;
+      padding: 8px 12px !important;
+      font-size: 12px !important;
+      border-radius: 12px !important;
+    }
+
+    #hc-toast-action-btn {
+      padding: 6px 10px !important;
+      font-size: 11.5px !important;
+    }
+  }
+
+  .hc-empty-state {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    padding: 60px 20px !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    border: 1px dashed #cbd5e1 !important;
+    color: #64748b !important;
+  }
+
+  /* --- BLOG SECTION STYLES --- */
+  #hc-bds-root .hc-blog-section {
+    margin-top: 36px !important;
+    padding-top: 24px !important;
+    border-top: 2px dashed #e2e8f0 !important;
+  }
+
+  #hc-bds-root .hc-blog-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    margin-bottom: 18px !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+
+  #hc-bds-root .hc-blog-title {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    letter-spacing: -0.2px !important;
+  }
+
+  #hc-bds-root .hc-blog-subtitle {
+    font-size: 13px !important;
+    color: #64748b !important;
+    margin-top: 4px !important;
+  }
+
+  #hc-bds-root .hc-blog-view-all {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #059669 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    transition: color 0.2s ease !important;
+  }
+
+  #hc-bds-root .hc-blog-view-all:hover {
+    color: #047857 !important;
+    text-decoration: underline !important;
+  }
+
+  #hc-bds-root .hc-blog-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  @media (max-width: 900px) {
+    #hc-bds-root .hc-blog-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #hc-bds-root .hc-blog-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  #hc-bds-root .hc-blog-card {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  #hc-bds-root .hc-blog-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  #hc-bds-root .hc-blog-card-img-wrap {
+    position: relative !important;
+    width: 100% !important;
+    padding-top: 56.25% !important;
+    background: #f1f5f9 !important;
+    overflow: hidden !important;
+  }
+
+  #hc-bds-root .hc-blog-card-img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  #hc-bds-root .hc-blog-card:hover .hc-blog-card-img {
+    transform: scale(1.05) !important;
+  }
+
+  #hc-bds-root .hc-blog-card-body {
+    padding: 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 !important;
+  }
+
+  #hc-bds-root .hc-blog-card-date {
+    font-size: 11.5px !important;
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+    margin-bottom: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+  }
+
+  #hc-bds-root .hc-blog-card-title {
+    font-size: 14.5px !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    line-height: 1.4 !important;
+    margin-bottom: 8px !important;
+    text-decoration: none !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    transition: color 0.15s ease !important;
+  }
+
+  #hc-bds-root .hc-blog-card-title:hover {
+    color: #059669 !important;
+  }
+
+  #hc-bds-root .hc-blog-card-snippet {
+    font-size: 12.5px !important;
+    color: #64748b !important;
+    line-height: 1.45 !important;
+    margin-bottom: 12px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    flex: 1 !important;
+  }
+
+  #hc-bds-root .hc-blog-card-link {
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    color: #059669 !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    align-self: flex-start !important;
+  }
+
+  #hc-bds-root .hc-blog-card-link:hover {
+    color: #047857 !important;
+    text-decoration: underline !important;
+  }
+</style>
+
+<!-- 3. KHUNG CHỨA TOÀN BỘ GIAO DIỆN CHÍNH -->
+<div id="hc-bds-root">
+  <!-- COMPACT HERO BANNER -->
+  <header class="hc-hero">
+    <div class="hc-hero-left">
+      <h1 class="hc-hero-title">🏡 HỒNG CHÂU - NHÀ ƯNG Ý</h1>
+      <p class="hc-hero-subtitle">Kho nhà thật giá tốt cập nhật liên tục • Lọc nhanh theo tài chính, khu vực & chọn căn
+        ưng ý để nhận lịch xem ngay!</p>
+    </div>
+    <div class="hc-hero-actions">
+      <a href="#hc-blog-section" class="hc-hero-blog-btn">
+        <span>📰 Bài viết Blog</span>
+      </a>
+      <a href="https://zalo.me/0783515486" target="_blank" class="hc-hero-zalo-btn">
+        <span>💬 Zalo Châu: 0783.515.486</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- THANH ĐIỀU HƯỚNG 1 HÀNG DUY NHẤT (COMPACT CATEGORY BAR) -->
+  <div class="hc-category-nav">
+    <button class="hc-cat-btn active" data-cat="all" onclick="window.HC_PORTAL.selectCategory('all')">
+      🏠 Tất cả <span class="hc-cat-badge" id="hc-count-cat-all">0</span>
+    </button>
+    <button class="hc-cat-btn" data-cat="de_o" onclick="window.HC_PORTAL.selectCategory('de_o')">
+      🏡 Mua để ở <span class="hc-cat-badge" id="hc-count-cat-deo">0</span>
+    </button>
+    <button class="hc-cat-btn" data-cat="dong_tien" onclick="window.HC_PORTAL.selectCategory('dong_tien')">
+      💵 BĐS Dòng tiền <span class="hc-cat-badge" id="hc-cashflow-counter">0</span>
+    </button>
+    <button class="hc-cat-btn" data-cat="kinh_doanh" onclick="window.HC_PORTAL.selectCategory('kinh_doanh')">
+      🏪 Kinh doanh <span class="hc-cat-badge" id="hc-count-cat-kd">0</span>
+    </button>
+    <button class="hc-cat-btn" data-cat="dat" onclick="window.HC_PORTAL.selectCategory('dat')">
+      🏞 Đất <span class="hc-cat-badge" id="hc-count-cat-dat">0</span>
+    </button>
+  </div>
+
+  <!-- THANH LỌC PHỤ LOẠI HÌNH DÒNG TIỀN (Chỉ xổ nhẹ khi chọn BĐS Dòng tiền) -->
+  <div id="hc-cashflow-subfilter" class="hc-subfilter-row" style="display:none;">
+    <button class="hc-sub-pill active" onclick="window.HC_PORTAL.setCashflowSubtype('')">Tất cả dòng tiền</button>
+    <button class="hc-sub-pill" onclick="window.HC_PORTAL.setCashflowSubtype('day_tro')">🏘 Dãy trọ sẵn</button>
+    <button class="hc-sub-pill" onclick="window.HC_PORTAL.setCashflowSubtype('chdv')">🏢 Căn hộ dịch vụ (CHDV)</button>
+    <button class="hc-sub-pill" onclick="window.HC_PORTAL.setCashflowSubtype('tiem_nang_chdv')">🏗 Tiềm năng làm
+      CHDV</button>
+  </div>
+
+  <!-- BỘ LỌC THÔNG MINH STICKY -->
+  <div class="hc-filter-box">
+    <!-- Ô TÌM KIẾM TỪ KHÓA -->
+    <div class="hc-search-wrap">
+      <svg class="hc-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="hc-search-input" class="hc-search-input"
+        placeholder="Tìm theo tên đường, mã tin, phường (VD: Phan Huy Ích, 01a0558d)..." />
+    </div>
+
+    <!-- HÀNG BỘ LỌC CHI TIẾT -->
+    <div class="hc-filters-row">
+      <select id="hc-filter-ward" class="hc-select">
+        <option value="">📍 Tất cả Phường</option>
+      </select>
+      <select id="hc-filter-price" class="hc-select">
+        <option value="">💰 Tất cả mức giá</option>
+        <option value="duoi_3_ty">Dưới 3 tỷ</option>
+        <option value="3_5_ty">3 - 5 tỷ</option>
+        <option value="5_7_ty">5 - 7 tỷ</option>
+        <option value="7_10_ty">7 - 10 tỷ</option>
+        <option value="tren_10_ty">Trên 10 tỷ</option>
+      </select>
+      <select id="hc-filter-area" class="hc-select">
+        <option value="">📐 Tất cả diện tích</option>
+        <option value="duoi_40">Dưới 40m²</option>
+        <option value="40_60">40 - 60m²</option>
+        <option value="60_80">60 - 80m²</option>
+        <option value="80_100">80 - 100m²</option>
+        <option value="tren_100">Trên 100m²</option>
+      </select>
+      <select id="hc-filter-bedroom" class="hc-select">
+        <option value="">🛏 Tất cả phòng ngủ</option>
+        <option value="1">1 Phòng ngủ</option>
+        <option value="2">2 Phòng ngủ</option>
+        <option value="3">3 Phòng ngủ</option>
+        <option value="4">4 Phòng ngủ</option>
+        <option value="5">5+ Phòng ngủ</option>
+      </select>
+      <select id="hc-filter-alley" class="hc-select">
+        <option value="">🚗 Tất cả đường vào</option>
+        <option value="hem_xe_hoi">Hẻm xe hơi (4-6m)</option>
+        <option value="mat_tien">Xe tải / Mặt tiền (>6m)</option>
+        <option value="hem_ba_gac">Hẻm ba gác (3-4m)</option>
+        <option value="hem_xe_may">Hẻm xe máy (&lt;3m)</option>
+      </select>
+      <button id="hc-btn-drop-filter" class="hc-btn-filter hc-btn-drop-price">
+        🔥 Giảm Chào
+      </button>
+      <button id="hc-btn-clear" class="hc-btn-filter hc-btn-reset" title="Xóa toàn bộ bộ lọc">
+        ↺ Đặt lại
+      </button>
+    </div>
+  </div>
+
+  <!-- THANH TRẠNG THÁI & HƯỚNG DẪN 3 BƯỚC -->
+  <div class="hc-status-bar">
+    <div class="hc-status-left">
+      Hiển thị <b id="hc-count-visible" style="color:#059669;font-size:15px;">0</b> căn nhà phù hợp
+    </div>
+    <div class="hc-status-right">
+      <span class="hc-steps-guide">① Bấm "Xem chi tiết & Ảnh" để xem đủ thông tin ➔ ② Chỉ bấm "+ Tư vấn & hẹn xem" ở căn
+        thật sự ưng ➔ ③ Gửi Châu để trao đổi chi tiết & xếp lịch xem thực tế</span>
+      <button type="button" class="hc-btn-request-custom" onclick="window.HC_PORTAL.openDrawer()">
+        🎯 Chưa thấy căn ưng? Gửi đề bài tìm riêng
+      </button>
+    </div>
+  </div>
+
+  <!-- LƯỚI CARD CĂN NHÀ -->
+  <div id="hc-listings-container" class="hc-listings-grid"></div>
+
+  <!-- NÚT XEM THÊM -->
+  <div id="hc-load-more-wrap" style="text-align:center;margin:28px 0;display:none;">
+    <button id="hc-btn-load-more"
+      style="background:#ffffff;border:1.5px solid #059669;padding:10px 30px;border-radius:9999px;font-size:14px;font-weight:700;color:#059669;cursor:pointer;">
+      Xem thêm các căn khác ↓
+    </button>
+  </div>
+
+  <!-- CHUYÊN MỤC BÀI VIẾT BLOG CẨM NANG & KINH NGHIỆM -->
+  <section id="hc-blog-section" class="hc-blog-section">
+    <div class="hc-blog-header">
+      <div class="hc-blog-header-left">
+        <h2 class="hc-blog-title">📰 CẨM NANG MUA NHÀ & KINH NGHIỆM BẤT ĐỘNG SẢN</h2>
+        <p class="hc-blog-subtitle">Kiến thức thực chiến, pháp lý nhà đất & mẹo chọn nhà ưng ý tại TP.HCM</p>
+      </div>
+      <a href="https://hongchaunhaungy.blogspot.com/" target="_blank" rel="noopener noreferrer"
+        class="hc-blog-view-all">
+        Xem tất cả bài viết trên Blog →
+      </a>
+    </div>
+    <div id="hc-blog-posts-container" class="hc-blog-grid"></div>
+  </section>
+
+  <!-- NÚT DANH SÁCH CHỌN XEM NỔI -->
+  <button id="hc-floating-cart-btn">
+    <span>💬 Căn muốn hẹn xem</span>
+    <span id="hc-cart-counter">0</span>
+    <span class="hc-floating-cart-cta">• Gửi Châu →</span>
+  </button>
+
+  <!-- DRAWER DANH SÁCH CHỌN XEM & KHẢO SÁT 3 NHU CẦU CỐT LÕI -->
+  <div id="hc-drawer-backdrop" class="hc-drawer-backdrop"></div>
+  <div id="hc-drawer" class="hc-drawer">
+    <div class="hc-drawer-header">
+      <div class="hc-drawer-title">
+        <span>💬 Danh Sách Căn Muốn Tư Vấn & Hẹn Xem (<span id="hc-drawer-cart-count">0</span>/8 căn)</span>
+      </div>
+      <button id="hc-btn-close-drawer" class="hc-btn-close-drawer">&times;</button>
+    </div>
+    <div class="hc-drawer-body">
+      <!-- DANH SÁCH CĂN ĐÃ CHỌN -->
+      <div id="hc-cart-items-list"></div>
+
+      <!-- FORM KHẢO SÁT 3 NHU CẦU CỐT LÕI -->
+      <div class="hc-survey-box">
+        <h4 class="hc-survey-title">
+          <span>📋 KHẢO SÁT NHU CẦU & ĐẶT LỊCH XEM NHÀ</span>
+        </h4>
+
+        <div style="margin-bottom:10px;">
+          <label class="hc-survey-label">Tên của anh/chị <span style="color:red;">*</span></label>
+          <input type="text" id="hc-input-name" class="hc-survey-input" placeholder="Ví dụ: Anh Nam, Chị Hương..."
+            required />
+        </div>
+
+        <div style="margin-bottom:12px;">
+          <label class="hc-survey-label">Số điện thoại / Zalo <span style="color:red;">*</span></label>
+          <input type="tel" id="hc-input-phone" class="hc-survey-input" placeholder="Ví dụ: 0901234567..." required />
+        </div>
+
+        <!-- MỤC ĐÍCH MUA CHÍNH -->
+        <div style="margin-bottom:12px;">
+          <label class="hc-survey-label">Mục đích mua chính của anh/chị <span style="color:red;">*</span></label>
+          <select id="hc-input-purpose" class="hc-select" style="width:100%;height:40px;border-radius:8px;">
+            <option value="de_o">🏡 Mua để ở (Nhà ở gia đình)</option>
+            <option value="dong_tien">💵 BĐS Dòng tiền (Dãy trọ / CHDV / Cho thuê)</option>
+            <option value="kinh_doanh">🏪 Kinh doanh / Văn phòng công ty</option>
+            <option value="dat">🏞 Mua đất nền / Đất thổ cư</option>
+          </select>
+        </div>
+
+        <!-- CÂU HỎI GỢI Ý ĐỘNG (SMART PROMPT SÁT THỰC TẾ) -->
+        <div class="hc-dynamic-prompt-box">
+          <div class="hc-dynamic-prompt-title" id="hc-prompt-label">
+            💡 Gợi ý câu hỏi khảo sát chi tiết để ở:
+          </div>
+          <textarea id="hc-survey-answer" class="hc-dynamic-prompt-textarea" style="min-height:85px !important;"
+            placeholder="VD: Gia đình mấy người? Cần gần trường học/nơi làm việc nào? Ngân sách tầm bao nhiêu? Cần phòng ngủ tầng trệt cho người lớn tuổi không?..."></textarea>
+        </div>
+      </div>
+
+      <!-- HỘP XÁC NHẬN SAU KHI BẤM GỬI -->
+      <div id="hc-zalo-ready-box">
+        <div style="font-size:13px;font-weight:800;color:#1d4ed8;margin-bottom:4px;">
+          ✅ Đã lưu đề bài & tự động Copy sẵn tin nhắn gửi Châu!
+        </div>
+        <p style="font-size:12px;color:#1e3a8a;line-height:1.45;margin-bottom:8px;">
+          Vì Zalo bảo mật không cho web tự gửi tin thay bạn, khi sang trang Zalo của Châu bạn chỉ cần bấm <b>"Nhắn
+            tin"</b> ➔ nhấn giữ ô nhập chữ và chọn <b>"Dán (Paste)"</b> là gửi trọn vẹn đề bài nhé!
+        </p>
+        <div style="display:flex;gap:8px;">
+          <a href="https://zalo.me/0783515486" target="_blank"
+            style="flex:1;text-align:center;background:#0068ff;color:#ffffff;padding:8px 10px;border-radius:8px;font-size:12.5px;font-weight:700;text-decoration:none;">
+            Mở lại Zalo Châu ↗
+          </a>
+          <button type="button" id="hc-btn-recopy"
+            style="background:#ffffff;color:#1d4ed8;border:1px solid #93c5fd;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">
+            📋 Copy lại
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hc-drawer-footer">
+      <button id="hc-btn-submit-consult" class="hc-btn-submit-zalo">
+        <span>💬 Gửi Đề Bài & Mở Zalo Châu Ngay</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="hc-lightbox">
+    <button class="hc-lightbox-close" onclick="window.HC_PORTAL.closeLightbox()">&times;</button>
+    <img id="hc-lightbox-img" referrerpolicy="no-referrer" src="" alt="Ảnh nhà" />
+    <div id="hc-lightbox-caption"></div>
+    <div id="hc-lightbox-thumbs"></div>
+  </div>
+
+  <!-- TOAST HÀNH ĐỘNG THÔNG MINH -->
+  <div id="hc-toast">
+    <span id="hc-toast-text">Thông báo</span>
+    <button id="hc-toast-action-btn" type="button" onclick="window.HC_PORTAL.openDrawer()">Gửi Châu tư vấn ngay
+      →</button>
+  </div>
+</div>
+
+<!-- 4. SCRIPT LOGIC ĐIỀU KHIỂN HOÀN CHỈNH -->
+<script>
+  (function () {
+    const HC_CONFIG = {
+      BROKER_PHONE: "0783515486",
+      GAS_WEBAPP_URL: "https://script.google.com/macros/s/AKfycbyA3xWOq72d1H-GVqh9aZ3FXEFLpyKPcJD78KNB2kRp8GeVMeXggC9aCDd3bYAud6u6/exec",
+      DATA_JSON_URL: "https://raw.githubusercontent.com/binhthuynguyen64-dotcom/blog-bat-dong-san/main/data/listings.json",
+      DEFAULT_IMG: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+    };
+
+    const DYNAMIC_SURVEY_CONFIG = {
+      "de_o": {
+        label: "💡 Khảo sát chi tiết nhu cầu để ở của gia đình:",
+        placeholder: "VD: Gia đình mấy người? Cần gần trường học/nơi làm việc nào? Ngân sách tầm bao nhiêu? Cần phòng ngủ tầng trệt cho người lớn tuổi không?..."
+      },
+      "dong_tien": {
+        label: "💡 Khảo sát kỳ vọng BĐS dòng tiền (Trọ / CHDV):",
+        placeholder: "VD: Anh/chị tìm dãy trọ/CHDV có sẵn dòng tiền hay nhà rộng tự ngăn phòng? Ngân sách & kỳ vọng thu nhập bao nhiêu triệu/tháng?..."
+      },
+      "kinh_doanh": {
+        label: "💡 Khảo sát kế hoạch kinh doanh của anh/chị:",
+        placeholder: "VD: Anh/chị dự kiến mở ngành nghề gì (văn phòng, spa, ăn uống, buôn bán)? Ngân sách & có cần mặt tiền lớn hoặc chỗ đậu ô tô không?..."
+      },
+      "dat": {
+        label: "💡 Khảo sát chi tiết nhu cầu mua đất nền / đất thổ cư:",
+        placeholder: "VD: Anh/chị mua đất để xây ở, làm nhà vườn hay đầu tư tích sản? Ngân sách, diện tích mong muốn và khu vực ưu tiên?..."
+      }
+    };
+
+    const PURPOSE_NAME_MAP = {
+      "de_o": "🏡 Mua để ở",
+      "dong_tien": "💵 BĐS Dòng tiền (Trọ/CHDV)",
+      "kinh_doanh": "🏪 Kinh doanh / Văn phòng",
+      "dat": "🏞 Mua đất nền / Đất thổ cư"
+    };
+
+    function getProxyImageUrl(rawUrl, width = 600) {
+      if (!rawUrl) return HC_CONFIG.DEFAULT_IMG;
+      const s = String(rawUrl).trim();
+      if (s.startsWith("data:") || s.includes("wsrv.nl") || s.includes("images.unsplash.com")) {
+        return s;
+      }
+      return `https://wsrv.nl/?url=${encodeURIComponent(s)}&w=${width}&output=webp`;
+    }
+
+    // 100% TIN THẬT TỪ TRANG MÔI GIỚI NGUYENTHIHONGCHAU.355 TRÊN NHADAT247.VN
+    const INITIAL_FALLBACK_DATA = [
+      {
+        "id": "01a06b97",
+        "title": "NHÀ ĐẸP FULL NỘI THẤT 3PN NGAY EMART PHAN HUY ÍCH, CHỈ 4.X TỶ TL",
+        "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-3pn-ngay-emart-phan-huy-ich-chi-4x-ty-tl-01a06b97",
+        "image": "https://cdn.nhadat247.vn/2026/09/04/3493a83d-3048-4cf4-a30a-32c0e21e97fe-c20d594c-a67b-4200-b47b-b899c0033dcc.jpg",
+        "images": [
+          "https://cdn.nhadat247.vn/2026/09/04/3493a83d-3048-4cf4-a30a-32c0e21e97fe-c20d594c-a67b-4200-b47b-b899c0033dcc.jpg"
+        ],
+        "ward": "Phường An Hội Tây",
+        "district": "Gò Vấp",
+        "area_m2": 35.0,
+        "bedrooms": 3,
+        "price_ty": 4.57,
+        "price_text": "4.57 tỷ",
+        "alley_type": "Hẻm ba gác (3-4m)",
+        "alley_category": "hem_ba_gac",
+        "description": "GÒ VẤP CỰC RẺ: Kết cấu 2 tầng, 3PN full nội thất. Vị trí ngay Emart Phan Huy Ích, sổ hồng riêng công chứng ngay.",
+        "status": "active",
+        "is_price_dropped": false,
+        "old_price_ty": null,
+        "drop_amount_ty": null,
+        "purposes": ["de_o"],
+        "cashflow_subtype": "",
+        "estimated_rent_text": ""
+      },
+      {
+        "id": "01a0558d",
+        "title": "BÁN NHÀ GẦN PHAN HUY ÍCH GÒ VẤP 3PN FULL NỘI THẤT, HXH, NHỈNH 4 TỶ TL",
+        "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/ban-nha-gan-phan-huy-ich-go-vap-3pn-full-noi-that-hxh-nhinh-5-ty-tl-01a0558d",
+        "image": "https://cdn.nhadat247.vn/2026/08/31/4e3ad449-f479-41ee-bec3-a9633ee41e0f-b68fb270-c83a-4e75-9bce-9f220b354ec0.jpg",
+        "images": [
+          "https://cdn.nhadat247.vn/2026/08/31/4e3ad449-f479-41ee-bec3-a9633ee41e0f-b68fb270-c83a-4e75-9bce-9f220b354ec0.jpg"
+        ],
+        "ward": "Phường An Hội Tây",
+        "district": "Gò Vấp",
+        "area_m2": 42.0,
+        "bedrooms": 3,
+        "price_ty": 4.99,
+        "price_text": "4.99 tỷ",
+        "alley_type": "Hẻm xe hơi (4-6m)",
+        "alley_category": "hem_xe_hoi",
+        "description": "Nhà đẹp 3PN full nội thất, hẻm xe hơi thông, khu dân cư an ninh yên tĩnh. Sổ hồng riêng công chứng ngay.",
+        "status": "active",
+        "is_price_dropped": false,
+        "old_price_ty": null,
+        "drop_amount_ty": null,
+        "purposes": ["de_o"],
+        "cashflow_subtype": "",
+        "estimated_rent_text": ""
+      }
+    ];
+
+    let allListings = [...INITIAL_FALLBACK_DATA];
+    let filteredListings = [];
+    let cart = [];
+    let pageSize = 24;
+    let currentPage = 1;
+    let activeCategory = "all"; // 'all', 'de_o', 'dong_tien', 'kinh_doanh'
+    let activeCashflowSubtype = ""; // '', 'day_tro', 'chdv', 'tiem_nang_chdv'
+    let lastGeneratedMessage = "";
+
+    const CART_STORAGE_KEY = "hc_bds_cart_v5";
+
+    function loadCartFromStorage() {
+      try {
+        const saved = localStorage.getItem(CART_STORAGE_KEY);
+        if (saved) cart = JSON.parse(saved);
+      } catch (e) { cart = []; }
+      updateCartUI();
+    }
+
+    function saveCartToStorage() {
+      try { localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart)); } catch (e) { }
+      updateCartUI();
+    }
+
+    function enrichListingWithPurposes(item) {
+      if (!item) return item;
+      // Bỏ qua nếu là tin giả
+      if (!item.url || !item.url.includes("nhadat247.vn")) return null;
+
+      if (Array.isArray(item.purposes) && item.purposes.length > 0) {
+        // Giữ các nhóm chuẩn
+        item.purposes = item.purposes.filter(p => ["de_o", "dong_tien", "kinh_doanh", "dat"].includes(p));
+        if (item.purposes.length === 0) item.purposes.push("de_o");
+        if (!item.cashflow_subtype) item.cashflow_subtype = "";
+        if (!item.estimated_rent_text) item.estimated_rent_text = "";
+        return item;
+      }
+
+      const fullText = `${item.title || ""} ${item.description || ""}`.toLowerCase();
+      const purposes = [];
+      const bedrooms = parseInt(item.bedrooms) || 0;
+      const alleyWidth = parseFloat(item.alley_width_m) || 0;
+
+      if ((item.url && item.url.includes("/ban-dat-")) || fullText.includes("bán đất") || fullText.includes("đất nền") || fullText.includes("đất thổ cư") || fullText.includes("lô đất")) {
+        purposes.push("dat");
+      }
+      if (bedrooms >= 2 && bedrooms <= 4) purposes.push("de_o");
+      if (fullText.includes("dòng tiền") || fullText.includes("thu nhập") || fullText.includes("cho thuê") || fullText.includes("chdv") || fullText.includes("trọ") || bedrooms >= 5) {
+        purposes.push("dong_tien");
+      }
+      if (fullText.includes("mặt tiền") || fullText.includes("kinh doanh") || fullText.includes("spa") || fullText.includes("văn phòng") || alleyWidth >= 6.0 || (item.alley_type && item.alley_type.includes("Mặt tiền"))) {
+        purposes.push("kinh_doanh");
+      }
+
+      if (purposes.length === 0) purposes.push("de_o");
+
+      let subtype = "";
+      if (purposes.includes("dong_tien")) {
+        if (fullText.includes("trọ")) subtype = "day_tro";
+        else if (fullText.includes("chdv")) subtype = "chdv";
+        else subtype = "tiem_nang_chdv";
+      }
+
+      let rentText = "";
+      const mRent = fullText.match(/(?:thu nhập|đang cho thuê|cho thuê|dòng tiền)\s*[:\-]?\s*(\d+(?:[\.,]\d+)?\s*(?:triệu|tr|tỷ|ty)(?:\s*\/\s*(?:tháng|thg))?)/i);
+      if (mRent) {
+        let rv = mRent[1];
+        if (!rv.includes("/")) rv += "/tháng";
+        rentText = "Thu nhập " + rv;
+      }
+
+      item.purposes = purposes;
+      item.cashflow_subtype = subtype;
+      item.estimated_rent_text = rentText;
+      return item;
+    }
+
+    function trackPageVisit() {
+      if (navigator.webdriver) return; // Bỏ qua nếu là bot / test
+      try {
+        let is_unique = false;
+        if (!sessionStorage.getItem("hc_visited_session")) {
+          is_unique = true;
+          sessionStorage.setItem("hc_visited_session", "1");
+        }
+        if (HC_CONFIG.GAS_WEBAPP_URL) {
+          fetch(HC_CONFIG.GAS_WEBAPP_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action: "track_view",
+              event: "page_view",
+              is_unique: is_unique
+            })
+          }).catch(() => {});
+        }
+      } catch (e) {}
+    }
+
+    async function initData() {
+      trackPageVisit();
+      loadCartFromStorage();
+      let loaded = false;
+
+      // Đảm bảo mặc định mở Tổng Kho Hàng
+      activeCategory = "all";
+      activeCashflowSubtype = "";
+      const dropBtn = document.getElementById("hc-btn-drop-filter");
+      if (dropBtn) dropBtn.classList.remove("active");
+      document.querySelectorAll(".hc-cat-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-cat") === "all");
+      });
+      const subfilter = document.getElementById("hc-cashflow-subfilter");
+      if (subfilter) subfilter.classList.remove("show");
+
+      if (HC_CONFIG.DATA_JSON_URL) {
+        try {
+          const resp = await fetch(HC_CONFIG.DATA_JSON_URL + "?t=" + Date.now());
+          if (resp.ok) {
+            const remoteData = await resp.json();
+            if (Array.isArray(remoteData) && remoteData.length > 0) {
+              allListings = remoteData
+                .filter(x => x.status === "active" && x.url && x.url.includes("nhadat247.vn"))
+                .map(enrichListingWithPurposes)
+                .filter(Boolean);
+              loaded = true;
+            }
+          }
+        } catch (err) { }
+      }
+
+      if (!loaded && HC_CONFIG.GAS_WEBAPP_URL) {
+        try {
+          const resp = await fetch(HC_CONFIG.GAS_WEBAPP_URL + "?action=get_listings");
+          if (resp.ok) {
+            const gasData = await resp.json();
+            if (gasData.status === "success" && Array.isArray(gasData.listings) && gasData.listings.length > 0) {
+              allListings = gasData.listings
+                .filter(x => x.url && x.url.includes("nhadat247.vn"))
+                .map(enrichListingWithPurposes)
+                .filter(Boolean);
+              loaded = true;
+            }
+          }
+        } catch (err) { }
+      }
+
+      updateCategoryCounters();
+      populateWardFilter();
+      applyFilters();
+      loadBlogPostsFeed();
+    }
+
+    function updateCategoryCounters() {
+      const totalCount = allListings.length;
+      const deoCount = allListings.filter(x => Array.isArray(x.purposes) && x.purposes.includes("de_o")).length;
+      const cashflowCount = allListings.filter(x => Array.isArray(x.purposes) && x.purposes.includes("dong_tien")).length;
+      const kdCount = allListings.filter(x => Array.isArray(x.purposes) && x.purposes.includes("kinh_doanh")).length;
+      const datCount = allListings.filter(x => Array.isArray(x.purposes) && x.purposes.includes("dat")).length;
+
+      const bAll = document.getElementById("hc-count-cat-all");
+      const bDeo = document.getElementById("hc-count-cat-deo");
+      const bDongTien = document.getElementById("hc-cashflow-counter");
+      const bKd = document.getElementById("hc-count-cat-kd");
+      const bDat = document.getElementById("hc-count-cat-dat");
+
+      if (bAll) bAll.textContent = totalCount;
+      if (bDeo) bDeo.textContent = deoCount;
+      if (bDongTien) bDongTien.textContent = cashflowCount;
+      if (bKd) bKd.textContent = kdCount;
+      if (bDat) bDat.textContent = datCount;
+    }
+
+    function populateWardFilter() {
+      const wardSelect = document.getElementById("hc-filter-ward");
+      const wards = Array.from(new Set(allListings.map(x => x.ward).filter(w => w && w !== "Đang cập nhật"))).sort();
+      wardSelect.innerHTML = '<option value="">📍 Tất cả Phường</option>';
+      wards.forEach(w => {
+        const opt = document.createElement("option");
+        opt.value = w;
+        opt.textContent = w;
+        wardSelect.appendChild(opt);
+      });
+    }
+
+    function selectCategory(cat) {
+      activeCategory = cat;
+      document.querySelectorAll(".hc-cat-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-cat") === cat);
+      });
+
+      const subfilter = document.getElementById("hc-cashflow-subfilter");
+      if (subfilter) {
+        if (cat === "dong_tien") {
+          subfilter.classList.add("show");
+        } else {
+          subfilter.classList.remove("show");
+          activeCashflowSubtype = "";
+        }
+      }
+
+      applyFilters();
+    }
+
+    function setCashflowSubtype(subtype) {
+      activeCashflowSubtype = subtype;
+      document.querySelectorAll(".hc-sub-pill").forEach(p => {
+        const isMatch = (subtype === "" && p.textContent.includes("Tất cả")) ||
+          (subtype === "day_tro" && p.textContent.includes("Dãy trọ")) ||
+          (subtype === "chdv" && p.textContent.includes("CHDV")) ||
+          (subtype === "tiem_nang_chdv" && p.textContent.includes("Tiềm năng"));
+        p.classList.toggle("active", isMatch);
+      });
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const keyword = (document.getElementById("hc-search-input").value || "").trim().toLowerCase();
+      const ward = document.getElementById("hc-filter-ward").value;
+      const priceRange = document.getElementById("hc-filter-price").value;
+      const areaRange = document.getElementById("hc-filter-area").value;
+      const bedroom = document.getElementById("hc-filter-bedroom").value;
+      const alley = document.getElementById("hc-filter-alley").value;
+      const onlyDrop = document.getElementById("hc-btn-drop-filter").classList.contains("active");
+
+      filteredListings = allListings.filter(item => {
+        const purposes = Array.isArray(item.purposes) ? item.purposes : ["de_o"];
+
+        // 1. Lọc theo Danh mục cốt lõi
+        if (activeCategory !== "all") {
+          if (!purposes.includes(activeCategory)) return false;
+          if (activeCategory === "dong_tien" && activeCashflowSubtype && item.cashflow_subtype !== activeCashflowSubtype) {
+            return false;
+          }
+        }
+
+        // 2. Tìm kiếm từ khoá
+        if (keyword) {
+          const hay = `${item.title || ""} ${item.id || ""} ${item.description || ""} ${item.ward || ""} ${item.district || ""} ${item.estimated_rent_text || ""}`.toLowerCase();
+          if (!hay.includes(keyword)) return false;
+        }
+
+        if (ward && item.ward !== ward) return false;
+
+        if (priceRange) {
+          const p = item.price_ty || 0;
+          if (priceRange === "duoi_3_ty" && (p <= 0 || p >= 3.0)) return false;
+          if (priceRange === "3_5_ty" && (p < 3.0 || p > 5.0)) return false;
+          if (priceRange === "5_7_ty" && (p < 5.0 || p > 7.0)) return false;
+          if (priceRange === "7_10_ty" && (p < 7.0 || p > 10.0)) return false;
+          if (priceRange === "tren_10_ty" && p <= 10.0) return false;
+        }
+
+        if (areaRange) {
+          const a = item.area_m2 || 0;
+          if (areaRange === "duoi_40" && (a <= 0 || a >= 40.0)) return false;
+          if (areaRange === "40_60" && (a < 40.0 || a > 60.0)) return false;
+          if (areaRange === "60_80" && (a < 60.0 || a > 80.0)) return false;
+          if (areaRange === "80_100" && (a < 80.0 || a > 100.0)) return false;
+          if (areaRange === "tren_100" && a <= 100.0) return false;
+        }
+
+        if (bedroom) {
+          const b = item.bedrooms || 0;
+          if (bedroom === "5" ? b < 5 : b !== parseInt(bedroom)) return false;
+        }
+
+        if (alley && item.alley_category && item.alley_category !== alley) return false;
+        if (onlyDrop && !item.is_price_dropped) return false;
+
+        return true;
+      });
+
+      currentPage = 1;
+      renderListings();
+    }
+
+    function getPurposeBadgesHtml(item) {
+      const purposes = Array.isArray(item.purposes) ? item.purposes : ["de_o"];
+      const badges = [];
+
+      if (purposes.includes("dong_tien")) {
+        const subLabel = item.cashflow_subtype === "day_tro" ? "🏘 Dãy trọ" :
+          item.cashflow_subtype === "chdv" ? "🏢 CHDV" : "💵 Dòng tiền";
+        badges.push(`<span class="hc-purpose-tag dong_tien">${subLabel}</span>`);
+      }
+      if (purposes.includes("kinh_doanh")) {
+        badges.push(`<span class="hc-purpose-tag kinh_doanh">🏪 Kinh doanh</span>`);
+      }
+      if (purposes.includes("de_o") && badges.length < 2) {
+        badges.push(`<span class="hc-purpose-tag de_o">🏡 Để ở</span>`);
+      }
+
+      return badges.slice(0, 2).join("");
+    }
+
+    function renderListings() {
+      const container = document.getElementById("hc-listings-container");
+      const countVisible = document.getElementById("hc-count-visible");
+      const loadMoreWrap = document.getElementById("hc-load-more-wrap");
+
+      countVisible.textContent = filteredListings.length;
+
+      if (filteredListings.length === 0) {
+        container.innerHTML = `
+        <div class="hc-empty-state">
+          <div style="font-size:42px;margin-bottom:8px;">🏡</div>
+          <h3 style="font-size:16px;font-weight:800;color:#0f172a;margin-bottom:6px;">Chưa tìm thấy căn nhà khớp bộ lọc</h3>
+          <p style="font-size:13px;">Anh/chị thử chọn danh mục khác hoặc bấm <b>"↺ Đặt lại"</b> để xem toàn bộ kho nhà nhé!</p>
+        </div>
+      `;
+        loadMoreWrap.style.display = "none";
+        return;
+      }
+
+      const itemsToShow = filteredListings.slice(0, currentPage * pageSize);
+      let html = "";
+
+      itemsToShow.forEach(item => {
+        const isInCart = cart.some(c => c.id === item.id);
+        const isDrop = Boolean(item.is_price_dropped);
+        // Chỉ tính giảm chào khi số tiền giảm thực sự > 0
+        const dropTrieu = (item.drop_amount_ty && item.drop_amount_ty > 0) ? Math.round(item.drop_amount_ty * 1000) : 0;
+        const photoCount = Array.isArray(item.images) && item.images.length > 0 ? item.images.length : 1;
+        const rawImgUrl = item.image || HC_CONFIG.DEFAULT_IMG;
+        const proxyImgUrl = getProxyImageUrl(rawImgUrl, 600);
+        const priceLabel = item.price_text || (item.price_ty ? item.price_ty + " tỷ" : "Thỏa thuận");
+        const wardDist = [item.ward, item.district].filter(v => v && v !== "Đang cập nhật").join(", ");
+        const purposeBadges = getPurposeBadgesHtml(item);
+        const rentText = item.estimated_rent_text || "";
+
+        html += `
+        <article class="hc-card" data-id="${item.id}">
+          <div class="hc-card-img-wrap" onclick="window.HC_PORTAL.openLightbox('${item.id}')" title="Bấm để xem album ảnh căn nhà">
+            <img class="hc-card-img" referrerpolicy="no-referrer" src="${proxyImgUrl}" alt="${item.title}" loading="lazy" onerror="if(this.src!=='${rawImgUrl}'){this.src='${rawImgUrl}';}else{this.onerror=null;this.src='${HC_CONFIG.DEFAULT_IMG}';}" />
+            ${(isDrop && dropTrieu > 0) ? `<div class="hc-badge-drop">🔥 GIẢM -${dropTrieu}TR</div>` : ""}
+            <div class="hc-badge-id">#${item.id}</div>
+            <div class="hc-card-img-overlay">
+              <div class="hc-img-price-tag">
+                ${priceLabel}
+                ${isDrop && dropTrieu > 0 && item.old_price_ty ? `<span class="hc-img-price-old">${item.old_price_ty} tỷ</span>` : ""}
+              </div>
+              <div class="hc-img-photo-badge">📷 ${photoCount} ảnh</div>
+            </div>
+          </div>
+          <div class="hc-card-body">
+            <!-- DÒNG 1: ĐỊA ĐIỂM CHIẾM 100% CHIỀU RỘNG, HIỂN THỊ ĐẦY ĐỦ KHÔNG BỊ CẮT CHỮ -->
+            <div class="hc-card-location">📍 ${wardDist || "TP. Hồ Chí Minh"}</div>
+            
+            <!-- DÒNG 2: BADGES 3 NHÓM MỤC ĐÍCH NGAY DƯỚI DÒNG ĐỊA ĐIỂM -->
+            <div class="hc-card-purposes-wrap">${purposeBadges}</div>
+
+            ${rentText ? `
+              <div class="hc-cashflow-highlight">
+                <span>💰 Dòng tiền: ${rentText}</span>
+              </div>
+            ` : ""}
+
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="hc-card-title" title="${item.title}">${item.title}</a>
+            ${item.description ? `<p class="hc-card-desc">${item.description}</p>` : ""}
+            
+            <div class="hc-specs-bar">
+              <span>📐 ${item.area_m2 ? item.area_m2 + "m²" : "--"}</span>
+              <span class="hc-spec-divider"></span>
+              <span>🛏 ${item.bedrooms ? item.bedrooms + " PN" : "--"}</span>
+              <span class="hc-spec-divider"></span>
+              <span>🚗 ${(item.alley_type || "Hẻm đẹp").split("(")[0].trim()}</span>
+            </div>
+            
+            <div class="hc-card-actions">
+              <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="hc-btn-detail-main" title="Xem bài đăng gốc & album ảnh đầy đủ">
+                📄 Xem chi tiết & Ảnh ↗
+              </a>
+              <button class="hc-btn-cart ${isInCart ? 'added' : ''}" onclick="window.HC_PORTAL.toggleCart('${item.id}')">
+                ${isInCart ? '✓ Đã chọn tư vấn' : '＋ Tư vấn & hẹn xem'}
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+      });
+
+      container.innerHTML = html;
+      loadMoreWrap.style.display = filteredListings.length > itemsToShow.length ? "block" : "none";
+    }
+
+    function openLightbox(id) {
+      const item = allListings.find(x => x.id === id);
+      if (!item) return;
+      const lb = document.getElementById("hc-lightbox");
+      const mainImg = document.getElementById("hc-lightbox-img");
+      const caption = document.getElementById("hc-lightbox-caption");
+      const thumbs = document.getElementById("hc-lightbox-thumbs");
+      const rawImgs = (Array.isArray(item.images) && item.images.length > 0) ? item.images : [item.image || HC_CONFIG.DEFAULT_IMG];
+
+      mainImg.src = getProxyImageUrl(rawImgs[0], 1200);
+      caption.textContent = `[#${item.id}] ${item.title} — Giá: ${item.price_text || item.price_ty + " tỷ"}`;
+      thumbs.innerHTML = rawImgs.map((src, idx) => `
+      <img class="hc-lightbox-thumb ${idx === 0 ? 'active' : ''}" referrerpolicy="no-referrer" src="${getProxyImageUrl(src, 160)}"
+           onclick="document.getElementById('hc-lightbox-img').src='${getProxyImageUrl(src, 1200)}';document.querySelectorAll('.hc-lightbox-thumb').forEach(el=>el.classList.remove('active'));this.classList.add('active');" />
+    `).join("");
+      lb.classList.add("open");
+    }
+
+    function closeLightbox() {
+      document.getElementById("hc-lightbox").classList.remove("open");
+    }
+
+  function toggleCart(id) {
+    const existingIndex = cart.findIndex(c => c.id === id);
+    if (existingIndex > -1) {
+      cart.splice(existingIndex, 1);
+      showToast("Đã bỏ căn nhà khỏi danh sách hẹn xem", false);
+    } else {
+      if (cart.length >= 8) {
+        showToast("⚠️ Để Châu tư vấn kỹ và sắp xếp lịch xem chu đáo nhất, anh/chị chọn tối đa 8 căn ưng ý nhất nhé!", false);
+        return;
+      }
+      const item = allListings.find(x => x.id === id);
+      if (item) {
+        cart.push(item);
+        showToast(`✓ Đã thêm vào danh sách hẹn xem (${cart.length}/8 căn)`, true);
+
+        // Hiệu ứng pulse viền/bóng đổ thu hút ánh nhìn về nút Danh sách hẹn xem
+        const fBtn = document.getElementById("hc-floating-cart-btn");
+        if (fBtn) {
+          fBtn.classList.remove("hc-pulse");
+          void fBtn.offsetWidth;
+          fBtn.classList.add("hc-pulse");
+        }
+      }
+    }
+    saveCartToStorage();
+    renderListings();
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(c => c.id !== id);
+    saveCartToStorage();
+    renderListings();
+    renderCartDrawerList();
+    showToast("Đã bỏ căn nhà khỏi danh sách hẹn xem", false);
+  }
+
+  function updateCartUI() {
+    const counter = document.getElementById("hc-cart-counter");
+    const drawerCounter = document.getElementById("hc-drawer-cart-count");
+    if (counter) counter.textContent = cart.length;
+    if (drawerCounter) drawerCounter.textContent = cart.length;
+  }
+
+  function openDrawer() {
+    try {
+      if (!sessionStorage.getItem("hc_opened_drawer") && !navigator.webdriver) {
+        sessionStorage.setItem("hc_opened_drawer", "1");
+        if (HC_CONFIG.GAS_WEBAPP_URL) {
+          fetch(HC_CONFIG.GAS_WEBAPP_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              action: "track_view",
+              event: "open_drawer",
+              is_unique: true
+            })
+          }).catch(() => {});
+        }
+      }
+    } catch (e) {}
+
+    renderCartDrawerList();
+    document.getElementById("hc-drawer-backdrop").classList.add("open");
+    document.getElementById("hc-drawer").classList.add("open");
+  }
+
+      function closeDrawer() {
+        document.getElementById("hc-drawer-backdrop").classList.remove("open");
+        document.getElementById("hc-drawer").classList.remove("open");
+      }
+
+      function renderCartDrawerList() {
+        const listContainer = document.getElementById("hc-cart-items-list");
+        if (cart.length === 0) {
+          listContainer.innerHTML = `
+        <div style="text-align:center;padding:20px 10px;color:#64748b;background:#f8fafc;border-radius:10px;border:1px dashed #cbd5e1;">
+          <div style="font-size:30px;margin-bottom:6px;">💬</div>
+          <p style="font-size:13px;font-weight:600;">Chưa chọn căn cụ thể để hẹn xem</p>
+          <p style="font-size:12px;margin-top:4px;">Bạn có thể điền thông tin bên dưới để Châu tìm căn đúng chuẩn đề bài giúp bạn nhé!</p>
+        </div>
+      `;
+          return;
+        }
+        listContainer.innerHTML = cart.map(item => `
+      <div class="hc-cart-item">
+        <img class="hc-cart-item-img" referrerpolicy="no-referrer" src="${getProxyImageUrl(item.image, 160)}" alt="${item.title}" />
+        <div class="hc-cart-item-info">
+          <div class="hc-cart-item-title">[#${item.id}] ${item.title}</div>
+          <div class="hc-cart-item-price">${item.price_text || item.price_ty + ' tỷ'} • ${item.ward || ''}</div>
+        </div>
+        <button class="hc-btn-remove-cart" onclick="window.HC_PORTAL.removeFromCart('${item.id}')" title="Xóa">&times;</button>
+      </div>
+    `).join("");
+      }
+
+      function updateDynamicSmartPrompt() {
+        const purposeSelect = document.getElementById("hc-input-purpose");
+        const labelElem = document.getElementById("hc-prompt-label");
+        const textareaElem = document.getElementById("hc-survey-answer");
+        if (!purposeSelect || !labelElem || !textareaElem) return;
+
+        const val = purposeSelect.value;
+        const conf = DYNAMIC_SURVEY_CONFIG[val] || DYNAMIC_SURVEY_CONFIG["de_o"];
+        labelElem.textContent = conf.label;
+        textareaElem.placeholder = conf.placeholder;
+      }
+
+      async function copyTextToClipboard(text) {
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } else {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.left = "-9999px";
+            document.body.appendChild(ta);
+            ta.select();
+            const ok = document.execCommand('copy');
+            document.body.removeChild(ta);
+            return ok;
+          }
+        } catch (err) {
+          return false;
+        }
+      }
+
+      async function submitConsultation() {
+        const nameInput = document.getElementById("hc-input-name");
+        const phoneInput = document.getElementById("hc-input-phone");
+        const purposeSelect = document.getElementById("hc-input-purpose");
+        const surveyAnswerInput = document.getElementById("hc-survey-answer");
+
+        const name = nameInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const purposeCode = purposeSelect.value;
+        const purposeName = PURPOSE_NAME_MAP[purposeCode] || "Mua để ở";
+        const surveyAnswer = surveyAnswerInput ? surveyAnswerInput.value.trim() : "";
+
+        if (!name) { alert("Vui lòng nhập Tên của anh/chị để Châu tiện xưng hô nhé!"); nameInput.focus(); return; }
+        if (!phone) { alert("Vui lòng nhập Số điện thoại / Zalo để Châu liên hệ lại nhé!"); phoneInput.focus(); return; }
+
+        // Xây dựng đề bài chi tiết (gộp chung 1 ô)
+        let compiledNote = `Mục đích: ${purposeName}`;
+        if (surveyAnswer) compiledNote += ` | Đề bài & Ghi chú: ${surveyAnswer}`;
+
+        // Xây dựng tin nhắn gửi Zalo chuyên nghiệp (Xưng hô lịch sự, trung tính, không hiện SĐT)
+        let zaloMessage = `Chào Châu, mình là ${name}.\n`;
+        zaloMessage += `Mình xem trên website Hồng Châu - Nhà Ưng Ý và gửi nhu cầu tư vấn:\n\n`;
+        zaloMessage += `🎯 Mục đích mua: ${purposeName}\n`;
+        if (surveyAnswer) {
+          zaloMessage += `📝 Chi tiết nhu cầu: ${surveyAnswer}\n`;
+        }
+        if (cart.length > 0) {
+          zaloMessage += `\n🏡 Các căn mình đang quan tâm (${cart.length} căn):\n`;
+          cart.forEach((c, idx) => {
+            zaloMessage += `${idx + 1}. [#${c.id}] ${c.title}\n   - Giá: ${c.price_text || c.price_ty + ' tỷ'} | ${c.ward}\n   - Link: ${c.url}\n`;
+          });
+        }
+        zaloMessage += `\nNhờ Châu tư vấn chi tiết và hỗ trợ sắp xếp lịch xem nhà giúp mình nhé. Cảm ơn Châu!`;
+
+        lastGeneratedMessage = zaloMessage;
+        const copySuccess = await copyTextToClipboard(zaloMessage);
+
+        // Gửi lưu ngay vào Google Sheet DS KHÁCH HÀNG qua Apps Script
+        if (HC_CONFIG.GAS_WEBAPP_URL) {
+          try {
+            fetch(HC_CONFIG.GAS_WEBAPP_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                action: "consultation_lead",
+                name, phone,
+                note: compiledNote,
+                selected_homes: cart.map(c => ({ id: c.id, title: c.title, price: c.price_text || (c.price_ty + " tỷ"), url: c.url, ward: c.ward }))
+              })
+            });
+          } catch (e) { }
+        }
+
+        // Hiển thị hộp hướng dẫn dán trên Zalo
+        const readyBox = document.getElementById("hc-zalo-ready-box");
+        if (readyBox) readyBox.classList.add("show");
+
+        showToast(copySuccess ? "📋 Đã COPY sẵn tin nhắn! Sang Zalo chỉ cần bấm DÁN (Paste)!" : "Đã lưu thông tin! Đang mở Zalo Châu...");
+        setTimeout(() => { window.open(`https://zalo.me/${HC_CONFIG.BROKER_PHONE}`, "_blank"); }, 900);
+      }
+
+      /* --- CÁC HÀM XỬ LÝ CHUYÊN MỤC BÀI VIẾT BLOG --- */
+      function formatBloggerDate(isoStr) {
+        if (!isoStr) return "";
+        const d = new Date(isoStr);
+        if (isNaN(d.getTime())) return "";
+        const day = String(d.getDate()).padStart(2, "0");
+        const month = String(d.getMonth() + 1).padStart(2, "0");
+        const year = d.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
+
+      function extractThumbnail(entry) {
+        if (entry.media$thumbnail && entry.media$thumbnail.url) {
+          return entry.media$thumbnail.url.replace(/\/s\d+[^/]*\//, "/s600/");
+        }
+        if (entry.content && entry.content.$t) {
+          const match = entry.content.$t.match(/<img[^>]+src=["']([^"']+)["']/i);
+          if (match && match[1]) {
+            return match[1].replace(/\/s\d+[^/]*\//, "/s600/");
+          }
+        }
+        return "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80";
+      }
+
+      function extractSnippet(entry) {
+        let raw = "";
+        if (entry.summary && entry.summary.$t) {
+          raw = entry.summary.$t;
+        } else if (entry.content && entry.content.$t) {
+          raw = entry.content.$t;
+        }
+        const clean = raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+        return clean.length > 130 ? clean.slice(0, 130) + "..." : clean;
+      }
+
+      window.hcRenderBlogPosts = function (data) {
+        const container = document.getElementById("hc-blog-posts-container");
+        const section = document.getElementById("hc-blog-section");
+        if (!container || !section) return;
+
+        const entries = data && data.feed && Array.isArray(data.feed.entry) ? data.feed.entry : [];
+        if (entries.length === 0) {
+          section.style.display = "none";
+          return;
+        }
+
+        section.style.display = "block";
+        let html = "";
+        entries.slice(0, 6).forEach(entry => {
+          const title = entry.title && entry.title.$t ? entry.title.$t : "Bài viết cẩm nang";
+          const dateStr = formatBloggerDate(entry.published && entry.published.$t ? entry.published.$t : "");
+          const linkObj = Array.isArray(entry.link) ? entry.link.find(l => l.rel === "alternate") : null;
+          const postUrl = linkObj ? linkObj.href : "https://hongchaunhaungy.blogspot.com/";
+          const thumbUrl = extractThumbnail(entry);
+          const snippet = extractSnippet(entry);
+
+          html += `
+        <article class="hc-blog-card">
+          <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="hc-blog-card-img-wrap" title="${title}">
+            <img class="hc-blog-card-img" referrerpolicy="no-referrer" src="${thumbUrl}" alt="${title}" loading="lazy" />
+          </a>
+          <div class="hc-blog-card-body">
+            <div class="hc-blog-card-date">
+              <span>📅</span> <span>${dateStr}</span>
+            </div>
+            <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="hc-blog-card-title" title="${title}">
+              ${title}
+            </a>
+            <p class="hc-blog-card-snippet">${snippet}</p>
+            <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="hc-blog-card-link">
+              Đọc chi tiết →
+            </a>
+          </div>
+        </article>
+      `;
+        });
+
+        container.innerHTML = html;
+      };
+
+      function loadBlogPostsFeed() {
+        const script = document.createElement("script");
+        script.src = "https://hongchaunhaungy.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=6&callback=hcRenderBlogPosts";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+
+      let toastTimer = null;
+      function showToast(text, showAction = false) {
+        const toast = document.getElementById("hc-toast");
+        const toastText = document.getElementById("hc-toast-text");
+        const toastBtn = document.getElementById("hc-toast-action-btn");
+        if (!toast || !toastText) return;
+
+        toastText.innerHTML = text;
+        if (toastBtn) {
+          toastBtn.style.display = showAction ? "inline-flex" : "none";
+        }
+
+        toast.classList.add("show");
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, showAction ? 4500 : 3000);
+      }
+
+      function bindEvents() {
+        // Cuộn mượt đến chuyên mục Blog từ Hero Banner
+        const blogBtn = document.querySelector(".hc-hero-blog-btn");
+        if (blogBtn) {
+          blogBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const sec = document.getElementById("hc-blog-section");
+            if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }
+
+        // Tìm kiếm
+        document.getElementById("hc-search-input").addEventListener("input", applyFilters);
+
+        // Các select bộ lọc
+        ["hc-filter-ward", "hc-filter-price", "hc-filter-area", "hc-filter-bedroom", "hc-filter-alley"].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener("change", applyFilters);
+        });
+
+        // Nút giảm chào
+        const dropBtn = document.getElementById("hc-btn-drop-filter");
+        dropBtn.addEventListener("click", () => { dropBtn.classList.toggle("active"); applyFilters(); });
+
+        // Nút đặt lại
+        document.getElementById("hc-btn-clear").addEventListener("click", () => {
+          document.getElementById("hc-search-input").value = "";
+          document.getElementById("hc-filter-ward").value = "";
+          document.getElementById("hc-filter-price").value = "";
+          document.getElementById("hc-filter-area").value = "";
+          document.getElementById("hc-filter-bedroom").value = "";
+          document.getElementById("hc-filter-alley").value = "";
+          dropBtn.classList.remove("active");
+          activeCategory = "all";
+          activeCashflowSubtype = "";
+          document.querySelectorAll(".hc-cat-btn").forEach(b => {
+            b.classList.toggle("active", b.getAttribute("data-cat") === "all");
+          });
+          const subfilter = document.getElementById("hc-cashflow-subfilter");
+          if (subfilter) subfilter.classList.remove("show");
+          applyFilters();
+        });
+
+        document.getElementById("hc-btn-load-more").addEventListener("click", () => { currentPage += 1; renderListings(); });
+        document.getElementById("hc-floating-cart-btn").addEventListener("click", openDrawer);
+        document.getElementById("hc-btn-close-drawer").addEventListener("click", closeDrawer);
+        document.getElementById("hc-drawer-backdrop").addEventListener("click", closeDrawer);
+        document.getElementById("hc-btn-submit-consult").addEventListener("click", submitConsultation);
+
+        // Đổi smart prompt khi đổi mục đích mua
+        const purposeSelect = document.getElementById("hc-input-purpose");
+        if (purposeSelect) {
+          purposeSelect.addEventListener("change", updateDynamicSmartPrompt);
+        }
+
+        const recopyBtn = document.getElementById("hc-btn-recopy");
+        if (recopyBtn) {
+          recopyBtn.addEventListener("click", async () => {
+            if (lastGeneratedMessage) {
+              await copyTextToClipboard(lastGeneratedMessage);
+              showToast("📋 Đã copy lại nội dung tin nhắn!");
+            }
+          });
+        }
+
+        // Đảm bảo không bị lưu trạng thái cũ do bfcache
+        window.addEventListener("pageshow", () => {
+          activeCategory = "all";
+          activeCashflowSubtype = "";
+          const dBtn = document.getElementById("hc-btn-drop-filter");
+          if (dBtn) dBtn.classList.remove("active");
+          document.querySelectorAll(".hc-cat-btn").forEach(b => {
+            b.classList.toggle("active", b.getAttribute("data-cat") === "all");
+          });
+          const subfilter = document.getElementById("hc-cashflow-subfilter");
+          if (subfilter) subfilter.classList.remove("show");
+          applyFilters();
+        });
+    }
+
+    window.HC_PORTAL = {
+      toggleCart,
+      removeFromCart,
+      openDrawer,
+      closeDrawer,
+      openLightbox,
+      closeLightbox,
+      selectCategory,
+      setCashflowSubtype,
+      getCart: () => cart
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => { bindEvents(); initData(); });
+    } else {
+      bindEvents();
+      initData();
+    }
+  })();
+</script>
