@@ -180,9 +180,11 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
       -webkit-overflow-scrolling: touch !important;
       scrollbar-width: none !important;
     }
+
     #hc-bds-root .hc-category-nav::-webkit-scrollbar {
       display: none !important;
     }
+
     #hc-bds-root .hc-cat-btn {
       flex: 1 0 auto !important;
       padding: 0 10px !important;
@@ -2132,20 +2134,20 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
       document.getElementById("hc-lightbox").classList.remove("open");
     }
 
-  function toggleCart(id) {
-    const existingIndex = cart.findIndex(c => c.id === id);
-    if (existingIndex > -1) {
-      cart.splice(existingIndex, 1);
-      showToast("Đã bỏ căn nhà khỏi danh sách hẹn xem", false);
-    } else {
-      if (cart.length >= 8) {
-        showToast("⚠️ Để Châu tư vấn kỹ và sắp xếp lịch xem chu đáo nhất, anh/chị chọn tối đa 8 căn ưng ý nhất nhé!", false);
-        return;
-      }
-      const item = allListings.find(x => x.id === id);
-      if (item) {
-        cart.push(item);
-        showToast(`✓ Đã thêm vào danh sách hẹn xem (${cart.length}/8 căn)`, true);
+    function toggleCart(id) {
+      const existingIndex = cart.findIndex(c => c.id === id);
+      if (existingIndex > -1) {
+        cart.splice(existingIndex, 1);
+        showToast("Đã bỏ căn nhà khỏi danh sách hẹn xem", false);
+      } else {
+        if (cart.length >= 8) {
+          showToast("⚠️ Để Châu tư vấn kỹ và sắp xếp lịch xem chu đáo nhất, anh/chị chọn tối đa 8 căn ưng ý nhất nhé!", false);
+          return;
+        }
+        const item = allListings.find(x => x.id === id);
+        if (item) {
+          cart.push(item);
+          showToast(`✓ Đã thêm vào danh sách hẹn xem (${cart.length}/8 căn)`, true);
 
         // Hiệu ứng pulse viền/bóng đổ thu hút ánh nhìn về nút Danh sách hẹn xem
         const fBtn = document.getElementById("hc-floating-cart-btn");
@@ -2199,24 +2201,24 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     document.getElementById("hc-drawer").classList.add("open");
   }
 
-      function closeDrawer() {
-        document.getElementById("hc-drawer-backdrop").classList.remove("open");
-        document.getElementById("hc-drawer").classList.remove("open");
-      }
+  function closeDrawer() {
+    document.getElementById("hc-drawer-backdrop").classList.remove("open");
+    document.getElementById("hc-drawer").classList.remove("open");
+  }
 
-      function renderCartDrawerList() {
-        const listContainer = document.getElementById("hc-cart-items-list");
-        if (cart.length === 0) {
-          listContainer.innerHTML = `
+  function renderCartDrawerList() {
+    const listContainer = document.getElementById("hc-cart-items-list");
+    if (cart.length === 0) {
+      listContainer.innerHTML = `
         <div style="text-align:center;padding:20px 10px;color:#64748b;background:#f8fafc;border-radius:10px;border:1px dashed #cbd5e1;">
           <div style="font-size:30px;margin-bottom:6px;">💬</div>
           <p style="font-size:13px;font-weight:600;">Chưa chọn căn cụ thể để hẹn xem</p>
           <p style="font-size:12px;margin-top:4px;">Bạn có thể điền thông tin bên dưới để Châu tìm căn đúng chuẩn đề bài giúp bạn nhé!</p>
         </div>
       `;
-          return;
-        }
-        listContainer.innerHTML = cart.map(item => `
+      return;
+    }
+    listContainer.innerHTML = cart.map(item => `
       <div class="hc-cart-item">
         <img class="hc-cart-item-img" referrerpolicy="no-referrer" src="${getProxyImageUrl(item.image, 160)}" alt="${item.title}" />
         <div class="hc-cart-item-info">
@@ -2226,160 +2228,160 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
         <button class="hc-btn-remove-cart" onclick="window.HC_PORTAL.removeFromCart('${item.id}')" title="Xóa">&times;</button>
       </div>
     `).join("");
+  }
+
+  function updateDynamicSmartPrompt() {
+    const purposeSelect = document.getElementById("hc-input-purpose");
+    const labelElem = document.getElementById("hc-prompt-label");
+    const textareaElem = document.getElementById("hc-survey-answer");
+    if (!purposeSelect || !labelElem || !textareaElem) return;
+
+    const val = purposeSelect.value;
+    const conf = DYNAMIC_SURVEY_CONFIG[val] || DYNAMIC_SURVEY_CONFIG["de_o"];
+    labelElem.textContent = conf.label;
+    textareaElem.placeholder = conf.placeholder;
+  }
+
+  async function copyTextToClipboard(text) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
       }
+    } catch (err) {
+      return false;
+    }
+  }
 
-      function updateDynamicSmartPrompt() {
-        const purposeSelect = document.getElementById("hc-input-purpose");
-        const labelElem = document.getElementById("hc-prompt-label");
-        const textareaElem = document.getElementById("hc-survey-answer");
-        if (!purposeSelect || !labelElem || !textareaElem) return;
+  async function submitConsultation() {
+    const nameInput = document.getElementById("hc-input-name");
+    const phoneInput = document.getElementById("hc-input-phone");
+    const purposeSelect = document.getElementById("hc-input-purpose");
+    const surveyAnswerInput = document.getElementById("hc-survey-answer");
 
-        const val = purposeSelect.value;
-        const conf = DYNAMIC_SURVEY_CONFIG[val] || DYNAMIC_SURVEY_CONFIG["de_o"];
-        labelElem.textContent = conf.label;
-        textareaElem.placeholder = conf.placeholder;
+    const name = nameInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const purposeCode = purposeSelect.value;
+    const purposeName = PURPOSE_NAME_MAP[purposeCode] || "Mua để ở";
+    const surveyAnswer = surveyAnswerInput ? surveyAnswerInput.value.trim() : "";
+
+    if (!name) { alert("Vui lòng nhập Tên của anh/chị để Châu tiện xưng hô nhé!"); nameInput.focus(); return; }
+    if (!phone) { alert("Vui lòng nhập Số điện thoại / Zalo để Châu liên hệ lại nhé!"); phoneInput.focus(); return; }
+
+    // Xây dựng đề bài chi tiết (gộp chung 1 ô)
+    let compiledNote = `Mục đích: ${purposeName}`;
+    if (surveyAnswer) compiledNote += ` | Đề bài & Ghi chú: ${surveyAnswer}`;
+
+    // Xây dựng tin nhắn gửi Zalo chuyên nghiệp (Xưng hô lịch sự, trung tính, không hiện SĐT)
+    let zaloMessage = `Chào Châu, mình là ${name}.\n`;
+    zaloMessage += `Mình xem trên website Hồng Châu - Nhà Ưng Ý và gửi nhu cầu tư vấn:\n\n`;
+    zaloMessage += `🎯 Mục đích mua: ${purposeName}\n`;
+    if (surveyAnswer) {
+      zaloMessage += `📝 Chi tiết nhu cầu: ${surveyAnswer}\n`;
+    }
+    if (cart.length > 0) {
+      zaloMessage += `\n🏡 Các căn mình đang quan tâm (${cart.length} căn):\n`;
+      cart.forEach((c, idx) => {
+        zaloMessage += `${idx + 1}. [#${c.id}] ${c.title}\n   - Giá: ${c.price_text || c.price_ty + ' tỷ'} | ${c.ward}\n   - Link: ${c.url}\n`;
+      });
+    }
+    zaloMessage += `\nNhờ Châu tư vấn chi tiết và hỗ trợ sắp xếp lịch xem nhà giúp mình nhé. Cảm ơn Châu!`;
+
+    lastGeneratedMessage = zaloMessage;
+    const copySuccess = await copyTextToClipboard(zaloMessage);
+
+    // Gửi lưu ngay vào Google Sheet DS KHÁCH HÀNG qua Apps Script
+    if (HC_CONFIG.GAS_WEBAPP_URL) {
+      try {
+        fetch(HC_CONFIG.GAS_WEBAPP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            action: "consultation_lead",
+            name, phone,
+            note: compiledNote,
+            selected_homes: cart.map(c => ({ id: c.id, title: c.title, price: c.price_text || (c.price_ty + " tỷ"), url: c.url, ward: c.ward }))
+          })
+        });
+      } catch (e) { }
+    }
+
+    // Hiển thị hộp hướng dẫn dán trên Zalo
+    const readyBox = document.getElementById("hc-zalo-ready-box");
+    if (readyBox) readyBox.classList.add("show");
+
+    showToast(copySuccess ? "📋 Đã COPY sẵn tin nhắn! Sang Zalo chỉ cần bấm DÁN (Paste)!" : "Đã lưu thông tin! Đang mở Zalo Châu...");
+    setTimeout(() => { window.open(`https://zalo.me/${HC_CONFIG.BROKER_PHONE}`, "_blank"); }, 900);
+  }
+
+  /* --- CÁC HÀM XỬ LÝ CHUYÊN MỤC BÀI VIẾT BLOG --- */
+  function formatBloggerDate(isoStr) {
+    if (!isoStr) return "";
+    const d = new Date(isoStr);
+    if (isNaN(d.getTime())) return "";
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const year = d.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+
+  function extractThumbnail(entry) {
+    if (entry.media$thumbnail && entry.media$thumbnail.url) {
+      return entry.media$thumbnail.url.replace(/\/s\d+[^/]*\//, "/s600/");
+    }
+    if (entry.content && entry.content.$t) {
+      const match = entry.content.$t.match(/<img[^>]+src=["']([^"']+)["']/i);
+      if (match && match[1]) {
+        return match[1].replace(/\/s\d+[^/]*\//, "/s600/");
       }
+    }
+    return "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80";
+  }
 
-      async function copyTextToClipboard(text) {
-        try {
-          if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(text);
-            return true;
-          } else {
-            const ta = document.createElement("textarea");
-            ta.value = text;
-            ta.style.position = "fixed";
-            ta.style.left = "-9999px";
-            document.body.appendChild(ta);
-            ta.select();
-            const ok = document.execCommand('copy');
-            document.body.removeChild(ta);
-            return ok;
-          }
-        } catch (err) {
-          return false;
-        }
-      }
+  function extractSnippet(entry) {
+    let raw = "";
+    if (entry.summary && entry.summary.$t) {
+      raw = entry.summary.$t;
+    } else if (entry.content && entry.content.$t) {
+      raw = entry.content.$t;
+    }
+    const clean = raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    return clean.length > 130 ? clean.slice(0, 130) + "..." : clean;
+  }
 
-      async function submitConsultation() {
-        const nameInput = document.getElementById("hc-input-name");
-        const phoneInput = document.getElementById("hc-input-phone");
-        const purposeSelect = document.getElementById("hc-input-purpose");
-        const surveyAnswerInput = document.getElementById("hc-survey-answer");
+  window.hcRenderBlogPosts = function (data) {
+    const container = document.getElementById("hc-blog-posts-container");
+    const section = document.getElementById("hc-blog-section");
+    if (!container || !section) return;
 
-        const name = nameInput.value.trim();
-        const phone = phoneInput.value.trim();
-        const purposeCode = purposeSelect.value;
-        const purposeName = PURPOSE_NAME_MAP[purposeCode] || "Mua để ở";
-        const surveyAnswer = surveyAnswerInput ? surveyAnswerInput.value.trim() : "";
+    const entries = data && data.feed && Array.isArray(data.feed.entry) ? data.feed.entry : [];
+    if (entries.length === 0) {
+      section.style.display = "none";
+      return;
+    }
 
-        if (!name) { alert("Vui lòng nhập Tên của anh/chị để Châu tiện xưng hô nhé!"); nameInput.focus(); return; }
-        if (!phone) { alert("Vui lòng nhập Số điện thoại / Zalo để Châu liên hệ lại nhé!"); phoneInput.focus(); return; }
+    section.style.display = "block";
+    let html = "";
+    entries.slice(0, 6).forEach(entry => {
+      const title = entry.title && entry.title.$t ? entry.title.$t : "Bài viết cẩm nang";
+      const dateStr = formatBloggerDate(entry.published && entry.published.$t ? entry.published.$t : "");
+      const linkObj = Array.isArray(entry.link) ? entry.link.find(l => l.rel === "alternate") : null;
+      const postUrl = linkObj ? linkObj.href : "https://hongchaunhaungy.blogspot.com/";
+      const thumbUrl = extractThumbnail(entry);
+      const snippet = extractSnippet(entry);
 
-        // Xây dựng đề bài chi tiết (gộp chung 1 ô)
-        let compiledNote = `Mục đích: ${purposeName}`;
-        if (surveyAnswer) compiledNote += ` | Đề bài & Ghi chú: ${surveyAnswer}`;
-
-        // Xây dựng tin nhắn gửi Zalo chuyên nghiệp (Xưng hô lịch sự, trung tính, không hiện SĐT)
-        let zaloMessage = `Chào Châu, mình là ${name}.\n`;
-        zaloMessage += `Mình xem trên website Hồng Châu - Nhà Ưng Ý và gửi nhu cầu tư vấn:\n\n`;
-        zaloMessage += `🎯 Mục đích mua: ${purposeName}\n`;
-        if (surveyAnswer) {
-          zaloMessage += `📝 Chi tiết nhu cầu: ${surveyAnswer}\n`;
-        }
-        if (cart.length > 0) {
-          zaloMessage += `\n🏡 Các căn mình đang quan tâm (${cart.length} căn):\n`;
-          cart.forEach((c, idx) => {
-            zaloMessage += `${idx + 1}. [#${c.id}] ${c.title}\n   - Giá: ${c.price_text || c.price_ty + ' tỷ'} | ${c.ward}\n   - Link: ${c.url}\n`;
-          });
-        }
-        zaloMessage += `\nNhờ Châu tư vấn chi tiết và hỗ trợ sắp xếp lịch xem nhà giúp mình nhé. Cảm ơn Châu!`;
-
-        lastGeneratedMessage = zaloMessage;
-        const copySuccess = await copyTextToClipboard(zaloMessage);
-
-        // Gửi lưu ngay vào Google Sheet DS KHÁCH HÀNG qua Apps Script
-        if (HC_CONFIG.GAS_WEBAPP_URL) {
-          try {
-            fetch(HC_CONFIG.GAS_WEBAPP_URL, {
-              method: "POST",
-              mode: "no-cors",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                action: "consultation_lead",
-                name, phone,
-                note: compiledNote,
-                selected_homes: cart.map(c => ({ id: c.id, title: c.title, price: c.price_text || (c.price_ty + " tỷ"), url: c.url, ward: c.ward }))
-              })
-            });
-          } catch (e) { }
-        }
-
-        // Hiển thị hộp hướng dẫn dán trên Zalo
-        const readyBox = document.getElementById("hc-zalo-ready-box");
-        if (readyBox) readyBox.classList.add("show");
-
-        showToast(copySuccess ? "📋 Đã COPY sẵn tin nhắn! Sang Zalo chỉ cần bấm DÁN (Paste)!" : "Đã lưu thông tin! Đang mở Zalo Châu...");
-        setTimeout(() => { window.open(`https://zalo.me/${HC_CONFIG.BROKER_PHONE}`, "_blank"); }, 900);
-      }
-
-      /* --- CÁC HÀM XỬ LÝ CHUYÊN MỤC BÀI VIẾT BLOG --- */
-      function formatBloggerDate(isoStr) {
-        if (!isoStr) return "";
-        const d = new Date(isoStr);
-        if (isNaN(d.getTime())) return "";
-        const day = String(d.getDate()).padStart(2, "0");
-        const month = String(d.getMonth() + 1).padStart(2, "0");
-        const year = d.getFullYear();
-        return `${day}/${month}/${year}`;
-      }
-
-      function extractThumbnail(entry) {
-        if (entry.media$thumbnail && entry.media$thumbnail.url) {
-          return entry.media$thumbnail.url.replace(/\/s\d+[^/]*\//, "/s600/");
-        }
-        if (entry.content && entry.content.$t) {
-          const match = entry.content.$t.match(/<img[^>]+src=["']([^"']+)["']/i);
-          if (match && match[1]) {
-            return match[1].replace(/\/s\d+[^/]*\//, "/s600/");
-          }
-        }
-        return "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80";
-      }
-
-      function extractSnippet(entry) {
-        let raw = "";
-        if (entry.summary && entry.summary.$t) {
-          raw = entry.summary.$t;
-        } else if (entry.content && entry.content.$t) {
-          raw = entry.content.$t;
-        }
-        const clean = raw.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-        return clean.length > 130 ? clean.slice(0, 130) + "..." : clean;
-      }
-
-      window.hcRenderBlogPosts = function (data) {
-        const container = document.getElementById("hc-blog-posts-container");
-        const section = document.getElementById("hc-blog-section");
-        if (!container || !section) return;
-
-        const entries = data && data.feed && Array.isArray(data.feed.entry) ? data.feed.entry : [];
-        if (entries.length === 0) {
-          section.style.display = "none";
-          return;
-        }
-
-        section.style.display = "block";
-        let html = "";
-        entries.slice(0, 6).forEach(entry => {
-          const title = entry.title && entry.title.$t ? entry.title.$t : "Bài viết cẩm nang";
-          const dateStr = formatBloggerDate(entry.published && entry.published.$t ? entry.published.$t : "");
-          const linkObj = Array.isArray(entry.link) ? entry.link.find(l => l.rel === "alternate") : null;
-          const postUrl = linkObj ? linkObj.href : "https://hongchaunhaungy.blogspot.com/";
-          const thumbUrl = extractThumbnail(entry);
-          const snippet = extractSnippet(entry);
-
-          html += `
+      html += `
         <article class="hc-blog-card">
           <a href="${postUrl}" target="_blank" rel="noopener noreferrer" class="hc-blog-card-img-wrap" title="${title}">
             <img class="hc-blog-card-img" referrerpolicy="no-referrer" src="${thumbUrl}" alt="${title}" loading="lazy" />
@@ -2398,101 +2400,101 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
           </div>
         </article>
       `;
-        });
+    });
 
-        container.innerHTML = html;
-      };
+    container.innerHTML = html;
+  };
 
-      function loadBlogPostsFeed() {
-        const script = document.createElement("script");
-        script.src = "https://hongchaunhaungy.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=6&callback=hcRenderBlogPosts";
-        script.async = true;
-        document.body.appendChild(script);
-      }
+  function loadBlogPostsFeed() {
+    const script = document.createElement("script");
+    script.src = "https://hongchaunhaungy.blogspot.com/feeds/posts/default?alt=json-in-script&max-results=6&callback=hcRenderBlogPosts";
+    script.async = true;
+    document.body.appendChild(script);
+  }
 
-      let toastTimer = null;
-      function showToast(text, showAction = false) {
-        const toast = document.getElementById("hc-toast");
-        const toastText = document.getElementById("hc-toast-text");
-        const toastBtn = document.getElementById("hc-toast-action-btn");
-        if (!toast || !toastText) return;
+  let toastTimer = null;
+  function showToast(text, showAction = false) {
+    const toast = document.getElementById("hc-toast");
+    const toastText = document.getElementById("hc-toast-text");
+    const toastBtn = document.getElementById("hc-toast-action-btn");
+    if (!toast || !toastText) return;
 
-        toastText.innerHTML = text;
-        if (toastBtn) {
-          toastBtn.style.display = showAction ? "inline-flex" : "none";
+    toastText.innerHTML = text;
+    if (toastBtn) {
+      toastBtn.style.display = showAction ? "inline-flex" : "none";
+    }
+
+    toast.classList.add("show");
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, showAction ? 4500 : 3000);
+  }
+
+  function bindEvents() {
+    // Cuộn mượt đến chuyên mục Blog từ Hero Banner
+    const blogBtn = document.querySelector(".hc-hero-blog-btn");
+    if (blogBtn) {
+      blogBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const sec = document.getElementById("hc-blog-section");
+        if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    // Tìm kiếm
+    document.getElementById("hc-search-input").addEventListener("input", applyFilters);
+
+    // Các select bộ lọc
+    ["hc-filter-ward", "hc-filter-price", "hc-filter-area", "hc-filter-bedroom", "hc-filter-alley"].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("change", applyFilters);
+    });
+
+    // Nút giảm chào
+    const dropBtn = document.getElementById("hc-btn-drop-filter");
+    dropBtn.addEventListener("click", () => { dropBtn.classList.toggle("active"); applyFilters(); });
+
+    // Nút đặt lại
+    document.getElementById("hc-btn-clear").addEventListener("click", () => {
+      document.getElementById("hc-search-input").value = "";
+      document.getElementById("hc-filter-ward").value = "";
+      document.getElementById("hc-filter-price").value = "";
+      document.getElementById("hc-filter-area").value = "";
+      document.getElementById("hc-filter-bedroom").value = "";
+      document.getElementById("hc-filter-alley").value = "";
+      dropBtn.classList.remove("active");
+      activeCategory = "all";
+      activeCashflowSubtype = "";
+      document.querySelectorAll(".hc-cat-btn").forEach(b => {
+        b.classList.toggle("active", b.getAttribute("data-cat") === "all");
+      });
+      const subfilter = document.getElementById("hc-cashflow-subfilter");
+      if (subfilter) subfilter.classList.remove("show");
+      applyFilters();
+    });
+
+    document.getElementById("hc-btn-load-more").addEventListener("click", () => { currentPage += 1; renderListings(); });
+    document.getElementById("hc-floating-cart-btn").addEventListener("click", openDrawer);
+    document.getElementById("hc-btn-close-drawer").addEventListener("click", closeDrawer);
+    document.getElementById("hc-drawer-backdrop").addEventListener("click", closeDrawer);
+    document.getElementById("hc-btn-submit-consult").addEventListener("click", submitConsultation);
+
+    // Đổi smart prompt khi đổi mục đích mua
+    const purposeSelect = document.getElementById("hc-input-purpose");
+    if (purposeSelect) {
+      purposeSelect.addEventListener("change", updateDynamicSmartPrompt);
+    }
+
+    const recopyBtn = document.getElementById("hc-btn-recopy");
+    if (recopyBtn) {
+      recopyBtn.addEventListener("click", async () => {
+        if (lastGeneratedMessage) {
+          await copyTextToClipboard(lastGeneratedMessage);
+          showToast("📋 Đã copy lại nội dung tin nhắn!");
         }
-
-        toast.classList.add("show");
-        if (toastTimer) clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => {
-          toast.classList.remove("show");
-        }, showAction ? 4500 : 3000);
-      }
-
-      function bindEvents() {
-        // Cuộn mượt đến chuyên mục Blog từ Hero Banner
-        const blogBtn = document.querySelector(".hc-hero-blog-btn");
-        if (blogBtn) {
-          blogBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            const sec = document.getElementById("hc-blog-section");
-            if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
-          });
-        }
-
-        // Tìm kiếm
-        document.getElementById("hc-search-input").addEventListener("input", applyFilters);
-
-        // Các select bộ lọc
-        ["hc-filter-ward", "hc-filter-price", "hc-filter-area", "hc-filter-bedroom", "hc-filter-alley"].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.addEventListener("change", applyFilters);
-        });
-
-        // Nút giảm chào
-        const dropBtn = document.getElementById("hc-btn-drop-filter");
-        dropBtn.addEventListener("click", () => { dropBtn.classList.toggle("active"); applyFilters(); });
-
-        // Nút đặt lại
-        document.getElementById("hc-btn-clear").addEventListener("click", () => {
-          document.getElementById("hc-search-input").value = "";
-          document.getElementById("hc-filter-ward").value = "";
-          document.getElementById("hc-filter-price").value = "";
-          document.getElementById("hc-filter-area").value = "";
-          document.getElementById("hc-filter-bedroom").value = "";
-          document.getElementById("hc-filter-alley").value = "";
-          dropBtn.classList.remove("active");
-          activeCategory = "all";
-          activeCashflowSubtype = "";
-          document.querySelectorAll(".hc-cat-btn").forEach(b => {
-            b.classList.toggle("active", b.getAttribute("data-cat") === "all");
-          });
-          const subfilter = document.getElementById("hc-cashflow-subfilter");
-          if (subfilter) subfilter.classList.remove("show");
-          applyFilters();
-        });
-
-        document.getElementById("hc-btn-load-more").addEventListener("click", () => { currentPage += 1; renderListings(); });
-        document.getElementById("hc-floating-cart-btn").addEventListener("click", openDrawer);
-        document.getElementById("hc-btn-close-drawer").addEventListener("click", closeDrawer);
-        document.getElementById("hc-drawer-backdrop").addEventListener("click", closeDrawer);
-        document.getElementById("hc-btn-submit-consult").addEventListener("click", submitConsultation);
-
-        // Đổi smart prompt khi đổi mục đích mua
-        const purposeSelect = document.getElementById("hc-input-purpose");
-        if (purposeSelect) {
-          purposeSelect.addEventListener("change", updateDynamicSmartPrompt);
-        }
-
-        const recopyBtn = document.getElementById("hc-btn-recopy");
-        if (recopyBtn) {
-          recopyBtn.addEventListener("click", async () => {
-            if (lastGeneratedMessage) {
-              await copyTextToClipboard(lastGeneratedMessage);
-              showToast("📋 Đã copy lại nội dung tin nhắn!");
-            }
-          });
-        }
+      });
+    }
 
         // Đảm bảo không bị lưu trạng thái cũ do bfcache
         window.addEventListener("pageshow", () => {
@@ -2509,23 +2511,23 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
         });
     }
 
-    window.HC_PORTAL = {
-      toggleCart,
-      removeFromCart,
-      openDrawer,
-      closeDrawer,
-      openLightbox,
-      closeLightbox,
-      selectCategory,
-      setCashflowSubtype,
-      getCart: () => cart
-    };
+  window.HC_PORTAL = {
+    toggleCart,
+    removeFromCart,
+    openDrawer,
+    closeDrawer,
+    openLightbox,
+    closeLightbox,
+    selectCategory,
+    setCashflowSubtype,
+    getCart: () => cart
+  };
 
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () => { bindEvents(); initData(); });
-    } else {
-      bindEvents();
-      initData();
-    }
-  })();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => { bindEvents(); initData(); });
+  } else {
+    bindEvents();
+    initData();
+  }
+  }) ();
 </script>
