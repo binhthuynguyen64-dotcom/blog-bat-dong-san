@@ -26,6 +26,9 @@ var CONFIG = {
 
   // Tên tab lưu trữ thống kê truy cập trang web
   STATS_SHEET_NAME: "THONG_KE_TRUY_CAP",
+
+  // Danh sách các tab nguồn để quét căn đã cọc / đã bán
+  SOURCE_SHEETS: ["BDS TMT-TTH-3.5-6TY", "NHÀ GÒ VẤP 5-7TY"],
   
   // Khóa bí mật API bảo vệ dữ liệu khách hàng khi gọi từ bên ngoài
   SECRET_API_KEY: "HongChauNhaUngY2026",
@@ -346,6 +349,109 @@ function getCustomersFromSheet() {
 }
 
 /**
+ * Trích xuất danh sách đặc trưng các căn đã cọc / đã bán từ các tab nguồn
+ */
+function getSoldSignaturesFromSourceSheets() {
+  var ss = getSpreadsheet();
+  if (!ss) return [];
+
+  var SOURCE_SHEETS = CONFIG.SOURCE_SHEETS || ["BDS TMT-TTH-3.5-6TY", "NHÀ GÒ VẤP 5-7TY"];
+  var soldList = [];
+
+  for (var s = 0; s < SOURCE_SHEETS.length; s++) {
+    var sheetName = SOURCE_SHEETS[s];
+    var sheet = ss.getSheetByName(sheetName);
+    if (!sheet) continue;
+
+    var data = sheet.getDataRange().getValues();
+    if (data.length <= 1) continue;
+
+    for (var r = 1; r < data.length; r++) {
+      var row = data[r];
+      // Cột D (index 3): TÍNH CHẤT NHÀ
+      var nature = row[3] ? row[3].toString().toLowerCase().trim() : "";
+      var isSoldNature = nature.indexOf("đã cọc") !== -1 ||
+                         nature.indexOf("đã bán") !== -1 ||
+                         nature.indexOf("da coc") !== -1 ||
+                         nature.indexOf("da ban") !== -1;
+
+      if (isSoldNature) {
+        var code = row[5] ? row[5].toString().trim() : ""; // Cột F: MÃ SP QUẢN LÝ
+        var rawTitle = row[6] ? row[6].toString().trim() : ""; // Cột G: TIÊU ĐỀ SẢN PHẨM
+        var price = parseFloat(row[17]) || parseFloat(row[18]) || 0; // Cột R / S
+        var area = parseFloat(row[19]) || 0; // Cột T: DIỆN TÍCH (m2)
+
+        // Trích xuất tên đường / phường
+        var cleanedTitle = rawTitle.replace(/^[0-9]+(?:\.[0-9]+[a-zA-Z]?)?\s*/, "").trim();
+        var streetMatch = cleanedTitle.match(/^([a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđĐ\s]+(?:\d+)?)/);
+        var street = streetMatch ? streetMatch[1].trim() : cleanedTitle;
+        street = street.replace(/\s+(?:tỷ|triệu|m2|m²|m)\b.*$/i, "").trim();
+
+        soldList.push({
+          sourceSheet: sheetName,
+          code: code,
+          rawTitle: rawTitle,
+          street: street,
+          price: price,
+          area: area
+        });
+      }
+    }
+  }
+  return soldList;
+}
+
+/**
+ * Kiểm tra xem 1 tin đăng có khớp với danh sách căn đã cọc/đã bán không
+ */
+function checkIfListingSold(item, soldSignatures) {
+  if (!item) return false;
+
+  var statusText = (item.status || "").toString().toLowerCase();
+  if (item.is_sold === true || statusText.indexOf("đã bán") !== -1 || statusText.indexOf("đã cọc") !== -1 || statusText.indexOf("da ban") !== -1) {
+    return true;
+  }
+
+  if (!soldSignatures || soldSignatures.length === 0) return false;
+
+  var hayText = ((item.title || "") + " " + (item.description || "") + " " + (item.ward || "") + " " + (item.district || "")).toLowerCase();
+  var itemArea = parseFloat(item.area_m2) || 0;
+  var itemId = (item.id || "").toString().toLowerCase();
+
+  for (var i = 0; i < soldSignatures.length; i++) {
+    var s = soldSignatures[i];
+
+    // 1. Khớp mã tin nếu có
+    if (s.code && itemId && s.code.toLowerCase() === itemId) {
+      return true;
+    }
+
+    // 2. Khớp theo tên đường / phường + diện tích +- 2m2
+    var street = (s.street || "").toLowerCase().trim();
+    var pureStreet = street.replace(/\s*\d+$/, "").trim();
+
+    var streetMatched = false;
+    if (street && street.length >= 3 && hayText.indexOf(street) !== -1) {
+      streetMatched = true;
+    } else if (pureStreet && pureStreet.length >= 4 && hayText.indexOf(pureStreet) !== -1) {
+      streetMatched = true;
+    }
+
+    if (streetMatched) {
+      if (s.area > 0 && itemArea > 0) {
+        if (Math.abs(itemArea - s.area) <= 2.0) {
+          return true;
+        }
+      } else {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+/**
  * Lưu toàn bộ danh sách căn nhà vào tab `DATA_NHA`
  */
 function syncListingsToSheet(listings) {
@@ -364,17 +470,22 @@ function syncListingsToSheet(listings) {
   var headers = [
     "Mã Tin", "Tiêu Đề", "Mức Giá (Tỷ)", "Giá Gốc", "Giảm Chào", "Giá Cũ (Tỷ)",
     "Diện Tích (m²)", "Số PN", "Hẻm / Đường", "Phường", "Quận", "Link Tin Gốc",
-    "Ảnh Đại Diện", "Mô Tả Ngắn", "Mục Đích", "Phân Loại Dòng Tiền", "Thu Nhập Thuê", "Cập Nhật Lúc"
+    "Ảnh Đại Diện", "Mô Tả Ngắn", "Mục Đích", "Phân Loại Dòng Tiền", "Thu Nhập Thuê", "Cập Nhật Lúc", "Trạng Thái"
   ];
   sheet.appendRow(headers);
 
   var headerRange = sheet.getRange(1, 1, 1, headers.length);
   headerRange.setBackground("#059669").setFontColor("#FFFFFF").setFontWeight("bold");
 
+  var soldSignatures = getSoldSignaturesFromSourceSheets();
   var rows = [];
+
   for (var i = 0; i < listings.length; i++) {
     var item = listings[i];
     var purposesStr = Array.isArray(item.purposes) ? item.purposes.join(",") : (item.purposes || "");
+    var isSold = checkIfListingSold(item, soldSignatures);
+    var statusDisplay = isSold ? "🚫 Đã bán" : (item.status && item.status.indexOf("sold") !== -1 ? "🚫 Đã bán" : "Đang bán");
+
     rows.push([
       item.id || "",
       item.title || "",
@@ -393,7 +504,8 @@ function syncListingsToSheet(listings) {
       purposesStr,
       item.cashflow_subtype || "",
       item.estimated_rent_text || "",
-      item.last_checked_at || item.updated_at || ""
+      item.last_checked_at || item.updated_at || "",
+      statusDisplay
     ]);
   }
 
@@ -417,12 +529,17 @@ function getListingsFromSheet() {
   var data = sheet.getDataRange().getValues();
   if (data.length <= 1) return [];
 
+  var soldSignatures = getSoldSignaturesFromSourceSheets();
   var listings = [];
+
   for (var i = 1; i < data.length; i++) {
     var r = data[i];
     var pStr = r[14] ? r[14].toString() : "";
     var pArr = pStr ? pStr.split(",") : [];
-    listings.push({
+    var statusVal = r[18] ? r[18].toString().trim() : "";
+    var isSold = statusVal.indexOf("Đã bán") !== -1 || statusVal.indexOf("Đã cọc") !== -1;
+
+    var itemObj = {
       id: r[0],
       title: r[1],
       price_ty: parseFloat(r[2]) || 0,
@@ -440,8 +557,22 @@ function getListingsFromSheet() {
       purposes: pArr,
       cashflow_subtype: r[15] || "",
       estimated_rent_text: r[16] || "",
-      updated_at: r[17] || r[14]
-    });
+      updated_at: r[17] || r[14],
+      status: statusVal || "Đang bán"
+    };
+
+    if (!isSold) {
+      isSold = checkIfListingSold(itemObj, soldSignatures);
+      if (isSold) {
+        itemObj.status = "🚫 Đã bán";
+        try {
+          sheet.getRange(i + 1, 19).setValue("🚫 Đã bán");
+        } catch (err) {}
+      }
+    }
+
+    itemObj.is_sold = isSold;
+    listings.push(itemObj);
   }
   return listings;
 }

@@ -77,6 +77,36 @@ def sync_listings_to_google_sheet(listings: list) -> bool:
     return False
 
 
+def sync_sold_status_from_gas(listings: list) -> int:
+    """
+    Gọi Google Apps Script Web App để lấy danh sách căn đã bán/đã cọc
+    từ các sheet nguồn thực tế và đồng bộ cờ is_sold vào listings.
+    """
+    gas_url = os.getenv("GAS_WEBAPP_URL")
+    gas_key = os.getenv("GAS_API_KEY", "HongChauNhaUngY2026")
+    if not gas_url:
+        return 0
+    try:
+        params = urlencode({"action": "get_listings", "api_key": gas_key})
+        req = urllib.request.Request(f"{gas_url}?{params}", headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            if data.get("status") == "success" and "listings" in data:
+                sold_ids = {str(x["id"]) for x in data["listings"] if x.get("is_sold")}
+                updated_count = 0
+                for item in listings:
+                    if str(item.get("id")) in sold_ids:
+                        if not item.get("is_sold"):
+                            item["is_sold"] = True
+                            updated_count += 1
+                if updated_count > 0:
+                    logger.info(f"Đã cập nhật trạng thái '🚫 Đã bán' cho {updated_count} căn từ Google Sheet.")
+                return updated_count
+    except Exception as e:
+        logger.warning(f"Không thể đồng bộ trạng thái đã bán từ Google Apps Script: {e}")
+    return 0
+
+
 def fetch_traffic_report() -> dict:
     """
     Lấy dữ liệu thống kê lưu lượng truy cập từ Google Apps Script Web App.
@@ -123,6 +153,12 @@ def main():
     broker_url = os.getenv("BROKER_URL", DEFAULT_BROKER_URL)
     current_listings = run_scraper(broker_url, DEFAULT_OUTPUT_PATH)
 
+    # 2.1 Đồng bộ trạng thái Đã cọc/Đã bán từ Google Sheet nguồn
+    sold_updated = sync_sold_status_from_gas(current_listings)
+    if sold_updated > 0:
+        with open(DEFAULT_OUTPUT_PATH, "w", encoding="utf-8") as f:
+            json.dump(current_listings, f, ensure_ascii=False, indent=2)
+
     # 3. Bước 2: Theo dõi biến động giá & báo giảm chào
     dropped_items = track_and_alert_price_drops(current_listings, PRICE_HISTORY_PATH)
 
@@ -133,9 +169,10 @@ def main():
 
     # 4. Bước 3: Xác định các tin cần so khớp khách hàng
     # Gồm: (A) Tin mới tinh lần đầu xuất hiện HOẶC (B) Căn vừa giảm giá chào
+    # Lưu ý: Bỏ qua hoàn toàn các căn đã cọc / đã bán (is_sold == True)
     new_active_listings = [
         item for item in current_listings
-        if item.get("status") == "active" and (item["id"] not in old_ids or item.get("is_price_dropped"))
+        if item.get("status") == "active" and not item.get("is_sold") and (item["id"] not in old_ids or item.get("is_price_dropped"))
     ]
 
     if new_active_listings:
@@ -166,16 +203,18 @@ def main():
         today_vn = datetime.now().strftime("%d/%m/%Y")
         traffic = fetch_traffic_report()
 
-        total_active = sum(1 for x in current_listings if x.get("status") == "active")
-        new_count = len([x for x in current_listings if x.get("status") == "active" and x["id"] not in old_ids])
+        total_active = sum(1 for x in current_listings if x.get("status") == "active" and not x.get("is_sold"))
+        total_sold = sum(1 for x in current_listings if x.get("is_sold"))
+        new_count = len([x for x in current_listings if x.get("status") == "active" and not x.get("is_sold") and x["id"] not in old_ids])
         drop_count = len(dropped_items) if dropped_items else 0
 
+        sold_info = f" | Đã bán: {total_sold}" if total_sold > 0 else ""
         report_msg = (
             f"📊 <b>BÁO CÁO KHO NHÀ HỒNG CHÂU ({today_vn})</b>\n\n"
             f"👀 Khách vào xem Blog hôm nay: <b>{traffic.get('today_views', 0)} khách</b> "
             f"({traffic.get('today_pageviews', 0)} lượt xem | Hôm qua: {traffic.get('yesterday_views', 0)} | Tổng: {traffic.get('total_views', 0)})\n"
             f"📋 Khách mở form tư vấn hôm nay: <b>{traffic.get('today_drawer_opens', 0)} lượt</b>\n"
-            f"🏠 Tổng kho nhà đang mở bán: <b>{total_active} căn</b> (Tin mới hôm nay: +{new_count} | Giảm chào: {drop_count})\n"
+            f"🏠 Tổng kho nhà đang mở bán: <b>{total_active} căn</b> ({sold_info}Tin mới hôm nay: +{new_count} | Giảm chào: {drop_count})\n"
             f"🔗 <a href=\"https://hongchaunhaungy.blogspot.com/p/kho-nha-that-gia-tot.html\">Mở trang Kho Nhà</a>"
         )
         send_telegram_alert(report_msg)

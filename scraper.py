@@ -511,6 +511,7 @@ def parse_detail_page(url: str) -> dict:
         "estimated_rent_text": estimated_rent_text,
         "updated_at": updated_at if updated_at else time.strftime("%d/%m/%Y"),
         "status": "active",
+        "is_sold": False,
         "is_price_dropped": False,
         "old_price_ty": None,
         "drop_amount_ty": None,
@@ -548,13 +549,15 @@ def run_scraper(broker_url: str = DEFAULT_BROKER_URL, output_path: str = DEFAULT
             lid = data["id"]
             scraped_ids.add(lid)
             
-            # Kế thừa trạng thái giảm chào nếu có từ lần trước
+            # Kế thừa trạng thái giảm chào & đã bán nếu có từ lần trước
             if lid in old_listings_map:
                 old_item = old_listings_map[lid]
                 if old_item.get("is_price_dropped"):
                     data["is_price_dropped"] = True
                     data["old_price_ty"] = old_item.get("old_price_ty")
                     data["drop_amount_ty"] = old_item.get("drop_amount_ty")
+                if old_item.get("is_sold"):
+                    data["is_sold"] = True
 
             current_listings.append(data)
         time.sleep(0.5)

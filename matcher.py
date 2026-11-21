@@ -368,6 +368,10 @@ def match_new_listings_with_clients(new_listings: list, min_score: float = 75.0)
     number_emojis = ["1️⃣", "2️⃣", "3️⃣"]
 
     for item in new_listings:
+        # Bỏ qua căn đã cọc hoặc đã bán
+        if item.get("is_sold"):
+            continue
+
         matched_clients = []
         for c in clients:
             score, reasons = calculate_match_score(item, c)
