@@ -32,10 +32,11 @@
     "estimated_rent_text": "",
     "updated_at": "15:46 04/09/2026",
     "status": "active",
+    "is_sold": false,
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-20 14:06:32"
+    "last_checked_at": "2026-11-21 13:47:12"
   },
   {
     "id": "01a0558d",
@@ -49,7 +50,7 @@
       "https://img.netspace.vn/M47I6-nL8I36tFs04zXRnna-zfdEKf-WVBh8Fpa0nnw/rs:fill:240:165/q:65/plain/https://cdn.nhadat247.vn/2026/08/31/4e3ad449-f479-41ee-bec3-a9633ee41e0f-b68fb270-c83a-4e75-9bce-9f220b354ec0.jpg@webp",
       "https://img.netspace.vn/G-oY4Q-pScQ4SWdCnsm9mArjJY7eMFVBe7Uez_s9tAo/rs:fill:240:165/q:65/plain/https://cdn.nhadat247.vn/2026/08/31/f872f2ae-d396-402e-84d8-f0c06b14b6c6-4dc9e375-b847-42a3-b96e-1a0b67690fa2.jpg@webp",
       "https://img.netspace.vn/c81YNz8GLT3SGJRPE1x9okxkmZykzZSbTuUAiYafrIc/rs:fill:240:165/q:65/plain/https://cdn.nhadat247.vn/2026/08/31/d6c94173-f2e4-454c-aa74-f0c733aaffd4-1675497a-ed9b-442a-a902-fcc29a308bd1.jpg@webp",
-      "https://img.netspace.vn/Ln9tMaEDQyMoWYL5uXYuedO9DWXfOBIsHyPhkOZha9s/rs:fill:800:600/q:72/plain/https://cdn.nhadat247.vn/2026/09/04/3493a83d-3048-4cf4-a30a-32c0e21e97fe-c20d594c-a67b-4200-b47b-b899c0033dcc.jpg@webp"
+      "https://img.netspace.vn/BPonnJSoqfJF_Uo9j6kCstYCZXiMDPuROl0gESXGSqU/rs:fill:800:600/q:72/plain/https://cdn.nhadat247.vn/2026/11/21/anh-3-78f2003a-c2e7-45e9-a9d8-36f4c11f2d88.jpg@webp"
     ],
     "ward": "Phường An Hội Tây",
     "district": "Gò Vấp",
@@ -70,9 +71,10 @@
     "estimated_rent_text": "",
     "updated_at": "09:11 31/08/2026",
     "status": "active",
+    "is_sold": false,
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-20 14:06:35"
+    "last_checked_at": "2026-11-21 13:47:14"
   }
 ]
