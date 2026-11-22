@@ -31,12 +31,12 @@
     "cashflow_subtype": "",
     "estimated_rent_text": "",
     "updated_at": "15:46 04/09/2026",
-    "status": "active",
+    "status": "sold_or_removed",
     "is_sold": false,
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-21 13:47:12"
+    "last_checked_at": "2026-11-22 17:06:47"
   },
   {
     "id": "01a0558d",
@@ -70,11 +70,11 @@
     "cashflow_subtype": "",
     "estimated_rent_text": "",
     "updated_at": "09:11 31/08/2026",
-    "status": "active",
+    "status": "sold_or_removed",
     "is_sold": false,
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-21 13:47:14"
+    "last_checked_at": "2026-11-22 17:06:47"
   }
 ]
