@@ -85,7 +85,7 @@ def extract_listing_urls_from_broker_page(broker_url: str = DEFAULT_BROKER_URL) 
     max_pages = 50
 
     while page <= max_pages:
-        page_url = broker_url if page == 1 else f"{broker_url}?page={page}"
+        page_url = broker_url if page == 1 else f"{broker_url}?trang={page}"
         logger.info(f"Đang duyệt trang {page}: {page_url}")
         html = fetch_html(page_url)
         if not html:
@@ -97,7 +97,7 @@ def extract_listing_urls_from_broker_page(broker_url: str = DEFAULT_BROKER_URL) 
         # 1. Tìm trong thẻ <a>
         for a in soup.find_all("a", href=True):
             href = a["href"].strip()
-            m_hex = re.search(r"-([0-9a-f]{8})(?:$|\?)", href)
+            m_hex = re.search(r"-([0-9a-f]{6,16})(?:$|\?)", href)
             if m_hex and ("/ban-" in href or "/cho-thue-" in href):
                 lid = m_hex.group(1)
                 if lid not in seen_ids:
@@ -108,8 +108,7 @@ def extract_listing_urls_from_broker_page(broker_url: str = DEFAULT_BROKER_URL) 
 
         # 2. Tìm trong RSC Next.js chunks nếu không có trong DOM
         if new_in_page == 0 and page == 1:
-            rsc_matches = re.findall(r"/(?:ban|cho-thue)-[^\"\'\s]+/?[a-zA-Z0-9\-]+-([0-9a-f]{8})", html)
-            for m in re.finditer(r"((?:/ban-|/cho-thue-)[a-zA-Z0-9\-_/]+-([0-9a-f]{8}))", html):
+            for m in re.finditer(r"((?:/ban-|/cho-thue-)[a-zA-Z0-9\-_/]+-([0-9a-f]{6,16}))", html):
                 full_path, lid = m.group(1), m.group(2)
                 if lid not in seen_ids:
                     seen_ids.add(lid)
@@ -123,7 +122,7 @@ def extract_listing_urls_from_broker_page(broker_url: str = DEFAULT_BROKER_URL) 
             break
 
         # Kiểm tra sự tồn tại của link trang tiếp theo
-        has_next = any(f"page={page + 1}" in (a.get("href") or "") for a in soup.find_all("a", href=True))
+        has_next = any((f"trang={page + 1}" in (a.get("href") or "")) or (f"page={page + 1}" in (a.get("href") or "")) for a in soup.find_all("a", href=True))
         if not has_next and page > 1:
             break
 
@@ -301,12 +300,32 @@ def classify_purposes_and_cashflow(title: str, desc: str, area_m2: float, bedroo
 def detect_district(ward: str, title: str, desc: str, breadcrumb_text: str) -> str:
     """
     Tự động nhận diện Quận/Huyện tại TP.HCM dựa trên tiêu đề, mô tả và phường.
+    Ưu tiên nhận diện theo Phường chính thức trước để tránh nhầm lẫn khi tin đăng
+    mô tả 'sát Gò Vấp' hoặc 'cách Gò Vấp 5 phút'.
     """
+    ward_lower = (ward or "").lower()
+    
+    q12_wards = [
+        "trung mỹ tây", "đông hưng thuận", "tân hưng thuận", "tân thới hiệp",
+        "hiệp thành", "thạnh lộc", "thạnh xuân", "an phú đông", "tân chánh hiệp",
+        "thới an", "tân thới nhất"
+    ]
+    if any(w in ward_lower for w in q12_wards):
+        return "Quận 12"
+
+    gv_wards = [
+        "an hội tây", "thông tây hội", "hạnh thông", "phường 1", "phường 3", "phường 4",
+        "phường 5", "phường 6", "phường 7", "phường 8", "phường 9", "phường 10",
+        "phường 11", "phường 12", "phường 13", "phường 14", "phường 15", "phường 16", "phường 17"
+    ]
+    if any(w in ward_lower for w in gv_wards):
+        return "Gò Vấp"
+
     full_text = f"{ward} {title} {desc} {breadcrumb_text}".lower()
     
     districts_map = {
-        "Gò Vấp": ["gò vấp", "go vap", "phan huy ích", "quang trung", "phạm văn chiêu", "lê văn thọ", "cây trâm", "an hội tây", "phường 14, gò vấp"],
         "Quận 12": ["quận 12", "q12", "tân hưng thuận", "đông hưng thuận", "nguyễn văn quá", "song hành", "thạnh lộc", "thạnh xuân", "hiệp thành", "trung mỹ tây", "an phú đông"],
+        "Gò Vấp": ["gò vấp", "go vap", "phan huy ích", "quang trung", "phạm văn chiêu", "lê văn thọ", "cây trâm", "an hội tây", "phường 14, gò vấp"],
         "Tân Bình": ["tân bình", "tan binh", "cộng hòa", "bạch đằng", "hoàng hoa thám", "trường chinh"],
         "Tân Phú": ["tân phú", "tan phu", "lũy bán bích", "tân sơn nhì", "phú thọ hòa", "hòa thạnh"],
         "Bình Thạnh": ["bình thạnh", "binh thanh", "bạch đằng", "nơ trang long", "xô viết nghệ tĩnh"],
@@ -335,8 +354,8 @@ def parse_detail_page(url: str) -> dict:
 
     soup = BeautifulSoup(html, "html.parser")
 
-    # 1. Trích xuất ID tin (8 ký tự hex ở đuôi URL)
-    m_id = re.search(r"-([0-9a-f]{8})(?:$|\?)", url)
+    # 1. Trích xuất ID tin (6-16 ký tự hex ở đuôi URL)
+    m_id = re.search(r"-([0-9a-f]{6,16})(?:$|\?)", url)
     listing_id = m_id.group(1) if m_id else url.rstrip("/").split("-")[-1]
 
     # 2. Tiêu đề
