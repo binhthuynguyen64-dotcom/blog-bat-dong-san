@@ -36,7 +36,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:40"
+    "last_checked_at": "2026-11-22 13:47:24"
   },
   {
     "id": "3292aad4e11b",
@@ -75,7 +75,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:41"
+    "last_checked_at": "2026-11-22 13:47:27"
   },
   {
     "id": "2327333c16ff",
@@ -114,7 +114,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:42"
+    "last_checked_at": "2026-11-22 13:47:30"
   },
   {
     "id": "944954102a6e",
@@ -153,7 +153,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:43"
+    "last_checked_at": "2026-11-22 13:47:32"
   },
   {
     "id": "4acad72ff621",
@@ -192,7 +192,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:44"
+    "last_checked_at": "2026-11-22 13:47:35"
   },
   {
     "id": "f60d85d56633",
@@ -231,7 +231,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:45"
+    "last_checked_at": "2026-11-22 13:47:37"
   },
   {
     "id": "b6aa4e89487a",
@@ -271,7 +271,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:46"
+    "last_checked_at": "2026-11-22 13:47:40"
   },
   {
     "id": "45eb43524bdd",
@@ -293,7 +293,7 @@
     "bedrooms": 4,
     "price_ty": 6.5,
     "price_text": "6.5 tỷ",
-    "alley_width_m": 5.0,
+    "alley_width_m": 6.0,
     "alley_type": "Xe tải / Mặt tiền (>6m)",
     "alley_category": "mat_tien",
     "price_range": "5_7_ty",
@@ -311,7 +311,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:47"
+    "last_checked_at": "2026-11-22 13:47:42"
   },
   {
     "id": "0747edfc1a29",
@@ -333,7 +333,7 @@
     "bedrooms": 2,
     "price_ty": 3.3,
     "price_text": "3.3 tỷ",
-    "alley_width_m": 3.8,
+    "alley_width_m": 4.0,
     "alley_type": "Hẻm xe hơi (4-6m)",
     "alley_category": "hem_xe_hoi",
     "price_range": "3_5_ty",
@@ -351,7 +351,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:48"
+    "last_checked_at": "2026-11-22 13:47:45"
   },
   {
     "id": "de7e7e2abe6c",
@@ -391,7 +391,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:49"
+    "last_checked_at": "2026-11-22 13:47:47"
   },
   {
     "id": "8d8f4287d31d",
@@ -413,9 +413,9 @@
     "bedrooms": 2,
     "price_ty": 2.99,
     "price_text": "2.99 tỷ",
-    "alley_width_m": 2.0,
-    "alley_type": "Hẻm xe máy (2m)",
-    "alley_category": "hem_xe_may",
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
     "price_range": "duoi_3_ty",
     "area_range": "40_60",
     "description": "📍Vị trí: gần Song Hành đi ra Trường Chinh chỉ 2p. Gần khu dân cư An Sương, Nguyễn Văn Quá, xung quanh sầm uất\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học 3 cấp, phòng khám, CVPM Quang Trung, trường tiểu học và mầm non sát bên.\n🏡 BTCT, dọn vào ở ngay, có hiên để xe, có lầu để và chỗ phơi đồ.\nMã SP: TT3-190\n📞 Gọi/Zalo Châu 0783.515.486 để biết t...",
@@ -431,7 +431,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:50"
+    "last_checked_at": "2026-11-22 13:47:50"
   },
   {
     "id": "24565e65f2a4",
@@ -453,7 +453,7 @@
     "bedrooms": 7,
     "price_ty": 4.99,
     "price_text": "4.99 tỷ",
-    "alley_width_m": 5.0,
+    "alley_width_m": 4.0,
     "alley_type": "Hẻm xe hơi (4-6m)",
     "alley_category": "hem_xe_hoi",
     "price_range": "3_5_ty",
@@ -471,7 +471,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:50"
+    "last_checked_at": "2026-11-22 13:47:52"
   },
   {
     "id": "70dee979f0e0",
@@ -511,7 +511,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:52"
+    "last_checked_at": "2026-11-22 13:47:55"
   },
   {
     "id": "22fedfe795a9",
@@ -551,7 +551,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:52"
+    "last_checked_at": "2026-11-22 13:47:57"
   },
   {
     "id": "8fa3718098f0",
@@ -590,7 +590,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:53"
+    "last_checked_at": "2026-11-22 13:48:00"
   },
   {
     "id": "c48e888a32ee",
@@ -630,7 +630,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:54"
+    "last_checked_at": "2026-11-22 13:48:03"
   },
   {
     "id": "9d012bcb78f1",
@@ -670,7 +670,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:55"
+    "last_checked_at": "2026-11-22 13:48:05"
   },
   {
     "id": "e51de3f3590c",
@@ -709,7 +709,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:56"
+    "last_checked_at": "2026-11-22 13:48:08"
   },
   {
     "id": "a1dc6fc5907d",
@@ -748,7 +748,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:57"
+    "last_checked_at": "2026-11-22 13:48:10"
   },
   {
     "id": "c7cf5a3777b4",
@@ -788,7 +788,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:58"
+    "last_checked_at": "2026-11-22 13:48:13"
   },
   {
     "id": "c5e4b9240724",
@@ -829,7 +829,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:35:59"
+    "last_checked_at": "2026-11-22 13:48:15"
   },
   {
     "id": "01a06b97",
@@ -851,9 +851,9 @@
     "bedrooms": 3,
     "price_ty": 4.57,
     "price_text": "4.57 tỷ",
-    "alley_width_m": 2.0,
-    "alley_type": "Hẻm xe máy (2m)",
-    "alley_category": "hem_xe_may",
+    "alley_width_m": 3.5,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
     "price_range": "3_5_ty",
     "area_range": "duoi_40",
     "description": "GÒ VẤP CỰC RẺ: NHÀ ĐẸP FULL NỘI THẤT 3PN NGAY EMART PHAN HUY ÍCH, CHỈ 4.X TỶ TL\n✅️ Kết cấu: 2 tầng, 3PN, đủ công năng, tặng nội thất mới chỉ cần dọn vào ở ngay\n📍 Vị trí ngay Emart Phan Huy Ích. Kết nối ra Quang Trung, Trường Chinh, Phạm Văn Chiêu cực gần\n👉 Sổ hồng riêng, công chứng ngay\n💰 Giá: 4.57 tỷ còn TL\n✨️ Mã SP: GV-194\n📞 Gọi/ Zalo 0783 515 48...",
@@ -868,7 +868,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:36:00"
+    "last_checked_at": "2026-11-22 13:48:18"
   },
   {
     "id": "01a0558d",
@@ -907,6 +907,6 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-22 17:36:01"
+    "last_checked_at": "2026-11-22 13:48:21"
   }
 ]
