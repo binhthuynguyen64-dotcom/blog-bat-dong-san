@@ -77,10 +77,10 @@ def sync_listings_to_google_sheet(listings: list) -> bool:
     return False
 
 
-def sync_sold_status_from_gas(listings: list) -> int:
+def sync_sheet_overrides_from_gas(listings: list) -> int:
     """
-    Gọi Google Apps Script Web App để lấy danh sách căn đã bán/đã cọc
-    từ các sheet nguồn thực tế và đồng bộ cờ is_sold vào listings.
+    Đồng bộ ngược các trường chỉnh sửa tay trên Google Sheet (purposes, cashflow_subtype, is_sold, internal_code)
+    từ Apps Script Web App (?action=get_listings) vào danh sách listings để bảo toàn mọi điều chỉnh.
     """
     gas_url = os.getenv("GAS_WEBAPP_URL")
     gas_key = os.getenv("GAS_API_KEY", "HongChauNhaUngY2026")
@@ -92,18 +92,38 @@ def sync_sold_status_from_gas(listings: list) -> int:
         with urllib.request.urlopen(req, timeout=20) as resp:
             data = json.loads(resp.read().decode("utf-8"))
             if data.get("status") == "success" and "listings" in data:
-                sold_ids = {str(x["id"]) for x in data["listings"] if x.get("is_sold")}
-                updated_count = 0
+                gas_map = {str(x["id"]): x for x in data["listings"] if "id" in x}
+                override_count = 0
                 for item in listings:
-                    if str(item.get("id")) in sold_ids:
-                        if not item.get("is_sold"):
-                            item["is_sold"] = True
-                            updated_count += 1
-                if updated_count > 0:
-                    logger.info(f"Đã cập nhật trạng thái '🚫 Đã bán' cho {updated_count} căn từ Google Sheet.")
-                return updated_count
+                    lid = str(item.get("id"))
+                    if lid in gas_map:
+                        g_item = gas_map[lid]
+                        
+                        # 1. Trạng thái đã bán / đang bán
+                        if g_item.get("is_sold") is not None:
+                            if item.get("is_sold") != g_item.get("is_sold"):
+                                item["is_sold"] = g_item.get("is_sold")
+                                override_count += 1
+                        if g_item.get("status"):
+                            item["status"] = g_item.get("status")
+
+                        # 2. Mục đích (purposes) chỉnh tay trên Sheet
+                        if g_item.get("purposes") and isinstance(g_item.get("purposes"), list) and len(g_item.get("purposes")) > 0:
+                            item["purposes"] = g_item.get("purposes")
+
+                        # 3. Phân loại dòng tiền (cashflow_subtype) chỉnh tay trên Sheet
+                        if g_item.get("cashflow_subtype") is not None and g_item.get("cashflow_subtype") != "":
+                            item["cashflow_subtype"] = g_item.get("cashflow_subtype")
+
+                        # 4. Mã SP (internal_code) nếu có trên Sheet
+                        if g_item.get("internal_code") and not item.get("internal_code"):
+                            item["internal_code"] = g_item.get("internal_code")
+
+                if override_count > 0:
+                    logger.info(f"Đã đồng bộ {override_count} cập nhật trạng thái/tag từ Google Sheet vào dữ liệu.")
+                return override_count
     except Exception as e:
-        logger.warning(f"Không thể đồng bộ trạng thái đã bán từ Google Apps Script: {e}")
+        logger.warning(f"Không thể đồng bộ dữ liệu từ Google Apps Script: {e}")
     return 0
 
 
@@ -153,9 +173,9 @@ def main():
     broker_url = os.getenv("BROKER_URL", DEFAULT_BROKER_URL)
     current_listings = run_scraper(broker_url, DEFAULT_OUTPUT_PATH)
 
-    # 2.1 Đồng bộ trạng thái Đã cọc/Đã bán từ Google Sheet nguồn
-    sold_updated = sync_sold_status_from_gas(current_listings)
-    if sold_updated > 0:
+    # 2.1 Đồng bộ ngược các trường chỉnh sửa tay (purposes, cashflow_subtype, is_sold) từ Google Sheet
+    overrides_applied = sync_sheet_overrides_from_gas(current_listings)
+    if overrides_applied > 0:
         with open(DEFAULT_OUTPUT_PATH, "w", encoding="utf-8") as f:
             json.dump(current_listings, f, ensure_ascii=False, indent=2)
 

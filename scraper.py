@@ -137,21 +137,38 @@ def classify_alley(width_m: float, title: str, desc: str) -> tuple:
     """
     Phân loại đường vào / hẻm thành dạng chuẩn để lọc trên Blogger.
     Trả về: (alley_type_text, alley_category_code)
-    """
-    lower_text = f"{title} {desc}".lower()
     
-    if width_m >= 6.0 or "mặt tiền" in lower_text or "xe tải" in lower_text:
+    Quy tắc phân loại:
+    1. Ưu tiên 1 (Tuyệt đối theo số mét đo được ở trường 'Đường vào' của tin đăng):
+       - width_m >= 6.0: "Xe tải / Mặt tiền (>6m)", "mat_tien"
+       - 4.0 <= width_m < 6.0: "Hẻm xe hơi (4-6m)", "hem_xe_hoi"
+       - 3.0 <= width_m < 4.0: "Hẻm ba gác (3-4m)", "hem_ba_gac"
+       - 0 < width_m < 3.0: f"Hẻm xe máy ({width_m:g}m)", "hem_xe_may"
+       (Tuyệt đối KHÔNG để cụm từ 'gần mặt tiền đường' hay 'ra mặt tiền' trong mô tả ghi đè width_m).
+    2. Ưu tiên 2 (Chỉ dùng khi width_m == 0):
+       - Tiêu đề bắt đầu bằng 'Mặt tiền' hoặc 'Bán nhà mặt phố' -> "mat_tien"
+       - Tiêu đề/mô tả có 'hxh', 'xe hơi', 'hẻm xe hơi' -> "hem_xe_hoi"
+       - Tiêu đề/mô tả có 'ba gác', 'hbg' -> "hem_ba_gac"
+       - Mặc định: "Hẻm xe máy (<3m)", "hem_xe_may"
+    """
+    if width_m >= 6.0:
         return "Xe tải / Mặt tiền (>6m)", "mat_tien"
-    elif width_m >= 4.0 or "hxh" in lower_text or "hẻm xe hơi" in lower_text or "xe hơi" in lower_text:
+    elif width_m >= 4.0:
         return "Hẻm xe hơi (4-6m)", "hem_xe_hoi"
-    elif width_m >= 3.0 or "ba gác" in lower_text or "hbg" in lower_text:
+    elif width_m >= 3.0:
         return "Hẻm ba gác (3-4m)", "hem_ba_gac"
     elif width_m > 0:
         return f"Hẻm xe máy ({width_m:g}m)", "hem_xe_may"
     else:
-        if "hxh" in lower_text or "xe hơi" in lower_text:
+        title_clean = (title or "").lower().strip()
+        desc_clean = (desc or "").lower()
+        full_text = f"{title_clean} {desc_clean}"
+        
+        if title_clean.startswith("mặt tiền") or title_clean.startswith("bán nhà mặt phố") or title_clean.startswith("nhà mặt tiền"):
+            return "Xe tải / Mặt tiền (>6m)", "mat_tien"
+        elif any(k in full_text for k in ["hxh", "hẻm xe hơi", "xe hơi"]):
             return "Hẻm xe hơi (4-6m)", "hem_xe_hoi"
-        elif "ba gác" in lower_text:
+        elif any(k in full_text for k in ["ba gác", "hbg"]):
             return "Hẻm ba gác (3-4m)", "hem_ba_gac"
         return "Hẻm xe máy (<3m)", "hem_xe_may"
 
@@ -222,11 +239,12 @@ def classify_purposes_and_cashflow(title: str, desc: str, area_m2: float, bedroo
     5 nhóm mảng BĐS:
     1. 'dat': Đất nền / Đất thổ cư (URL chứa /ban-dat- hoặc từ khóa bán đất, đất nền, thổ cư, lô đất).
     2. 'dong_tien': BĐS Dòng tiền (tách rõ dãy trọ sẵn, CHDV, hoặc tiềm năng xây CHDV).
-    3. 'kinh_doanh': Mua để kinh doanh / văn phòng (mặt tiền đường, hẻm lớn >= 6m, mở spa, buôn bán).
+    3. 'kinh_doanh': Mua để kinh doanh / văn phòng (mặt tiền đường, hẻm lớn >= 6m, hoặc tiêu đề có chữ mặt tiền/kinh doanh/buôn bán).
     4. 'de_o': Mua để ở (nhà ở gia đình, hẻm yên tĩnh, 2-4 PN).
     """
     full_text = f"{title} {desc}".lower()
-    url_lower = url.lower()
+    title_lower = (title or "").lower()
+    url_lower = (url or "").lower()
     purposes = []
 
     # 1. 'dat' (🏞 Đất nền / Đất thổ cư)
@@ -238,15 +256,12 @@ def classify_purposes_and_cashflow(title: str, desc: str, area_m2: float, bedroo
         purposes.append("dat")
 
     # 2. 'dong_tien' (💵 BĐS Dòng tiền: Trọ / CHDV / Tiềm năng xây CHDV)
-    # Tách rõ ràng theo thực tế, KHÔNG tự gán day_tro chỉ vì diện tích lớn hay nhiều phòng:
+    # Chỉ tự động gắn khi tiêu đề hoặc mô tả có từ khóa rõ ràng, KHÔNG tự gắn chỉ vì nhà có 5 PN:
     has_day_tro_kw = any(k in full_text for k in ["dãy trọ", "nhà trọ", "phòng trọ", "dãy phòng trọ", "kín phòng"])
     has_chdv_kw = any(k in full_text for k in [
-        "căn hộ dịch vụ", "chdv", "phòng studio", "thu nhập", "đang cho thuê", "hợp đồng thuê", "hđt", "khai thác cho thuê"
+        "căn hộ dịch vụ", "chdv", "thu nhập", "đang cho thuê", "hợp đồng thuê", "hđt", "khai thác cho thuê"
     ])
-    
-    dim_w, dim_l = extract_dimensions(full_text)
     has_tiem_nang_kw = any(k in full_text for k in ["xây chdv", "làm chdv", "tiềm năng chdv", "xây căn hộ dịch vụ", "làm căn hộ dịch vụ"])
-    has_tiem_nang_size = (area_m2 >= 80.0 and dim_l >= 16.0)
 
     cashflow_subtype = ""
     is_cashflow = False
@@ -257,10 +272,7 @@ def classify_purposes_and_cashflow(title: str, desc: str, area_m2: float, bedroo
     elif has_chdv_kw:
         cashflow_subtype = "chdv"
         is_cashflow = True
-    elif has_tiem_nang_kw or has_tiem_nang_size:
-        cashflow_subtype = "tiem_nang_chdv"
-        is_cashflow = True
-    elif bedrooms >= 5 and not is_dat:
+    elif has_tiem_nang_kw:
         cashflow_subtype = "tiem_nang_chdv"
         is_cashflow = True
 
@@ -268,8 +280,12 @@ def classify_purposes_and_cashflow(title: str, desc: str, area_m2: float, bedroo
         purposes.append("dong_tien")
 
     # 3. 'kinh_doanh' (🏪 Mua để kinh doanh / Làm văn phòng)
-    business_kw = ["mặt tiền", "mặt phố", "kinh doanh", "buôn bán", "spa", "văn phòng", "vp", "công ty", "lưu lượng", "mở tiệm", "tiệm", "bán lẻ", "showroom"]
-    is_business = ("/ban-nha-mat-pho-" in url_lower) or any(k in full_text for k in business_kw) or (alley_width_m >= 6.0 and not is_dat)
+    # Siết chặt điều kiện: chỉ gắn khi URL có /ban-nha-mat-pho-, alley_width_m >= 6.0, hoặc tiêu đề có chữ mặt tiền / kinh doanh / buôn bán
+    is_business = (
+        ("/ban-nha-mat-pho-" in url_lower) or
+        (alley_width_m >= 6.0 and not is_dat) or
+        any(k in title_lower for k in ["mặt tiền", "mặt phố", "kinh doanh", "buôn bán"])
+    )
     if is_business:
         purposes.append("kinh_doanh")
 
@@ -290,21 +306,23 @@ def classify_purposes_and_cashflow(title: str, desc: str, area_m2: float, bedroo
         if not re.search(r"/(?:tháng|thg|th)", rent_val, re.I):
             rent_val += "/tháng"
         estimated_rent_text = f"Thu nhập {rent_val}"
-    elif "dong_tien" in purposes and bedrooms >= 5:
-        est_m = int(bedrooms * 3.5)
-        estimated_rent_text = f"Ước tính ~{est_m} tr/tháng"
 
     return purposes, cashflow_subtype, estimated_rent_text
 
 
 def detect_district(ward: str, title: str, desc: str, breadcrumb_text: str) -> str:
     """
-    Tự động nhận diện Quận/Huyện tại TP.HCM dựa trên tiêu đề, mô tả và phường.
-    Ưu tiên nhận diện theo Phường chính thức trước để tránh nhầm lẫn khi tin đăng
-    mô tả 'sát Gò Vấp' hoặc 'cách Gò Vấp 5 phút'.
+    Tự động nhận diện Quận/Huyện tại TP.HCM dựa trên tiêu đề, mô tả và phường/xã.
+    Ưu tiên nhận diện theo Phường/Xã chính thức trước.
     """
     ward_lower = (ward or "").lower()
-    
+
+    # 1. Hóc Môn
+    hm_wards = ["bà điểm", "ba diem", "xuân thới", "thới tam thôn", "trung chánh", "tân xuân", "đông thạnh", "nhị bình", "hóc môn", "hoc mon"]
+    if any(w in ward_lower for w in hm_wards):
+        return "Hóc Môn"
+
+    # 2. Quận 12
     q12_wards = [
         "trung mỹ tây", "đông hưng thuận", "tân hưng thuận", "tân thới hiệp",
         "hiệp thành", "thạnh lộc", "thạnh xuân", "an phú đông", "tân chánh hiệp",
@@ -313,6 +331,7 @@ def detect_district(ward: str, title: str, desc: str, breadcrumb_text: str) -> s
     if any(w in ward_lower for w in q12_wards):
         return "Quận 12"
 
+    # 3. Gò Vấp
     gv_wards = [
         "an hội tây", "thông tây hội", "hạnh thông", "phường 1", "phường 3", "phường 4",
         "phường 5", "phường 6", "phường 7", "phường 8", "phường 9", "phường 10",
@@ -322,8 +341,10 @@ def detect_district(ward: str, title: str, desc: str, breadcrumb_text: str) -> s
         return "Gò Vấp"
 
     full_text = f"{ward} {title} {desc} {breadcrumb_text}".lower()
-    
+
+    # Nhận diện theo từ khóa trong toàn bộ văn bản (nếu chưa xác định được qua ward)
     districts_map = {
+        "Hóc Môn": ["hóc môn", "hoc mon", "bà điểm", "ba diem", "xuân thới", "thới tam thôn", "trung chánh", "tân xuân", "đông thạnh", "nhị bình"],
         "Quận 12": ["quận 12", "q12", "tân hưng thuận", "đông hưng thuận", "nguyễn văn quá", "song hành", "thạnh lộc", "thạnh xuân", "hiệp thành", "trung mỹ tây", "an phú đông"],
         "Gò Vấp": ["gò vấp", "go vap", "phan huy ích", "quang trung", "phạm văn chiêu", "lê văn thọ", "cây trâm", "an hội tây", "phường 14, gò vấp"],
         "Tân Bình": ["tân bình", "tan binh", "cộng hòa", "bạch đằng", "hoàng hoa thám", "trường chinh"],
@@ -336,11 +357,11 @@ def detect_district(ward: str, title: str, desc: str, breadcrumb_text: str) -> s
         "Quận 3": ["quận 3", "q3"],
         "Quận 10": ["quận 10", "q10"]
     }
-    
+
     for dist, keywords in districts_map.items():
         if any(kw in full_text for kw in keywords):
             return dist
-            
+
     return "TP. Hồ Chí Minh"
 
 
@@ -362,26 +383,59 @@ def parse_detail_page(url: str) -> dict:
     h1 = soup.find("h1")
     title = h1.get_text(strip=True) if h1 else (soup.title.string.strip() if soup.title else "")
 
-    # 3. Breadcrumb & vị trí
-    crumb_text = " ".join([a.get_text(strip=True) for a in soup.find_all("a") if a.get_text(strip=True)])
-    
-    # Tìm thông tin Phường trong toàn bộ khối text
+    # 3. Breadcrumb & vị trí (Ưu tiên đọc từ Nav Breadcrumb điều hướng & Khối địa chỉ ngay dưới H1)
+    crumb_text = ""
     ward = ""
-    for el in soup.find_all(["p", "div", "span"]):
-        t = el.get_text(" ", strip=True)
-        if re.search(r"Phường\s+[^,]+,\s*(?:Quận\s+[^,]+,\s*)?Hồ Chí Minh", t):
-            m_ward = re.search(r"Phường\s+([^,]+)", t)
-            if m_ward:
-                ward = "Phường " + m_ward.group(1).strip()
+
+    # Ưu tiên 1: Lấy từ Breadcrumb điều hướng
+    nav_crumb = soup.find("nav", class_=re.compile(r"text-muted|gap-1\.5|breadcrumb", re.I))
+    if not nav_crumb:
+        nav_crumb = soup.find("nav")
+
+    if nav_crumb:
+        crumb_links = [a.get_text(strip=True) for a in nav_crumb.find_all("a") if a.get_text(strip=True)]
+        crumb_text = " / ".join(crumb_links)
+        for clk in crumb_links:
+            clk_clean = clk.strip()
+            # Bắt dạng "Xã Bà Điểm", "Phường Trung Mỹ Tây", "Phường 14"
+            if re.search(r"^(?:Phường|Xã)\s+", clk_clean, re.I):
+                ward = clk_clean
+                break
+            # Hoặc tên phường/xã không có tiền tố trong breadcrumb
+            clk_lower = clk_clean.lower()
+            if clk_lower in ["bà điểm", "ba diem"]:
+                ward = "Xã Bà Điểm"
+                break
+            elif clk_lower in [
+                "trung mỹ tây", "đông hưng thuận", "tân hưng thuận", "tân thới hiệp",
+                "hiệp thành", "thạnh lộc", "thạnh xuân", "an phú đông", "tân chánh hiệp",
+                "thới an", "tân thới nhất", "an hội tây", "thông tây hội"
+            ]:
+                ward = f"Phường {clk_clean}"
                 break
 
+    # Ưu tiên 2: Khối địa chỉ ngay dưới thẻ <h1> (trước khi xuống phần mô tả)
+    if not ward and h1:
+        parent_h1 = h1.parent
+        for el in parent_h1.find_all(["p", "div", "span"]):
+            t = el.get_text(" ", strip=True)
+            m_addr = re.search(r"((?:Phường|Xã)\s+[^,]+),\s*(?:(?:Quận|Huyện)\s+[^,]+,\s*)?Hồ Chí Minh", t, re.I)
+            if m_addr:
+                ward = m_addr.group(1).strip()
+                break
+
+    # Ưu tiên 3: Tìm trong các thẻ phía trên khối mô tả (tránh quét nhầm xuống footer / tin liên quan)
     if not ward:
-        for nav in soup.find_all("nav"):
-            for a in nav.find_all("a"):
-                atxt = a.get_text(strip=True)
-                if "Phường" in atxt:
-                    ward = atxt
-                    break
+        desc_block = soup.find("div", class_=re.compile(r"whitespace-pre-line"))
+        all_p = soup.find_all(["p", "div", "span"])
+        for el in all_p:
+            if desc_block and el in desc_block.descendants:
+                continue
+            t = el.get_text(" ", strip=True)
+            m_ward = re.search(r"\b((?:Phường|Xã)\s+[a-zA-ZàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđĐ0-9\s]+?),\s*(?:(?:Quận|Huyện)\s+[^,]+,\s*)?Hồ Chí Minh", t, re.I)
+            if m_ward:
+                ward = m_ward.group(1).strip()
+                break
 
     # 4. Giá và Diện tích từ khối thông số nổi bật (div.card)
     price_text = ""
@@ -454,9 +508,14 @@ def parse_detail_page(url: str) -> dict:
         if m_pn_t:
             bedrooms = int(m_pn_t.group(1))
 
-    # 6. Nội dung mô tả chi tiết
+    # 6. Nội dung mô tả chi tiết & Trích xuất Mã SP nội bộ
     desc_elem = soup.find("div", class_=re.compile(r"whitespace-pre-line"))
     description = desc_elem.get_text("\n", strip=True) if desc_elem else ""
+
+    internal_code = ""
+    m_code = re.search(r"(?:Mã\s*(?:SP|tin|bđs|sp\s*nội\s*bộ)?|MSP)\s*[:\-]?\s*([A-Za-z0-9\-]+)", description, re.I)
+    if m_code:
+        internal_code = m_code.group(1).strip().upper()
 
     # 7. Nhận diện Quận
     district = detect_district(ward, title, description, crumb_text)
@@ -508,6 +567,7 @@ def parse_detail_page(url: str) -> dict:
 
     return {
         "id": listing_id,
+        "internal_code": internal_code,
         "title": title,
         "url": url,
         "transaction_type": transaction_type,
@@ -577,6 +637,8 @@ def run_scraper(broker_url: str = DEFAULT_BROKER_URL, output_path: str = DEFAULT
                     data["drop_amount_ty"] = old_item.get("drop_amount_ty")
                 if old_item.get("is_sold"):
                     data["is_sold"] = True
+                if old_item.get("internal_code") and not data.get("internal_code"):
+                    data["internal_code"] = old_item.get("internal_code")
 
             current_listings.append(data)
         time.sleep(0.5)
