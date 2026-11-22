@@ -273,7 +273,7 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     border-color: #065f46 !important;
   }
 
-  /* --- THANH BỘ LỌC STICKY --- */
+  /* --- THANH BỘ LỌC (STICKY TRÊN DESKTOP, STATIC TRÊN MOBILE) --- */
   #hc-bds-root .hc-filter-box {
     background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(10px) !important;
@@ -285,6 +285,16 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     position: sticky !important;
     top: 8px !important;
     z-index: 40 !important;
+  }
+
+  @media (max-width: 768px) {
+    #hc-bds-root .hc-filter-box {
+      position: static !important;
+      top: auto !important;
+      padding: 10px !important;
+      margin-bottom: 10px !important;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05) !important;
+    }
   }
 
   #hc-bds-root .hc-search-wrap {
@@ -330,15 +340,134 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.14) !important;
   }
 
-  #hc-bds-root .hc-filters-row {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 8px !important;
+  #hc-bds-root .hc-filters-controls-wrap {
+    width: 100% !important;
   }
 
-  @media (min-width: 768px) {
+  #hc-bds-root .hc-btn-mobile-toggle {
+    display: none !important;
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border-color: #cbd5e1 !important;
+    font-weight: 700 !important;
+    position: relative !important;
+    transition: all 0.2s ease !important;
+  }
+
+  #hc-bds-root .hc-btn-mobile-toggle.is-open {
+    background: #ecfdf5 !important;
+    color: #065f46 !important;
+    border-color: #059669 !important;
+  }
+
+  #hc-bds-root .hc-btn-mobile-toggle.has-active-filters {
+    border-color: #059669 !important;
+    color: #059669 !important;
+    background: #f0fdf4 !important;
+  }
+
+  #hc-bds-root .hc-filter-active-badge {
+    background: #059669 !important;
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    min-width: 18px !important;
+    height: 18px !important;
+    line-height: 18px !important;
+    border-radius: 9999px !important;
+    text-align: center !important;
+    padding: 0 5px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 4px !important;
+    display: none;
+  }
+
+  #hc-bds-root .hc-filter-active-badge.show {
+    display: inline-flex !important;
+  }
+
+  @keyframes hc-fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Desktop (>= 769px): Hiển thị đầy đủ 6 dropdown + 2 nút trên 1 hàng duy nhất */
+  @media (min-width: 769px) {
+    #hc-bds-root .hc-filters-controls-wrap {
+      display: flex !important;
+      gap: 8px !important;
+      align-items: center !important;
+    }
+
     #hc-bds-root .hc-filters-row {
-      grid-template-columns: repeat(6, 1fr) auto auto !important;
+      display: grid !important;
+      grid-template-columns: repeat(6, 1fr) !important;
+      gap: 8px !important;
+      flex: 1 !important;
+      order: 1 !important;
+    }
+
+    #hc-bds-root .hc-filter-toolbar {
+      display: flex !important;
+      gap: 8px !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      order: 2 !important;
+    }
+
+    #hc-bds-root #hc-mobile-toggle-filters {
+      display: none !important;
+    }
+  }
+
+  /* Mobile (<= 768px): 1 hàng 3 nút gọn, 6 dropdown chi tiết ẩn mặc định */
+  @media (max-width: 768px) {
+    #hc-bds-root .hc-filters-controls-wrap {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+
+    #hc-bds-root .hc-filter-toolbar {
+      display: grid !important;
+      grid-template-columns: 1.35fr 1fr 1fr !important;
+      gap: 6px !important;
+      width: 100% !important;
+      order: 1 !important;
+    }
+
+    #hc-bds-root #hc-mobile-toggle-filters {
+      display: inline-flex !important;
+      width: 100% !important;
+      padding: 0 6px !important;
+      font-size: 12.5px !important;
+    }
+
+    #hc-bds-root .hc-filters-row {
+      display: none !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      width: 100% !important;
+      padding-top: 8px !important;
+      border-top: 1px dashed #e2e8f0 !important;
+      order: 2 !important;
+    }
+
+    #hc-bds-root .hc-filters-row.open {
+      display: grid !important;
+      animation: hc-fade-in-down 0.22s ease-out !important;
+    }
+
+    #hc-bds-root .hc-btn-filter {
+      padding: 0 8px !important;
+      font-size: 12.5px !important;
     }
   }
 
@@ -903,6 +1032,17 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     box-shadow: 0 12px 28px rgba(5, 150, 105, 0.55) !important;
   }
 
+  @media (max-width: 640px) {
+    #hc-bds-root #hc-floating-cart-btn,
+    #hc-floating-cart-btn {
+      bottom: 16px !important;
+      right: 14px !important;
+      padding: 10px 15px !important;
+      font-size: 12.5px !important;
+      gap: 6px !important;
+    }
+  }
+
   @keyframes hc-pulse-attention {
     0% {
       transform: scale(1);
@@ -1447,7 +1587,7 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
       CHDV</button>
   </div>
 
-  <!-- BỘ LỌC THÔNG MINH STICKY -->
+  <!-- BỘ LỌC THÔNG MINH (STATIC TRÊN MOBILE, STICKY TRÊN DESKTOP) -->
   <div class="hc-filter-box">
     <!-- Ô TÌM KIẾM TỪ KHÓA -->
     <div class="hc-search-wrap">
@@ -1460,55 +1600,66 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
         placeholder="Tìm theo tên đường, mã tin, phường (VD: Phan Huy Ích, 01a0558d)..." />
     </div>
 
-    <!-- HÀNG BỘ LỌC CHI TIẾT -->
-    <div class="hc-filters-row">
-      <select id="hc-filter-ward" class="hc-select">
-        <option value="">📍 Tất cả Phường</option>
-      </select>
-      <select id="hc-filter-price" class="hc-select">
-        <option value="">💰 Tất cả mức giá</option>
-        <option value="duoi_3_ty">Dưới 3 tỷ</option>
-        <option value="3_5_ty">3 - 5 tỷ</option>
-        <option value="5_7_ty">5 - 7 tỷ</option>
-        <option value="7_10_ty">7 - 10 tỷ</option>
-        <option value="tren_10_ty">Trên 10 tỷ</option>
-      </select>
-      <select id="hc-filter-area" class="hc-select">
-        <option value="">📐 Tất cả diện tích</option>
-        <option value="duoi_40">Dưới 40m²</option>
-        <option value="40_60">40 - 60m²</option>
-        <option value="60_80">60 - 80m²</option>
-        <option value="80_100">80 - 100m²</option>
-        <option value="tren_100">Trên 100m²</option>
-      </select>
-      <select id="hc-filter-bedroom" class="hc-select">
-        <option value="">🛏 Tất cả phòng ngủ</option>
-        <option value="1">1 Phòng ngủ</option>
-        <option value="2">2 Phòng ngủ</option>
-        <option value="3">3 Phòng ngủ</option>
-        <option value="4">4 Phòng ngủ</option>
-        <option value="5">5+ Phòng ngủ</option>
-      </select>
-      <select id="hc-filter-alley" class="hc-select">
-        <option value="">🚗 Tất cả đường vào</option>
-        <option value="hem_xe_hoi">Hẻm xe hơi (4-6m)</option>
-        <option value="mat_tien">Xe tải / Mặt tiền (>6m)</option>
-        <option value="hem_ba_gac">Hẻm ba gác (3-4m)</option>
-        <option value="hem_xe_may">Hẻm xe máy (&lt;3m)</option>
-      </select>
-      <select id="hc-filter-sort" class="hc-select">
-        <option value="newest">⚡ Mới nhất</option>
-        <option value="price_asc">💵 Giá: Thấp → Cao</option>
-        <option value="price_desc">💵 Giá: Cao → Thấp</option>
-        <option value="area_asc">📐 Diện tích: Nhỏ → Lớn</option>
-        <option value="area_desc">📐 Diện tích: Lớn → Nhỏ</option>
-      </select>
-      <button id="hc-btn-drop-filter" class="hc-btn-filter hc-btn-drop-price">
-        🔥 Giảm Chào
-      </button>
-      <button id="hc-btn-clear" class="hc-btn-filter hc-btn-reset" title="Xóa toàn bộ bộ lọc">
-        ↺ Đặt lại
-      </button>
+    <!-- KHỐI ĐIỀU KHIỂN BỘ LỌC (FLEX TRÊN DESKTOP, PHÂN TẦNG GỌN TRÊN MOBILE) -->
+    <div class="hc-filters-controls-wrap">
+      <!-- THANH CÔNG CỤ 3 NÚT (HIỂN THỊ HÀNG NGANG TRÊN MOBILE, KẾT HỢP TRÊN DESKTOP) -->
+      <div class="hc-filter-toolbar">
+        <button id="hc-mobile-toggle-filters" class="hc-btn-filter hc-btn-mobile-toggle" type="button" title="Mở bộ lọc chi tiết & sắp xếp">
+          <span>🎛 Lọc & Sắp xếp</span>
+          <span id="hc-filter-active-count" class="hc-filter-active-badge" style="display:none;">0</span>
+        </button>
+        <button id="hc-btn-drop-filter" class="hc-btn-filter hc-btn-drop-price" type="button">
+          🔥 Giảm Chào
+        </button>
+        <button id="hc-btn-clear" class="hc-btn-filter hc-btn-reset" type="button" title="Xóa toàn bộ bộ lọc">
+          ↺ Đặt lại
+        </button>
+      </div>
+
+      <!-- LƯỚI 6 DROPDOWN LỌC CHI TIẾT (ẨN MẶC ĐỊNH TRÊN MOBILE, HIỂN THỊ ĐỦ TRÊN DESKTOP) -->
+      <div id="hc-filters-row" class="hc-filters-row">
+        <select id="hc-filter-ward" class="hc-select">
+          <option value="">📍 Tất cả Phường</option>
+        </select>
+        <select id="hc-filter-price" class="hc-select">
+          <option value="">💰 Tất cả mức giá</option>
+          <option value="duoi_3_ty">Dưới 3 tỷ</option>
+          <option value="3_5_ty">3 - 5 tỷ</option>
+          <option value="5_7_ty">5 - 7 tỷ</option>
+          <option value="7_10_ty">7 - 10 tỷ</option>
+          <option value="tren_10_ty">Trên 10 tỷ</option>
+        </select>
+        <select id="hc-filter-area" class="hc-select">
+          <option value="">📐 Tất cả diện tích</option>
+          <option value="duoi_40">Dưới 40m²</option>
+          <option value="40_60">40 - 60m²</option>
+          <option value="60_80">60 - 80m²</option>
+          <option value="80_100">80 - 100m²</option>
+          <option value="tren_100">Trên 100m²</option>
+        </select>
+        <select id="hc-filter-bedroom" class="hc-select">
+          <option value="">🛏 Tất cả phòng ngủ</option>
+          <option value="1">1 Phòng ngủ</option>
+          <option value="2">2 Phòng ngủ</option>
+          <option value="3">3 Phòng ngủ</option>
+          <option value="4">4 Phòng ngủ</option>
+          <option value="5">5+ Phòng ngủ</option>
+        </select>
+        <select id="hc-filter-alley" class="hc-select">
+          <option value="">🚗 Tất cả đường vào</option>
+          <option value="hem_xe_hoi">Hẻm xe hơi (4-6m)</option>
+          <option value="mat_tien">Xe tải / Mặt tiền (>6m)</option>
+          <option value="hem_ba_gac">Hẻm ba gác (3-4m)</option>
+          <option value="hem_xe_may">Hẻm xe máy (&lt;3m)</option>
+        </select>
+        <select id="hc-filter-sort" class="hc-select">
+          <option value="newest">⚡ Mới nhất</option>
+          <option value="price_asc">💵 Giá: Thấp → Cao</option>
+          <option value="price_desc">💵 Giá: Cao → Thấp</option>
+          <option value="area_asc">📐 Diện tích: Nhỏ → Lớn</option>
+          <option value="area_desc">📐 Diện tích: Lớn → Nhỏ</option>
+        </select>
+      </div>
     </div>
   </div>
 
@@ -2074,6 +2225,39 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
 
       currentPage = 1;
       renderListings();
+      updateActiveFilterCount();
+    }
+
+    function updateActiveFilterCount() {
+      const ward = (document.getElementById("hc-filter-ward")?.value || "").trim();
+      const price = (document.getElementById("hc-filter-price")?.value || "").trim();
+      const area = (document.getElementById("hc-filter-area")?.value || "").trim();
+      const bedroom = (document.getElementById("hc-filter-bedroom")?.value || "").trim();
+      const alley = (document.getElementById("hc-filter-alley")?.value || "").trim();
+      const sort = (document.getElementById("hc-filter-sort")?.value || "newest").trim();
+
+      let count = 0;
+      if (ward) count++;
+      if (price) count++;
+      if (area) count++;
+      if (bedroom) count++;
+      if (alley) count++;
+      if (sort && sort !== "newest") count++;
+
+      const countBadge = document.getElementById("hc-filter-active-count");
+      const toggleBtn = document.getElementById("hc-mobile-toggle-filters");
+      if (countBadge) {
+        if (count > 0) {
+          countBadge.textContent = count;
+          countBadge.classList.add("show");
+        } else {
+          countBadge.textContent = "0";
+          countBadge.classList.remove("show");
+        }
+      }
+      if (toggleBtn) {
+        toggleBtn.classList.toggle("has-active-filters", count > 0);
+      }
     }
 
     function getPurposeBadgesHtml(item) {
@@ -2529,42 +2713,47 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
       // Tìm kiếm
       document.getElementById("hc-search-input").addEventListener("input", applyFilters);
 
-      // Các select bộ lọc
-      ["hc-filter-ward", "hc-filter-price", "hc-filter-area", "hc-filter-bedroom", "hc-filter-alley"].forEach(id => {
+      // Nút toggle bộ lọc trên Mobile
+      const mobileToggle = document.getElementById("hc-mobile-toggle-filters");
+      const filtersRow = document.getElementById("hc-filters-row");
+      if (mobileToggle && filtersRow) {
+        mobileToggle.addEventListener("click", () => {
+          const isOpen = filtersRow.classList.toggle("open");
+          mobileToggle.classList.toggle("is-open", isOpen);
+        });
+      }
+
+      // Các select bộ lọc chi tiết
+      ["hc-filter-ward", "hc-filter-price", "hc-filter-area", "hc-filter-bedroom", "hc-filter-alley", "hc-filter-sort"].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.addEventListener("change", applyFilters);
       });
 
-    // Các select bộ lọc
-    ["hc-filter-ward", "hc-filter-price", "hc-filter-area", "hc-filter-bedroom", "hc-filter-alley", "hc-filter-sort"].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener("change", applyFilters);
-    });
+      // Nút giảm chào
+      const dropBtn = document.getElementById("hc-btn-drop-filter");
+      dropBtn.addEventListener("click", () => { dropBtn.classList.toggle("active"); applyFilters(); });
 
-    // Nút giảm chào
-    const dropBtn = document.getElementById("hc-btn-drop-filter");
-    dropBtn.addEventListener("click", () => { dropBtn.classList.toggle("active"); applyFilters(); });
-
-    // Nút đặt lại
-    document.getElementById("hc-btn-clear").addEventListener("click", () => {
-      document.getElementById("hc-search-input").value = "";
-      document.getElementById("hc-filter-ward").value = "";
-      document.getElementById("hc-filter-price").value = "";
-      document.getElementById("hc-filter-area").value = "";
-      document.getElementById("hc-filter-bedroom").value = "";
-      document.getElementById("hc-filter-alley").value = "";
-      const sortEl = document.getElementById("hc-filter-sort");
-      if (sortEl) sortEl.value = "newest";
-      dropBtn.classList.remove("active");
-      activeCategory = "all";
-      activeCashflowSubtype = "";
-      document.querySelectorAll(".hc-cat-btn").forEach(b => {
-        b.classList.toggle("active", b.getAttribute("data-cat") === "all");
+      // Nút đặt lại
+      document.getElementById("hc-btn-clear").addEventListener("click", () => {
+        document.getElementById("hc-search-input").value = "";
+        document.getElementById("hc-filter-ward").value = "";
+        document.getElementById("hc-filter-price").value = "";
+        document.getElementById("hc-filter-area").value = "";
+        document.getElementById("hc-filter-bedroom").value = "";
+        document.getElementById("hc-filter-alley").value = "";
+        const sortEl = document.getElementById("hc-filter-sort");
+        if (sortEl) sortEl.value = "newest";
+        dropBtn.classList.remove("active");
+        activeCategory = "all";
+        activeCashflowSubtype = "";
+        document.querySelectorAll(".hc-cat-btn").forEach(b => {
+          b.classList.toggle("active", b.getAttribute("data-cat") === "all");
+        });
+        const subfilter = document.getElementById("hc-cashflow-subfilter");
+        if (subfilter) subfilter.classList.remove("show");
+        applyFilters();
+        updateActiveFilterCount();
       });
-      const subfilter = document.getElementById("hc-cashflow-subfilter");
-      if (subfilter) subfilter.classList.remove("show");
-      applyFilters();
-    });
 
       document.getElementById("hc-btn-load-more").addEventListener("click", () => { currentPage += 1; renderListings(); });
       document.getElementById("hc-floating-cart-btn").addEventListener("click", openDrawer);
@@ -2603,21 +2792,21 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
       });
     }
 
-  window.HC_PORTAL = {
-    toggleCart,
-    removeFromCart,
-    openDrawer,
-    closeDrawer,
-    openLightbox,
-    closeLightbox,
-    selectCategory,
-    setCashflowSubtype,
-    applyFilters,
-    initData,
-    getListings: () => allListings,
-    setListings: (arr) => { allListings = arr; updateCategoryCounters(); populateWardFilter(); applyFilters(); },
-    getCart: () => cart
-  };
+    window.HC_PORTAL = {
+      toggleCart,
+      removeFromCart,
+      openDrawer,
+      closeDrawer,
+      openLightbox,
+      closeLightbox,
+      selectCategory,
+      setCashflowSubtype,
+      applyFilters,
+      initData,
+      getListings: () => allListings,
+      setListings: (arr) => { allListings = arr; updateCategoryCounters(); populateWardFilter(); applyFilters(); },
+      getCart: () => cart
+    };
 
     if (document.readyState === "loading") {
       document.addEventListener("DOMContentLoaded", () => { bindEvents(); initData(); });
