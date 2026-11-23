@@ -949,6 +949,7 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     align-items: center !important;
     justify-content: center !important;
     padding: 16px !important;
+    cursor: zoom-out !important;
   }
 
   #hc-lightbox.open {
@@ -960,6 +961,7 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     max-height: 75vh !important;
     border-radius: 12px !important;
     object-fit: contain !important;
+    cursor: default !important;
   }
 
   #hc-lightbox-caption {
@@ -968,6 +970,8 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     font-weight: 700 !important;
     margin-top: 12px !important;
     text-align: center !important;
+    cursor: default !important;
+    user-select: text !important;
   }
 
   #hc-lightbox-thumbs {
@@ -976,6 +980,7 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
     margin-top: 12px !important;
     overflow-x: auto !important;
     max-width: 95vw !important;
+    cursor: default !important;
   }
 
   .hc-lightbox-thumb {
@@ -994,17 +999,38 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
   }
 
   .hc-lightbox-close {
-    position: absolute !important;
-    top: 16px !important;
-    right: 20px !important;
-    background: rgba(255, 255, 255, 0.2) !important;
+    position: fixed !important;
+    top: 20px !important;
+    right: 24px !important;
+    background: rgba(225, 29, 72, 0.92) !important;
     color: #ffffff !important;
-    border: none !important;
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 50% !important;
-    font-size: 22px !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+    padding: 8px 18px !important;
+    border-radius: 9999px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    font-family: inherit !important;
     cursor: pointer !important;
+    z-index: 10002 !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: transform 0.15s ease, background 0.15s ease !important;
+  }
+
+  .hc-lightbox-close:hover {
+    background: rgba(244, 63, 94, 0.98) !important;
+    transform: scale(1.04) !important;
+  }
+
+  @media (max-width: 768px) {
+    .hc-lightbox-close {
+      top: 14px !important;
+      right: 14px !important;
+      padding: 6px 14px !important;
+      font-size: 13px !important;
+    }
   }
 
   /* --- DANH SÁCH CHỌN XEM & KHẢO SÁT DRAWER --- */
@@ -1794,7 +1820,7 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
 
   <!-- LIGHTBOX -->
   <div id="hc-lightbox">
-    <button class="hc-lightbox-close" onclick="window.HC_PORTAL.closeLightbox()">&times;</button>
+    <button id="hc-lightbox-close-btn" class="hc-lightbox-close" onclick="window.HC_PORTAL.closeLightbox()" aria-label="Đóng ảnh">✕ Đóng ảnh</button>
     <img id="hc-lightbox-img" referrerpolicy="no-referrer" src="" alt="Ảnh nhà" />
     <div id="hc-lightbox-caption"></div>
     <div id="hc-lightbox-thumbs"></div>
@@ -3551,12 +3577,39 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
 
     function populateWardFilter() {
       const wardSelect = document.getElementById("hc-filter-ward");
-      const wards = Array.from(new Set(allListings.map(x => x.ward).filter(w => w && w !== "Đang cập nhật"))).sort();
+      if (!wardSelect) return;
+
+      const wardMap = new Map();
+      allListings.forEach(item => {
+        const w = (item.ward || "").trim();
+        const d = (item.district || "").trim();
+        if (w && w !== "Đang cập nhật" && !wardMap.has(w)) {
+          wardMap.set(w, d);
+        }
+      });
+
+      const wardList = Array.from(wardMap.entries()).map(([ward, district]) => {
+        let label = ward;
+        if (district && district !== "TP. Hồ Chí Minh") {
+          label = `${ward} (${district})`;
+        }
+        return { ward, district, label };
+      });
+
+      // Sắp xếp theo Quận/Huyện rồi đến Phường/Xã
+      wardList.sort((a, b) => {
+        const dComp = (a.district || "").localeCompare(b.district || "", "vi");
+        if (dComp !== 0) return dComp;
+        return a.ward.localeCompare(b.ward, "vi");
+      });
+
+      const currentVal = wardSelect.value;
       wardSelect.innerHTML = '<option value="">📍 Tất cả Phường / Xã</option>';
-      wards.forEach(w => {
+      wardList.forEach(item => {
         const opt = document.createElement("option");
-        opt.value = w;
-        opt.textContent = w;
+        opt.value = item.ward;
+        opt.textContent = item.label;
+        if (item.ward === currentVal) opt.selected = true;
         wardSelect.appendChild(opt);
       });
     }
@@ -4208,6 +4261,28 @@ HỒNG CHÂU - NHÀ ƯNG Ý | CỔNG TRA CỨU BẤT ĐỘNG SẢN & KHẢO SÁT
       document.getElementById("hc-btn-close-drawer").addEventListener("click", closeDrawer);
       document.getElementById("hc-drawer-backdrop").addEventListener("click", closeDrawer);
       document.getElementById("hc-btn-submit-consult").addEventListener("click", submitConsultation);
+
+      // Đóng Lightbox khi click ra ngoài vùng nền tối (backdrop)
+      const lb = document.getElementById("hc-lightbox");
+      if (lb) {
+        lb.addEventListener("click", (e) => {
+          // Bấm trúng ảnh phóng to hoặc dải ảnh nhỏ thì không đóng
+          if (e.target.closest("#hc-lightbox-img") || e.target.closest("#hc-lightbox-thumbs")) {
+            return;
+          }
+          closeLightbox();
+        });
+      }
+
+      // Đóng Lightbox khi bấm phím Esc (Escape)
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" || e.keyCode === 27) {
+          const lb = document.getElementById("hc-lightbox");
+          if (lb && lb.classList.contains("open")) {
+            closeLightbox();
+          }
+        }
+      });
 
       // Đổi smart prompt khi đổi mục đích mua
       const purposeSelect = document.getElementById("hc-input-purpose");
