@@ -100,13 +100,18 @@ def sync_sheet_overrides_from_gas(listings: list) -> int:
                     if lid in gas_map:
                         g_item = gas_map[lid]
                         
-                        # 1. Trạng thái đã bán / đang bán (chỉ giữ cờ is_sold và status từ Sheet)
+                        # 1. Trạng thái đã bán / đang bán (chuẩn hóa status sang 'active' hoặc 'sold')
                         if g_item.get("is_sold") is not None:
-                            if item.get("is_sold") != g_item.get("is_sold"):
-                                item["is_sold"] = g_item.get("is_sold")
+                            if item.get("is_sold") != bool(g_item.get("is_sold")):
+                                item["is_sold"] = bool(g_item.get("is_sold"))
                                 override_count += 1
                         if g_item.get("status"):
-                            item["status"] = g_item.get("status")
+                            s_val = str(g_item.get("status")).strip().lower()
+                            if "đã bán" in s_val or "da ban" in s_val or item.get("is_sold"):
+                                item["is_sold"] = True
+                                item["status"] = "sold"
+                            else:
+                                item["status"] = "active"
 
                         # 2. Mã SP (internal_code) nếu có trên Sheet và item chưa có
                         if g_item.get("internal_code") and not item.get("internal_code"):
