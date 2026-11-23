@@ -31,6 +31,7 @@ logger = logging.getLogger("Scraper")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_OUTPUT_PATH = os.path.join(BASE_DIR, "data", "listings.json")
+DEFAULT_PROFILE_PATH = os.path.join(BASE_DIR, "data", "profile.json")
 
 # Cấu hình SSL và Headers giả lập trình duyệt thật
 SSL_CTX = ssl.create_default_context()
@@ -72,6 +73,61 @@ def fetch_html(url: str, max_retries: int = 3, delay: float = 1.0) -> str:
     return ""
 
 
+def extract_broker_profile(html: str, output_path: str = DEFAULT_PROFILE_PATH) -> dict:
+    """
+    Bóc tách URL ảnh đại diện chân dung và thông tin môi giới Nguyễn Thị Hồng Châu
+    từ trang môi giới nhadat247.vn và lưu vào data/profile.json.
+    """
+    default_avatar = "https://cdn.nhadat247.vn/2026/11/11/avatar-e07ec7ae-4a0d-4831-9ada-c9a2fd4634e7.jpg"
+    name = "Nguyễn Thị Hồng Châu"
+    phone = "0783.515.486"
+    avatar = ""
+
+    if html:
+        soup = BeautifulSoup(html, "html.parser")
+        
+        # 1. Tìm trong các thẻ <img>
+        for img in soup.find_all("img"):
+            src = img.get("src") or ""
+            if "avatar-" in src and "nhadat247.vn" in src:
+                m_raw = re.search(r'(https://cdn\.nhadat247\.vn/[^\s"\'<>@]+\.(?:jpg|jpeg|png|webp))', src)
+                if m_raw:
+                    avatar = m_raw.group(1)
+                    break
+                avatar = src
+                break
+
+        # 2. Tìm trong script hoặc Next.js streamed chunks
+        if not avatar:
+            m_cdn = re.findall(r'(https://cdn\.nhadat247\.vn/[^\s"\'\\<>@]+avatar[^\s"\'\\<>@]*\.(?:jpg|jpeg|png|webp))', html, re.IGNORECASE)
+            if m_cdn:
+                avatar = m_cdn[0]
+
+        # 3. Lấy tên môi giới từ thẻ <h1>
+        h1 = soup.find("h1")
+        if h1 and h1.get_text(strip=True):
+            name = h1.get_text(strip=True)
+
+    if not avatar:
+        avatar = default_avatar
+
+    profile_data = {
+        "name": name,
+        "avatar": avatar,
+        "phone": phone
+    }
+
+    try:
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(profile_data, f, ensure_ascii=False, indent=2)
+        logger.info(f"Đã lưu hồ sơ môi giới thành công vào {output_path}: {profile_data}")
+    except Exception as e:
+        logger.warning(f"Lỗi khi lưu profile.json: {e}")
+
+    return profile_data
+
+
 def extract_listing_urls_from_broker_page(broker_url: str = DEFAULT_BROKER_URL) -> list:
     """
     Quét toàn bộ trang môi giới để thu thập danh sách URL chi tiết tin đăng.
@@ -90,6 +146,13 @@ def extract_listing_urls_from_broker_page(broker_url: str = DEFAULT_BROKER_URL) 
         html = fetch_html(page_url)
         if not html:
             break
+
+        # Tự động bóc tách và cập nhật hồ sơ môi giới ở trang 1
+        if page == 1:
+            try:
+                extract_broker_profile(html)
+            except Exception as e_prof:
+                logger.warning(f"Lỗi khi bóc tách hồ sơ môi giới: {e_prof}")
 
         soup = BeautifulSoup(html, "html.parser")
         new_in_page = 0

@@ -27,12 +27,26 @@ var CONFIG = {
   // Tên tab lưu trữ thống kê truy cập trang web
   STATS_SHEET_NAME: "THONG_KE_TRUY_CAP",
 
-  // Danh sách các tab nguồn để quét căn đã cọc / đã bán
+  // Danh sách 7 sheet sản phẩm thực tế để quét "Đã cọc/đã bán" và đánh dấu "Đã đăng Nhadat247"
+  PRODUCT_SHEETS: [
+    "BDS TMT-TTH-3.5-6TY",
+    "NHÀ GÒ VẤP 5-7TY",
+    "BDS 3.5-5 TỶ",
+    "BDS DƯỚI 3.5 TỶ",
+    "BDS 5-8 TỶ",
+    "BDS 8-15 TỶ",
+    "BDS 15-25 TỶ"
+  ],
+
+  // Danh sách các tab nguồn để quét căn đã cọc / đã bán (đồng bộ với 7 sheet sản phẩm)
   SOURCE_SHEETS: [
     "BDS TMT-TTH-3.5-6TY",
     "NHÀ GÒ VẤP 5-7TY",
     "BDS 3.5-5 TỶ",
-    "NHÀ AHT + THÔNG TÂY HỘI GV (châu)"
+    "BDS DƯỚI 3.5 TỶ",
+    "BDS 5-8 TỶ",
+    "BDS 8-15 TỶ",
+    "BDS 15-25 TỶ"
   ],
   
   // Khóa bí mật API bảo vệ dữ liệu khách hàng khi gọi từ bên ngoài
@@ -102,7 +116,16 @@ function doPost(e) {
       return createJsonResponse(trackRes);
     }
 
-    // TRƯỜNG HỢP 4: Khách hàng gửi đơn tư vấn từ Blogger (Mặc định)
+    // TRƯỜNG HỢP 4: Cập nhật trạng thái "Đã đăng Nhadat247" trên 7 sheet sản phẩm
+    if (action === "mark_posted_sheets") {
+      if (data.api_key !== CONFIG.SECRET_API_KEY) {
+        return createJsonResponse({ status: "error", message: "Sai mã API_KEY bí mật!" }, 403);
+      }
+      var updatedSheets = markPostedNhadat247OnProductSheets(data.posted_codes || null);
+      return createJsonResponse({ status: "success", message: "Đã cập nhật cột 'Đã đăng Nhadat247' trên " + updatedSheets + " sheet sản phẩm." });
+    }
+
+    // TRƯỜNG HỢP 5: Khách hàng gửi đơn tư vấn từ Blogger (Mặc định)
     var result = saveConsultationLead(data);
     return createJsonResponse(result);
 
@@ -150,6 +173,15 @@ function doGet(e) {
       }
       var trafficReport = getTrafficReportFromSheet();
       return createJsonResponse({ status: "success", report: trafficReport });
+    }
+
+    // 5. Cho phép kích hoạt đối chiếu & đánh dấu "Đã đăng Nhadat247" trên 7 sheet qua GET
+    if (action === "mark_posted_sheets") {
+      if (params.api_key !== CONFIG.SECRET_API_KEY) {
+        return createJsonResponse({ status: "error", message: "Không được phép truy cập (Sai API_KEY)!" }, 403);
+      }
+      var updatedSheetsGet = markPostedNhadat247OnProductSheets();
+      return createJsonResponse({ status: "success", message: "Đã cập nhật cột 'Đã đăng Nhadat247' trên " + updatedSheetsGet + " sheet sản phẩm." });
     }
 
     // Kiểm tra trạng thái server (Ping test)
@@ -355,17 +387,20 @@ function getCustomersFromSheet() {
 }
 
 /**
- * Trích xuất danh sách mã sản phẩm các căn đã cọc / đã bán từ các tab nguồn
+ * Trích xuất danh sách mã sản phẩm các căn đã cọc / đã bán từ 7 tab nguồn
  */
 function getSoldSignaturesFromSourceSheets() {
   var ss = getSpreadsheet();
   if (!ss) return [];
 
-  var SOURCE_SHEETS = CONFIG.SOURCE_SHEETS || [
+  var SOURCE_SHEETS = CONFIG.SOURCE_SHEETS || CONFIG.PRODUCT_SHEETS || [
     "BDS TMT-TTH-3.5-6TY",
     "NHÀ GÒ VẤP 5-7TY",
     "BDS 3.5-5 TỶ",
-    "NHÀ AHT + THÔNG TÂY HỘI GV (châu)"
+    "BDS DƯỚI 3.5 TỶ",
+    "BDS 5-8 TỶ",
+    "BDS 8-15 TỶ",
+    "BDS 15-25 TỶ"
   ];
   var soldCodes = {};
 
@@ -377,17 +412,25 @@ function getSoldSignaturesFromSourceSheets() {
     var data = sheet.getDataRange().getValues();
     if (data.length <= 1) continue;
 
+    var header = data[0];
+    var natureCol = 3; // Mặc định Cột D (index 3)
+    var codeCol = 5;   // Mặc định Cột F (index 5)
+    for (var h = 0; h < header.length; h++) {
+      var hText = (header[h] || "").toString().toLowerCase().trim();
+      if (hText.indexOf("tính chất") !== -1 || hText.indexOf("tinh chat") !== -1) natureCol = h;
+      if (hText.indexOf("mã sp") !== -1 || hText.indexOf("ma sp") !== -1) codeCol = h;
+    }
+
     for (var r = 1; r < data.length; r++) {
       var row = data[r];
-      // Cột D (index 3): TÍNH CHẤT NHÀ
-      var nature = row[3] ? row[3].toString().toLowerCase().trim() : "";
+      var nature = row[natureCol] ? row[natureCol].toString().toLowerCase().trim() : "";
       var isSoldNature = nature.indexOf("đã cọc") !== -1 ||
                          nature.indexOf("đã bán") !== -1 ||
                          nature.indexOf("da coc") !== -1 ||
                          nature.indexOf("da ban") !== -1;
 
       if (isSoldNature) {
-        var code = row[5] ? row[5].toString().trim().toUpperCase() : ""; // Cột F: MÃ SP QUẢN LÝ
+        var code = row[codeCol] ? row[codeCol].toString().trim().toUpperCase() : "";
         if (code) {
           soldCodes[code] = true;
         }
@@ -395,6 +438,142 @@ function getSoldSignaturesFromSourceSheets() {
     }
   }
   return Object.keys(soldCodes);
+}
+
+/**
+ * Tự động tạo & cập nhật cột "Đã đăng Nhadat247" trên 7 sheet sản phẩm
+ * @param {Object|Array} postedCodesSet - Tập hợp hoặc mảng các Mã SP đã đăng trên nhadat247
+ * @return {number} Số sheet đã cập nhật thành công
+ */
+function markPostedNhadat247OnProductSheets(postedCodesSet) {
+  var ss = getSpreadsheet();
+  if (!ss) return 0;
+
+  var productSheets = CONFIG.PRODUCT_SHEETS || [
+    "BDS TMT-TTH-3.5-6TY",
+    "NHÀ GÒ VẤP 5-7TY",
+    "BDS 3.5-5 TỶ",
+    "BDS DƯỚI 3.5 TỶ",
+    "BDS 5-8 TỶ",
+    "BDS 8-15 TỶ",
+    "BDS 15-25 TỶ"
+  ];
+
+  // Chuẩn hóa postedCodesSet thành Object key-lookup
+  var codeLookup = {};
+  if (Array.isArray(postedCodesSet)) {
+    for (var i = 0; i < postedCodesSet.length; i++) {
+      var c = (postedCodesSet[i] || "").toString().trim().toUpperCase();
+      if (c) codeLookup[c] = true;
+    }
+  } else if (postedCodesSet && typeof postedCodesSet === "object") {
+    var keys = Object.keys(postedCodesSet);
+    for (var k = 0; k < keys.length; k++) {
+      var ck = (keys[k] || "").toString().trim().toUpperCase();
+      if (ck) codeLookup[ck] = true;
+    }
+  }
+
+  // Nếu không truyền hoặc rỗng, tự động gom từ tab DATA_NHA
+  if (Object.keys(codeLookup).length === 0) {
+    var dataNhaSheet = ss.getSheetByName(CONFIG.DATA_NHA_SHEET_NAME);
+    if (dataNhaSheet && dataNhaSheet.getLastRow() > 1) {
+      var dVals = dataNhaSheet.getDataRange().getValues();
+      for (var r = 1; r < dVals.length; r++) {
+        var code = (dVals[r][19] || "").toString().trim().toUpperCase(); // Cột 20: Mã SP
+        if (code) {
+          codeLookup[code] = true;
+        }
+      }
+    }
+  }
+
+  var updatedSheetsCount = 0;
+
+  for (var s = 0; s < productSheets.length; s++) {
+    var sheetName = productSheets[s];
+    var sheet = ss.getSheetByName(sheetName);
+    if (!sheet) continue;
+
+    var lastRow = sheet.getLastRow();
+    var lastCol = sheet.getLastColumn();
+    if (lastRow < 1 || lastCol < 1) continue;
+
+    var headerValues = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+    
+    var postedColIndex = -1; // 1-based
+    var codeColIndex = -1;   // 1-based
+
+    for (var col = 0; col < headerValues.length; col++) {
+      var hText = (headerValues[col] || "").toString().trim().toLowerCase();
+      if (hText.indexOf("đã đăng nhadat247") !== -1 || hText.indexOf("da dang nhadat247") !== -1) {
+        postedColIndex = col + 1;
+      }
+      if (hText.indexOf("mã sp") !== -1 || hText.indexOf("ma sp") !== -1) {
+        codeColIndex = col + 1;
+      }
+    }
+
+    // Nếu không tìm thấy cột Mã SP theo tên, mặc định Cột F (index 6, tức 1-based col 6)
+    if (codeColIndex === -1) {
+      codeColIndex = 6;
+    }
+
+    // Nếu chưa có cột "Đã đăng Nhadat247", tạo cột mới ngay sau cột có dữ liệu cuối cùng của hàng 1
+    if (postedColIndex === -1) {
+      postedColIndex = lastCol + 1;
+      var headerCell = sheet.getRange(1, postedColIndex);
+      headerCell.setValue("Đã đăng Nhadat247");
+      headerCell.setBackground("#059669")
+                .setFontColor("#FFFFFF")
+                .setFontWeight("bold")
+                .setHorizontalAlignment("center");
+      sheet.setColumnWidth(postedColIndex, 150);
+    }
+
+    if (lastRow > 1) {
+      var numRows = lastRow - 1;
+      var codeValues = sheet.getRange(2, codeColIndex, numRows, 1).getValues();
+      var outputValues = [];
+      var bgColors = [];
+      var fontColors = [];
+      var fontWeights = [];
+
+      for (var rowIdx = 0; rowIdx < numRows; rowIdx++) {
+        var rawCode = (codeValues[rowIdx][0] || "").toString().trim();
+        var normCode = rawCode.toUpperCase();
+
+        if (!rawCode) {
+          outputValues.push([""]);
+          bgColors.push(["#ffffff"]);
+          fontColors.push(["#000000"]);
+          fontWeights.push(["normal"]);
+        } else if (codeLookup[normCode]) {
+          outputValues.push(["✅ Đã đăng"]);
+          bgColors.push(["#ecfdf5"]);
+          fontColors.push(["#065f46"]);
+          fontWeights.push(["bold"]);
+        } else {
+          outputValues.push(["Chưa đăng"]);
+          bgColors.push(["#ffffff"]);
+          fontColors.push(["#64748b"]);
+          fontWeights.push(["normal"]);
+        }
+      }
+
+      var targetRange = sheet.getRange(2, postedColIndex, numRows, 1);
+      targetRange.setValues(outputValues);
+      targetRange.setBackgrounds(bgColors);
+      targetRange.setFontColors(fontColors);
+      targetRange.setFontWeights(fontWeights);
+      targetRange.setHorizontalAlignment("center");
+    }
+
+    updatedSheetsCount++;
+  }
+
+  Logger.log("Đã cập nhật trạng thái 'Đã đăng Nhadat247' trên " + updatedSheetsCount + " sheet sản phẩm.");
+  return updatedSheetsCount;
 }
 
 /**
@@ -567,6 +746,22 @@ function syncListingsToSheet(listings, overwritePurposes) {
       .setAllowInvalid(false)
       .build();
     sheet.getRange(2, 19, totalDataRows, 1).setDataValidation(ruleStatus);
+  }
+
+  // Tự động đối chiếu & đánh dấu cột "Đã đăng Nhadat247" trên 7 sheet sản phẩm
+  try {
+    var postedCodesMap = {};
+    for (var l = 0; l < listings.length; l++) {
+      var pCode = (listings[l].internal_code || "").toString().trim().toUpperCase();
+      if (pCode) postedCodesMap[pCode] = true;
+    }
+    for (var rw = 0; rw < rows.length; rw++) {
+      var rCode = (rows[rw][19] || "").toString().trim().toUpperCase();
+      if (rCode) postedCodesMap[rCode] = true;
+    }
+    markPostedNhadat247OnProductSheets(postedCodesMap);
+  } catch (errPost) {
+    Logger.log("Lỗi khi cập nhật cột Đã đăng Nhadat247: " + errPost);
   }
 
   return rows.length;
