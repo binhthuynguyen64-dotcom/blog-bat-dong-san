@@ -54,7 +54,8 @@ def sync_listings_to_google_sheet(listings: list) -> bool:
     payload = {
         "action": "sync_listings",
         "api_key": gas_key,
-        "listings": listings
+        "listings": listings,
+        "overwrite_purposes": True
     }
 
     try:
@@ -79,8 +80,8 @@ def sync_listings_to_google_sheet(listings: list) -> bool:
 
 def sync_sheet_overrides_from_gas(listings: list) -> int:
     """
-    Đồng bộ ngược các trường chỉnh sửa tay trên Google Sheet (purposes, cashflow_subtype, is_sold, internal_code)
-    từ Apps Script Web App (?action=get_listings) vào danh sách listings để bảo toàn mọi điều chỉnh.
+    Đồng bộ trạng thái đã bán (is_sold) và trạng thái (status) từ Google Sheet / Apps Script Web App.
+    Chỉ giữ lại cờ is_sold đã bán từ Sheet, không ghi đè mục đích đã bóc tách chuẩn.
     """
     gas_url = os.getenv("GAS_WEBAPP_URL")
     gas_key = os.getenv("GAS_API_KEY", "HongChauNhaUngY2026")
@@ -99,7 +100,7 @@ def sync_sheet_overrides_from_gas(listings: list) -> int:
                     if lid in gas_map:
                         g_item = gas_map[lid]
                         
-                        # 1. Trạng thái đã bán / đang bán
+                        # 1. Trạng thái đã bán / đang bán (chỉ giữ cờ is_sold và status từ Sheet)
                         if g_item.get("is_sold") is not None:
                             if item.get("is_sold") != g_item.get("is_sold"):
                                 item["is_sold"] = g_item.get("is_sold")
@@ -107,20 +108,12 @@ def sync_sheet_overrides_from_gas(listings: list) -> int:
                         if g_item.get("status"):
                             item["status"] = g_item.get("status")
 
-                        # 2. Mục đích (purposes) chỉnh tay trên Sheet
-                        if g_item.get("purposes") and isinstance(g_item.get("purposes"), list) and len(g_item.get("purposes")) > 0:
-                            item["purposes"] = g_item.get("purposes")
-
-                        # 3. Phân loại dòng tiền (cashflow_subtype) chỉnh tay trên Sheet
-                        if g_item.get("cashflow_subtype") is not None and g_item.get("cashflow_subtype") != "":
-                            item["cashflow_subtype"] = g_item.get("cashflow_subtype")
-
-                        # 4. Mã SP (internal_code) nếu có trên Sheet
+                        # 2. Mã SP (internal_code) nếu có trên Sheet và item chưa có
                         if g_item.get("internal_code") and not item.get("internal_code"):
                             item["internal_code"] = g_item.get("internal_code")
 
                 if override_count > 0:
-                    logger.info(f"Đã đồng bộ {override_count} cập nhật trạng thái/tag từ Google Sheet vào dữ liệu.")
+                    logger.info(f"Đã đồng bộ {override_count} cập nhật trạng thái đã bán từ Google Sheet vào dữ liệu.")
                 return override_count
     except Exception as e:
         logger.warning(f"Không thể đồng bộ dữ liệu từ Google Apps Script: {e}")

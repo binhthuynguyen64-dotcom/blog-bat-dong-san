@@ -82,7 +82,8 @@ function doPost(e) {
       if (data.api_key !== CONFIG.SECRET_API_KEY) {
         return createJsonResponse({ status: "error", message: "Sai mã API_KEY bí mật!" }, 403);
       }
-      var count = syncListingsToSheet(data.listings || []);
+      var overwritePurposes = Boolean(data.overwrite_purposes);
+      var count = syncListingsToSheet(data.listings || [], overwritePurposes);
       return createJsonResponse({ status: "success", message: "Đã đồng bộ thành công " + count + " căn nhà vào tab DATA_NHA" });
     }
 
@@ -429,8 +430,9 @@ function checkIfListingSold(item, soldCodes) {
 /**
  * Lưu toàn bộ danh sách căn nhà vào tab `DATA_NHA`
  * BẢO TOÀN toàn bộ chỉnh sửa tay của người dùng ở các cột Mục Đích, Phân Loại Dòng Tiền, Trạng Thái
+ * (Cho phép ghi đè sạch Mục đích mới nếu overwritePurposes = true)
  */
-function syncListingsToSheet(listings) {
+function syncListingsToSheet(listings, overwritePurposes) {
   if (!listings || listings.length === 0) return 0;
   
   var ss = getSpreadsheet();
@@ -479,9 +481,9 @@ function syncListingsToSheet(listings) {
     var itemId = item.id || "";
     var existing = existingMap[itemId] || null;
 
-    // Bảo toàn chỉnh sửa tay từ Sheet nếu đã có
+    // Bảo toàn chỉnh sửa tay từ Sheet nếu đã có (Trừ khi overwritePurposes = true để làm sạch mục đích)
     var purposesStr = "";
-    if (existing && existing.purposes) {
+    if (!overwritePurposes && existing && existing.purposes) {
       purposesStr = existing.purposes;
     } else {
       purposesStr = Array.isArray(item.purposes) ? item.purposes.join(",") : (item.purposes || "");

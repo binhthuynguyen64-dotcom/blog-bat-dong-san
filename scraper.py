@@ -484,24 +484,58 @@ def parse_detail_page(url: str) -> dict:
         if m_d2:
             updated_at = m_d2.group(1)
 
-    # 5. Bảng thông số chi tiết (Số phòng ngủ, Đường vào, Mặt tiền...)
+    # 5. Bảng thông số chi tiết (Số phòng ngủ, Đường vào, Mặt tiền ngang nhà...)
+    # Tách biệt hoàn toàn: alley_width_m (chỉ từ 'Đường vào') vs frontage_m (chỉ từ 'Mặt tiền')
     bedrooms = 0
     alley_width_m = 0.0
+    frontage_m = 0.0
 
-    for row in soup.find_all("div", class_=re.compile(r"flex.*(?:border-b|items-center)", re.I)):
-        row_t = row.get_text(" ", strip=True)
-        if "Phòng ngủ" in row_t:
-            m_pn = re.search(r"(\d+)\s*phòng", row_t)
-            if m_pn:
-                bedrooms = int(m_pn.group(1))
-        elif "Đường vào" in row_t:
-            m_dv = re.search(r"([\d\.,]+)\s*m", row_t)
+    # 5.1. Bóc tách Đường vào (chiều rộng hẻm/đường trước nhà)
+    for span in soup.find_all(lambda e: e.name in ["span", "dt", "div", "p"] and e.get_text(strip=True) == "Đường vào"):
+        parent = span.parent
+        if parent:
+            text_block = parent.get_text(" ", strip=True)
+            m_dv = re.search(r"([\d\.,]+)\s*m", text_block)
             if m_dv:
                 alley_width_m = float(m_dv.group(1).replace(",", "."))
-        elif "Mặt tiền" in row_t and alley_width_m == 0:
-            m_mt = re.search(r"([\d\.,]+)\s*m", row_t)
+                break
+
+    # 5.2. Bóc tách Mặt tiền (bề ngang căn nhà) - TUYỆT ĐỐI chỉ lưu frontage_m, KHÔNG BAO GIỜ gán cho alley_width_m
+    for span in soup.find_all(lambda e: e.name in ["span", "dt", "div", "p"] and e.get_text(strip=True) == "Mặt tiền"):
+        parent = span.parent
+        if parent:
+            text_block = parent.get_text(" ", strip=True)
+            m_mt = re.search(r"([\d\.,]+)\s*m", text_block)
             if m_mt:
-                alley_width_m = float(m_mt.group(1).replace(",", "."))
+                frontage_m = float(m_mt.group(1).replace(",", "."))
+                break
+
+    # 5.3. Bóc tách Phòng ngủ
+    for span in soup.find_all(lambda e: e.name in ["span", "dt", "div", "p"] and e.get_text(strip=True) == "Phòng ngủ"):
+        parent = span.parent
+        if parent:
+            text_block = parent.get_text(" ", strip=True)
+            m_pn = re.search(r"(\d+)", text_block)
+            if m_pn:
+                bedrooms = int(m_pn.group(1))
+                break
+
+    # 5.4. Quét dự phòng nếu các thẻ trên không có
+    if bedrooms == 0 or (alley_width_m == 0.0 and frontage_m == 0.0):
+        for row in soup.find_all("div", class_=re.compile(r"flex.*(?:border-b|items-center)", re.I)):
+            row_t = row.get_text(" ", strip=True)
+            if "Phòng ngủ" in row_t and bedrooms == 0:
+                m_pn = re.search(r"(\d+)\s*phòng", row_t)
+                if m_pn:
+                    bedrooms = int(m_pn.group(1))
+            elif "Đường vào" in row_t and alley_width_m == 0.0:
+                m_dv = re.search(r"([\d\.,]+)\s*m", row_t)
+                if m_dv:
+                    alley_width_m = float(m_dv.group(1).replace(",", "."))
+            elif "Mặt tiền" in row_t and frontage_m == 0.0:
+                m_mt = re.search(r"([\d\.,]+)\s*m", row_t)
+                if m_mt:
+                    frontage_m = float(m_mt.group(1).replace(",", "."))
 
     if bedrooms == 0:
         m_pn_t = re.search(r"(\d+)\s*PN", title, re.I)
@@ -579,6 +613,7 @@ def parse_detail_page(url: str) -> dict:
         "bedrooms": bedrooms,
         "price_ty": price_ty,
         "price_text": price_text,
+        "frontage_m": frontage_m,
         "alley_width_m": alley_width_m,
         "alley_type": alley_type,
         "alley_category": alley_category,
