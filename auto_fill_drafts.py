@@ -5,8 +5,9 @@
 TỰ ĐỘNG ĐIỀN MÔ TẢ CHI TIẾT & LƯU NHÁP HÀNG LOẠT TIN NHÁP TRÊN NHADAT247.VN
 ==============================================================================
 Kết nối trực tiếp tới Google Chrome hằng ngày của người dùng qua CDP (Port 9222):
-- Giữ nguyên thiết bị đã đăng nhập & cookie phiên tài khoản đối tác
-- Tự động tìm tab nhadat247.vn hoặc điều hướng tới danh sách tin nháp
+- Tự động nhận diện và ưu tiên Profile BĐS (Profile 2 / Thiên Khôi)
+- Quét toàn bộ browser contexts và pages, tìm chính xác tab tin nháp
+- Tự động đưa tab và cửa sổ lên phía trước (bring_to_front) để tiện theo dõi
 - Chống lặp, chống chèn trùng, chụp ảnh minh chứng trước và sau khi lưu nháp
 - Phân trang tự động và ghi log chi tiết
 ==============================================================================
@@ -33,11 +34,14 @@ logging.basicConfig(
 logger = logging.getLogger("AutoDraft")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
 LOG_DIR = os.path.join(BASE_DIR, "logs")
 PROCESSED_LOG_PATH = os.path.join(LOG_DIR, "draft_processed.json")
 SCREENSHOT_DIR = os.path.join(LOG_DIR, "screenshots")
+CHOICE_FILE = os.path.join(DATA_DIR, "chrome_profile_choice.txt")
 ARTIFACT_DIR = r"C:\Users\PC\.gemini\antigravity\brain\fd74a0a2-276c-4f36-af82-df537c0243c8"
 
+os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(LOG_DIR, exist_ok=True)
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 if os.path.exists(ARTIFACT_DIR):
@@ -53,6 +57,19 @@ TEMPLATE_DESC = """📍Vị trí: đường Phan Huy Ích, tiện đi ra Quang T
 ✅ Mã SP: 
 📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.
 🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QUẬN TPHCM - Alo Châu!"""
+
+
+def get_chosen_profile() -> str:
+    """Đọc tên Profile đã chọn từ data/chrome_profile_choice.txt."""
+    if os.path.exists(CHOICE_FILE):
+        try:
+            with open(CHOICE_FILE, "r", encoding="utf-8") as f:
+                val = f.read().strip()
+                if val:
+                    return val
+        except Exception:
+            pass
+    return "Profile 2"
 
 
 def load_processed_data() -> dict:
@@ -105,6 +122,7 @@ def check_is_logged_in(page: Page) -> bool:
             // Nếu có các thành phần chứng minh đã đăng nhập
             const hasUserMenu = !!document.querySelector("a[href*='/tai-khoan'], [class*='avatar'], a[href*='/dang-tin']");
             const hasDraftList = body.includes('Quản lý tin') || body.includes('Tin nháp') || 
+                                 body.includes('Tin bán') ||
                                  !!document.querySelector("a[href*='/dang-tin/'], button, a");
             return hasUserMenu || hasDraftList;
         }""")
@@ -143,17 +161,30 @@ def get_draft_items_on_page(page: Page) -> list:
 
     items = page.evaluate("""() => {
         const results = [];
+        const seenIds = new Set();
         
         // Tìm tất cả các nút hoặc link 'Chỉnh sửa' / 'Sửa'
-        const editCandidates = Array.from(document.querySelectorAll("a, button")).filter(el => {
+        const allCandidates = Array.from(document.querySelectorAll("a, button"));
+        
+        const editCandidates = allCandidates.filter(el => {
             const txt = (el.textContent || '').trim().toLowerCase();
             const href = el.getAttribute('href') || '';
             const titleAttr = (el.getAttribute('title') || '').toLowerCase();
             const ariaLabel = (el.getAttribute('aria-label') || '').toLowerCase();
             
-            return txt === 'chỉnh sửa' || txt === 'sửa' || txt.includes('chỉnh sửa') || 
-                   titleAttr.includes('chỉnh sửa') || ariaLabel.includes('chỉnh sửa') ||
-                   href.includes('/dang-tin/');
+            // Loại trừ các nút tạo tin mới ở thanh điều hướng
+            if ((txt === 'đăng tin' || txt === '+ đăng tin' || txt.includes('đăng tin mới')) && !txt.includes('chỉnh sửa')) {
+                return false;
+            }
+
+            // Nút có chữ Chỉnh sửa hoặc Sửa
+            const isEditTxt = txt === 'chỉnh sửa' || txt === 'sửa' || txt.includes('chỉnh sửa') || 
+                             titleAttr.includes('chỉnh sửa') || ariaLabel.includes('chỉnh sửa');
+            
+            // Hoặc link trực tiếp tới form sửa /dang-tin/<id>
+            const isEditHref = /\/dang-tin\/[a-zA-Z0-9_-]{8,}/.test(href);
+
+            return isEditTxt || isEditHref;
         });
 
         editCandidates.forEach((el, index) => {
@@ -181,12 +212,15 @@ def get_draft_items_on_page(page: Page) -> list:
                 id = 'draft_' + index + '_' + (title ? title.substring(0, 15).replace(/[^a-zA-Z0-9]/g, '') : Math.random().toString(36).substring(7));
             }
 
-            results.push({
-                index: index,
-                id: id,
-                title: title || ('Tin nháp #' + (index + 1)),
-                href: href
-            });
+            if (!seenIds.has(id)) {
+                seenIds.add(id);
+                results.push({
+                    index: index,
+                    id: id,
+                    title: title || ('Tin nháp #' + (index + 1)),
+                    href: href
+                });
+            }
         });
 
         return results;
@@ -198,7 +232,7 @@ def get_draft_items_on_page(page: Page) -> list:
 def fill_description_and_save(page: Page, draft_info: dict, is_test_run: bool = False) -> bool:
     """
     Thực hiện quy trình:
-    1. Bấm nút Chỉnh sửa của tin nháp.
+    1. Bấm nút Chỉnh sửa của tin nháp (hoặc điều hướng href).
     2. Chuyển sang Bước 2 (Thông tin BĐS) nếu đang ở Bước 1.
     3. Tại Bước 2 -> Tìm textarea 'Mô tả chi tiết *'.
     4. Kiểm tra chống chèn trùng (nếu đã có '0783.515.486' -> bỏ qua).
@@ -337,8 +371,10 @@ def fill_description_and_save(page: Page, draft_info: dict, is_test_run: bool = 
 
 def run_batch_process(limit: int = 2):
     """Quy trình chính xử lý tự động toàn bộ hoặc giới hạn số tin nháp."""
+    chosen_profile = get_chosen_profile()
     logger.info("==================================================================")
     logger.info(f"BẮT ĐẦU QUY TRÌNH TỰ ĐỘNG ĐIỀN MÔ TẢ TIN NHÁP (LIMIT={limit})")
+    logger.info(f"CHROME PROFILE ĐÃ CHỌN: {chosen_profile}")
     logger.info("==================================================================")
 
     # 1. Kiểm tra Chrome CDP 9222
@@ -350,7 +386,7 @@ def run_batch_process(limit: int = 2):
         return
 
     with sync_playwright() as p:
-        logger.info(f"Đang kết nối Playwright vào Chrome hằng ngày qua CDP ({CDP_URL})...")
+        logger.info(f"Đang kết nối Playwright vào Chrome qua CDP ({CDP_URL})...")
         try:
             browser = p.chromium.connect_over_cdp(CDP_URL)
         except Exception as e:
@@ -361,29 +397,85 @@ def run_batch_process(limit: int = 2):
         if not contexts:
             logger.error("Không tìm thấy context nào trong Chrome!")
             return
-        context = contexts[0]
 
-        # Tìm page đang mở trang nhadat247.vn hoặc quan-ly-tin-dang
-        page = None
-        for pg in context.pages:
-            if "nhadat247.vn" in pg.url:
-                page = pg
-                logger.info(f"Phát hiện tab nhadat247.vn đang mở sẵn: {page.url}")
+        # Quét tất cả pages trong tất cả contexts
+        all_pages_info = []
+        for ctx_idx, ctx in enumerate(contexts):
+            for pg_idx, pg in enumerate(ctx.pages):
+                try:
+                    u = pg.url
+                    t = pg.title()
+                except Exception:
+                    u, t = "", ""
+                all_pages_info.append({
+                    "context": ctx,
+                    "page": pg,
+                    "url": u,
+                    "title": t
+                })
+
+        logger.info(f"Tìm thấy {len(all_pages_info)} tab đang mở trên trình duyệt.")
+        for idx, item in enumerate(all_pages_info):
+            logger.info(f"  Tab [{idx+1}]: {item['title'][:40]} | URL: {item['url'][:80]}")
+
+        target_context = None
+        target_page = None
+
+        # Ưu tiên 1: Tab đang mở đúng URL quản lý tin nháp
+        for item in all_pages_info:
+            if "nhadat247.vn/tai-khoan/quan-ly-tin-dang" in item["url"] and "status=draft" in item["url"]:
+                target_context = item["context"]
+                target_page = item["page"]
+                logger.info(f"🎯 Ưu tiên 1: Chọn tab đang mở sẵn trang tin nháp: {item['url']}")
                 break
 
-        if not page:
-            logger.info(f"Chưa có tab nhadat247.vn, đang điều hướng tab tới: {BASE_DRAFT_URL}")
-            page = context.pages[0] if context.pages else context.new_page()
-            page.goto(BASE_DRAFT_URL, wait_until="domcontentloaded")
-        else:
-            if "quan-ly-tin-dang" not in page.url or "status=draft" not in page.url:
-                logger.info(f"Điều hướng tab tới trang tin nháp: {BASE_DRAFT_URL}")
-                page.goto(BASE_DRAFT_URL, wait_until="domcontentloaded")
+        # Ưu tiên 2: Tab đang mở quản lý tin đăng bất kỳ
+        if not target_page:
+            for item in all_pages_info:
+                if "nhadat247.vn/tai-khoan/quan-ly-tin-dang" in item["url"]:
+                    target_context = item["context"]
+                    target_page = item["page"]
+                    logger.info(f"🎯 Ưu tiên 2: Chọn tab quản lý tin đăng: {item['url']}")
+                    break
 
-        time.sleep(2)
+        # Ưu tiên 3: Bất kỳ tab nhadat247.vn nào
+        if not target_page:
+            for item in all_pages_info:
+                if "nhadat247.vn" in item["url"]:
+                    target_context = item["context"]
+                    target_page = item["page"]
+                    logger.info(f"🎯 Ưu tiên 3: Chọn tab nhadat247.vn: {item['url']}")
+                    break
 
-        # 2. Kiểm tra xem đã vào danh sách tin nháp chưa (chờ tối đa 180s)
-        if not wait_for_user_login(page, max_wait_sec=180):
+        # Ưu tiên 4: Dùng tab đầu tiên hoặc mở tab mới
+        if not target_page:
+            logger.info("Chưa có tab nhadat247.vn nào. Điều hướng tab hiện tại tới trang tin nháp.")
+            if all_pages_info:
+                target_context = all_pages_info[0]["context"]
+                target_page = all_pages_info[0]["page"]
+            else:
+                target_context = contexts[0]
+                target_page = target_context.new_page()
+
+        # Đưa tab và cửa sổ lên phía trước (bring_to_front)
+        try:
+            target_page.bring_to_front()
+            logger.info("✅ Đã kích hoạt target_page.bring_to_front() đưa cửa sổ đăng tin lên trên cùng!")
+        except Exception as e:
+            logger.warning(f"Lỗi bring_to_front: {e}")
+
+        # Đảm bảo tab đang ở đúng BASE_DRAFT_URL
+        if "quan-ly-tin-dang" not in target_page.url or "status=draft" not in target_page.url:
+            logger.info(f"Điều hướng tab tới danh sách tin nháp: {BASE_DRAFT_URL}")
+            target_page.goto(BASE_DRAFT_URL, wait_until="domcontentloaded")
+            time.sleep(2)
+            try:
+                target_page.bring_to_front()
+            except Exception:
+                pass
+
+        # 2. Kiểm tra xem đã vào danh sách tin nháp chưa (chờ tối đa 180s nếu cần)
+        if not wait_for_user_login(target_page, max_wait_sec=180):
             logger.error("Dừng tiến trình do chưa vào được trang quản lý tin nháp.")
             return
 
@@ -399,10 +491,10 @@ def run_batch_process(limit: int = 2):
         while current_page_num <= max_pages:
             page_url = BASE_DRAFT_URL if current_page_num == 1 else f"{BASE_DRAFT_URL}&trang={current_page_num}"
             logger.info(f"\n================ ĐANG DUYỆT TRANG {current_page_num}: {page_url} ================")
-            page.goto(page_url, wait_until="domcontentloaded")
+            target_page.goto(page_url, wait_until="domcontentloaded")
             time.sleep(2.5)
 
-            items = get_draft_items_on_page(page)
+            items = get_draft_items_on_page(target_page)
             logger.info(f"Phát hiện {len(items)} tin trên trang {current_page_num}.")
 
             if not items:
@@ -423,7 +515,7 @@ def run_batch_process(limit: int = 2):
                     logger.info(f"Đã đạt giới hạn LIMIT = {limit} tin xử lý. Dừng phiên.")
                     break
 
-                success = fill_description_and_save(page, item, is_test_run=(limit is not None and limit <= 5))
+                success = fill_description_and_save(target_page, item, is_test_run=(limit is not None and limit <= 5))
                 if success:
                     processed_ids.add(item["id"])
                     processed_data["processed_ids"] = list(processed_ids)
