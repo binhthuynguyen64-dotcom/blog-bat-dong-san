@@ -1,67 +1,67 @@
 @echo off
-chcp 65001 >nul
 cd /d "D:\affiliate\skill-edit-blogspot\blog-bat-dong-san"
-
 echo ==============================================================================
-echo Đang khởi động trình duyệt Chrome BĐS & Đối tác Thiên Khôi (Nhadat247)...
+echo AUTO-FILL DRAFTS NHADAT247.VN - CHROME DAILY PROFILE
 echo ==============================================================================
-echo.
 
-echo [1/5] Đang đóng các tiến trình Chrome cũ để giải phóng khóa phiên đăng nhập...
+echo [1/5] Auto-detecting Chrome Profile for Nhadat247 and Thien Khoi...
+python detect_chrome_profile.py
+
+set "TARGET_PROFILE=Profile 2"
+if exist "data\chrome_profile_choice.txt" set /p TARGET_PROFILE=<"data\chrome_profile_choice.txt"
+
+echo [INFO] Selected Chrome Profile: "%TARGET_PROFILE%"
+echo [2/5] Closing old Chrome processes to release profile lock...
 taskkill /F /IM chrome.exe >nul 2>&1
 timeout /t 2 /nobreak >nul
 
-echo [2/5] Đang dò tìm đường dẫn Chrome trên máy tính...
+echo [3/5] Locating chrome.exe...
 set "CHROME_EXE="
-if exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
-    set "CHROME_EXE=C:\Program Files\Google\Chrome\Application\chrome.exe"
-) else if exist "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" (
-    set "CHROME_EXE=C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
-) else if exist "%LocalAppData%\Google\Chrome\Application\chrome.exe" (
-    set "CHROME_EXE=%LocalAppData%\Google\Chrome\Application\chrome.exe"
-)
+if exist "C:\Program Files\Google\Chrome\Application\chrome.exe" set "CHROME_EXE=C:\Program Files\Google\Chrome\Application\chrome.exe"
+if "%CHROME_EXE%"=="" if exist "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" set "CHROME_EXE=C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+if "%CHROME_EXE%"=="" if exist "%LocalAppData%\Google\Chrome\Application\chrome.exe" set "CHROME_EXE=%LocalAppData%\Google\Chrome\Application\chrome.exe"
 
-if "%CHROME_EXE%"=="" (
-    echo [LỖI] Không tìm thấy file chrome.exe trên máy tính!
-    pause
-    exit /b 1
-)
-echo Đã tìm thấy: "%CHROME_EXE%"
+if "%CHROME_EXE%"=="" goto chrome_not_found
 
-echo [3/5] Đang kiểm tra liên kết thư mục User Data (Port 9222)...
-if not exist "C:\Users\PC\.chrome_daily_profile" (
-    mklink /J "C:\Users\PC\.chrome_daily_profile" "%LocalAppData%\Google\Chrome\User Data" >nul 2>&1
-)
+echo [INFO] Found Chrome: "%CHROME_EXE%"
+echo [4/5] Checking User Data link (Port 9222)...
+if not exist "C:\Users\PC\.chrome_daily_profile" mklink /J "C:\Users\PC\.chrome_daily_profile" "%LocalAppData%\Google\Chrome\User Data" >nul 2>&1
 
-echo [4/5] Tự động nhận diện Profile Chrome chứa tài khoản Nhadat247 ^& Thiên Khôi...
-python detect_chrome_profile.py
+echo [5/5] Launching Chrome with Profile "%TARGET_PROFILE%" and Port 9222...
+start "" "%CHROME_EXE%" --remote-debugging-port=9222 --remote-allow-origins=* --user-data-dir="C:\Users\PC\.chrome_daily_profile" --profile-directory="%TARGET_PROFILE%" --restore-last-session "https://nhadat247.vn/tai-khoan/quan-ly-tin-dang?status=draft"
 
-set "CHOSEN_PROFILE=Profile 2"
-if exist "data\chrome_profile_choice.txt" (
-    set /p CHOSEN_PROFILE=<"data\chrome_profile_choice.txt"
-)
-echo.
-echo => KHỞI CHẠY CHROME VỚI PROFILE: "%CHOSEN_PROFILE%"
-
-echo [5/5] Đang mở Chrome (Giữ nguyên toàn bộ Cookie, Tài khoản đối tác ^& Tab cũ)...
-start "" "%CHROME_EXE%" --remote-debugging-port=9222 --remote-allow-origins=* --user-data-dir="C:\Users\PC\.chrome_daily_profile" --profile-directory="%CHOSEN_PROFILE%" --restore-last-session "https://nhadat247.vn/tai-khoan/quan-ly-tin-dang?status=draft"
-
-echo Đang chờ Chrome khởi động xong (5 giây)...
+echo [INFO] Waiting 5 seconds for Chrome to initialize...
 timeout /t 5 /nobreak >nul
 
 echo.
 echo ==============================================================================
-if "%1"=="" (
-    echo KÍCH HOẠT AUTO-DRAFT: CHẠY THỬ NGHIỆM 2 TIN NHÁP ĐẦU TIÊN (--limit 2)
-    echo (Để chạy toàn bộ không giới hạn, hãy chạy: CHAY_TREN_CHROME_HANG_NGAY.bat --all)
-    echo.
-    python auto_fill_drafts.py --limit 2
-) else (
-    echo KÍCH HOẠT AUTO-DRAFT VỚI THAM SỐ: %*
-    echo.
-    python auto_fill_drafts.py %*
-)
-echo ==============================================================================
+if "%1"=="--all" goto run_all
+if not "%1"=="" goto run_args
+goto run_limit2
+
+:run_all
+echo [RUNNING] Auto-draft processing ALL listings (--all)
+python auto_fill_drafts.py --all
+goto end
+
+:run_args
+echo [RUNNING] Auto-draft processing with args: %*
+python auto_fill_drafts.py %*
+goto end
+
+:run_limit2
+echo [RUNNING] Auto-draft test run on 2 listings (--limit 2)
+echo (To process ALL drafts, run: CHAY_TREN_CHROME_HANG_NGAY.bat --all)
+python auto_fill_drafts.py --limit 2
+goto end
+
+:chrome_not_found
+echo [ERROR] chrome.exe not found on this computer!
+pause
+exit /b 1
+
+:end
 echo.
-echo Hoàn thành phiên làm việc. Nhấn phím bất kỳ để đóng cửa sổ này...
+echo ==============================================================================
+echo [COMPLETED] Work session finished. Press any key to close this window...
 pause >nul
