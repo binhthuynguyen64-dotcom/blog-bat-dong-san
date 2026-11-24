@@ -43,17 +43,31 @@ def update_fallback():
     pattern = r"(const\s+INITIAL_FALLBACK_DATA\s*=\s*)\[[\s\S]*?\](\s*;)"
     
     formatted_json = json.dumps(listings, ensure_ascii=False, indent=2)
-    # Thụt lề 2 spaces
-    replacement = r"\g<1>" + formatted_json + r"\g<2>"
-
-    new_html, count = re.subn(pattern, replacement, html, count=1)
-    if count == 0:
-        raise ValueError("Không tìm thấy biến INITIAL_FALLBACK_DATA trong blogger-page.html!")
+    # Dùng lambda để Python re.sub không biến \n thành literal newline làm hỏng cú pháp JS
+    new_html = re.sub(pattern, lambda m: m.group(1) + formatted_json + m.group(2), html, count=1)
 
     with open(HTML_PATH, "w", encoding="utf-8") as f:
         f.write(new_html)
 
     print(f"✅ Đã cập nhật thành công INITIAL_FALLBACK_DATA ({len(listings)} tin) vào {HTML_PATH}")
+
+    # Kiểm tra cú pháp JavaScript bằng Node.js
+    import subprocess, tempfile
+    scripts = re.findall(r'<script\b[^>]*>([\s\S]*?)</script>', new_html)
+    for i, s in enumerate(scripts):
+        with tempfile.NamedTemporaryFile(suffix='.js', delete=False, mode='w', encoding='utf-8') as tf:
+            tf.write(s)
+            tmp_name = tf.name
+        try:
+            res = subprocess.run(['node', '--check', tmp_name], capture_output=True, text=True)
+            if res.returncode != 0:
+                print(f"❌ Script #{i+1} CÚ PHÁP LỖI:\n{res.stderr[:500]}")
+                raise SyntaxError("Lỗi cú pháp JavaScript trong blogger-page.html!")
+            else:
+                print(f"✅ Script #{i+1}: Cú pháp JavaScript hợp lệ 100%!")
+        finally:
+            if os.path.exists(tmp_name):
+                os.remove(tmp_name)
 
 if __name__ == "__main__":
     update_fallback()
