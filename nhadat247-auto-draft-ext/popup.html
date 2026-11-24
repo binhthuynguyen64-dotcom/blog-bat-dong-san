@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhadat247 Auto Drafts</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="ext-container">
+    <!-- Header -->
+    <header class="ext-header">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="Logo" class="brand-icon">
+        <div>
+          <h1 class="brand-title">Nhadat247 Auto Draft</h1>
+          <p class="brand-subtitle">Hồng Châu • Kho Nhà Thật Giá Tốt</p>
+        </div>
+      </div>
+      <div id="status-pill" class="status-pill status-stopped">
+        <span class="status-dot"></span>
+        <span id="status-text">Đang dừng</span>
+      </div>
+    </header>
+
+    <!-- Stats Card -->
+    <div class="stats-card">
+      <div class="stat-item">
+        <span class="stat-label">Đã điền thành công</span>
+        <span id="stat-count" class="stat-val">0</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-label">Chế độ</span>
+        <span id="stat-mode" class="stat-val mode-idle">Chưa chạy</span>
+      </div>
+    </div>
+
+    <!-- Active Details -->
+    <div id="active-info-box" class="active-info-box">
+      <div class="active-label">Trạng thái hiện tại:</div>
+      <div id="active-desc" class="active-desc">Sẵn sàng để bắt đầu. Hãy bấm nút bên dưới.</div>
+    </div>
+
+    <!-- Main Actions -->
+    <div class="actions-group">
+      <button id="btn-test-2" class="btn btn-primary">
+        <span class="btn-icon">▶</span>
+        <span>Chạy thử 2 tin nháp</span>
+      </button>
+
+      <button id="btn-run-all" class="btn btn-secondary">
+        <span class="btn-icon">🚀</span>
+        <span>Chạy tự động tất cả tin nháp</span>
+      </button>
+
+      <button id="btn-stop" class="btn btn-danger" disabled>
+        <span class="btn-icon">⏹</span>
+        <span>Dừng lại ngay</span>
+      </button>
+    </div>
+
+    <!-- Secondary Links -->
+    <div class="sub-actions">
+      <button id="btn-open-drafts" class="btn-link">
+        🔗 Mở trang Quản lý tin nháp
+      </button>
+      <button id="btn-reset" class="btn-link text-danger">
+        ↺ Xóa lịch sử đã chạy
+      </button>
+    </div>
+
+    <!-- Live Logs -->
+    <div class="logs-section">
+      <div class="logs-header">
+        <span>Nhật ký hoạt động</span>
+        <span id="btn-clear-logs" class="logs-clear">Xóa log</span>
+      </div>
+      <div id="log-box" class="log-box">
+        <div class="log-entry log-system">[Hệ thống] Extension đã sẵn sàng.</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="ext-footer">
+      <span>Manifest V3 • Trực tiếp trên Profile 2 (Thiên Khôi)</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

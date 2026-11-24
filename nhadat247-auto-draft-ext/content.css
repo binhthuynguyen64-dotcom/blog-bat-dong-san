@@ -1,0 +1,184 @@
+/* content.css - Floating control widget on nhadat247.vn */
+
+#hc-auto-draft-floating-widget {
+  position: fixed !important;
+  bottom: 24px !important;
+  right: 24px !important;
+  width: 320px !important;
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  color: #1e293b !important;
+  z-index: 2147483647 !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  pointer-events: auto !important;
+}
+
+#hc-auto-draft-floating-widget.hc-minimized {
+  width: auto !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+#hc-auto-draft-floating-widget.hc-minimized .hc-widget-body {
+  display: none !important;
+}
+
+.hc-widget-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: #0f172a !important;
+  color: #ffffff !important;
+  padding: 8px 12px !important;
+  user-select: none !important;
+}
+
+.hc-widget-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.3px !important;
+}
+
+.hc-widget-controls {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.hc-btn-minimize {
+  background: none !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  padding: 2px 4px !important;
+}
+
+.hc-btn-minimize:hover {
+  color: #ffffff !important;
+}
+
+.hc-widget-body {
+  padding: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.hc-widget-status-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.hc-widget-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 3px 8px !important;
+  border-radius: 10px !important;
+}
+
+.hc-widget-pill.hc-running {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+  border: 1px solid #a7f3d0 !important;
+}
+
+.hc-widget-pill.hc-running::before {
+  content: "" !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background-color: #10b981 !important;
+  box-shadow: 0 0 6px #10b981 !important;
+}
+
+.hc-widget-pill.hc-stopped {
+  background-color: #f1f5f9 !important;
+  color: #64748b !important;
+}
+
+.hc-widget-pill.hc-stopped::before {
+  content: "" !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background-color: #94a3b8 !important;
+}
+
+.hc-widget-counter {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+
+.hc-widget-desc {
+  background-color: #f8fafc !important;
+  border-left: 3px solid #0284c7 !important;
+  padding: 6px 8px !important;
+  font-size: 11px !important;
+  color: #334155 !important;
+  border-radius: 2px !important;
+  min-height: 24px !important;
+  word-break: break-word !important;
+}
+
+.hc-widget-actions {
+  display: flex !important;
+  gap: 6px !important;
+  margin-top: 4px !important;
+}
+
+.hc-widget-btn-stop {
+  flex: 1 !important;
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  transition: background 0.15s !important;
+}
+
+.hc-widget-btn-stop:hover {
+  background-color: #dc2626 !important;
+}
+
+.hc-widget-btn-resume {
+  flex: 1 !important;
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+
+.hc-widget-btn-resume:hover {
+  background-color: #059669 !important;
+}

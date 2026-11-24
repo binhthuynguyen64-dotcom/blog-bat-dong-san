@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Nhadat247 Auto Fill Drafts - Hồng Châu",
+  "version": "1.0.0",
+  "description": "Tự động điền mô tả chi tiết chuẩn & lưu nháp hàng loạt tin đăng trên nhadat247.vn",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Nhadat247 Auto Drafts"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://nhadat247.vn/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://nhadat247.vn/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
