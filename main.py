@@ -55,7 +55,7 @@ def sync_listings_to_google_sheet(listings: list) -> bool:
         "action": "sync_listings",
         "api_key": gas_key,
         "listings": listings,
-        "overwrite_purposes": True
+        "overwrite_purposes": False
     }
 
     try:
@@ -80,8 +80,9 @@ def sync_listings_to_google_sheet(listings: list) -> bool:
 
 def sync_sheet_overrides_from_gas(listings: list) -> int:
     """
-    Đồng bộ trạng thái đã bán (is_sold) và trạng thái (status) từ Google Sheet / Apps Script Web App.
-    Chỉ giữ lại cờ is_sold đã bán từ Sheet, không ghi đè mục đích đã bóc tách chuẩn.
+    Đồng bộ trạng thái đã bán (is_sold), trạng thái (status), mục đích (purposes), 
+    phân loại dòng tiền (cashflow_subtype) từ Google Sheet / Apps Script Web App.
+    Bảo toàn 100% các chỉnh sửa tay của người dùng trên tab DATA_NHA.
     """
     gas_url = os.getenv("GAS_WEBAPP_URL")
     gas_key = os.getenv("GAS_API_KEY", "HongChauNhaUngY2026")
@@ -107,18 +108,38 @@ def sync_sheet_overrides_from_gas(listings: list) -> int:
                                 override_count += 1
                         if g_item.get("status"):
                             s_val = str(g_item.get("status")).strip().lower()
-                            if "đã bán" in s_val or "da ban" in s_val or item.get("is_sold"):
+                            if "đã bán" in s_val or "da ban" in s_val or "đã cọc" in s_val or item.get("is_sold"):
                                 item["is_sold"] = True
                                 item["status"] = "sold"
                             else:
                                 item["status"] = "active"
 
-                        # 2. Mã SP (internal_code) nếu có trên Sheet và item chưa có
-                        if g_item.get("internal_code") and not item.get("internal_code"):
-                            item["internal_code"] = g_item.get("internal_code")
+                        # 2. Phân loại mục đích (purposes) nếu người dùng đã chỉnh trên Sheet
+                        g_purposes = g_item.get("purposes")
+                        if g_purposes:
+                            if isinstance(g_purposes, list) and len(g_purposes) > 0:
+                                if item.get("purposes") != g_purposes:
+                                    item["purposes"] = g_purposes
+                                    override_count += 1
+                            elif isinstance(g_purposes, str) and g_purposes.strip():
+                                parsed_p = [p.strip() for p in g_purposes.split(",") if p.strip()]
+                                if parsed_p and item.get("purposes") != parsed_p:
+                                    item["purposes"] = parsed_p
+                                    override_count += 1
+
+                        # 3. Phân loại dòng tiền (cashflow_subtype) nếu người dùng đã chỉnh trên Sheet
+                        if g_item.get("cashflow_subtype") is not None:
+                            cf_val = str(g_item.get("cashflow_subtype")).strip()
+                            if cf_val and item.get("cashflow_subtype") != cf_val:
+                                item["cashflow_subtype"] = cf_val
+                                override_count += 1
+
+                        # 4. Mã SP (internal_code)
+                        if g_item.get("internal_code"):
+                            item["internal_code"] = str(g_item.get("internal_code")).strip().upper()
 
                 if override_count > 0:
-                    logger.info(f"Đã đồng bộ {override_count} cập nhật trạng thái đã bán từ Google Sheet vào dữ liệu.")
+                    logger.info(f"Đã đồng bộ {override_count} cập nhật trạng thái/mục đích/dòng tiền từ Google Sheet vào dữ liệu.")
                 return override_count
     except Exception as e:
         logger.warning(f"Không thể đồng bộ dữ liệu từ Google Apps Script: {e}")
