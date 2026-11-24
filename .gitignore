@@ -8,6 +8,7 @@ token.json
 credentials.json
 client_secret*.json
 logs/
+chrome_nhadat247_session/
 *.log
 test_*.py
 *.png

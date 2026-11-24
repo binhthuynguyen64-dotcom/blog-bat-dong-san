@@ -428,6 +428,21 @@ def detect_district(ward: str, title: str, desc: str, breadcrumb_text: str) -> s
     return "TP. Hồ Chí Minh"
 
 
+def extract_canonical_cdn_url(raw_url: str) -> str:
+    """
+    Trích xuất URL ảnh gốc từ CDN nhadat247, loại bỏ proxy resize netspace.vn
+    và các hậu tố kích thước thumbnail (-800x600, -240x165...).
+    """
+    if not raw_url:
+        return ""
+    m = re.search(r'(https?://cdn\.nhadat247\.vn/[^\s"\'@\?]+(?:\.jpg|\.jpeg|\.png|\.webp))', raw_url, re.IGNORECASE)
+    if m:
+        base = m.group(1)
+        clean = re.sub(r'-\d+x\d+(?=\.(?:jpg|jpeg|png|webp))', '', base)
+        return clean
+    return ""
+
+
 def parse_detail_page(url: str) -> dict:
     """
     Bóc tách toàn diện dữ liệu của 1 bài đăng chi tiết bất động sản.
@@ -637,28 +652,63 @@ def parse_detail_page(url: str) -> dict:
         url=url
     )
 
-    # 11. Hình ảnh đại diện & Album ảnh thật của tin đăng
+    # 11. Hình ảnh đại diện & Album ảnh thật của tin đăng (khử trùng lặp & loại trừ bài đăng khác)
     images = []
-    
-    # Ưu tiên 1: Thẻ meta og:image (luôn là ảnh bìa chính nét nhất của tin)
+    seen_img_keys = set()
+
+    # Ưu tiên 1: Thẻ meta og:image (ảnh bìa chính của bài đăng)
     og_img = soup.find("meta", property="og:image")
     if og_img and og_img.get("content"):
-        og_url = og_img["content"].strip()
-        if "nhadat247.vn" in og_url and "logo" not in og_url.lower():
-            images.append(og_url)
+        can_og = extract_canonical_cdn_url(og_img["content"])
+        if can_og and "logo" not in can_og.lower() and can_og not in seen_img_keys:
+            seen_img_keys.add(can_og)
+            images.append(can_og)
 
-    # Ưu tiên 2: Quét toàn bộ ảnh thật trong bài đăng (bỏ qua avatar, icon, banner)
+    # Ưu tiên 2: Quét toàn bộ ảnh trong khối gallery/chi tiết của chính bài đăng
+    # Tuyệt đối loại trừ các khối: Tin cùng khu vực, Tin liên quan, Tin khác, BĐS nổi bật
+    exclude_section_keywords = [
+        "tin đăng khác",
+        "tin cùng khu vực",
+        "tin liên quan",
+        "bất động sản nổi bật",
+        "bất động sản cùng khu vực",
+        "gợi ý cho bạn",
+        "bất động sản tương tự",
+        "bất động sản cùng phân khúc"
+    ]
+
     for img in soup.find_all("img"):
+        # Loại trừ nếu ảnh nằm trong danh sách bài đăng khác hoặc header/footer/sidebar
+        is_excluded = False
+        for p in img.parents:
+            classes = " ".join(p.get("class", []))
+            if any(c in classes for c in ["tin-the", "luoi-tin", "card-interactive"]):
+                is_excluded = True
+                break
+            if p.name in ["header", "footer", "nav", "aside"]:
+                is_excluded = True
+                break
+            if p.name in ["section", "div"]:
+                heading = p.find(["h2", "h3", "h4", "h5", "p", "span"])
+                head_text = (heading.get_text() if heading else "").strip().lower()
+                if any(k in head_text for k in exclude_section_keywords):
+                    is_excluded = True
+                    break
+        if is_excluded:
+            continue
+
         src = (img.get("data-src") or img.get("src") or "").strip()
         if not src or src.startswith("data:"):
             continue
-        if "cdn.nhadat247.vn" in src:
-            lower_src = src.lower()
-            if not any(bad in lower_src for bad in ["avatar", "logo", "icon", "banner", "default"]):
-                # Chuyển sang bản ảnh kích thước lớn nếu có hậu tố thumb
-                clean_src = re.sub(r"-\d+x\d+(?=\.(?:jpg|jpeg|png|webp))", "", src)
-                if clean_src not in images:
-                    images.append(clean_src)
+
+        can_src = extract_canonical_cdn_url(src)
+        if can_src:
+            lower_src = can_src.lower()
+            if any(bad in lower_src for bad in ["avatar", "logo", "icon", "banner", "default"]):
+                continue
+            if can_src not in seen_img_keys:
+                seen_img_keys.add(can_src)
+                images.append(can_src)
 
     image = images[0] if images else "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
 
@@ -669,7 +719,7 @@ def parse_detail_page(url: str) -> dict:
         "url": url,
         "transaction_type": transaction_type,
         "image": image,
-        "images": images[:6] if images else [image],
+        "images": images if images else [image],
         "ward": ward if ward else "Đang cập nhật",
         "district": district,
         "area_m2": area_m2,
