@@ -4,11 +4,11 @@
 ==============================================================================
 TỰ ĐỘNG ĐIỀN MÔ TẢ CHI TIẾT & LƯU NHÁP HÀNG LOẠT TIN NHÁP TRÊN NHADAT247.VN
 ==============================================================================
-Sử dụng Playwright launch_persistent_context trực tiếp:
-- Tự động mở cửa sổ trình duyệt (headless=False)
-- Tự động fallback giữa channel="chrome" và Chromium tích hợp
-- Lưu giữ phiên đăng nhập vĩnh viễn trong thư mục chrome_nhadat247_session
+Kết nối trực tiếp tới Google Chrome hằng ngày của người dùng qua CDP (Port 9222):
+- Giữ nguyên thiết bị đã đăng nhập & cookie phiên tài khoản đối tác
+- Tự động tìm tab nhadat247.vn hoặc điều hướng tới danh sách tin nháp
 - Chống lặp, chống chèn trùng, chụp ảnh minh chứng trước và sau khi lưu nháp
+- Phân trang tự động và ghi log chi tiết
 ==============================================================================
 """
 
@@ -20,6 +20,7 @@ import time
 import random
 import logging
 import argparse
+import urllib.request
 from datetime import datetime
 from playwright.sync_api import sync_playwright, Page, BrowserContext
 
@@ -35,15 +36,14 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LOG_DIR = os.path.join(BASE_DIR, "logs")
 PROCESSED_LOG_PATH = os.path.join(LOG_DIR, "draft_processed.json")
 SCREENSHOT_DIR = os.path.join(LOG_DIR, "screenshots")
-SESSION_DIR = os.path.join(BASE_DIR, "chrome_nhadat247_session")
 ARTIFACT_DIR = r"C:\Users\PC\.gemini\antigravity\brain\fd74a0a2-276c-4f36-af82-df537c0243c8"
 
 os.makedirs(LOG_DIR, exist_ok=True)
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
-os.makedirs(SESSION_DIR, exist_ok=True)
 if os.path.exists(ARTIFACT_DIR):
     os.makedirs(ARTIFACT_DIR, exist_ok=True)
 
+CDP_URL = "http://127.0.0.1:9222"
 BASE_DRAFT_URL = "https://nhadat247.vn/tai-khoan/quan-ly-tin-dang?status=draft"
 
 # Chuỗi mô tả chuẩn cần thêm vào ô "Mô tả chi tiết *"
@@ -75,38 +75,16 @@ def save_processed_data(data: dict):
         logger.error(f"Lỗi ghi {PROCESSED_LOG_PATH}: {e}")
 
 
-def launch_browser_context(playwright) -> BrowserContext:
-    """
-    Khởi chạy trình duyệt với Persistent Context:
-    Ưu tiên channel='chrome', nếu máy thiếu Google Chrome sẽ tự động fallback sang Chromium của Playwright.
-    """
-    args = [
-        "--start-maximized",
-        "--disable-blink-features=AutomationControlled",
-        "--no-default-browser-check",
-    ]
-    
+def is_cdp_available(port: int = 9222) -> bool:
+    """Kiểm tra xem Chrome CDP đã mở trên cổng 9222 chưa."""
     try:
-        logger.info(f"Đang mở Google Chrome (channel='chrome'). Thư mục phiên: {SESSION_DIR}")
-        context = playwright.chromium.launch_persistent_context(
-            user_data_dir=SESSION_DIR,
-            channel="chrome",
-            headless=False,
-            viewport=None,
-            args=args
-        )
-        logger.info("Khởi chạy Google Chrome thành công!")
-        return context
-    except Exception as e:
-        logger.warning(f"Không thể khởi chạy channel='chrome' ({e}). Đang fallback sang Chromium tích hợp...")
-        context = playwright.chromium.launch_persistent_context(
-            user_data_dir=SESSION_DIR,
-            headless=False,
-            viewport=None,
-            args=args
-        )
-        logger.info("Khởi chạy Chromium tích hợp thành công!")
-        return context
+        url = f"http://127.0.0.1:{port}/json/version"
+        with urllib.request.urlopen(url, timeout=1.5) as resp:
+            data = json.loads(resp.read().decode())
+            logger.info(f"Phát hiện Chrome CDP đang lắng nghe: {data.get('Browser')}")
+            return True
+    except Exception:
+        return False
 
 
 def check_is_logged_in(page: Page) -> bool:
@@ -134,25 +112,24 @@ def check_is_logged_in(page: Page) -> bool:
         return False
 
 
-def wait_for_user_login(page: Page, max_wait_sec: int = 300) -> bool:
-    """Kiểm tra và đợi người dùng hoàn tất đăng nhập nếu đang ở trang login."""
+def wait_for_user_login(page: Page, max_wait_sec: int = 180) -> bool:
+    """Kiểm tra và đợi người dùng thao tác nếu đang ở màn hình chưa vào tin nháp."""
     start_time = time.time()
     last_print = 0
     while time.time() - start_time < max_wait_sec:
         if check_is_logged_in(page):
-            logger.info("✅ ĐÃ XÁC NHẬN ĐĂNG NHẬP THÀNH CÔNG! Phiên đăng nhập được lưu tự động.")
+            logger.info("✅ ĐÃ XÁC NHẬN PHIÊN ĐĂNG NHẬP HỢP LỆ TRÊN CHROME HẰNG NGÀY!")
             return True
             
         remaining = int(max_wait_sec - (time.time() - start_time))
         if time.time() - last_print >= 5:
             logger.warning(
-                f"[CHỜ ĐĂNG NHẬP] Vui lòng đăng nhập tài khoản trên cửa sổ trình duyệt vừa mở "
-                f"(Bấm 'Tiếp tục bằng Google' hoặc nhập SĐT)... Còn {remaining}s"
+                f"[CHỜ THAO TÁC] Vui lòng xác nhận đăng nhập trên cửa sổ Chrome hằng ngày quen thuộc của bạn... Còn {remaining}s"
             )
             last_print = time.time()
         time.sleep(2)
         
-    logger.error("Hết thời gian chờ đăng nhập (300 giây). Vui lòng đăng nhập lại.")
+    logger.error("Hết thời gian chờ (180 giây). Vui lòng thử lại.")
     return False
 
 
@@ -364,20 +341,50 @@ def run_batch_process(limit: int = 2):
     logger.info(f"BẮT ĐẦU QUY TRÌNH TỰ ĐỘNG ĐIỀN MÔ TẢ TIN NHÁP (LIMIT={limit})")
     logger.info("==================================================================")
 
+    # 1. Kiểm tra Chrome CDP 9222
+    if not is_cdp_available(9222):
+        logger.error(
+            "❌ Không tìm thấy cổng gỡ lỗi 9222 của Chrome!\n"
+            "Vui lòng chạy file CHAY_TREN_CHROME_HANG_NGAY.bat để khởi động lại Chrome hằng ngày kèm cổng 9222."
+        )
+        return
+
     with sync_playwright() as p:
-        context = launch_browser_context(p)
-        pages = context.pages
-        page = pages[0] if pages else context.new_page()
+        logger.info(f"Đang kết nối Playwright vào Chrome hằng ngày qua CDP ({CDP_URL})...")
+        try:
+            browser = p.chromium.connect_over_cdp(CDP_URL)
+        except Exception as e:
+            logger.error(f"Lỗi kết nối CDP: {e}")
+            return
 
-        # 1. Điều hướng tới trang quản lý tin nháp
-        logger.info(f"Điều hướng tới: {BASE_DRAFT_URL}")
-        page.goto(BASE_DRAFT_URL, wait_until="domcontentloaded")
-        time.sleep(3)
+        contexts = browser.contexts
+        if not contexts:
+            logger.error("Không tìm thấy context nào trong Chrome!")
+            return
+        context = contexts[0]
 
-        # 2. Kiểm tra đăng nhập (chờ tối đa 300s nếu chưa đăng nhập)
-        if not wait_for_user_login(page, max_wait_sec=300):
-            logger.error("Dừng tiến trình do chưa đăng nhập.")
-            context.close()
+        # Tìm page đang mở trang nhadat247.vn hoặc quan-ly-tin-dang
+        page = None
+        for pg in context.pages:
+            if "nhadat247.vn" in pg.url:
+                page = pg
+                logger.info(f"Phát hiện tab nhadat247.vn đang mở sẵn: {page.url}")
+                break
+
+        if not page:
+            logger.info(f"Chưa có tab nhadat247.vn, đang điều hướng tab tới: {BASE_DRAFT_URL}")
+            page = context.pages[0] if context.pages else context.new_page()
+            page.goto(BASE_DRAFT_URL, wait_until="domcontentloaded")
+        else:
+            if "quan-ly-tin-dang" not in page.url or "status=draft" not in page.url:
+                logger.info(f"Điều hướng tab tới trang tin nháp: {BASE_DRAFT_URL}")
+                page.goto(BASE_DRAFT_URL, wait_until="domcontentloaded")
+
+        time.sleep(2)
+
+        # 2. Kiểm tra xem đã vào danh sách tin nháp chưa (chờ tối đa 180s)
+        if not wait_for_user_login(page, max_wait_sec=180):
+            logger.error("Dừng tiến trình do chưa vào được trang quản lý tin nháp.")
             return
 
         # Nạp lịch sử đã xử lý
@@ -446,10 +453,6 @@ def run_batch_process(limit: int = 2):
         logger.info(f"HOÀN TẤT ĐỢT XỬ LÝ! Tổng số tin đã xử lý trong phiên: {total_processed_in_session}")
         logger.info(f"Tổng số tin nháp đã lưu trong log: {len(processed_ids)}")
         logger.info("==================================================================")
-        
-        # Giữ context nếu chạy thử nghiệm để người dùng xem kết quả
-        time.sleep(2)
-        context.close()
 
 
 if __name__ == "__main__":
