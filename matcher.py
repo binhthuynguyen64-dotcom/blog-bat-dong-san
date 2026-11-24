@@ -432,11 +432,12 @@ def match_new_listings_with_clients(new_listings: list, min_score: float = 75.0)
                     "status": "Chưa gửi"
                 })
 
-            send_telegram_alert(tg_text)
+            # Tắt gửi Telegram thông báo khớp khách hàng theo yêu cầu (chỉ ghi nhận vào Google Sheet)
+            enable_match_tg = os.getenv("ENABLE_MATCH_TELEGRAM", "false").lower() == "true"
+            if enable_match_tg:
+                send_telegram_alert(tg_text)
 
-            email_subject = f"🎯 [KHỚP {top_3[0]['score']}%] Căn mới cho {top_3[0]['client']['name']}"
-            email_html = f"<div style='font-family:sans-serif;line-height:1.6;'>{tg_text.replace(chr(10), '<br>')}</div>"
-            send_email_alert(email_subject, email_html)
+            # send_email_alert(email_subject, email_html)
 
     # Đồng bộ toàn bộ các cặp khớp vào tab GOI_Y_KHACH trên Google Sheet
     if all_sheet_matches:

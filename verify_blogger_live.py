@@ -36,33 +36,39 @@ def verify_live():
 
         # Lấy số liệu các tab danh mục
         tabs_data = page_dt.evaluate("""() => {
-            const tabs = Array.from(document.querySelectorAll('.hc-tab-btn, [class*="tab"]')).map(btn => {
+            const tabs = Array.from(document.querySelectorAll('.hc-cat-btn, button[onclick*="filterCategory"]')).map(btn => {
                 return {
                     text: (btn.textContent || '').trim().replace(/\\s+/g, ' '),
-                    category: btn.getAttribute('data-purpose') || btn.getAttribute('data-category') || ''
+                    category: btn.getAttribute('onclick') || ''
                 };
-            }).filter(t => t.text.length > 0);
-
-            const cards = Array.from(document.querySelectorAll('.hc-card, [class*="card"]'));
-            const soldCards = cards.filter(c => {
-                const txt = c.textContent || '';
-                return txt.includes('ĐÃ BÁN') || txt.includes('🚫');
             });
+
+            const cards = Array.from(document.querySelectorAll('.hc-card'));
+            const soldCards = Array.from(document.querySelectorAll('.hc-card.is-sold, .hc-card:has(.badge-sold), .hc-card:has(.is-sold)'));
+            const countVisible = document.getElementById('hc-count-visible') ? document.getElementById('hc-count-visible').textContent : '';
+
+            const wardSelect = document.getElementById('hc-filter-ward');
+            const wards = wardSelect ? Array.from(wardSelect.options).map(o => o.text).filter(t => !t.includes('Tất cả')) : [];
 
             return {
                 tabs: tabs,
                 totalCards: cards.length,
+                countVisible: countVisible,
                 soldCount: soldCards.length,
-                activeCount: cards.length - soldCards.length
+                activeCount: cards.length - soldCards.length,
+                wards: wards
             };
         }""")
 
-        print(f"Tổng số thẻ nhà hiển thị trên trang: {tabs_data['totalCards']}")
-        print(f"Số căn đang mở bán: {tabs_data['activeCount']}")
-        print(f"Số căn đã bán (🚫 ĐÃ BÁN): {tabs_data['soldCount']}")
-        print("Danh sách tab và bộ đếm:")
-        for t in tabs_data["tabs"][:6]:
-            print(f"  - {t['text']}")
+        print(f"Tổng số tin nạp vào trang (hc-count-visible): {tabs_data['countVisible']}")
+        print(f"Số thẻ nhà hiển thị trên trang hiện tại (trang 1): {tabs_data['totalCards']}")
+        print(f"Số căn đã bán trên trang 1: {tabs_data['soldCount']}")
+        print("Danh sách 5 tab danh mục thực tế:")
+        for t in tabs_data["tabs"]:
+            print(f"  • {t['text']}")
+        print(f"Danh sách Phường/Xã trong bộ lọc ({len(tabs_data['wards'])} phường/xã):")
+        for w in tabs_data["wards"]:
+            print(f"  - {w}")
 
         desktop_shot = os.path.join(ARTIFACT_DIR, "v19_desktop_live_synced.png")
         page_dt.screenshot(path=desktop_shot, full_page=False)
