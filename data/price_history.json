@@ -1,4 +1,294 @@
 {
+  "a76806cb0827": {
+    "price_ty": 3.75,
+    "title": "NHÀ ĐẸP HẺM XE HƠI NGUYỄN THỊ KIỂU, KHU CAO TẦNG SẠCH SẼ, 3 TỶ HƠN TL",
+    "updated_at": "17:36 24/11/2026"
+  },
+  "805c1954dcb2": {
+    "price_ty": 4.1,
+    "title": "NHÀ RỘNG 63M2 GẦN NGUYỄN VĂN QUÁ, KHU DÂN CƯ HIỆN HỮU, 4 TỶ NHỎ TL",
+    "updated_at": "17:28 24/11/2026"
+  },
+  "367191cbf42a": {
+    "price_ty": 5.0,
+    "title": "NHÀ ĐẸP NGUYỄN VĂN QUÁ HẺM 6M THÔNG, 50M RA MẶT TIỀN, 5 TỶ TL",
+    "updated_at": "17:26 24/11/2026"
+  },
+  "a3950469f5ab": {
+    "price_ty": 4.95,
+    "title": "NHÀ 129M2 NGAY NGUYỄN VĂN QUÁ, TIỆN XÂY CHDV, 4 TỶ HƠN TL",
+    "updated_at": "17:23 24/11/2026"
+  },
+  "3cb567958126": {
+    "price_ty": 4.78,
+    "title": "NHÀ ĐẸP TỔNG 4PN 50M RA NGUYỄN VĂN QUÁ, FULL NỘI THẤT, 4 TỶ HƠN TL",
+    "updated_at": "17:22 24/11/2026"
+  },
+  "439b0befea7e": {
+    "price_ty": 4.78,
+    "title": "NHÀ ĐẸP GẦN THCS PHAN BỘI CHÂU, HẺM 6M ĐẾN NHÀ, 3PN RỘNG, 4 TỶ HƠN TL",
+    "updated_at": "17:17 24/11/2026"
+  },
+  "173813875c9d": {
+    "price_ty": 4.58,
+    "title": "NHÀ RỘNG 75M2 GẦN SONG HÀNH, HẺM RỘNG SẠCH SẼ, 4 TỶ HƠN TL",
+    "updated_at": "17:15 24/11/2026"
+  },
+  "48502e688f65": {
+    "price_ty": 4.1,
+    "title": "NHÀ NÁT TIỆN XÂY MỚI GẦN NGUYỄN VĂN QUÁ, 56M2, 4 TỶ NHỎ TL",
+    "updated_at": "17:12 24/11/2026"
+  },
+  "9b8d5c0575ff": {
+    "price_ty": 4.35,
+    "title": "NHÀ ĐẸP NGUYỄN VĂN QUÁ Ở NGAY, BTCT 2PN, 4 TỶ NHỎ TL",
+    "updated_at": "17:11 24/11/2026"
+  },
+  "75780bdc88fa": {
+    "price_ty": 13.0,
+    "title": "NHÀ ĐẸP BỀ THẾ KDC AN SƯƠNG, HẺM 6M THÔNG BÀN CỜ, 13 TỶ TL",
+    "updated_at": "17:09 24/11/2026"
+  },
+  "4ef48b8ada23": {
+    "price_ty": 9.5,
+    "title": "NHÀ ĐẸP KDC AN SƯƠNG 80M2 7PN, LÀM CHDV, KHU BÀN CỜ 6M THÔNG, 9 TỶ HƠN TL",
+    "updated_at": "17:07 24/11/2026"
+  },
+  "18b7828fb8f9": {
+    "price_ty": 4.1,
+    "title": "NHÀ ĐẸP TRẦN THỊ NĂM, HẺM 6M XE HƠI THÔNG KHU CAO TẦNG, 4 TỶ HƠN TL",
+    "updated_at": "17:05 24/11/2026"
+  },
+  "bec0162e4ad6": {
+    "price_ty": 4.5,
+    "title": "NHÀ ĐẸP GẦN LÂM THỊ HỐ, HẺM XE HƠI 3PN, 4 TỶ HƠN TL",
+    "updated_at": "17:03 24/11/2026"
+  },
+  "722796be6dd8": {
+    "price_ty": 4.85,
+    "title": "MẶT TIỀN HẺM 6M LÂM THỊ HỐ, NGANG 5M HIẾM, 4 TỶ HƠN TL",
+    "updated_at": "17:00 24/11/2026"
+  },
+  "1efe50b9af5d": {
+    "price_ty": 5.6,
+    "title": "NHÀ MẶT TIỀN HẺM 6M THÔNG, NGUYỄN VĂN QUÁ, 3PN, 5 TỶ HƠN TL",
+    "updated_at": "16:57 24/11/2026"
+  },
+  "b87a28dd0161": {
+    "price_ty": 9.8,
+    "title": "NHÀ ĐẸP KHU DÂN CƯ AN SƯƠNG 90M2, 4 TẦNG BTCT, HẺM 6M THÔNG BÀN CỜ, 9 TỶ HƠN TL",
+    "updated_at": "16:55 24/11/2026"
+  },
+  "93d4e006260a": {
+    "price_ty": 8.8,
+    "title": "NHÀ ĐẸP KHU DÂN CƯ AN SƯƠNG 72m2, 4PN, HẺM XE HƠI THÔNG KHU BÀN CƠD, 8 TỶ HƠN TL",
+    "updated_at": "16:53 24/11/2026"
+  },
+  "a55cdb01aac3": {
+    "price_ty": 8.5,
+    "title": "MTKD QL1A, 70M2 6PN RỘNG RÃI, GẦN BẾN XE AN SƯƠNG, 8 TỶ HƠN TL",
+    "updated_at": "16:51 24/11/2026"
+  },
+  "06b401b13770": {
+    "price_ty": 8.2,
+    "title": "NHÀ ĐẸP TRƯỜNG CHINH, HẺM XE HƠI 1 TRỤC, 4 TẦNG BTCT, GẤP BÁN 8 TỶ HƠN TL",
+    "updated_at": "16:47 24/11/2026"
+  },
+  "f6ffe5e73c23": {
+    "price_ty": 9.4,
+    "title": "NHÀ ĐẸP TRƯỜNG CHINH, 4 TẦNG BTCT, HẺM XE HƠI THÔNG 1 TRỤC ĐẾN NHÀ, GẤP BÁN 9 TỶ HƠN TL",
+    "updated_at": "16:36 24/11/2026"
+  },
+  "51b65fdc0eff": {
+    "price_ty": 5.09,
+    "title": "NHÀ ĐẸP KHU ĐỒNG BỘ LÂM THỊ HỐ, HẺM 6M 1 TRỤC, 5PN, 5 TỶ HƠN TL",
+    "updated_at": "16:31 24/11/2026"
+  },
+  "2fe8449bbbaa": {
+    "price_ty": 5.95,
+    "title": "NHÀ ĐẸP LÂM THỊ HỐ KHU ĐỒNG BỘ, HẺM 5M THÔNG, 3 TẦNG 3PN, 5 TỶ HƠN TL",
+    "updated_at": "16:28 24/11/2026"
+  },
+  "55fa899e5ceb": {
+    "price_ty": 4.15,
+    "title": "NHÀ BTCT NGUYỄN VĂN QUÁ, HẺM 4M KHU DÂN CƯ HIỆN HỮU, 4 TỶ HƠN TL",
+    "updated_at": "16:26 24/11/2026"
+  },
+  "b5a84ad154fd": {
+    "price_ty": 8.8,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 4PN, NGAY NGUYỄN VĂN QUÁ, GẤP BÁN GIẢM MẠNH CÒN 8 TỶ HƠN TL",
+    "updated_at": "16:24 24/11/2026"
+  },
+  "2ef9ff2c99c6": {
+    "price_ty": 10.6,
+    "title": "NHÀ ĐẸP BTCT 80M2 3PN, HẺM 6M XE HƠI THÔNG, GẦN ĐƯỜNG LỚN SẦM UẤT, 10 TỶ HƠN TL",
+    "updated_at": "16:06 24/11/2026"
+  },
+  "e339c40a3c5e": {
+    "price_ty": 7.6,
+    "title": "NHÀ 4 TẦNG BTCT LÀM CHDV, NGANG 7M HIẾM, SÁT BÊN KDC AN SƯƠNG, 7 TỶ TL",
+    "updated_at": "16:03 24/11/2026"
+  },
+  "5ad1a6dd3e54": {
+    "price_ty": 8.7,
+    "title": "NHÀ ĐẸP GẦN TRƯỜNG CHINH 99M2 3PN, BTCT Ở NGAY, 8 TỶ HƠN TL",
+    "updated_at": "15:59 24/11/2026"
+  },
+  "3903c246c9be": {
+    "price_ty": 9.8,
+    "title": "NHÀ ĐẸP 4 TẦNG 5PN HẺM XE HƠI, GẦN TRƯỜNG CHINH, 110m2, 9 TỶ HƠN TL",
+    "updated_at": "15:55 24/11/2026"
+  },
+  "9ef985201698": {
+    "price_ty": 7.0,
+    "title": "NHÀ ĐẸP KHU DÂN CƯ AN SƯƠNG, 80M2 5PN, XE HƠI ĐẬU ĐỖ NGÀY ĐÊM, 7 TỶ TL",
+    "updated_at": "15:49 24/11/2026"
+  },
+  "341724ff42af": {
+    "price_ty": 10.9,
+    "title": "NHÀ ĐẸP 90M2 4 TẦNG KHU DÂN CƯ AN SƯƠNG, 10 TỶ HƠN TL",
+    "updated_at": "15:46 24/11/2026"
+  },
+  "3f3e77dc4075": {
+    "price_ty": 5.95,
+    "title": "NHÀ RỘNG 8M NGANG, 4PN Ở NGAY, 5 TỶ HƠN TL",
+    "updated_at": "15:43 24/11/2026"
+  },
+  "1ee5819322ae": {
+    "price_ty": 8.6,
+    "title": "NHÀ ĐẸP BỀ THẾ NGUYỄN ẢNH THỦ KHU CAO TẦNG, 4PN BTCT, 8 TỶ HƠN TL",
+    "updated_at": "15:40 24/11/2026"
+  },
+  "dc1a3a10ddb2": {
+    "price_ty": 8.5,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT KHU PHÂN LÔ, HẺM 7M XE HƠI ĐỖ CỬA, 8 TỶ HƠN TL",
+    "updated_at": "15:35 24/11/2026"
+  },
+  "f325d7fc4782": {
+    "price_ty": 9.6,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT NGAY NGUYỄN ẢNH THỦ, HẺM XE HƠI 7M THÔNG, KHU CAO TẦNG 9 TỶ HƠN TL",
+    "updated_at": "15:32 24/11/2026"
+  },
+  "0785a0bab868": {
+    "price_ty": 8.6,
+    "title": "NHÀ ĐẸP KHU CAO TẦNG TRẦN THỊ NĂM, 4PN FULL NỘI THẤT CÓ THANG MÁY, NHỈNH 8 TỶ TL",
+    "updated_at": "15:30 24/11/2026"
+  },
+  "e2e25266a843": {
+    "price_ty": 9.5,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 5PN, 70m2 RỘNG RÃI, HẺM XE HƠI KHU CAO TẦNG, 9 TỶ HƠN TL",
+    "updated_at": "15:27 24/11/2026"
+  },
+  "8be756929e94": {
+    "price_ty": 6.3,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 5PN, HẺM XE HƠI 6M KHU CAO TẦNG, 6 TỶ HƠN TL",
+    "updated_at": "15:25 24/11/2026"
+  },
+  "04411d8b5add": {
+    "price_ty": 8.3,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT HẺM XE HƠI 7M KHU PHÂN LÔ ĐỒNG BỘ, 6PN Ở NGAY, 8 TỶ HƠN TL",
+    "updated_at": "15:21 24/11/2026"
+  },
+  "29c57566cb3c": {
+    "price_ty": 7.5,
+    "title": "NHÀ ĐẸP BỀ THẾ 5PN BTCT, HẺM 6M THÔNG GẦN NGUYỄN ẢNH THỦ, GẤP BÁN CÒN 7 TỶ HƠN TL",
+    "updated_at": "15:17 24/11/2026"
+  },
+  "126d05466a52": {
+    "price_ty": 9.0,
+    "title": "NHÀ ĐẸP 8PN KHU DÂN CƯ AN SƯƠNG, HẺM XE HƠI THÔNG, 9 TỶ TL",
+    "updated_at": "15:14 24/11/2026"
+  },
+  "97a7525bee22": {
+    "price_ty": 8.9,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 4PN Ở NGAY, HẺM XE HƠI ĐẾN NHÀ, 8 TỶ HƠN TL",
+    "updated_at": "15:12 24/11/2026"
+  },
+  "60894e92cc5b": {
+    "price_ty": 6.6,
+    "title": "NHÀ 5 LẦU 5PN KHU PHÂN LÔ ĐỒNG BỘ, NGAY NGUYỄN ẢNH THỦ, 6 TỶ HƠN TL",
+    "updated_at": "15:09 24/11/2026"
+  },
+  "6f887a0ab298": {
+    "price_ty": 8.5,
+    "title": "NHÀ ĐẸP BỀ THẾ 4PN NGAY LÊ VĂN KHƯƠNG, 100M2 8 TỶ HƠN TL",
+    "updated_at": "15:03 24/11/2026"
+  },
+  "74aa56202569": {
+    "price_ty": 6.2,
+    "title": "NHÀ TO GẦN MẶT TIỀN ĐƯỜNG, 101m2, 6 TỶ HƠN TL",
+    "updated_at": "15:01 24/11/2026"
+  },
+  "31b6d1a03dd6": {
+    "price_ty": 9.9,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 6PN Ở NGAY, GẦN MEGA HIỆP PHÚ SANG GÒ VẤP, 9 TỶ HƠN TL",
+    "updated_at": "15:00 24/11/2026"
+  },
+  "3007b3b3a916": {
+    "price_ty": 8.3,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT BỀ THẾ, 6PN Ở NGAY, MẶT TIỀN ĐƯỜNG 8M THÔNG, 8 TỶ HƠN TL",
+    "updated_at": "14:57 24/11/2026"
+  },
+  "a55add20e89d": {
+    "price_ty": 7.9,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT GẦN LÊ VĂN KHƯƠNG SANG GÒ VẤP, 5PN Ở NGAY, 7 TỶ HƠN TL",
+    "updated_at": "14:54 24/11/2026"
+  },
+  "16ef7d533156": {
+    "price_ty": 5.7,
+    "title": "MTKD NGUYỄN VĂN QUÁ KHU SẦM UẤT, 75m2 CHỈ 5 TỶ HƠN TL",
+    "updated_at": "14:49 24/11/2026"
+  },
+  "b67cc2d27e23": {
+    "price_ty": 4.2,
+    "title": "MTKD NGUYỄN VĂN QUÁ KHU SẦM UẤT CHỈ 4 TỶ NHỎ TL",
+    "updated_at": "14:46 24/11/2026"
+  },
+  "6c4f7bd93bc8": {
+    "price_ty": 4.5,
+    "title": "MTKD NGUYỄN VĂN QUÁ CHỈ 4 TỶ HƠN TL, 2 MẶT TIỀN, GẦN TRƯỜNG CHINH",
+    "updated_at": "14:44 24/11/2026"
+  },
+  "68937e1c7a9f": {
+    "price_ty": 4.3,
+    "title": "NHÀ RỘNG 61m2 HẺM XE HƠI, SÁT BÊN HIỆP THÀNH CITY, KHU CAO TẦNG, 4 TỶ HƠN TL",
+    "updated_at": "14:41 24/11/2026"
+  },
+  "2b813769ad7b": {
+    "price_ty": 9.7,
+    "title": "MẶT TIỀN KHỦNG 92M2 NGUYỄN VĂN QUÁ, 3 TẦNG, 9 TỶ HƠN TL",
+    "updated_at": "14:39 24/11/2026"
+  },
+  "d2a51d4ec578": {
+    "price_ty": 4.9,
+    "title": "NHÀ BTCT 4PN HẺM XE HƠI SÁT BÊN HIỆP THÀNH CITY, 4 TỶ HƠN TL",
+    "updated_at": "14:33 24/11/2026"
+  },
+  "0d64457f0f1e": {
+    "price_ty": 2.65,
+    "title": "CHUNG CƯ TÔ KÝ 56m2 TIỆN ĐI GÒ VẤP, 2 TỶ HƠN TL",
+    "updated_at": "14:32 24/11/2026"
+  },
+  "d12c9548831c": {
+    "price_ty": 4.5,
+    "title": "NHÀ 4PN TÔ KÝ GIÁP GÒ VẤP, MẶT TIỀN ĐƯỜNG 5M, GẤP BÁN GIẢM 2 TỶ CÒN 4 TỶ HƠN TL",
+    "updated_at": "14:29 24/11/2026"
+  },
+  "fe0e72f7f0dc": {
+    "price_ty": 5.3,
+    "title": "NHÀ RỘNG 119m2 HỢP LÀM CHDV, HẺM XE HƠI SAU CVPM QUANG TRUNG, 5 TỶ HƠN TL",
+    "updated_at": "14:25 24/11/2026"
+  },
+  "6c2176cb2850": {
+    "price_ty": 4.9,
+    "title": "NHÀ ĐẸP BTCT HẺM XE HƠI HUỲNH THỊ HAI, 100M2 3PN RỘNG, 4 TỶ HƠN TL",
+    "updated_at": "14:22 24/11/2026"
+  },
+  "be551e158423": {
+    "price_ty": 5.36,
+    "title": "NHÀ ĐẸP BTCT 4PN 82m2, HẺM XE HƠI KHU CAO TẦNG LÊ VĂN KHƯƠNG, 5 TỶ HƠN TL",
+    "updated_at": "14:20 24/11/2026"
+  },
   "bf8a3a4ea551": {
     "price_ty": 5.25,
     "title": "KHO RỘNG 69m2, HẺM XE HƠI THÔNG TIỆN DI CHUYỂN, GẦN NGUYỄN THỊ BÚP, 5 TỶ HƠN TL",
