@@ -627,7 +627,9 @@ def parse_detail_page(url: str) -> dict:
     internal_code = ""
     m_code = re.search(r"(?:Mã\s*(?:SP|tin|bđs|sp\s*nội\s*bộ)?|MSP)\s*[:\-]?\s*([A-Za-z0-9\-]+)", description, re.I)
     if m_code:
-        internal_code = m_code.group(1).strip().upper()
+        cand = m_code.group(1).strip().upper()
+        if cand not in ["SP", "TIN", "BDS", "MSP", "DE", "VA"] and len(cand) >= 3 and any(c.isdigit() for c in cand):
+            internal_code = cand
 
     # 7. Nhận diện Quận
     district = detect_district(ward, title, description, crumb_text)

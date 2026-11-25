@@ -53,7 +53,15 @@ var CONFIG = {
   SECRET_API_KEY: "HongChauNhaUngY2026",
   
   // Số điện thoại / Zalo môi giới
-  BROKER_PHONE: "0783515486"
+  BROKER_PHONE: "0783515486",
+
+  // Cấu hình Telegram Bot Webhook & Chat ID chủ sở hữu
+  TELEGRAM_BOT_TOKEN: "9023599834:AAHPZCqknyPCkHfC1XIc24e7SUOLvaiy7CI",
+  TELEGRAM_CHAT_ID: "1732042281",
+
+  // Cấu hình GitHub Actions kích hoạt đồng bộ tự động
+  GITHUB_REPO: "binhthuynguyen64-dotcom/blog-bat-dong-san",
+  GITHUB_WORKFLOW: "daily_sync.yml"
 };
 
 /**
@@ -72,7 +80,7 @@ function getSpreadsheet() {
 }
 
 /**
- * Endpoint POST: Tiếp nhận yêu cầu tư vấn từ Blogger hoặc đồng bộ kho nhà từ Python
+ * Endpoint POST: Tiếp nhận yêu cầu tư vấn từ Blogger, Webhook Telegram hoặc đồng bộ kho nhà từ Python
  */
 function doPost(e) {
   try {
@@ -87,6 +95,11 @@ function doPost(e) {
       }
     } else {
       data = e.parameter || {};
+    }
+
+    // TRƯỜNG HỢP 0: Telegram Webhook Update từ bot
+    if (data.message && data.message.text) {
+      return handleTelegramWebhook(data);
     }
 
     var action = data.action || "";
@@ -430,7 +443,8 @@ function getSoldSignaturesFromSourceSheets() {
                          nature.indexOf("da ban") !== -1;
 
       if (isSoldNature) {
-        var code = row[codeCol] ? row[codeCol].toString().trim().toUpperCase() : "";
+        var rawCode = row[codeCol] ? row[codeCol].toString().trim().toUpperCase() : "";
+        var code = rawCode.replace(/\s+/g, "");
         if (code) {
           soldCodes[code] = true;
         }
@@ -584,13 +598,13 @@ function checkIfListingSold(item, soldCodes) {
   if (!item) return false;
 
   var statusText = (item.status || "").toString().toLowerCase();
-  if (item.is_sold === true || statusText.indexOf("đã bán") !== -1 || statusText.indexOf("đã cọc") !== -1 || statusText.indexOf("da ban") !== -1) {
+  if (item.is_sold === true || statusText.indexOf("đã bán") !== -1 || statusText.indexOf("đã cọc") !== -1 || statusText.indexOf("da ban") !== -1 || statusText.indexOf("da coc") !== -1) {
     return true;
   }
 
   if (!soldCodes || soldCodes.length === 0) return false;
 
-  var internalCode = (item.internal_code || "").toString().trim().toUpperCase();
+  var internalCode = (item.internal_code || "").toString().trim().toUpperCase().replace(/\s+/g, "");
   var itemId = (item.id || "").toString().trim().toUpperCase();
 
   for (var i = 0; i < soldCodes.length; i++) {
@@ -676,24 +690,30 @@ function syncListingsToSheet(listings, overwritePurposes) {
     }
 
     var internalCode = (item.internal_code || (existing ? existing.internal_code : "") || "").toString().trim().toUpperCase();
+    var normCode = internalCode.replace(/\s+/g, "");
 
-    // Đối chiếu trạng thái đã bán
-    var isSold = false;
-    var statusDisplay = "Đang bán";
+    // Đối chiếu trạng thái đã bán (ƯU TIÊN 1: Kiểm tra soldCodes từ 7 sheet nguồn)
+    var isSold = checkIfListingSold({
+      id: itemId,
+      internal_code: normCode,
+      status: item.status,
+      is_sold: item.is_sold
+    }, soldCodes);
 
+    // ƯU TIÊN 2: Nếu trên DATA_NHA người dùng đã chỉnh tay sang "🚫 Đã bán"
     if (existing && existing.status) {
-      statusDisplay = existing.status;
-      if (statusDisplay.indexOf("Đã bán") !== -1 || statusDisplay.indexOf("Đã cọc") !== -1) {
+      if (existing.status.indexOf("Đã bán") !== -1 || existing.status.indexOf("Đã cọc") !== -1) {
         isSold = true;
       }
+    }
+
+    var statusDisplay = "Đang bán";
+    if (isSold) {
+      statusDisplay = "🚫 Đã bán";
+    } else if (existing && existing.status) {
+      statusDisplay = existing.status;
     } else {
-      isSold = checkIfListingSold({
-        id: itemId,
-        internal_code: internalCode,
-        status: item.status,
-        is_sold: item.is_sold
-      }, soldCodes);
-      statusDisplay = isSold ? "🚫 Đã bán" : (item.status && item.status.indexOf("sold") !== -1 ? "🚫 Đã bán" : "Đang bán");
+      statusDisplay = (item.status && item.status.indexOf("sold") !== -1) ? "🚫 Đã bán" : "Đang bán";
     }
 
     rows.push([
@@ -1046,4 +1066,422 @@ function createJsonResponse(data, statusCode) {
   var output = ContentService.createTextOutput(JSON.stringify(data));
   output.setMimeType(ContentService.MimeType.JSON);
   return output;
+}
+
+/**
+ * ==============================================================================
+ * MODULE MỚI: TỰ ĐỘNG HÓA TELEGRAM BOT 24/7 QUA GOOGLE APPS SCRIPT
+ * ==============================================================================
+ */
+
+/**
+ * Xử lý webhook update gửi từ Telegram Bot API
+ */
+function handleTelegramWebhook(data) {
+  var msg = data.message || {};
+  var chatId = msg.chat ? msg.chat.id.toString() : "";
+  var text = (msg.text || "").trim();
+
+  // Kiểm tra bảo mật CHAT_ID: Chỉ cho phép tài khoản của chủ nhân điều khiển bot
+  if (chatId !== CONFIG.TELEGRAM_CHAT_ID) {
+    Logger.log("Từ chối truy cập từ chat_id không hợp lệ: " + chatId);
+    return createJsonResponse({ status: "ignored", reason: "unauthorized" });
+  }
+
+  var lowerText = text.toLowerCase();
+
+  // 1. Lệnh ĐỒNG BỘ: /dongbo, /sync, /capnhat, đồng bộ, cập nhật tin
+  if (lowerText === "/dongbo" || lowerText === "/sync" || lowerText === "/capnhat" ||
+      lowerText === "đồng bộ" || lowerText === "dong bo" || lowerText === "cập nhật tin" || lowerText === "cap nhat tin") {
+    
+    // Kích hoạt đám mây GitHub Actions workflow_dispatch
+    var ghRes = triggerGitHubWorkflow();
+
+    // Làm mới đối chiếu Đã bán và Đã đăng Nhadat247 trên Google Sheet
+    try {
+      markPostedNhadat247OnProductSheets();
+    } catch (eSheet) {
+      Logger.log("Lỗi làm mới sheet: " + eSheet);
+    }
+
+    var reply = "";
+    if (ghRes.success) {
+      reply = "⏳ <b>ĐÃ NHẬN LỆNH ĐỒNG BỘ!</b>\n\n" +
+        "🚀 Hệ thống đám mây <b>GitHub Actions</b> đang được kích hoạt để:\n" +
+        "1. Cào toàn bộ tin mới từ Nhadat247.vn\n" +
+        "2. Đối chiếu tình trạng 'Đã bán/Đã cọc' từ 7 sheet phân khúc theo Mã SP\n" +
+        "3. Làm mới dữ liệu tab DATA_NHA & cập nhật trang Kho Nhà Blogger\n\n" +
+        "⏱ Quá trình chạy mất khoảng 1 - 2 phút. Báo cáo tổng kết sẽ tự động gửi về đây sau khi hoàn tất!";
+    } else {
+      reply = "⚠️ <b>KHÔNG THỂ KÍCH HOẠT GITHUB ACTIONS!</b>\n\n" +
+        "Chi tiết: " + ghRes.message + "\n\n" +
+        "💡 <i>Vui lòng đảm bảo đã thêm <code>GITHUB_PAT</code> (GitHub Personal Access Token) vào Project Settings -> Script Properties trong Google Apps Script.</i>";
+    }
+
+    sendTelegramMessage(chatId, reply);
+    return createJsonResponse({ status: "ok" });
+  }
+
+  // 2. Lệnh QUÉT THIẾU MÃ: /thieuma, /thieu_ma, quét thiếu mã, thiếu mã
+  if (lowerText === "/thieuma" || lowerText === "/thieu_ma" || lowerText === "quét thiếu mã" || lowerText === "thiếu mã" || lowerText === "thieu ma") {
+    var report = getMissingCodeReport();
+    sendTelegramMessage(chatId, report);
+    return createJsonResponse({ status: "ok" });
+  }
+
+  // 3. Lệnh TRỢ GIÚP: /help, /start, /menu, hướng dẫn
+  if (lowerText === "/help" || lowerText === "/start" || lowerText === "/menu" || lowerText === "menu" || lowerText === "hướng dẫn") {
+    var helpMsg = "🤖 <b>BẢNG ĐIỀU KHIỂN TELEGRAM BOT - KHO NHÀ HỒNG CHÂU</b>\n\n" +
+      "📋 <b>CÁC LỆNH TỰ ĐỘNG 24/7:</b>\n" +
+      "• <code>/dongbo</code> hoặc <code>/sync</code>: Kích hoạt đám mây cào tin mới từ Nhadat247, đối chiếu 'Đã bán' từ 7 sheet và cập nhật lên Blogger.\n" +
+      "• <code>/thieuma</code>: Quét toàn bộ tin đang bán nhưng chưa có Mã SP để bổ sung.\n" +
+      "• <code>/khach Tên - SĐT - Nhu cầu</code>: Lưu nhanh khách hàng vào CRM (tab DS KHÁCH HÀNG).\n" +
+      "• <code>/menu</code> hoặc <code>/help</code>: Xem bảng hướng dẫn này.\n\n" +
+      "💡 <b>Mẹo nhập khách nhanh:</b>\n" +
+      "Bạn có thể nhắn tin tự nhiên chứa số điện thoại (ví dụ: <i>Chị Lan 0912345678 cần mua nhà Gò Vấp 6 tỷ</i>), Bot sẽ tự động nhận diện và lưu vào Sheet!";
+    sendTelegramMessage(chatId, helpMsg);
+    return createJsonResponse({ status: "ok" });
+  }
+
+  // 4. Lệnh / Nhắn tin NHẬP KHÁCH CRM: /khach ... HOẶC tin nhắn chứa SĐT 10 số
+  var isKhachCmd = lowerText.startsWith("/khach") || lowerText.startsWith("/crm") || lowerText.startsWith("/kh ");
+  var hasPhone = /\b(0\d{9})\b/.test(text);
+
+  if (isKhachCmd || hasPhone) {
+    var parsed = parseCustomerMessage(text);
+    if (!parsed.phone) {
+      sendTelegramMessage(chatId, "⚠️ <b>Chưa nhận diện được Số Điện Thoại!</b>\n\nVui lòng nhập SĐT 10 số bắt đầu bằng số 0.\n<i>Ví dụ:</i> <code>/khach Anh Minh - 0903123456 - Tìm nhà HXH 4-5 tỷ</code>");
+      return createJsonResponse({ status: "ok" });
+    }
+
+    try {
+      var saveRes = saveCustomerFromTelegram(parsed.name, parsed.phone, parsed.note);
+      var succMsg = "✅ <b>ĐÃ LƯU KHÁCH HÀNG THÀNH CÔNG VÀO CRM!</b>\n\n" +
+        "👤 <b>Khách hàng:</b> " + saveRes.name + "\n" +
+        "📞 <b>SĐT:</b> <code>" + saveRes.phone + "</code>\n" +
+        "📝 <b>Nhu cầu:</b> " + saveRes.requirement + "\n" +
+        "📍 <b>Vị trí lưu:</b> Dòng <b>" + saveRes.row + "</b> (STT: " + saveRes.stt + ") tab <code>" + CONFIG.CUSTOMER_SHEET_NAME + "</code>\n" +
+        "⏰ <b>Thời gian:</b> " + saveRes.time;
+      sendTelegramMessage(chatId, succMsg);
+    } catch (errSave) {
+      sendTelegramMessage(chatId, "❌ <b>Lỗi lưu khách hàng:</b> " + errSave.toString());
+    }
+    return createJsonResponse({ status: "ok" });
+  }
+
+  // Phản hồi mặc định nếu tin nhắn không khớp lệnh nào
+  sendTelegramMessage(chatId, "👋 Chào bạn! Gõ <code>/menu</code> hoặc <code>/help</code> để xem danh sách lệnh điều khiển hệ thống.");
+  return createJsonResponse({ status: "ok" });
+}
+
+/**
+ * Bóc tách nội dung tin nhắn nhập khách (dạng lệnh /khach hoặc tin nhắn tự nhiên)
+ */
+function parseCustomerMessage(text) {
+  var cleanText = text.replace(/^\/(?:khach|crm|kh)\s*/i, "").trim();
+  
+  // Tìm số điện thoại 10 số (bắt đầu bằng 0)
+  var phoneMatch = cleanText.match(/\b(0\d{9})\b/);
+  var phone = phoneMatch ? phoneMatch[1] : "";
+  
+  var name = "";
+  var note = "";
+
+  if (cleanText.indexOf("-") !== -1) {
+    var parts = cleanText.split("-").map(function(s) { return s.trim(); });
+    if (parts.length >= 3) {
+      name = parts[0];
+      if (!phone && parts[1].match(/\b(0\d{9})\b/)) {
+        phone = parts[1].match(/\b(0\d{9})\b/)[1];
+      }
+      note = parts.slice(2).join(" - ");
+    } else if (parts.length === 2) {
+      name = parts[0];
+      note = parts[1];
+    }
+  } else if (cleanText.indexOf(",") !== -1) {
+    var parts = cleanText.split(",").map(function(s) { return s.trim(); });
+    if (parts.length >= 3) {
+      name = parts[0];
+      if (!phone && parts[1].match(/\b(0\d{9})\b/)) {
+        phone = parts[1].match(/\b(0\d{9})\b/)[1];
+      }
+      note = parts.slice(2).join(", ");
+    } else if (parts.length === 2) {
+      name = parts[0];
+      note = parts[1];
+    }
+  }
+
+  // Nếu chưa tách được tên/nhu cầu, dùng vị trí của SĐT
+  if ((!name || !note) && phoneMatch) {
+    var pIdx = cleanText.indexOf(phone);
+    var before = cleanText.substring(0, pIdx).replace(/[-:,]/g, "").trim();
+    var after = cleanText.substring(pIdx + phone.length).replace(/^[-:,]/, "").trim();
+    if (!name) name = before || "Khách Telegram";
+    if (!note) note = after || "Cần tư vấn bất động sản";
+  }
+
+  if (!name) name = "Khách Telegram";
+  if (!note) note = "Cần tư vấn bất động sản";
+
+  return {
+    name: name,
+    phone: phone,
+    note: note
+  };
+}
+
+/**
+ * Lưu khách hàng từ Telegram vào tab `DS KHÁCH HÀNG`
+ */
+function saveCustomerFromTelegram(clientName, clientPhone, clientNote) {
+  var ss = getSpreadsheet();
+  if (!ss) throw new Error("Không thể kết nối đến Google Sheet!");
+
+  var sheet = ss.getSheetByName(CONFIG.CUSTOMER_SHEET_NAME);
+  if (!sheet) throw new Error("Không tìm thấy tab " + CONFIG.CUSTOMER_SHEET_NAME);
+
+  var data = sheet.getDataRange().getValues();
+  var headers = data[0];
+  var lastRow = sheet.getLastRow();
+
+  var sttColIdx = 0;
+  var nameColIdx = 1;
+  var phoneColIdx = 5;
+
+  for (var c = 0; c < headers.length; c++) {
+    var h = headers[c].toString().toLowerCase().trim();
+    if (h === "stt") sttColIdx = c;
+    if (h.indexOf("tên") !== -1) nameColIdx = c;
+    if (h.indexOf("số điện thoại") !== -1 || h.indexOf("sđt") !== -1) phoneColIdx = c;
+  }
+
+  var lastRealRow = 1;
+  var lastRealSTT = 0;
+
+  if (lastRow > 1) {
+    var numRowsToScan = lastRow - 1;
+    var values = sheet.getRange(2, 1, numRowsToScan, headers.length).getValues();
+
+    for (var r = 0; r < values.length; r++) {
+      var currentRowNum = r + 2;
+      var row = values[r];
+      var nameVal = (nameColIdx >= 0 && row[nameColIdx] !== undefined) ? row[nameColIdx].toString().trim() : "";
+      var phoneVal = (phoneColIdx >= 0 && row[phoneColIdx] !== undefined) ? row[phoneColIdx].toString().trim() : "";
+
+      if (nameVal !== "" || phoneVal !== "") {
+        lastRealRow = currentRowNum;
+        var sttVal = parseInt(row[sttColIdx]);
+        if (!isNaN(sttVal)) {
+          lastRealSTT = sttVal;
+        }
+      }
+    }
+  }
+
+  var targetRow = lastRealRow + 1;
+  var nextSTT = (lastRealSTT > 0) ? (lastRealSTT + 1) : (targetRow - 1);
+  if (nextSTT < 1) nextSTT = 1;
+
+  var nowStr = Utilities.formatDate(new Date(), "Asia/Ho_Chi_Minh", "dd/MM/yyyy HH:mm");
+  var rowData = new Array(headers.length).fill("");
+
+  function setColValue(keywordList, value) {
+    for (var colIdx = 0; colIdx < headers.length; colIdx++) {
+      var hName = headers[colIdx].toString().toLowerCase().trim();
+      for (var k = 0; k < keywordList.length; k++) {
+        if (hName.indexOf(keywordList[k].toLowerCase()) !== -1) {
+          rowData[colIdx] = value;
+          return;
+        }
+      }
+    }
+  }
+
+  setColValue(["stt"], nextSTT);
+  setColValue(["tên liên lạc", "tên"], clientName);
+  setColValue(["kênh liên lạc"], "Telegram Bot (Hồng Châu nhập nhanh)");
+  setColValue(["yêu cầu của kh", "yêu cầu"], clientNote);
+  setColValue(["phân loại"], "Tệp Khách Nóng");
+  setColValue(["số điện thoại", "sđt", "điện thoại"], "'" + clientPhone);
+  setColValue(["kênh đăng tin"], "Telegram Bot");
+  setColValue(["hành động"], "Cần liên hệ tư vấn");
+  setColValue(["sản phẩm khách liên lạc hỏi", "sản phẩm"], "Nhập nhanh từ Telegram");
+  setColValue(["nhu cầu phát sinh"], "Nhập nhanh từ Telegram Bot");
+  setColValue(["tương tác cuối"], nowStr);
+  setColValue(["giai đoạn gần nhất", "giai đoạn"], "Mới tiếp nhận");
+
+  if (targetRow > sheet.getMaxRows()) {
+    sheet.insertRowAfter(sheet.getMaxRows());
+  }
+
+  sheet.getRange(targetRow, 1, 1, rowData.length).setValues([rowData]);
+
+  return {
+    status: "success",
+    stt: nextSTT,
+    row: targetRow,
+    name: clientName,
+    phone: clientPhone,
+    requirement: clientNote,
+    time: nowStr
+  };
+}
+
+/**
+ * Kích hoạt GitHub Actions qua REST API (workflow_dispatch)
+ */
+function triggerGitHubWorkflow() {
+  var pat = PropertiesService.getScriptProperties().getProperty("GITHUB_PAT");
+  if (!pat) {
+    return {
+      success: false,
+      message: "Chưa cấu hình GITHUB_PAT trong Script Properties!"
+    };
+  }
+
+  var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/workflows/" + CONFIG.GITHUB_WORKFLOW + "/dispatches";
+  var payload = JSON.stringify({ ref: "main" });
+  var options = {
+    method: "post",
+    contentType: "application/json",
+    headers: {
+      "Authorization": "Bearer " + pat,
+      "Accept": "application/vnd.github.v3+json",
+      "User-Agent": "Google-Apps-Script-Telegram-Bot"
+    },
+    payload: payload,
+    muteHttpExceptions: true
+  };
+
+  try {
+    var response = UrlFetchApp.fetch(url, options);
+    var code = response.getResponseCode();
+    if (code === 204 || code === 200 || code === 201) {
+      return { success: true, message: "Kích hoạt GitHub Actions thành công!" };
+    } else {
+      return { success: false, message: "GitHub API trả về mã lỗi: " + code + " - " + response.getContentText() };
+    }
+  } catch (err) {
+    return { success: false, message: "Lỗi kết nối GitHub API: " + err.toString() };
+  }
+}
+
+/**
+ * Gửi tin nhắn Telegram
+ */
+function sendTelegramMessage(chatId, text, parseMode) {
+  var url = "https://api.telegram.org/bot" + CONFIG.TELEGRAM_BOT_TOKEN + "/sendMessage";
+  var payload = {
+    chat_id: chatId || CONFIG.TELEGRAM_CHAT_ID,
+    text: text,
+    parse_mode: parseMode || "HTML",
+    disable_web_page_preview: true
+  };
+  var options = {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  };
+
+  try {
+    var response = UrlFetchApp.fetch(url, options);
+    return JSON.parse(response.getContentText());
+  } catch (err) {
+    Logger.log("Lỗi gửi Telegram: " + err);
+    return null;
+  }
+}
+
+/**
+ * Quét danh sách tin đang bán nhưng thiếu Mã SP
+ */
+function getMissingCodeReport() {
+  var ss = getSpreadsheet();
+  if (!ss) return "Không tìm thấy Spreadsheet.";
+
+  var sheet = ss.getSheetByName(CONFIG.DATA_NHA_SHEET_NAME);
+  if (!sheet || sheet.getLastRow() <= 1) return "Kho dữ liệu DATA_NHA trống.";
+
+  var data = sheet.getDataRange().getValues();
+  var missingList = [];
+  var invalidCodes = ["", "SP", "TIN", "BDS", "MSP", "DE", "VA"];
+
+  for (var r = 1; r < data.length; r++) {
+    var row = data[r];
+    var id = (row[0] || "").toString().trim();
+    var title = (row[1] || "").toString().trim();
+    var price = (row[3] || "").toString().trim();
+    var url = (row[11] || "").toString().trim();
+    var status = (row[18] || "").toString().trim();
+    var code = (row[19] || "").toString().trim().toUpperCase().replace(/\s+/g, "");
+
+    // Chỉ xét các tin đang bán
+    var isSold = status.indexOf("Đã bán") !== -1 || status.indexOf("Đã cọc") !== -1;
+    if (!isSold) {
+      var hasDigit = false;
+      for (var c = 0; c < code.length; c++) {
+        if (code[c] >= '0' && code[c] <= '9') {
+          hasDigit = true;
+          break;
+        }
+      }
+      if (!code || invalidCodes.indexOf(code) !== -1 || !hasDigit) {
+        missingList.push({
+          row: r + 1,
+          id: id,
+          title: title,
+          price: price,
+          url: url
+        });
+      }
+    }
+  }
+
+  if (missingList.length === 0) {
+    return "🎉 <b>Tuyệt vời!</b> Toàn bộ các căn đang bán trên kho nhà đều đã có <b>Mã SP</b> chuẩn xác!";
+  }
+
+  var msg = "⚠️ <b>DANH SÁCH TIN ĐANG BÁN THIẾU MÃ SP (" + missingList.length + " căn):</b>\n\n";
+  var limit = Math.min(missingList.length, 12);
+  for (var i = 0; i < limit; i++) {
+    var it = missingList[i];
+    msg += (i + 1) + ". <b>" + it.title.substring(0, 42) + "</b> (" + it.price + ")\n";
+    msg += "   Mã tin: <code>" + it.id + "</code> | Dòng: " + it.row + "\n";
+    if (it.url) {
+      msg += "   🔗 <a href=\"" + it.url + "\">Xem tin Nhadat247</a>\n";
+    }
+    msg += "\n";
+  }
+
+  if (missingList.length > limit) {
+    msg += "<i>... và còn " + (missingList.length - limit) + " căn khác chưa có mã SP trên tab DATA_NHA.</i>\n";
+  }
+  msg += "👉 Bổ sung mã vào mô tả tin nhadat247 hoặc nhập trực tiếp Cột 20 tab DATA_NHA!";
+  return msg;
+}
+
+/**
+ * Đăng ký Webhook cho Telegram Bot kết nối tới Google Apps Script Web App
+ * Chạy hàm này 1 lần duy nhất từ Apps Script Editor sau khi triển khai Web App
+ */
+function setupTelegramWebhook() {
+  var webAppUrl = ScriptApp.getService().getUrl();
+  if (!webAppUrl) {
+    Logger.log("Chưa triển khai Web App hoặc không lấy được Web App URL.");
+    return "Vui lòng triển khai Web App (Deploy as Web App) trước!";
+  }
+  var url = "https://api.telegram.org/bot" + CONFIG.TELEGRAM_BOT_TOKEN + "/setWebhook?url=" + encodeURIComponent(webAppUrl);
+  var response = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+  var resText = response.getContentText();
+  Logger.log("Kết quả setWebhook: " + resText);
+  
+  // Gửi thông báo test qua Telegram
+  try {
+    sendTelegramMessage(CONFIG.TELEGRAM_CHAT_ID, "🚀 <b>Telegram Webhook đã được kích hoạt thành công!</b>\n\nSẵn sàng nhận lệnh:\n• <code>/dongbo</code> - Đồng bộ tin\n• <code>/thieuma</code> - Quét thiếu mã\n• <code>/khach</code> - Nhập CRM\n• <code>/menu</code> - Bảng hướng dẫn");
+  } catch (e) {}
+
+  return resText;
 }

@@ -173,6 +173,30 @@ def fetch_traffic_report() -> dict:
     return default_report
 
 
+def audit_missing_internal_codes(listings: list) -> list:
+    """
+    Quét và báo cáo danh sách tin đăng đang mở bán nhưng thiếu Mã SP hợp lệ
+    (hoặc bị dính chuỗi rác như SP, TIN, BDS).
+    In danh sách kèm link trực tiếp ra console để tiện sửa trên nhadat247.vn.
+    """
+    missing_items = []
+    invalid_codes = {"", "SP", "TIN", "BDS", "MSP", "DE", "VA"}
+    for item in listings:
+        if item.get("status") == "active" and not item.get("is_sold"):
+            code = (item.get("internal_code") or "").strip().upper()
+            if not code or code in invalid_codes or not any(c.isdigit() for c in code):
+                missing_items.append(item)
+
+    if missing_items:
+        logger.warning(f"⚠️ PHÁT HIỆN {len(missing_items)} CĂN ĐANG BÁN THIẾU MÃ SP HỢP LỆ:")
+        for idx, item in enumerate(missing_items, 1):
+            logger.warning(f"  {idx}. [{item.get('id')}] {item.get('title', '')[:45]} | {item.get('price_text', '')} | {item.get('url', '')}")
+    else:
+        logger.info("✅ Toàn bộ các căn đang mở bán đều có Mã SP hợp lệ!")
+
+    return missing_items
+
+
 def main():
     logger.info("==================================================================")
     logger.info("BẮT ĐẦU CHU KỲ TỰ ĐỘNG ĐỒNG BỘ: HỒNG CHÂU - NHÀ ƯNG Ý")
@@ -197,6 +221,9 @@ def main():
     if overrides_applied > 0:
         with open(DEFAULT_OUTPUT_PATH, "w", encoding="utf-8") as f:
             json.dump(current_listings, f, ensure_ascii=False, indent=2)
+
+    # 2.2 Quét và audit các tin đang bán nhưng thiếu Mã SP nội bộ
+    missing_code_listings = audit_missing_internal_codes(current_listings)
 
     # 3. Bước 2: Theo dõi biến động giá & báo giảm chào
     dropped_items = track_and_alert_price_drops(current_listings, PRICE_HISTORY_PATH)
