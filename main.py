@@ -134,9 +134,13 @@ def sync_sheet_overrides_from_gas(listings: list) -> int:
                                 item["cashflow_subtype"] = cf_val
                                 override_count += 1
 
-                        # 4. Mã SP (internal_code)
+                        # 4. Mã SP (internal_code) - Chỉ chấp nhận mã hợp lệ có chứa số
                         if g_item.get("internal_code"):
-                            item["internal_code"] = str(g_item.get("internal_code")).strip().upper()
+                            val_code = str(g_item.get("internal_code")).strip().upper()
+                            if val_code not in ["SP", "TIN", "BDS", "MSP", "DE", "VA"] and any(c.isdigit() for c in val_code):
+                                item["internal_code"] = val_code
+                            else:
+                                item["internal_code"] = ""
 
                 if override_count > 0:
                     logger.info(f"Đã đồng bộ {override_count} cập nhật trạng thái/mục đích/dòng tiền từ Google Sheet vào dữ liệu.")
