@@ -1,4 +1,104 @@
 {
+  "1f1f80a16a14": {
+    "price_ty": 9.4,
+    "title": "NHÀ ĐẸP 5 TẦNG BỀ THẾ KHU PHÂN LÔ, HẺM 5M ĐẾN NHÀ, 6PN CÓ THANG MÁY, 9 TỶ HƠN TL",
+    "updated_at": "21:06 25/11/2026"
+  },
+  "7777f93f3f46": {
+    "price_ty": 8.95,
+    "title": "NHÀ ĐẸP BTCT MẶT TIỀN HẺM GẦN CHỢ, HẺM 6M XE HƠI ĐẾN NHÀ, 8 TỶ HƠN TL",
+    "updated_at": "21:02 25/11/2026"
+  },
+  "796be5a5e06f": {
+    "price_ty": 7.85,
+    "title": "NHÀ BTCT HẺM THÔNG 4M PHẠM VĂN BẠCH, 5PN CHO THUÊ TỐT, 7 TỶ HƠN TL",
+    "updated_at": "20:58 25/11/2026"
+  },
+  "34e804e091b0": {
+    "price_ty": 8.98,
+    "title": "NHÀ ĐẸP 5 TẦNG BỀ THẾ, NGANG 6M, 6PN, GẦN PHAN HUY ÍCH, 8 TỶ HƠN TL",
+    "updated_at": "20:54 25/11/2026"
+  },
+  "1c5e19169cdb": {
+    "price_ty": 6.49,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 4PN, QUANG TRUNG, CÓ SÂN THƯỢNG, HẺM XE HƠI THÔNG, 6 TỶ HƠN TL",
+    "updated_at": "20:50 25/11/2026"
+  },
+  "2d032d12044b": {
+    "price_ty": 5.7,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT Ở NGAY, PHẠM VĂN CHIÊU, 3PN, 5 TỶ HƠN TL",
+    "updated_at": "20:47 25/11/2026"
+  },
+  "f7f416055593": {
+    "price_ty": 3.6,
+    "title": "ĐẤT PHÂN LÔ TRỤC TÂN THỚI HIỆP 21, HẺM 6M ĐẬU XE HƠI THOẢI MÁI, 3 TỶ HƠN TL",
+    "updated_at": "20:42 25/11/2026"
+  },
+  "61d38f263bce": {
+    "price_ty": 5.79,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT, HẺM 6M 1 TRỤC GẦN NGUYỄN VĂN KHỐI, 5 TỶ HƠN TL",
+    "updated_at": "20:42 25/11/2026"
+  },
+  "cbd8ff90a54f": {
+    "price_ty": 3.5,
+    "title": "NHÀ NHỎ KHU NHÀ GIÀU, HẺM XE HƠI 6M THÔNG, 3 TỶ HƠN TL",
+    "updated_at": "20:39 25/11/2026"
+  },
+  "98ba7977dd40": {
+    "price_ty": 8.9,
+    "title": "NHÀ ĐẸP BTCT SÁT QUANG TRUNG, 5 TẦNG HẺM 7M RỘNG, 8 TỶ HƠN TL",
+    "updated_at": "20:33 25/11/2026"
+  },
+  "fce77849e4d0": {
+    "price_ty": 3.7,
+    "title": "NHÀ BTCT GẦN NGUYỄN VĂN KHỐI, 2PN, 3 TỶ HƠN TL",
+    "updated_at": "20:28 25/11/2026"
+  },
+  "d8e7f987f034": {
+    "price_ty": 4.5,
+    "title": "NHÀ BTCT GẦN NGUYỄN VĂN KHỐI, HẺM XE HƠI ĐẾN NHÀ, 4 TỶ HƠN TL",
+    "updated_at": "20:26 25/11/2026"
+  },
+  "102347fcca2e": {
+    "price_ty": 5.88,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT GẦN NGUYỄN VĂN KHỐI, 3PN, HẺM XE HƠI, 5 TỶ HƠN TL",
+    "updated_at": "20:21 25/11/2026"
+  },
+  "67ba021f4f9a": {
+    "price_ty": 5.86,
+    "title": "NHÀ ĐẸP BTCT GẦN NGUYỄN VĂN KHỐI 3 TẦNG Ở NGAY, 5 TỶ HƠN TL",
+    "updated_at": "20:16 25/11/2026"
+  },
+  "fd2798f47d7f": {
+    "price_ty": 5.8,
+    "title": "NHÀ BTCT 5PN 71M2 GẦN NGUYỄN VĂN KHỐI, 5 TỶ HƠN TL",
+    "updated_at": "11:58 25/11/2026"
+  },
+  "a781bc7d5437": {
+    "price_ty": 5.7,
+    "title": "NHÀ BTCT GẦN CHỢ HẠNH THÔNG TÂY, 3PN Ở NGAY, 5 TỶ HƠN TL",
+    "updated_at": "11:55 25/11/2026"
+  },
+  "fa3e555f47e9": {
+    "price_ty": 6.15,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 4PN, NGUYỄN VĂN KHỐI, 6 TỶ HƠN TL",
+    "updated_at": "11:51 25/11/2026"
+  },
+  "6b32b7718360": {
+    "price_ty": 5.2,
+    "title": "NHÀ ĐẸP BTCT PHẠM VĂN CHIÊU, KHU CAO TẦNG HẺM 4M THOÁNG, 5 TỶ HƠN TL",
+    "updated_at": "11:48 25/11/2026"
+  },
+  "542aafb57b9e": {
+    "price_ty": 5.2,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 3PN, GẦN NGUYỄN VĂN KHỐI, GẤP BÁN CÒN 5 TỶ NHỎ TL",
+    "updated_at": "11:12 25/11/2026"
+  },
+  "c3f8693b5633": {
+    "price_ty": 5.3,
+    "title": "NHÀ CŨ TIỆN XÂY MỚI 56M2, HẺM 6M KHU CAO TẦNG CỰC ĐẸP, 5 TỶ HƠN TL",
+    "updated_at": "11:08 25/11/2026"
+  },
   "3200fe6a68bc": {
     "price_ty": 5.28,
     "title": "NHÀ ĐẸP FULL NỘI THẤT NGUYỄN VĂN KHỐI, Ở NGAY, CHỈ 5 TỶ HƠN TL",
