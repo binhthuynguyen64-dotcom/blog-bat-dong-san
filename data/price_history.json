@@ -1,4 +1,89 @@
 {
+  "2c7f7e095808": {
+    "price_ty": 6.0,
+    "title": "NHÀ BTCT 5 PHÒNG ĐỂ Ở HOẶC CHO THUÊ, SAU LƯNG CVPM QUANG TRUNG, 6 TỶ TL",
+    "updated_at": "21:07 26/11/2026"
+  },
+  "e037114cf659": {
+    "price_ty": 3.0,
+    "title": "MTKD HÀ ĐẶC, ĐƯỜNG 8M THÔNG SẦM UẤT, 3 TỶ TL",
+    "updated_at": "21:03 26/11/2026"
+  },
+  "a043fc04a66f": {
+    "price_ty": 3.95,
+    "title": "DÃY TRỌ 4 PHÒNG GẦN NGUYỄN ẢNH THỦ, GẤP BÁN CÒN 3 TỶ HƠN TL",
+    "updated_at": "20:59 26/11/2026"
+  },
+  "8b3be492d12c": {
+    "price_ty": 3.9,
+    "title": "NHÀ BTCT NGANG 6M HIẾM, GẦN TÔ KÝ, HẺM XE HƠI THÔNG, 3 TỶ HƠN TL",
+    "updated_at": "20:59 26/11/2026"
+  },
+  "f37b3eaedda7": {
+    "price_ty": 4.8,
+    "title": "MTKD TRẦN THỊ HÈ, HẺM 6M THÔNG SẦM UẤT, FULL NỘI THẤT Ở NGAY, 4 TỶ HƠN TL",
+    "updated_at": "20:48 26/11/2026"
+  },
+  "a795587d3675": {
+    "price_ty": 4.05,
+    "title": "NHÀ BTCT GẦN TÔ KÝ ĐI NGUYỄN VĂN QUÁ, GẤP BÁN CÒN 4 TỶ NHỎ TL",
+    "updated_at": "20:46 26/11/2026"
+  },
+  "bcb0da5e35f3": {
+    "price_ty": 3.9,
+    "title": "NHÀ TO GẦN NGUYỄN THỊ KIỂU, BTCT Ở NGAY, 3 TỶ HƠN TL",
+    "updated_at": "20:43 26/11/2026"
+  },
+  "f41446618a8e": {
+    "price_ty": 3.3,
+    "title": "ĐẤT TRỐNG TIỆN XÂY MỚI, SAU LƯNG CVPM QUANG TRUNG, HẺM XE HƠI, 3 TỶ NHỎ TL",
+    "updated_at": "20:41 26/11/2026"
+  },
+  "9f5680ff8e3a": {
+    "price_ty": 4.75,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT LÊ VĂN KHƯƠNG, 3PN 65M2, HẺM 6M ĐẾN NHÀ, 4 TỶ HƠN TL",
+    "updated_at": "20:40 26/11/2026"
+  },
+  "4b85575aef19": {
+    "price_ty": 4.98,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT NGUYỄN THỊ KIỂU, NGANG 5M HIẾM, GẦN CHỢ, 4 TỶ HƠN TL",
+    "updated_at": "20:35 26/11/2026"
+  },
+  "f0e20078c485": {
+    "price_ty": 3.5,
+    "title": "ĐẤT TRỐNG TIỆN XÂY MỚI, HẺM XE HƠI HUỲNH THỊ HAI, 56M2, 3 TỶ HƠN TL",
+    "updated_at": "20:31 26/11/2026"
+  },
+  "f773acacd70a": {
+    "price_ty": 4.79,
+    "title": "ĐẤT TRỐNG TIỆN XÂY MỚI, 80M2 HẺM XE HƠI TRƯƠNG THỊ HOA, 4 TỶ NHỎ TL",
+    "updated_at": "20:30 26/11/2026"
+  },
+  "32c65466a719": {
+    "price_ty": 4.99,
+    "title": "NHÀ BTCT 5PN LÊ VĂN KHƯƠNG, HẺM 5M ĐẾN NHÀ, GẤP BÁN CÒN 4 TỶ HƠN TL",
+    "updated_at": "20:24 26/11/2026"
+  },
+  "dda10148300b": {
+    "price_ty": 4.98,
+    "title": "NHÀ ĐẸP FULL NỘI THẤT, 3PN, HẺM XE HƠI TRẦN THỊ CỜ, GẤP BÁN CÒN 4 TỶ HƠN TL",
+    "updated_at": "20:17 26/11/2026"
+  },
+  "6ecdf4701203": {
+    "price_ty": 3.1,
+    "title": "NHÀ NHỎ NGAY NGUYỄN VĂN QUÁ, 3 TỶ NHỎ TL",
+    "updated_at": "20:14 26/11/2026"
+  },
+  "4593969ca3df": {
+    "price_ty": 2.05,
+    "title": "NHÀ ĐẸP LÊ VĂN KHƯƠNG, BTCT 3PN FULL NỘI THẤT, 2 TỶ NHỎ TL",
+    "updated_at": "20:13 26/11/2026"
+  },
+  "de8ea41673d8": {
+    "price_ty": 2.9,
+    "title": "NHÀ RỘNG NGAY TÂN THỚI HIỆP 21, 2 TỶ HƠN TL",
+    "updated_at": "20:11 26/11/2026"
+  },
   "5c61b9757ad0": {
     "price_ty": 3.35,
     "title": "NHÀ BTCT GẦN NGUYỄN VĂN QUÁ, 52M2, 3 TỶ NHỎ TL",
