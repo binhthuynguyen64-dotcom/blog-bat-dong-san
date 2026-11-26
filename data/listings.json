@@ -1,5 +1,2426 @@
 [
   {
+    "id": "5c61b9757ad0",
+    "internal_code": "CT1-44",
+    "title": "NHÀ BTCT GẦN NGUYỄN VĂN QUÁ, 52M2, 3 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-btct-gan-nguyen-van-qua-52m2-3-ty-nho-tl-5c61b9757ad0",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/134afa75-f69d-4124-ad9f-6be8de289964-e6e22c29-545c-487f-9bed-d55edd23cb96.jpeg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/134afa75-f69d-4124-ad9f-6be8de289964-e6e22c29-545c-487f-9bed-d55edd23cb96.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/a3ac9186-4d0e-4c2a-9315-f953c9b4e068-9628be3c-fdc4-4536-9e57-831bd33a675f.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/14d9b8f0-0b40-4c4e-a1c3-62aaa40d7b12-b2ccf3ce-dfd1-4ba6-86c1-2760ab8a357c.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/2ac30011-ff9a-4f87-834c-cf8dbde7a91b-04dc0bf2-f31b-4459-93f3-12fcdd26f0e9.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/48daa3a1-f8ba-4af6-833b-ddbc8b4469c4-87def61e-29b9-4904-865c-bfd9cb86311a.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/cdbfcf6e-136e-4a0b-aabe-43fb1128c49a-7cdd8b61-d257-4740-b991-850ad0994fa3.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/b30f8091-1138-4b48-b4a1-ceef0317ed21-bf8a6749-1da6-4013-a129-6391d392f375.jpeg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 52.0,
+    "bedrooms": 2,
+    "price_ty": 3.35,
+    "price_text": "3.35 tỷ",
+    "frontage_m": 4.5,
+    "alley_width_m": 2.0,
+    "alley_type": "Hẻm xe máy (2m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: gần đường Nguyễn Văn Quá, Song Hành đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT mới đẹp dọn vào ở ngay, 1 trệt 1 gác có thể làm 3 phòng, 1 phòng dưới trệt. Nhà gần đầu hẻm.\n✅ Mã SP: CT1-44\n📞 Gọi/Zalo Châu 0783.515.486 để...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:44 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:25"
+  },
+  {
+    "id": "25404df5ffc6",
+    "internal_code": "CT3-01",
+    "title": "NHÀ BTCT GẦN CẤP 2 PHAN BỘI CHÂU, 3 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-btct-gan-cap-2-phan-boi-chau-3-ty-hon-tl-25404df5ffc6",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/123m-1d78334a-mgkayeh8-71-13-9d4157a6-09b7-46e4-8964-a608d0e2100c.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/123m-1d78334a-mgkayeh8-71-13-9d4157a6-09b7-46e4-8964-a608d0e2100c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/123m-1d78334a-mgkayeh8-67-12-bb0bbbca-c85f-44eb-960e-0eb78becf297.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/123m-1d78334a-mgkayeh8-79-16-21a7296d-b74d-432d-b802-558a4478244b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/123m-1d78334a-mgkayeh8-74-14-d6971a6d-86d1-48d0-acb0-6e8e1408229e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/123m-1d78334a-mgkayeh8-81-17-cf4d238d-b9a5-431e-b25a-3bb7f9fddb4a.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 45.0,
+    "bedrooms": 0,
+    "price_ty": 3.55,
+    "price_text": "3.55 tỷ",
+    "frontage_m": 4.7,
+    "alley_width_m": 2.0,
+    "alley_type": "Hẻm xe máy (2m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: đường Nguyễn Thị Gạch gần THCS Phan Bội Châu, gần đường Nguyễn Văn Quá, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT dọn vào ở ngay, có thể cải tạo hoặc xây mới theo ý thích. Khu dân cư hiện hữu, sầm uất, gần chợ và trườn...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:40 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:28"
+  },
+  {
+    "id": "c17d01189e6e",
+    "internal_code": "CT3-06",
+    "title": "NHÀ ĐẸP NGUYỄN VĂN QUÁ TIỆN ĐI TRƯỜNG CHINH, BTCT Ở NGAY, 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-nguyen-van-qua-tien-di-truong-chinh-btct-o-ngay-4-ty-nho-tl-c17d01189e6e",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/11/26/8241221f-4a83-4691-85cd-dd3b4dcd2676-8c56447c-b597-45db-a821-d5b2823d8645.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/11/26/8241221f-4a83-4691-85cd-dd3b4dcd2676-8c56447c-b597-45db-a821-d5b2823d8645.jpg",
+      "https://cdn.nhadat247.vn/2026/11/26/fec3e984-2f76-4fbe-8b5e-61c426deb01d-b659204a-6876-43dc-bfcc-5051a008ba7c.jpg",
+      "https://cdn.nhadat247.vn/2026/11/26/85a66c84-023c-49a0-9396-ba29ae659f66-b296ea6a-63d4-4267-be21-c447dfa62aa6.jpg",
+      "https://cdn.nhadat247.vn/2026/11/26/f3c35f93-0561-4f92-bc9d-63f27ef16518-42319471-e718-4b4b-aedd-bbf2687b85b5.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 48.0,
+    "bedrooms": 2,
+    "price_ty": 4.1,
+    "price_text": "4.1 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 2.5,
+    "alley_type": "Hẻm xe máy (2.5m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: gần đường Nguyễn Văn Quá, Tô Ký, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT mới đẹp dọn vào ở ngay.\n✅ Mã SP: CT3-06\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:39 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:30"
+  },
+  {
+    "id": "22df0a74de2d",
+    "internal_code": "CT3-37",
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 92M2, HẺM XE HƠI 6M KHU ĐỒNG BỘ PHÂN LÔ, 4 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-92m2-hem-xe-hoi-6m-khu-dong-bo-phan-lo-4-ty-hon-tl-22df0a74de2d",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/2hhe-3a81b1a6-mckgp6z4-35-9-e2898861-afa4-4a9b-9c0b-48eaf2e41689.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/2hhe-3a81b1a6-mckgp6z4-35-9-e2898861-afa4-4a9b-9c0b-48eaf2e41689.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hhe-3a81b1a6-mckgp6z4-45-13-7e865f30-6efd-4822-9cf3-c19d2e13d622.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hhe-3a81b1a6-mckgp6z4-48-14-eee4dfc8-f098-45db-93b2-0b0e8c261295.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hhe-3a81b1a6-mckgp6z4-50-15-4fc5f23d-5268-4d3a-b1bc-6917be48274c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hhe-3a81b1a6-mckgp6z4-51-16-1bc5d24e-164d-447a-a583-46289d1392e1.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 92.0,
+    "bedrooms": 2,
+    "price_ty": 4.25,
+    "price_text": "4.25 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: Khu phân lô đồng bộ Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Nhà full nội thất, BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh, yên tĩnh. Hẻm xe hơi ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:36 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:32"
+  },
+  {
+    "id": "7eea916370d1",
+    "internal_code": "CT3-39",
+    "title": "NHÀ ĐẸP FULL NỘI THẤT KHU PHÂN LÔ, HẺM XE HƠI 6M ĐẬU ĐỖ NGÀY ĐÊM, 5 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-khu-phan-lo-hem-xe-hoi-6m-dau-do-ngay-dem-5-ty-hon-tl-7eea916370d1",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/64953240-3a58-4e97-8ef0-83d5107e938d-db68addb-4d42-473d-80c4-7d52b13f3278.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/64953240-3a58-4e97-8ef0-83d5107e938d-db68addb-4d42-473d-80c4-7d52b13f3278.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/0ec35629-ab29-4c83-97d8-4a4c24b83f5b-62355492-a888-4135-94dc-f9f81c553cc4.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/3d1ffe7b-fe49-485c-8d55-30f4a7383054-69012b65-324d-4aab-8294-3a0fdc9c9741.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/c0411bea-8e24-48df-8656-9cc4a9e3802a-4d02cf96-dedf-41c2-b36a-6997b31e4662.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/eb3f4186-c168-4c3c-9be3-a96d23238740-c8090dfc-c0c4-4510-93fc-5c5ecdd1d046.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/cfc3de30-1c49-4cd2-a705-cd8d48d5caa8-01f915d5-f5f3-47bc-9860-2500379cfb38.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/698a3aa2-4dae-4956-a43e-608c99df30be-adf1f040-fac0-49b0-8126-fd3a212fb13b.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 51.0,
+    "bedrooms": 3,
+    "price_ty": 5.16,
+    "price_text": "5.16 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: Khu đồng bộ phân lô Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Nhà full nội thất, BTCT mới đẹp dọn vào ở ngay. Khu cao tầng yên tĩnh, văn minh. Hẻm xe hơi 6m đến n...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:33 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:34"
+  },
+  {
+    "id": "f55bf241d836",
+    "internal_code": "CT3-45",
+    "title": "MTKD HÀ ĐẶC SẦM UẤT, 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-mat-pho-ho-chi-minh/mtkd-ha-dac-sam-uat-4-ty-nho-tl-f55bf241d836",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/bg3-b1ded877-mizpl3cp-459-10-99325d56-cec1-4c72-8b66-3c5922d7a94b.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/bg3-b1ded877-mizpl3cp-459-10-99325d56-cec1-4c72-8b66-3c5922d7a94b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/bg3-b1ded877-mizpl3cp-529-11-d796659d-82ef-4835-8543-88135a22d8d5.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/bg3-b1ded877-mizpl3cp-582-12-e200a0c3-a10e-4ded-ae79-e0a6c5d2a29b.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 34.0,
+    "bedrooms": 2,
+    "price_ty": 4.2,
+    "price_text": "4.2 tỷ",
+    "frontage_m": 3.5,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe máy (<3m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: đường Hà Đặc thông tứ phía, gần đường Nguyễn Ảnh Thủ, Tô Ký\n🧭 Trong bán kính 1-2km: ĐH Lao động Xã hội. ĐH Giao thông Vận tải, chợ Tân Chánh Hiệp, trường học 3 cấp, Coopmart Nguyễn Ảnh Thủ\n🏡 1 trệt có gác lửng. Ở ngay hoặc cải tạo, xây mới. Mặt tiền đường Hà Đặc 8m tiện kinh doanh, buôn bán.\n✅ Mã SP: CT3-45\n📞 Gọi/Zalo Châu 0783.515.486 để ...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:30 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:36"
+  },
+  {
+    "id": "2ac7748b1d81",
+    "internal_code": "CT3-65",
+    "title": "NHÀ ĐẸP BTCT PHAN VĂN HỚN GẦN TRƯỜNG CHINH, HẺM 4M ĐẾN NHÀ, 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-btct-phan-van-hon-gan-truong-chinh-hem-4m-den-nha-4-ty-nho-tl-2ac7748b1d81",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/fd101f3c-bf9a-4173-8b6f-a21271000807-e6f8f780-1649-4a3b-ab3e-4b3a2793f5f3.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/fd101f3c-bf9a-4173-8b6f-a21271000807-e6f8f780-1649-4a3b-ab3e-4b3a2793f5f3.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/ed09ee06-71b4-4423-95de-3ddafa7dc3cb-2d05d218-583e-400e-aaea-e7dc3161d25d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/e1881ae9-9560-435e-9df1-462c28e78525-9599f6fe-ebbf-47ce-bce3-4628f323f877.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/60c5d3cf-ba2b-4f4a-8e8c-63437a542714-7998d6e5-dcf2-4249-965c-374ebac0720e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/d7cce7ac-4993-4235-962e-06b76c86f7e1-d586b0e7-1162-4cf9-b391-70f6d2c6c46f.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 37.4,
+    "bedrooms": 0,
+    "price_ty": 4.1,
+    "price_text": "4.1 tỷ",
+    "frontage_m": 3.4,
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: trục đườnh Phan Văn Hớn, gần Trường Chinh vào trung tâm\n🧭 Trong bán kính 1-2km: Siêu thị, trường học các cấp,...\n🏡 BTCT mới đẹp dọn vào ở ngay. 2 tầng 2PN. Hẻm 4m ngắn nhanh ra mặt tiền đường lớn.\n✅ Mã SP: CT3-65\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QUẬN TPHCM - Alo Châu!",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:28 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:38"
+  },
+  {
+    "id": "0d035a5aba40",
+    "internal_code": "CT3-107",
+    "title": "MTKD TRẦN THỊ CỜ, 4 TẦNG BTCT MỚI ĐẸP, 5 TỶ TL",
+    "url": "https://nhadat247.vn/ban-nha-mat-pho-ho-chi-minh/mtkd-tran-thi-co-4-tang-btct-moi-dep-5-ty-tl-0d035a5aba40",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/bf1dae76-8bb8-437c-a68e-16876a80f5ef-19b2dbb4-a5e1-483e-a5a6-00ae5a917942.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/bf1dae76-8bb8-437c-a68e-16876a80f5ef-19b2dbb4-a5e1-483e-a5a6-00ae5a917942.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/174c10ac-e674-441e-96e0-6529c8b9a517-b17d7c3c-4d67-4bd1-be26-1ce7b479636d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9105b4f9-3434-4a47-aa11-fb030aaf32a2-83ef296f-a342-47dc-8cf4-07cd1e945a49.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/f5d4fed4-66a8-4ec8-aa40-c0e5d439a45e-d2be2cfe-f371-4f28-86b3-c355c335d560.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/36311e6f-cdce-446c-869a-188939df84cb-0adabc36-61e2-48b4-b079-b616ea42e46f.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/137b29dc-d18d-4c8a-bf51-9ea5810ec10f-4aea01c1-c28c-4b70-9812-5867f6bb9684.jpg"
+    ],
+    "ward": "Phường Thới An",
+    "district": "Quận 12",
+    "area_m2": 35.1,
+    "bedrooms": 2,
+    "price_ty": 5.0,
+    "price_text": "5 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe máy (<3m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: mặt tiền đường Trần Thị Cờ, sát bên đường Lê Văn Khương, đi Lê Đức Thọ qua Gò Vấp tiện\n🧭 Trong bán kính 1-2km: Nhà máy bia, Mega Hiệp Phú, UBND Thới An, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT mới đẹp dọn vào ở ngay. 4 tầng, tiện ở và kinh doanh, làm văn phòng, làm căn hộ dịch vụ.\n✅ Mã SP: CT3-107\n📞 Gọi/Zalo Châu 0783.515.486 để bi...",
+    "purposes": [
+      "dong_tien",
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "chdv",
+    "estimated_rent_text": "",
+    "updated_at": "11:24 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:41"
+  },
+  {
+    "id": "8dd9d9e052ff",
+    "internal_code": "CT5-20",
+    "title": "NHÀ ĐẸP TRẦN THỊ NĂM, 5 TẦNG 5PN, HẺM XE HƠI ĐẾN NHÀ, 6 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-tran-thi-nam-5-tang-5pn-hem-xe-hoi-den-nha-6-ty-nho-tl-8dd9d9e052ff",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-23-6-5213f163-c135-4bde-8d6d-6a4a6976b401.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-23-6-5213f163-c135-4bde-8d6d-6a4a6976b401.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-31-9-516d7f81-cc99-4b18-8921-59d0b7d97b61.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-39-12-f81fa921-e3b3-41e4-a942-b96a83e42af9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-41-13-8f3b1719-1365-4960-9779-11f3b4fa1821.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-44-15-41c5f6c7-f7c6-497a-addb-1afece8e38b3.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-45-16-dc4e7591-bc93-4e0b-bf97-6ea4898caf08.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-54-19-22a30971-bc2a-438e-a5e7-510435777407.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/33y0-362ac7b9-mdwpkpku-56-20-0637ae27-7c9a-4cad-a75d-1f3e1e95dfba.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 44.9,
+    "bedrooms": 5,
+    "price_ty": 6.1,
+    "price_text": "6.1 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Trần Thị Năm, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi 5m đến nhà.\n✅ Mã SP: CT5-20\n📞 Gọi/Zalo ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:20 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:43"
+  },
+  {
+    "id": "872c04923611",
+    "internal_code": "CT3-25",
+    "title": "NHÀ ĐẸP GẦN NGUYỄN VĂN QUÁ, HẺM XE HƠI 6M, BTCT Ở NGAY, 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-gan-nguyen-van-qua-hem-xe-hoi-6m-btct-o-ngay-4-ty-nho-tl-872c04923611",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/fb65116a-a25b-487e-bd96-1ae6d07d0ecc-ccdd9098-27fd-4b1e-bc1b-b37e1168defa.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/fb65116a-a25b-487e-bd96-1ae6d07d0ecc-ccdd9098-27fd-4b1e-bc1b-b37e1168defa.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/f2cf35d5-a257-44fc-995b-75b76ed89a43-42e2e2e6-e3d6-4b05-baab-7dfa3381ed3d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/b4da1fa6-4345-457f-a22a-00281695a676-8152a867-4891-45ca-9a34-3d679889ea4a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/b9019ebf-a955-459b-ab75-3e3b35ba98e9-7488e71b-12c0-475d-9a3d-c5b4073b4e00.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/a9ddc291-71dd-42b6-99dd-4c6f7c2a6679-4d3e8d99-3a37-4fd6-83e9-14ae744192c4.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/a3e18a70-7c26-46d8-a4fe-fbb0f3e1a5b5-8273e566-bd35-453e-bb34-fcce4f10785d.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 36.0,
+    "bedrooms": 2,
+    "price_ty": 4.5,
+    "price_text": "4.5 tỷ",
+    "frontage_m": 4.8,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: gần trục đường Nguyễn Văn Quá, Tô Ký, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng, hẻm xe hơi 6m đến nhà.\n✅ Mã SP: CT3-25\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nh...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:17 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:45"
+  },
+  {
+    "id": "e4d2c1afefca",
+    "internal_code": "CT5-21",
+    "title": "NHÀ ĐẸP SÂN RỘNG, BTCT MỚI Ở NGAY, SÁT BÊN TRƯỜNG CHINH, GẤP BÁN CÒN 5 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-san-rong-btct-moi-o-ngay-sat-ben-truong-chinh-gap-ban-con-5-ty-hon-tl-e4d2c1afefca",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/13d4de8b-8e50-4070-81a4-5ea46121b0ea-bcbea268-b596-4345-84e0-67b03787aa0b.jpeg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/13d4de8b-8e50-4070-81a4-5ea46121b0ea-bcbea268-b596-4345-84e0-67b03787aa0b.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/00c37292-c7f2-4df9-8dcc-a25e6b91eb42-8d221de8-fa34-4f1b-bfb2-be9f3828c9c5.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/c69ab4f7-d56b-45fc-9dd0-42b13aae9a0a-817286fc-bc52-4e73-9a88-de0dc09a191f.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/864e3160-f90c-4d00-a1a9-08cd30ea6526-c4463066-2947-4320-99d8-f2f54b89bb26.jpeg",
+      "https://cdn.nhadat247.vn/2026/09/01/66263070-9339-49ea-b96b-ff5bfee8ff40-fb5564be-d7b6-4b3e-9093-2f8b9d0e9af2.jpeg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 94.0,
+    "bedrooms": 2,
+    "price_ty": 5.9,
+    "price_text": "5.9 tỷ",
+    "frontage_m": 6.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: gần đường Trường Chinh vào trung tâm.\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp.\n🏡 Nhà thiết kế hiện đại 2 tầng, 2 phòng ngủ 2WC, ban công. Đặc biệt có khoảng sân rất rộng có thể để xe hơi. BTCT mới đẹp dọn vào ở ngay. Khu cao tầng, hẻm xe hơi vào nhà.\n✅ Mã SP: CT5-21\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xe...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:13 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:47"
+  },
+  {
+    "id": "2217d63a03a6",
+    "internal_code": "CT5-25",
+    "title": "NHÀ BTCT KHU ĐỒNG BỘ, HẺM XE HƠI 6M, 4PN MỚI ĐẸP, 6 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-btct-khu-dong-bo-hem-xe-hoi-6m-4pn-moi-dep-6-ty-nho-tl-2217d63a03a6",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/3aacf438-78c0-41e3-8d2a-c3e44ba55e81-92da7568-e713-45a7-b0d1-6a1a000c9691.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/3aacf438-78c0-41e3-8d2a-c3e44ba55e81-92da7568-e713-45a7-b0d1-6a1a000c9691.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/a8ea7278-c90a-4a3b-935d-be716f27ce94-1bce48d9-f67d-4c5c-859f-a34e41ef5c9d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/52c6b4e8-5c73-4a31-b1ca-277a4eed8cc7-21cf13ea-d6cf-4f4a-bf19-80a5813678c5.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/fe5a5f4d-e948-43f9-a2e9-6eb107525052-67286568-283e-40df-a49c-c024ae0c6902.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/d9408529-4ae4-4e10-803d-cb1a7560f53a-abb97642-8743-4638-8d46-660238d6af2a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1d1de812-099a-4c7c-b695-82597552a0ee-b19f5540-da04-44c3-b78a-62219f92cec9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1cb06709-1986-4dcc-a3f3-a9ecce254d2c-0c275185-1d2a-4828-823d-516845cb7273.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 82.0,
+    "bedrooms": 4,
+    "price_ty": 6.4,
+    "price_text": "6.4 tỷ",
+    "frontage_m": 4.6,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "5_7_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Nhà 3 Tầng BTCT -5PN -5WC - Mỗi phòng đều có ban công thoáng mát, sân xe, sân thượng trước sau. Xe hơi đậu đỗ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:10 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:49"
+  },
+  {
+    "id": "710a4fab7454",
+    "internal_code": "CT5-27",
+    "title": "MTKD GẦN NGUYỄN VĂN QUÁ, NGANG 4.5, 3PN BTCT MỚI ĐẸP, 6 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-mat-pho-ho-chi-minh/mtkd-gan-nguyen-van-qua-ngang-45-3pn-btct-moi-dep-6-ty-hon-tl-710a4fab7454",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/4fho-20d8b124-mgj253xz-22-7-4e4e5515-13ca-429e-8c55-a5339ab26967.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/4fho-20d8b124-mgj253xz-22-7-4e4e5515-13ca-429e-8c55-a5339ab26967.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4fho-20d8b124-mgj253xz-24-8-37b8d510-6ce9-4d64-8e45-1bcd3e13b9de.jpg",
+      "https://cdn.nhadat247.vn/2026/11/26/1000011893-28b9ed1d-8a9f-43cc-9b9e-f6879ad82301.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 80.6,
+    "bedrooms": 3,
+    "price_ty": 6.4,
+    "price_text": "6.4 tỷ",
+    "frontage_m": 4.5,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe máy (<3m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "5_7_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: trục đường Nguyễn Văn Quá, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 Nhà mặt tiền đường thông 8m, BTCT mới đẹp dọn vào ở ngay. Nhà đang kinh doanh buôn bán, chợ dân sinh gần đó khoảng 100m.\n✅ Mã SP: CT5-27\n📞 Gọi/Zalo Châu 0...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:07 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:52"
+  },
+  {
+    "id": "e13f299fde50",
+    "internal_code": "CT5-31",
+    "title": "NHÀ KHỦNG 80M2 HUỲNH THỊ HAI, 6 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-khung-80m2-huynh-thi-hai-6-ty-hon-tl-e13f299fde50",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/123m-480bf85a-miiip6us-450-10-0a80e690-464d-479e-98a1-747269c9daeb.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/123m-480bf85a-miiip6us-450-10-0a80e690-464d-479e-98a1-747269c9daeb.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/123m-480bf85a-miiip6us-400-9-e7011d02-8369-4081-8818-a204d9a9e666.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/123m-480bf85a-miiip6us-492-11-a9dedce5-41ab-4a19-a8e1-8028a8a5792d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/123m-480bf85a-miiip6us-532-12-a2df1c64-8225-4d46-843f-18605d5cdc66.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 80.0,
+    "bedrooms": 0,
+    "price_ty": 6.5,
+    "price_text": "6.5 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 8.0,
+    "alley_type": "Xe tải / Mặt tiền (>6m)",
+    "alley_category": "mat_tien",
+    "price_range": "5_7_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Nhà cấp 4 có gác, tiện xây mới theo ý thích. Khu cao tầng đồng bộ văn minh. Nhà mặt tiền hẻm, có thể kết hợp kinh doanh. Hẻm xe hơi...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:04 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:54"
+  },
+  {
+    "id": "fbf5c93ee84c",
+    "internal_code": "CT5-39",
+    "title": "NHÀ KHỦNG 158M2, NGANG 6M, HẺM XE HƠI THÔNG 6M, 6 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-khung-158m2-ngang-6m-hem-xe-hoi-thong-6m-6-ty-hon-tl-fbf5c93ee84c",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1000142335-962e740b-e29f-4a59-b61a-7ad9ccdedce8.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1000142335-962e740b-e29f-4a59-b61a-7ad9ccdedce8.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000142336-a6bd73d6-2269-477f-a11e-115563051fcb.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000142337-715a4536-2eb6-4454-89b1-59021839a3ed.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000142338-b0de9a54-32d1-4e59-b4ab-b09029d73705.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 157.4,
+    "bedrooms": 2,
+    "price_ty": 6.55,
+    "price_text": "6.55 tỷ",
+    "frontage_m": 6.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "tren_100",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Nhà rộng có thể ở ngay hoặc cải tạo, xây mới. Mặt tiền hẻm 6m đến nhà, có thể ở và kết hợp kinh doanh.\n✅ Mã S...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "11:00 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:56"
+  },
+  {
+    "id": "ea487327f66d",
+    "internal_code": "CT5-49",
+    "title": "NHÀ TRỐNG DT KHỦNG 156M2, TIỆN XÂY CHDV, 7 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-trong-dt-khung-156m2-tien-xay-chdv-7-ty-hon-tl-ea487327f66d",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/4nv5-901e3ae1-mjqq1tw4-875-17-e02ab806-a60f-430f-a01a-e2d0cfbfac66.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/4nv5-901e3ae1-mjqq1tw4-875-17-e02ab806-a60f-430f-a01a-e2d0cfbfac66.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4nv5-901e3ae1-mjqq1tw4-984-19-85862fb0-5585-4e4a-90fd-1bed8267a8a0.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4nv5-901e3ae1-mjqq1tw4-1106-21-40deb949-e60f-4bb1-8474-c30f6b72fa60.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 156.0,
+    "bedrooms": 0,
+    "price_ty": 7.5,
+    "price_text": "7.5 tỷ",
+    "frontage_m": 5.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "7_10_ty",
+    "area_range": "tren_100",
+    "description": "📍Vị trí: gần đường Nguyễn Văn Quá, Tô Ký, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 5 × 31m, đất trống suốt, vuông vức. Phù hợp làm kho xưởng, xây căn hộ dịch vụ, hoặc đầu tư giữ tài sản. Khu vực cực kỳ tiềm năng: đã có quyết định m...",
+    "purposes": [
+      "dong_tien",
+      "de_o"
+    ],
+    "cashflow_subtype": "chdv",
+    "estimated_rent_text": "",
+    "updated_at": "10:55 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:23:58"
+  },
+  {
+    "id": "a71bd1a9cdb5",
+    "internal_code": "CT5-67",
+    "title": "NHÀ ĐẸP KHU CAO TẦNG THỚI AN, XE HƠI TRONG NHÀ, 4PN, TẶNG NỘI THẤT, 5 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-khu-cao-tang-thoi-an-xe-hoi-trong-nha-4pn-tang-noi-that-5-ty-hon-tl-a71bd1a9cdb5",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/scaled-img-20230529-093040-6c73dbc7-02ab-45a3-af38-59b65aa794df.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/scaled-img-20230529-093040-6c73dbc7-02ab-45a3-af38-59b65aa794df.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/scaled-img-20230529-093044-57e6adaf-892c-44c6-b6b1-5179350b4a4b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/scaled-img-20230529-093106-33a0916a-996e-46ee-a7af-8f3a0ab21cbb.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-d92193fe-mf8aitqq-22-8-eb477c6e-2f51-4b93-b9a3-7403374d683e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-d92193fe-mf8aitqq-26-10-a3c195df-7d96-468d-8616-0455cdc22986.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-d92193fe-mf8aitqq-11-4-78892113-8984-4550-b4d3-3834fb037c0b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-d92193fe-mf8aitqq-4-1-71d6668e-2be2-4a02-bf00-7404c24e7cb8.jpg"
+    ],
+    "ward": "Phường Thới An",
+    "district": "Quận 12",
+    "area_m2": 82.1,
+    "bedrooms": 4,
+    "price_ty": 5.75,
+    "price_text": "5.75 tỷ",
+    "frontage_m": 5.3,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: trục đường Lê Văn Khương, gần Nguyễn Ảnh Thủ, Hiệp Thành 13, Hiệp Thành 17, Lê Thị Riêng, Thạnh Xuân 25.\n🧭 Trong bán kính 1-2km: bến xe, UBND phường Thới An, trường quốc tế Bamboo, chợ Hiệp Thành, trường học các cấp, mua sắm, ẩm thực,...\n🏡 3 tầng, sân thượng. Ngang rộng hơn 5m, nhà mới đẹp nội thất cao cấp. Hiên trước nhà, 4PN, 5WC. Nội th...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "10:52 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:00"
+  },
+  {
+    "id": "f996fb55b102",
+    "internal_code": "CT5-92",
+    "title": "NHÀ RỘNG 138M2 MẶT TIỀN HẺM 6M, HUỲNH THỊ HAI, 7 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-ownerside-ho-chi-minh/nha-rong-138m2-mat-tien-hem-6m-huynh-thi-hai-7-ty-hon-tl-f996fb55b102",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/41yl-b70597c9-mcwsot2q-28-14-2f441e7e-5f2d-479e-970c-bf3bb958b8ec.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/41yl-b70597c9-mcwsot2q-28-14-2f441e7e-5f2d-479e-970c-bf3bb958b8ec.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/41yl-b70597c9-mcwsot2q-36-19-7a2c45d7-8f0a-4996-880b-0e64f8009d3c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/41yl-b70597c9-mcwsot2q-37-20-25a9010b-3f86-4715-a43a-d908b20c746b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/41yl-b70597c9-mcwsot2q-38-21-eb7eb705-f28b-41c2-9629-56d35dd787a8.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/41yl-b70597c9-mcwsot2q-46-24-f19d8648-d376-49b1-82e8-73dffe9f71a9.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 138.2,
+    "bedrooms": 2,
+    "price_ty": 7.99,
+    "price_text": "7.99 tỷ",
+    "frontage_m": 5.7,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "7_10_ty",
+    "area_range": "tren_100",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Nhà cấp 4 rộng, bán đất tặng nhà, có thể ở ngay hoặc cải tạo, xây mới. Khu cao tầng, hẻm xe hơi 6m 1 trục đến...",
+    "purposes": [
+      "dat",
+      "dong_tien",
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "chdv",
+    "estimated_rent_text": "",
+    "updated_at": "10:45 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:02"
+  },
+  {
+    "id": "37d1f9d74f0a",
+    "internal_code": "CT5-123",
+    "title": "NHÀ ĐẸP 50M RA TRƯỜNG CHINH, HẺM 6M THÔNG KHU CAO TẦNG, 4PN BTCT, 7 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-50m-ra-truong-chinh-hem-6m-thong-khu-cao-tang-4pn-btct-7-ty-hon-tl-37d1f9d74f0a",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/4gp6-610dc123-mghf879s-47-12-61c621a5-b172-4157-828b-20747765c47a.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/4gp6-610dc123-mghf879s-47-12-61c621a5-b172-4157-828b-20747765c47a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4gp6-610dc123-mghf879s-50-13-ed7facae-035f-40cd-a9b5-4acab79be413.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4gp6-610dc123-mghf879s-53-15-8b96e273-4238-4102-82e7-cd0ce9b06456.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4gp6-610dc123-mghf879s-62-20-cf003291-0998-4d66-9b63-65eb25a090a1.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4gp6-610dc123-mghf879s-63-21-271d2a89-4207-43f6-8476-fbd97a09976c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4gp6-610dc123-mghg0q4l-53-14-83da14b5-02f7-485e-ae74-abd795f7c8ac.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 87.4,
+    "bedrooms": 4,
+    "price_ty": 7.6,
+    "price_text": "7.6 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "7_10_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: Trường Chinh vào trung tâm.\n🧭 Trong bán kính 1-2km: chợ Lạc Quang, trường học các cấp cực gần.\n🏡 Hẻm 6m thông 1 trục chỉ 50m ra Trường Chinh, sạch sẽ, an ninh. Khu cho xây 6 tầng. Khu cao tầng đồng bộ văn minh.\n✅ Mã SP: CT5-123\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QUẬN TPH...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "10:41 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:05"
+  },
+  {
+    "id": "68df01f31c53",
+    "internal_code": "CT5-144",
+    "title": "NHÀ ĐẸP BTCT PHAN VĂN HỚN, 81M2, HẺM XE HƠI, 6 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-btct-phan-van-hon-81m2-hem-xe-hoi-6-ty-hon-tl-68df01f31c53",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/2ha5-c914a240-m9totqlr-20-8-ee583050-cf4f-4cb6-b8f4-d81611b48edf.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/2ha5-c914a240-m9totqlr-20-8-ee583050-cf4f-4cb6-b8f4-d81611b48edf.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2ha5-c914a240-m9totqlr-22-9-51db447d-7f16-4cf6-8b36-b1497f7335b1.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2ha5-c914a240-m9totqlr-23-10-cb01a7e4-aad6-46c5-9819-14d7c570f49e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2ha5-c914a240-m9totqlr-25-11-5ca6ecda-0083-4ba1-9dd8-c19e4fb3b3f2.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2ha5-c914a240-m9totqlr-27-12-d5d6fc31-4f94-4cee-b4e9-fab04cbac86b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2ha5-c914a240-m9totqlr-28-13-2e0362a8-a3e5-4f5a-bda0-31c25aef1073.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 81.0,
+    "bedrooms": 2,
+    "price_ty": 6.5,
+    "price_text": "6.5 tỷ",
+    "frontage_m": 4.5,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: trục đường Phan Văn Hớn, đi Trường Chinh vào thành phố tiện.\n🧭 Trong bán kính 1-2km: Giáp Tân Bình, Gò Vấp, Chợ, Siêu thị Coopmart, BigC, trường học đủ cả.\n🏡 Nhà Cấp 4 còn đẹp, đầy đủ công năng có 2 Phòng ngủ, sân Phơi phía sau rộng rãi, Sân để xe riêng biệt. Chủ đang vừa ở vừa kinh doanh, để đồ. Khuôn đất ngang 4.5M khu được phép xây cao ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "10:37 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:07"
+  },
+  {
+    "id": "ca3b329b9fc2",
+    "internal_code": "CT5-189",
+    "title": "NHÀ 4 TẦNG BỀ THẾ SÁT KDC AN SƯƠNG, 4PN BTCT Ở NGAY, 7 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-mat-pho-ho-chi-minh/nha-4-tang-be-the-sat-kdc-an-suong-4pn-btct-o-ngay-7-ty-hon-tl-ca3b329b9fc2",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1000019017-a296b62b-4620-4d2e-8c3d-8191a1bade27.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1000019017-a296b62b-4620-4d2e-8c3d-8191a1bade27.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000019019-c84e400f-bdff-4dc5-9d89-762335185ef5.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000019018-5e7f471d-27ca-4fa7-86b6-c2d5e78d6ad0.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000019022-ca27fc46-819a-414b-abb3-2837ddb169fa.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000019021-39c7ef32-7f08-41b8-ba36-b997a275e698.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000019020-703aaf2c-2ff0-42c3-8074-4aef478d7f57.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000019026-2bdd0a90-ca0b-4d8a-b15a-aaf1e9156c82.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 98.2,
+    "bedrooms": 4,
+    "price_ty": 7.5,
+    "price_text": "7.5 tỷ",
+    "frontage_m": 5.0,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe máy (<3m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "7_10_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: trục đường Song Hành, gần Khu dân cư An Sương, đường Nguyễn Văn Quá, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực, chợ An Sương...\n🏡 4 tầng bề thế, 4 phòng ngủ, 4wc, sân thượng. BTCT mới đẹp dọn vào ở ngay. Có thể kết hợp ở và kinh ...",
+    "purposes": [
+      "dong_tien",
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "chdv",
+    "estimated_rent_text": "",
+    "updated_at": "10:32 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:09"
+  },
+  {
+    "id": "81009b2eeb2a",
+    "internal_code": "CT8-93",
+    "title": "NHÀ ĐẸP 5 TẦNG, XE HƠI NGỦ NHÀ, TẶNG NỘI THẤT CAO CẤP, HẺM 6M THÔNG TRẦN THỊ NĂM, 8 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-mat-pho-ho-chi-minh/nha-dep-5-tang-xe-hoi-ngu-nha-tang-noi-that-cao-cap-hem-6m-thong-tran-thi-nam-8-ty-nho-tl-81009b2eeb2a",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1000157270-208de480-fd2e-4ba7-987c-b59638260a1c.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1000157270-208de480-fd2e-4ba7-987c-b59638260a1c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000157271-16399cbb-36f3-487d-ba60-d02da1388fe3.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000157272-0c56ddc2-efde-475c-9114-ad708aa29cb6.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000157273-3b043ddf-98cd-4c01-a1ed-d08288242d41.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000157137-bdfb1821-5e48-479d-a575-e2d598b53904.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000157140-3e3a0ca5-a141-4824-be3d-054d1ec995c5.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000157141-1274d8a8-33c6-480b-8ef2-6cbb9018afe2.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000157144-6c12c02d-8a89-4821-9837-05d0a108099e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000157142-6f95ca6c-72b7-4d47-8b96-6686c13a136c.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 76.0,
+    "bedrooms": 5,
+    "price_ty": 8.2,
+    "price_text": "8.2 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "7_10_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Trần Thị Năm, gần đường Nguyễn Ảnh Thủ, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 5 tầng BTCT, nhà xây lệch tầng, cầu thang rộng rãi ,sân trước rộng để 7-8 xe máy. Nội thất cao cấp, chủ tặng lại hết cho khách mua mới. Tổng...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "10:27 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:12"
+  },
+  {
+    "id": "3cc9f9b6a738",
+    "internal_code": "TT3-165",
+    "title": "MTKD HÀ ĐẶC, 2PN BTCT, 4 TỶ TL",
+    "url": "https://nhadat247.vn/ban-nha-mat-pho-ho-chi-minh/mtkd-ha-dac-2pn-btct-4-ty-tl-3cc9f9b6a738",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/tcl-22384b00-m5rvkakm-89-16-b0741f6c-e2b7-4945-88e5-60eb7461d4e2.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/tcl-22384b00-m5rvkakm-89-16-b0741f6c-e2b7-4945-88e5-60eb7461d4e2.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/tcl-22384b00-m5rvkakm-94-17-bbcd2862-0e56-404c-8788-0170a37937cd.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/tcl-22384b00-m5rvkakm-103-19-c2011c3c-ae96-4790-b30e-32a9e8e71e48.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/tcl-22384b00-m5rvkakm-107-20-1bd7f120-1e65-4d02-b9a0-44082c8b6742.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 37.9,
+    "bedrooms": 2,
+    "price_ty": 4.0,
+    "price_text": "4 tỷ",
+    "frontage_m": 4.4,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe máy (<3m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: mặt tiền đường Hà Đặc, gần đường Nguyễn Ảnh Thủ, Tô Ký, Song Hành\n🧭 Trong bán kính 1-2km: ĐH Lao động Xã hội. ĐH Giao thông Vận tải, chợ Tân Chánh Hiệp, trường học 3 cấp, Coopmart Nguyễn Ảnh Thủ\n🏡 2 tầng, 2PN, BTCT dọn vào ở ngay. Kết hợp ở và kinh doanh buôn bán tốt, ngay khu sầm uất giao thương, đường thông tứ phía.\n✅ Mã SP: TT3-165\n📞 Gọ...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "10:21 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:14"
+  },
+  {
+    "id": "37353e849817",
+    "internal_code": "TT3-230",
+    "title": "NHÀ ĐẸP FULL NỘI THẤT GIÁP GÒ VẤP, 3PN, 4 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-giap-go-vap-3pn-4-ty-hon-tl-37353e849817",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/img-20260708-103743-f149ca98-9f43-4a89-9570-70d104cf263e.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260708-103743-f149ca98-9f43-4a89-9570-70d104cf263e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260708-103729-632655ed-e330-4d05-bf37-e0a9c02d363c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260708-103725-979a1ec3-7393-4e46-9d7c-95cdd825296a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260708-103717-1e30fb91-670d-4a20-bad3-220bda720638.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260708-103713-abcb3848-36d2-417e-b105-9563ae316b2d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260708-103705-8c22944c-0c94-4ca0-a76f-0d6e64e6b353.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260708-103703-37c140b9-a766-4a22-9b2a-1d72fa94c16c.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 38.0,
+    "bedrooms": 3,
+    "price_ty": 4.75,
+    "price_text": "4.75 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: trục đường Nguyễn Thị Kiểu, gần đường Lê Văn Khương, Nguyễn Thị Đặng, Dương Thị Mười, Trương Thị Hoa, hay đi Lê Đức Thọ qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: chợ Hạt Điều, Mega Hiệp Phú, Bệnh viện Quận 12, UBND Tân Thới Hiệp, trường học các cấp, mua sắm, ẩm thực,...\n🏡 3 tầng, 2 sân thượng trước sau, 3PN full nội thất. Có giếng trời, ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "10:19 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:16"
+  },
+  {
+    "id": "ef15c1973464",
+    "internal_code": "TT3-261",
+    "title": "NHÀ ĐẸP BTCT NGUYỄN ẢNH THỦ, KHU CAO TẦNG HẺM XE HƠI 6M ĐẾN NHÀ, 3 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-btct-nguyen-anh-thu-khu-cao-tang-hem-xe-hoi-6m-den-nha-3-ty-hon-tl-ef15c1973464",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/b5f22916-de62-4703-9154-380917013c70-a708fbc5-ecda-411f-b7b5-0576e0a1eb29.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/b5f22916-de62-4703-9154-380917013c70-a708fbc5-ecda-411f-b7b5-0576e0a1eb29.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/3a7b070d-14dd-4b4f-8f35-ac4a10a0073c-723dce8c-177b-4fef-bb03-921ab0b017a4.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/a4a22b28-087a-4f31-9dc6-244400b1114b-0e8d12b5-98ce-4703-9ae4-660a16c64170.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/101b08fb-635c-4c6d-a5a2-f6e5acb25015-0c81de81-6e6d-4542-a947-4769eae499dd.jpg"
+    ],
+    "ward": "Xã Bà Điểm",
+    "district": "Hóc Môn",
+    "area_m2": 80.0,
+    "bedrooms": 1,
+    "price_ty": 3.8,
+    "price_text": "3.8 tỷ",
+    "frontage_m": 5.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Nguyễn Ảnh Thủ.\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp.\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi 6m đến nhà.\n✅ Mã SP: TT3-261\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QUẬN TPHCM - Alo Châu!",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "10:12 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:18"
+  },
+  {
+    "id": "899a60046e1e",
+    "internal_code": "TT3-372",
+    "title": "NHÀ ĐẸP TRƯƠNG THỊ HOA GIÁP GÒ VẤP, HẺM XE HƠI 6M KHU CAO TẦNG, 72M2 3PN, 5 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-truong-thi-hoa-giap-go-vap-hem-xe-hoi-6m-khu-cao-tang-72m2-3pn-5-ty-hon-tl-899a60046e1e",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/2agm-acd80cb8-m6x2vj8j-35-15-1fc75f81-88dd-4380-846b-cb5983cfa7d9.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/2agm-acd80cb8-m6x2vj8j-35-15-1fc75f81-88dd-4380-846b-cb5983cfa7d9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2agm-acd80cb8-m6x2vj8j-37-16-f2e51e48-b4c1-4b7e-a739-25baf6bbb5b1.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2agm-acd80cb8-m6x2vj8j-39-18-1b6d35f8-702c-4261-b99f-403b51e07b8a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2agm-acd80cb8-m6x2vj8j-41-19-png-e15a61d3-88b6-400a-bae7-5b5d1741f9c0.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2agm-acd80cb8-m6x2vj8j-140-20-png-4f2f3c20-f6a7-4b3e-89b6-96d95c86891d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2agm-acd80cb8-m8143gsy-67-13-2e0d27b4-1da3-46ed-9c4a-b84d2c995e59.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 72.0,
+    "bedrooms": 3,
+    "price_ty": 5.7,
+    "price_text": "5.7 tỷ",
+    "frontage_m": 3.6,
+    "alley_width_m": 6.0,
+    "alley_type": "Xe tải / Mặt tiền (>6m)",
+    "alley_category": "mat_tien",
+    "price_range": "5_7_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: gần đường Lê Văn Khương, Nguyễn Thị Kiểu, Nguyễn Thị Đặng, Dương Thị Mười, Trương Thị Hoa, hay đi Lê Đức Thọ qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: chợ Hạt Điều, Mega Hiệp Phú, Bệnh viện Quận 12, UBND Tân Thới Hiệp, trường học các cấp, mua sắm, ẩm thực,...\n🏡 Kết cấu 3 tầng, 4 phòng ngủ, 3 wc, nhà có ban công, 3 giếng trời nên rất thoá...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "10:07 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:21"
+  },
+  {
+    "id": "64f7b7027eda",
+    "internal_code": "CT1-30",
+    "title": "NHÀ BTCT 61M2, GẦN ĐƯỜNG TÂN THỚI HIỆP 21, 2 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-btct-61m2-gan-duong-tan-thoi-hiep-21-2-ty-hon-tl-64f7b7027eda",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/3ffx-137d56c9-m8su1mcr-41-17-5593147a-5308-4f5a-8b7b-0bd3e5e5dad3.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/3ffx-137d56c9-m8su1mcr-41-17-5593147a-5308-4f5a-8b7b-0bd3e5e5dad3.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/3ffx-137d56c9-m8su1mcr-45-20-a91a56e8-b9a1-44e9-9da8-3c8f2e3710f9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/3ffx-137d56c9-m8su1mcr-46-21-a26811d2-048e-4dc7-a7d9-5602b5291b97.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 60.8,
+    "bedrooms": 2,
+    "price_ty": 2.65,
+    "price_text": "2.65 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 2.5,
+    "alley_type": "Hẻm xe máy (2.5m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "duoi_3_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Tân Thới Hiệp 21, gần Dương Thị Mười, QL1A, Nguyễn Thị Đặng\n🧭 Trong bán kính 1-2km: chợ Hạt Điều, Mega Hiệp Phú, Bệnh viện Quận 12, UBND Tân Thới Hiệp, trường học các cấp.\n🏡 BTCT dọn vào ở ngay.\n✅ Mã SP: CT1-30\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QUẬN TPHCM - A...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:59 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:24"
+  },
+  {
+    "id": "7c2281fa2bb6",
+    "internal_code": "CT5-185",
+    "title": "NHÀ ĐẸP BTCT 4PN GẦN NGUYỄN ẢNH THỦ, Ở NGAY, 5 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-btct-4pn-gan-nguyen-anh-thu-o-ngay-5-ty-nho-tl-7c2281fa2bb6",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/img-20260509-091655-e5496e06-051b-40ed-bd05-0e456a82ea6a.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260509-091655-e5496e06-051b-40ed-bd05-0e456a82ea6a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260509-091652-117dd4c9-7481-43f9-8780-4f17babd5fe1.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260509-091659-521a5746-ed5f-4385-ae24-dea639591b59.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260509-091703-6ac2013d-9c8f-4ffe-a3a1-d8b6278c4160.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/img-20260509-091707-2877b0aa-c31e-4b8d-95e6-9da1ad6781aa.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 66.3,
+    "bedrooms": 4,
+    "price_ty": 5.4,
+    "price_text": "5.4 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng, nhà gần đầu hẻm tiện di chuyển.\n✅ Mã SP: CT5-185\n📞 Gọi/Zalo Châu 0...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:56 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:26"
+  },
+  {
+    "id": "7fec8d49df70",
+    "internal_code": "CT5-73",
+    "title": "NHÀ RỘNG NGANG 5M GẦN NGUYỄN ẢNH THỦ, BTCT Ở NGAY, 5 TỶ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-rong-ngang-5m-gan-nguyen-anh-thu-btct-o-ngay-5-ty-tl-7fec8d49df70",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/4bl7-32595eb5-mhenk9y0-24-10-c0f79756-b895-4f71-82b1-398f5036cb4c.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/4bl7-32595eb5-mhenk9y0-24-10-c0f79756-b895-4f71-82b1-398f5036cb4c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4bl7-32595eb5-mhenk9y0-26-11-57a8d301-3769-43df-be54-6a7b931afde4.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4bl7-32595eb5-mhenk9y0-29-12-3f5b38a9-6f6e-4811-bc6d-43c11b3489de.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 72.5,
+    "bedrooms": 0,
+    "price_ty": 5.0,
+    "price_text": "5 tỷ",
+    "frontage_m": 5.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: đường Huỳnh Thị Hai giao với Nguyễn Ảnh Thủ, gần Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT dọn vào ở ngay. Khu cao tầng. Hẻm xe hơi vào nhà.\n✅ Mã SP: CT5-73\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xe...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:53 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:29"
+  },
+  {
+    "id": "b46953c3e88e",
+    "internal_code": "CT3-36",
+    "title": "NHÀ CẤP 4 RỘNG 130M2, HẺM XE HƠI 8M THÔNG, 3 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-cap-4-rong-130m2-hem-xe-hoi-8m-thong-3-ty-hon-tl-b46953c3e88e",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/40o4-fbd6b0e-mitvdcbu-465-11-eaec2c05-2be0-40c9-a525-379f1a2a0b95.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/40o4-fbd6b0e-mitvdcbu-465-11-eaec2c05-2be0-40c9-a525-379f1a2a0b95.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/40o4-fbd6b0e-mitvdcbu-506-12-5a912bc4-ab2d-4394-bae8-8decad1e00f1.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/40o4-fbd6b0e-mitvdcbu-553-13-a92a8afc-5a0c-434f-b382-4441b3016b4d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/40o4-fbd6b0e-mitvdcbu-609-14-d0f8f80a-1a88-4239-9d54-7bf804d791bb.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 129.9,
+    "bedrooms": 2,
+    "price_ty": 3.65,
+    "price_text": "3.65 tỷ",
+    "frontage_m": 7.0,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "3_5_ty",
+    "area_range": "tren_100",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Nhà cấp 4 có thể ở ngay hoặc xây mới. Có thể kết hợp ở và kinh doanh buôn bán online. Hẻm xe hơi 8m thông đến...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:49 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:31"
+  },
+  {
+    "id": "ed3b73840d11",
+    "internal_code": "TT3-131",
+    "title": "NHÀ FULL NỘI THẤT, LÊ VĂN KHƯƠNG, Ở NGAY, 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-full-noi-that-le-van-khuong-o-ngay-4-ty-nho-tl-ed3b73840d11",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/38dq-2f78403-mjtnez54-601-15-a0ff1bb0-3cd9-4468-8234-7a52940f8dbb.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/38dq-2f78403-mjtnez54-601-15-a0ff1bb0-3cd9-4468-8234-7a52940f8dbb.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/38dq-2f78403-mjtnez54-868-22-5861e3db-6093-415d-8669-e6f9a32cf2ce.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/38dq-2f78403-mjtnez54-791-20-77ae7701-f2fc-4eb6-b0a0-7f6bd0fd2288.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/38dq-2f78403-mjtnez54-710-18-e85618f8-1880-406a-acc8-2203f87f176a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/38dq-2f78403-mjtnez54-567-14-5a20457c-71e3-4ef5-8b3d-ee09b0fff2d8.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/38dq-2f78403-mjtnez54-532-13-51510712-6585-4439-ad53-47391ed68e85.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 46.0,
+    "bedrooms": 3,
+    "price_ty": 4.45,
+    "price_text": "4.45 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Lê Văn Khương, gần Nguyễn Ảnh Thủ, Hiệp Thành 13, Hiệp Thành 17\n🧭 Trong bán kính 1-2km: chợ Hiệp Thành, trường học các cấp, mua sắm, ẩm thực,...\n🏡 Nhà full nội thất, BTCT mới đẹp dọn vào ở ngay.\n✅ Mã SP: TT3-131\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QUẬN TPHCM - ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:46 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:33"
+  },
+  {
+    "id": "acb385492024",
+    "internal_code": "GV-99",
+    "title": "NHÀ ĐẸP PHAN HUY ÍCH FULL NỘI THẤT, 3PN, 5 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-phan-huy-ich-full-noi-that-3pn-5-ty-nho-tl-acb385492024",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/51597-1ac1c938-dab5-43b5-9257-50097141764c.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/51597-1ac1c938-dab5-43b5-9257-50097141764c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/51605-150560c7-c8f2-4edd-929a-8c0bd873aa0f.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/51608-ce0aaa84-8911-4f86-8490-5b9796576497.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/51610-0114f036-c01f-429f-8613-ff48a38275b9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/51614-a75e9736-b59b-4ce2-8604-6f30edb1abb2.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/51615-79462229-ac7b-4d96-a9cf-6549e1e4ba6d.jpg"
+    ],
+    "ward": "Phường An Hội Tây",
+    "district": "Gò Vấp",
+    "area_m2": 45.0,
+    "bedrooms": 3,
+    "price_ty": 5.49,
+    "price_text": "5.49 tỷ",
+    "frontage_m": 5.2,
+    "alley_width_m": 2.0,
+    "alley_type": "Hẻm xe máy (2m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "5_7_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: đường Phan Huy Ích, tiện đi ra Quang Trung, Nguyễn Văn Khối, Trường Chinh (Tân Bình), Phan Văn Trị...\n🧭 Trong bán kính 1-2km: Emart Phan Huy Ích, trường học 3 cấp, phòng khám, mua sắm, chợ,...\n🏡 Nhà full nội thất, BTCT mới đẹp dọn vào ở ngay. Có phòng ngủ dưới trệt, có ban công và sân sau thoáng mát.\n✅ Mã SP: GV-99\n📞 Gọi/Zalo Châu 0783.515...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:44 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:35"
+  },
+  {
+    "id": "7644d1bf358d",
+    "internal_code": "GV-104",
+    "title": "NHÀ ĐẸP FULL NỘI THẤT KHU PHÂN LÔ, PHẠM VĂN CHIÊU, 5 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-khu-phan-lo-pham-van-chieu-5-ty-nho-tl-7644d1bf358d",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1c050db3-67f4-4d08-9a46-03ad18613977-25c4cb8b-16d5-4c05-bacb-c521cc5f6b8b.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1c050db3-67f4-4d08-9a46-03ad18613977-25c4cb8b-16d5-4c05-bacb-c521cc5f6b8b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/e03127bb-0e4f-4a80-99fb-0f3aa1a24e25-86215c31-fbdf-4b7c-ac39-265e37f3c287.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/baa3d9f3-38ab-40d5-97ad-f49201dd90aa-33f86f60-1ce1-4e89-b95b-1b74dcf32112.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/5e201032-bb72-4f68-95ba-3472bbbf9e89-b0c30d6b-38e6-4135-ba25-a25d42ae813a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/7b982a71-8e0f-48d2-bd05-725aad8327fa-6f78060d-b7cb-45b8-a5cc-dfdd8b9cea3c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/4e151208-9339-4cb3-ac74-fe122e1b7ab8-7f4897f1-05d2-465c-a10f-3be0f8f1fbfe.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/33fe9593-4401-4225-8724-1614b1b0e3b0-c6050dcc-c8eb-4154-a6c7-c3d321a7eb5a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/62922263-4027-46cc-aa50-36b2b366639b-ef761afd-0648-4842-93d6-d364fb312e85.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1fc459c8-fd3a-4549-afc3-31f1fb74dd15-50cc9f6f-3cac-4455-9d4b-8e5abc029766.jpg"
+    ],
+    "ward": "Phường An Hội Tây",
+    "district": "Gò Vấp",
+    "area_m2": 37.1,
+    "bedrooms": 4,
+    "price_ty": 5.39,
+    "price_text": "5.39 tỷ",
+    "frontage_m": 7.5,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "5_7_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: trục đường Phạm Văn Chiêu, gần đường Phan Huy Ích, tiện đi ra Quang Trung, Nguyễn Văn Khối, Trường Chinh (Tân Bình)\n🧭 Trong bán kính 1-2km: Emart Phan Huy Ích, trường học 3 cấp, phòng khám, mua sắm, chợ Thạch Đà,...\n🏡 Nhà full nội thất, BTCT mới đẹp dọn vào ở ngay. Khu cao tầng phân lô. Nhà gần đầu hẻm\n✅ Mã SP: GV-104\n📞 Gọi/Zalo Châu 0783....",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:42 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:37"
+  },
+  {
+    "id": "2f5b599305f5",
+    "internal_code": "TT3-238",
+    "title": "NHÀ ĐẸP HUỲNH THỊ HAI 81M2 Ở NGAY, KHU CAO TẦNG HẺM XE HƠI THÔNG, 3 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-huynh-thi-hai-81m2-o-ngay-khu-cao-tang-hem-xe-hoi-thong-3-ty-hon-tl-2f5b599305f5",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/dc79ebd4-c7a8-4147-a131-872b745e8414-60d6e7aa-34b8-4ff0-a3f8-81024ada9016.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/dc79ebd4-c7a8-4147-a131-872b745e8414-60d6e7aa-34b8-4ff0-a3f8-81024ada9016.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/c2ee5fec-1a18-4860-beba-cd1e49eb0eb8-b22db0df-5121-408f-af07-a53d9c816e7c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9d07d374-2a3f-49f1-b3d4-dc6e0ea481b3-21dbe369-c024-4e7f-9c70-4fb91c1b9717.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/83ed4516-e712-45c3-a006-26855156e809-3efc199d-c72c-4a52-972d-81c7bfe0667c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/f5af7c8a-c6e8-45bd-bff2-ddf7786b245b-9ef84eff-9c65-4faa-ad6d-8d21004f4d28.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/efd701fc-341f-491d-b142-1c7896f6701c-e97b2092-e0fe-41cd-998f-46f217cb7019.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 81.0,
+    "bedrooms": 2,
+    "price_ty": 3.5,
+    "price_text": "3.5 tỷ",
+    "frontage_m": 5.4,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi 5m thông.\n✅ Mã SP: TT3-238\n📞 Gọi/Zalo ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:36 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:40"
+  },
+  {
+    "id": "4c9acb1d884a",
+    "internal_code": "TT3-188",
+    "title": "NHÀ ĐẸP BỀ THẾ KHU PHÂN LÔ, GẦN NGUYỄN ẢNH THỦ, 6 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-be-the-khu-phan-lo-gan-nguyen-anh-thu-6-ty-hon-tl-4c9acb1d884a",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1000071387-2ad14974-9b93-4dfa-9e4b-c1d17551083f.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1000071387-2ad14974-9b93-4dfa-9e4b-c1d17551083f.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000071382-27724a8b-462c-4099-b14a-9c980622bb51.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000071380-f4b123bb-351d-41ce-abc4-6ad02c3fba6e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000071378-0512f40f-6b9a-467d-a672-1c141bc1f9c7.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000071376-fd5061b1-e424-41af-a49b-6fc2836ad865.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000071370-fcbc72d3-5a30-496b-976a-42f5e92b7940.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000071366-e51fdbd4-6ac2-49d3-b6cc-aa5bb21176f9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000071365-2c140274-7f67-480f-9df9-6d2d0ada9fa1.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 58.0,
+    "bedrooms": 5,
+    "price_ty": 6.4,
+    "price_text": "6.4 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: đường Trần Thị Hè, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 1 trệt 1 lửng 2 lầu sân thượng, 5PN, 6WC, sân thượng, phòng thờ. Nhà chủ ở full nội thất cao cấp, xây dựng tinh xảo, thiết bị toàn...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:34 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:42"
+  },
+  {
+    "id": "1be183180ac7",
+    "internal_code": "CT5-61",
+    "title": "MTKD HẺM 12M THÔNG, HUỲNH THỊ HAI, 80M2, 6 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/mtkd-hem-12m-thong-huynh-thi-hai-80m2-6-ty-hon-tl-1be183180ac7",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1000010294-2c9bdd0f-9650-43a4-99a9-7fded7f17738.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1000010294-2c9bdd0f-9650-43a4-99a9-7fded7f17738.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000010297-f5b52d31-df45-424c-a0fe-0368c14c0cc9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000010292-16b78720-591a-45d0-9710-470f86571697.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000010293-ffcd4753-6e26-42a3-86a0-6252e215ae53.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 80.0,
+    "bedrooms": 2,
+    "price_ty": 6.5,
+    "price_text": "6.5 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 8.0,
+    "alley_type": "Xe tải / Mặt tiền (>6m)",
+    "alley_category": "mat_tien",
+    "price_range": "5_7_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Mặt tiền hẻm 12m thông kinh doanh tấp nập. Nhà cũ tiện cải tạo, xây mới. Khu cao tầng đồng bộ văn minh.\n✅ Mã ...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:27 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:44"
+  },
+  {
+    "id": "f65bd98b00f6",
+    "internal_code": "CT3-44",
+    "title": "NHÀ RỘNG HÀ ĐẶC 80M2, KHU CAO TẦNG, HẺM XE HƠI, 6 TỶ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-rong-ha-dac-80m2-khu-cao-tang-hem-xe-hoi-6-ty-tl-f65bd98b00f6",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/gx7-d7690d7e-mi656piy-21-9-a726409c-1a30-415b-b077-c6e64235f1b8.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/gx7-d7690d7e-mi656piy-21-9-a726409c-1a30-415b-b077-c6e64235f1b8.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/gx7-d7690d7e-mi656piy-24-10-1c76df9a-9897-4483-91e4-6b6ae8a526f1.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/gx7-d7690d7e-mi656piy-27-11-1b613170-ab64-4f8a-a5c7-78dff6023455.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/gx7-d7690d7e-mi656piy-32-12-9a860487-21cc-4dbf-a1de-5ae60151e78b.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 80.0,
+    "bedrooms": 2,
+    "price_ty": 6.0,
+    "price_text": "6 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "5_7_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: đường Hà Đặc, gần Tô Ký, Nguyễn Ảnh Thủ, Song Hành.\n🧭 Trong bán kính 1-2km: ĐH Lao động Xã hội. ĐH Giao thông Vận tải, chợ Tân Chánh Hiệp, trường học 3 cấp, Coopmart Nguyễn Ảnh Thủ\n🏡 BTCT dọn vào ở ngay hoặc cải tạo xây mới. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi thông.\n✅ Mã SP: CT3-44\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:23 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:46"
+  },
+  {
+    "id": "ea7779c35902",
+    "internal_code": "CT3-92",
+    "title": "NHÀ ĐẸP GẦN LÊ VĂN KHƯƠNG, 3PN Ở NGAY, 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-gan-le-van-khuong-3pn-o-ngay-4-ty-nho-tl-ea7779c35902",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/25c62dc6-b825-4d97-9341-3a66d79ea89c-dc9540b9-1dbc-4312-8fd2-dbdfff7c9de1.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/25c62dc6-b825-4d97-9341-3a66d79ea89c-dc9540b9-1dbc-4312-8fd2-dbdfff7c9de1.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/44e6399b-67e6-4ce9-9a45-45887d69348a-963f3233-6bc4-41da-83d1-bd074f4c8c8b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/5a8829bc-7f89-495c-bf6e-93d37d179fb4-78863858-eeb6-446a-865f-12c3f4be8471.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/e5bb9769-1588-4443-a6f6-e85ff87d29d9-3ecda929-312e-43e7-9b3c-b82d443e8013.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/a928172e-8c4c-4607-b899-ca1d6674cf2e-9f7c5210-9e49-4d34-9b88-b4d230d3a873.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/b0d30421-fb1a-496b-b5cd-7c65624edc6d-e1c65618-867f-4340-ac60-759ec97e7d7e.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 58.0,
+    "bedrooms": 3,
+    "price_ty": 4.15,
+    "price_text": "4.15 tỷ",
+    "frontage_m": 4.5,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: gần đường Lê Văn Khương, Nguyễn Ảnh Thủ, Hiệp Thành 13, Hiệp Thành 17\n🧭 Trong bán kính 1-2km: chợ Hiệp Thành, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT dọn vào ở ngay.\n✅ Mã SP: CT3-92\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QUẬN TPHCM - Alo Châu!",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:21 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:49"
+  },
+  {
+    "id": "c6c609094a33",
+    "internal_code": "TT3-150",
+    "title": "NHÀ ĐẸP BÙI VĂN NGỮ KHU CAO TẦNG, HẺM 6M ĐỖ XE THOẢI MÁI, 5 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-mat-pho-ho-chi-minh/nha-dep-bui-van-ngu-khu-cao-tang-hem-6m-do-xe-thoai-mai-5-ty-nho-tl-c6c609094a33",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/9sb-439ccc34-mhgegzmg-8-4-7eea9282-dbe1-49a7-8c4a-fd81960142fe.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-439ccc34-mhgegzmg-8-4-7eea9282-dbe1-49a7-8c4a-fd81960142fe.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-439ccc34-mhgegzmg-14-6-1ac420bb-6f1b-4818-afa2-ea8743919d88.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-439ccc34-mhgegzmg-1-1-af6cb464-4bbc-48a7-bf6f-bb3e617a10a9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-439ccc34-mhgegzmg-29-8-6e15819b-4ed0-4ed5-928e-54af74bfe957.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-439ccc34-mhgegzmg-7-3-f68ebdf4-ab49-4136-b60c-2cfa20dc5266.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9sb-439ccc34-mhgegzmg-5-2-f1b5a485-2602-4598-8134-21182b3ec79e.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 46.5,
+    "bedrooms": 3,
+    "price_ty": 5.05,
+    "price_text": "5.05 tỷ",
+    "frontage_m": 4.4,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Bùi Văn Ngữ, gần đường Nguyễn Ảnh Thủ, Hiệp Thành 13, Hiệp Thành 17\n🧭 Trong bán kính 1-2km: chợ Đông Quang, chợ Hiệp Thành, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi 6m đến nhà. Có thể đỗ xe ngày đêm ở hẻm. Ở kết hợp kinh doanh, làm văn phòng công ty.\n✅ Mã S...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:13 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:51"
+  },
+  {
+    "id": "2c78c6e995d8",
+    "internal_code": "CT3-59",
+    "title": "NHÀ BTCT SONG HÀNH - NGUYỄN VĂN QUÁ GIÁP TÂN BÌNH, GẤP BÁN CÒN 3 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-btct-song-hanh-nguyen-van-qua-giap-tan-binh-gap-ban-con-3-ty-hon-tl-2c78c6e995d8",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1000023538-d50b4675-29d9-4972-80d0-674acbc7f084.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1000023538-d50b4675-29d9-4972-80d0-674acbc7f084.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000023539-ec8de67b-c0b2-4d68-a5fc-a98561d431f7.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000023536-1a41bbb1-8724-48c3-9dea-17e0ee6a7438.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000023534-512c5384-831c-4e53-9638-0ff50e37b520.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000023532-8a038346-c73c-4576-8c41-eaaad519585d.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 34.8,
+    "bedrooms": 2,
+    "price_ty": 3.4,
+    "price_text": "3.4 tỷ",
+    "frontage_m": 4.5,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: gần đường Song Hành, Nguyễn Văn Quá, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT dọn vào ở ngay.\n✅ Mã SP: CT3-59\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QU...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:09 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:53"
+  },
+  {
+    "id": "324dc02aaade",
+    "internal_code": "TT3-118",
+    "title": "NHÀ ĐẸP FULL NỘI THẤT, GIÁP GÒ VẤP, 3PN Ở NGAY, 5 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-giap-go-vap-3pn-o-ngay-5-ty-hon-tl-324dc02aaade",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/0fd3509b-a0f3-4a75-820a-85c389a82cb8-fda6259c-520c-4be2-8352-01c46ef24c4d.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/0fd3509b-a0f3-4a75-820a-85c389a82cb8-fda6259c-520c-4be2-8352-01c46ef24c4d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/e7fa6bf3-ef78-49d0-a068-12716f3a8ab3-647f7734-14b3-42c5-af07-256323c50300.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/eb62ab65-cd2e-456a-92bd-812cd2f63369-2fa28d41-d9bd-4b6e-8e63-327a4c927e42.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/13d3dc9d-7ae5-42fe-8c5f-bac171ca32b8-5b6636c6-cdd7-49f9-8f23-91aaf08d3672.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/09c684df-2e6d-4e50-b024-0ad6388ee5cf-dbae03fb-2546-4c8e-b2e0-14c199cd3946.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/bf469d46-92fc-423a-a011-bc9aee143cc3-6ed87a1f-74b2-4fab-8e90-5d2776b544e6.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 80.2,
+    "bedrooms": 3,
+    "price_ty": 5.35,
+    "price_text": "5.35 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 2.0,
+    "alley_type": "Hẻm xe máy (2m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "5_7_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: trục đường Nguyễn Thị Kiểu, gần đường Lê Văn Khương, Nguyễn Thị Đặng, Dương Thị Mười, Trương Thị Hoa, hay đi Lê Đức Thọ qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: chợ Hạt Điều, Mega Hiệp Phú, Bệnh viện Quận 12, UBND Tân Thới Hiệp, trường học các cấp, mua sắm, ẩm thực,...\n🏡 Nhà full nội thất, BTCT mới đẹp dọn vào ở ngay.\n✅ Mã SP: TT3-118\n📞...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:06 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:56"
+  },
+  {
+    "id": "04731d53fe7f",
+    "internal_code": "TT3-75",
+    "title": "NHÀ ĐẸP FULL NỘI THẤT HUỲNH THỊ HAI, KHU CAO TẦNG HẺM 5M, 3 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-huynh-thi-hai-khu-cao-tang-hem-5m-3-ty-hon-tl-04731d53fe7f",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/8f599910-247b-417f-9ae9-b9fcc296ec0f-4964471f-1f24-4ea4-b865-2b1b1406de06.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/8f599910-247b-417f-9ae9-b9fcc296ec0f-4964471f-1f24-4ea4-b865-2b1b1406de06.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/50ea88f5-051c-424a-b034-7f3d8133dc9e-0e2921c2-ea11-434a-a6c5-da27b3a5f7d9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/02e13c7b-53b6-4642-84a7-20ef0fa6fee6-43674583-3c99-4594-b250-3a72decd573f.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/c2c694fb-bdc2-4b21-b2b5-87e40a005336-8465393a-983b-4370-af09-1f57bf0e7f42.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/90b639a3-6d58-4581-8e49-065c08ddfa2d-d091bf1a-f6ad-4a93-ba41-8453f37d8022.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 37.8,
+    "bedrooms": 2,
+    "price_ty": 3.9,
+    "price_text": "3.9 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 Nhà full nội thất, BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi 5m đến nhà.\n✅ Mã SP...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:03 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:24:58"
+  },
+  {
+    "id": "5fde0af1b5d9",
+    "internal_code": "TT3-134",
+    "title": "NHÀ ĐẸP HUỲNH THỊ HAI, BTCT Ở NGAY, 4 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-huynh-thi-hai-btct-o-ngay-4-ty-hon-tl-5fde0af1b5d9",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/kkm-691514a4-mjp5x4vf-91-3-580d5765-3053-414a-a545-52561715ee19.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/kkm-691514a4-mjp5x4vf-91-3-580d5765-3053-414a-a545-52561715ee19.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/kkm-691514a4-mjp5x4vf-171-5-4b868ee5-4143-40c4-956a-fca1b9a00ef2.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/kkm-691514a4-mjp5x4vf-294-8-8d17ad32-0179-41a2-acc8-500e82dc7022.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/kkm-691514a4-mjp5x4vf-245-7-c9535e66-685a-4fe9-8abc-d9a8c607843c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/kkm-691514a4-mjp5x4vf-5-1-d93d082d-a51a-4cdc-9492-30a3cc042b13.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/kkm-691514a4-mjp5x4vf-53-2-b06e6954-5b66-4b25-9911-54e62811ea6d.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 58.4,
+    "bedrooms": 2,
+    "price_ty": 4.49,
+    "price_text": "4.49 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Huỳnh Thị Hai, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm 4m đến nhà.\n✅ Mã SP: TT3-134\n📞 Gọi/Zalo Châu ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "09:02 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:00"
+  },
+  {
+    "id": "de9c9df2707f",
+    "internal_code": "TT3-39",
+    "title": "NHÀ ĐẸP 3PN TRẦN THỊ NĂM, HẺM XE HƠI, 4 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-3pn-tran-thi-nam-hem-xe-hoi-4-ty-hon-tl-de9c9df2707f",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/f67d82c4-c1f2-4c35-a02f-f302a25b3db5-23167883-55cf-4ec0-978d-124be43baa84.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/f67d82c4-c1f2-4c35-a02f-f302a25b3db5-23167883-55cf-4ec0-978d-124be43baa84.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/7cb5123d-1319-40f0-a64b-dd3674ff57ee-7d711afb-6183-41dc-a053-2041c18a057a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/c16983fc-10f1-4c9f-93d7-743508de89be-493c10ff-e1c7-425a-8096-c922c34b8512.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/3691f5b0-cf81-4513-a70a-618dcda6d28d-2b8618ff-9800-4f5d-bca7-699b049e4840.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/a4a673c6-c41b-4b95-81bc-9f7bb528afea-4a419020-484e-4226-982a-18501afdf87d.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/55ea593d-d10d-4eee-868c-e8e5bf5bd947-52a92430-8c80-42a1-afa4-3e61d4514218.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 52.1,
+    "bedrooms": 3,
+    "price_ty": 4.65,
+    "price_text": "4.65 tỷ",
+    "frontage_m": 4.5,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Trần Thị Năm, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi đến nhà.\n✅ Mã SP: TT3-39\n📞 Gọi/Zalo Châ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:59 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:02"
+  },
+  {
+    "id": "04d75de66a12",
+    "internal_code": "TT3-46",
+    "title": "NHÀ ĐẸP 5PN HIỆP THÀNH 13, KHU CAO TẦNG, HẺM XE HƠI, CHỈ 5 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-5pn-hiep-thanh-13-khu-cao-tang-hem-xe-hoi-chi-5-ty-nho-tl-04d75de66a12",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/aa74228e-d252-4507-9502-5f04f616f27f-e6fcedd0-3338-4683-9295-04a91770d744.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/aa74228e-d252-4507-9502-5f04f616f27f-e6fcedd0-3338-4683-9295-04a91770d744.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/f168f894-ad64-4e3f-82b9-b004381cecc2-8efcb983-b55f-4357-a126-6dd7e08b65c7.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/573e7da8-f441-44ec-8fea-78ce792e8d80-c370e3f9-6491-411a-8f8a-93519099870c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/9722c2a1-0e6e-4758-b2eb-bae9ea9ac892-5fb09c13-1f88-487e-a8fb-c0fe7c56bc7e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/e4bef020-4a78-4b8c-849a-f530c13e7fbe-8d9e2efe-25e5-4714-891e-192e558c226b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/6da98a62-72a5-4e9f-9803-8a74a0fe3f9a-0306f322-f29f-46a6-ab2b-ca4b482ea1af.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/38f1ba6f-f7fe-44db-9cc4-832423d9fd77-68e4d3b4-b9ce-4c58-bc02-18a52e944ad5.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 68.4,
+    "bedrooms": 5,
+    "price_ty": 5.39,
+    "price_text": "5.39 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Hiệp Thành 13, gần đường Lê Văn Khương, Nguyễn Ảnh Thủ, Hiệp Thành 17\n🧭 Trong bán kính 1-2km: chợ Hiệp Thành, trường học các cấp, mua sắm, ẩm thực,...\n🏡 1 trệt 2 lầu, 5PN, 4WC, sân thượng sau thoáng mát. Giếng trời lấy gió và ánh sáng tự nhiên. BTCT dọn vào ở ngay. Khu cao tầng. Hẻm xe hơi 1 trục đến nhà, nhà 1/\n✅ Mã SP: TT3-46\n...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:56 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:05"
+  },
+  {
+    "id": "183c71e5b3ea",
+    "internal_code": "TT3-378",
+    "title": "NHÀ BTCT TRƯƠNG THỊ HOA, HẺM XE HƠI 6M, KHU CAO TẦNG, 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-btct-truong-thi-hoa-hem-xe-hoi-6m-khu-cao-tang-4-ty-nho-tl-183c71e5b3ea",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1000014752-feab8976-5ad8-4086-a667-3ec8bb22df23.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1000014752-feab8976-5ad8-4086-a667-3ec8bb22df23.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000014748-7a60e378-9622-41a1-8985-17342de69277.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000014747-e6fcb8d6-0e39-42ab-84d3-70dfe8f4d52e.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000014745-a4486a08-3b7d-454c-bdf7-cdfc5046d33b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000014744-dfc9c0c2-e17b-4252-809a-8b1a2f6ef72d.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 51.0,
+    "bedrooms": 2,
+    "price_ty": 4.4,
+    "price_text": "4.4 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Trương Thị Hoa, gần đường Lê Văn Khương, Nguyễn Thị Kiểu, Nguyễn Thị Đặng, Dương Thị Mười, Trương Thị Hoa, hay đi Lê Đức Thọ qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: chợ Hạt Điều, Mega Hiệp Phú, Bệnh viện Quận 12, UBND Tân Thới Hiệp, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT dọn vào ở ngay. Khu cao tầng đồng bộ văn minh...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:52 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:07"
+  },
+  {
+    "id": "8d3d3e3e3e45",
+    "internal_code": "TT3-30",
+    "title": "NHÀ ĐẸP LÂM THỊ HỐ, BTCT 68M2 Ở NGAY, MẶT TIỀN HẺM 8M, 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-lam-thi-ho-btct-68m2-o-ngay-mat-tien-hem-8m-4-ty-nho-tl-8d3d3e3e3e45",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/40261eff-b18e-445a-a53f-388833b43036-01940c14-89db-4aba-af86-64a2e588f671.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/40261eff-b18e-445a-a53f-388833b43036-01940c14-89db-4aba-af86-64a2e588f671.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/828c8699-f055-4c65-9806-e8caa3c10d21-aaa115ca-dc4b-48ae-87dd-62103dce5b10.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/27ecc7b4-1d10-487a-a994-444ea7ce2cab-ed0ad169-869c-415e-8117-9b265ec91183.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/7d6ab0e1-aac9-4c7b-a5dc-6ac8b1f95c0c-491af664-e92a-41e8-a64b-18c840b41fb9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/082d7af1-bfee-49d4-9bad-dfce048f2762-1d828118-3135-47c9-b358-27aae202b816.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/f181467c-262d-472b-9265-86a3bce3b6a3-a161fbbd-f03f-4ad3-8ba1-9866372c2c3b.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 68.0,
+    "bedrooms": 2,
+    "price_ty": 4.3,
+    "price_text": "4.3 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 8.0,
+    "alley_type": "Xe tải / Mặt tiền (>6m)",
+    "alley_category": "mat_tien",
+    "price_range": "3_5_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Lâm Thị Hố, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 1 trệt 1 lầu, sân để xe, 2 phòng ngủ, 2 WC. Có cửa bên hông thông thoáng, giếng trời lấy sáng tự nhiên. BTCT mới...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:50 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:09"
+  },
+  {
+    "id": "49c2752d0717",
+    "internal_code": "GV-175",
+    "title": "NHÀ ĐẸP BÙI QUANG LÀ, BTCT Ở NGAY, HẺM XE HƠI, 5 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-bui-quang-la-btct-o-ngay-hem-xe-hoi-5-ty-hon-tl-49c2752d0717",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/ab7910ec-6d63-4c8c-a146-be53b2f77507-c4e35a1d-8008-4e3a-bcf3-70130529ec6b.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/ab7910ec-6d63-4c8c-a146-be53b2f77507-c4e35a1d-8008-4e3a-bcf3-70130529ec6b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/7c07b56f-0f27-4f08-9c0b-13c1e2b3cbb0-3733c83b-a383-43ff-9b69-5744d9523294.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/98c8a4b3-0a6b-4575-a19e-414d6bd8ed23-de54fa38-5eb0-4561-af8b-5d2108ca9f5f.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/16a5240f-0ce9-4e59-9fc1-57f9c8d5f700-f917ee0e-1efe-45e5-9aa0-39d997b54f80.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2aa5b24d-5e65-4d47-8121-911798b39420-e63150a4-5467-4acb-8890-788f20968580.jpg"
+    ],
+    "ward": "Phường An Hội Tây",
+    "district": "Gò Vấp",
+    "area_m2": 60.0,
+    "bedrooms": 0,
+    "price_ty": 5.9,
+    "price_text": "5.9 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: đường Bùi Quang Là, gần đường Phan Huy Ích, tiện đi ra Quang Trung, Nguyễn Văn Khối, Trường Chinh (Tân Bình), Phan Văn Trị...\n🧭 Trong bán kính 1-2km: Emart Phan Huy Ích, trường học 3 cấp, phòng khám, mua sắm, chợ,...\n🏡 BTCT mới đẹp dọn vào ở ngay. 2 tầng 3PN, 2wc, tầng trệt có phòng ngủ cho người lớn tuổi. Khu cao tầng đồng bộ văn minh. Hẻ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:47 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:11"
+  },
+  {
+    "id": "ddf2c12afec4",
+    "internal_code": "CT5-69",
+    "title": "NHÀ ĐẸP FULL NỘI THẤT LÂM THỊ HỐ, 4PN, HẺM XE HƠI, 6 TỶ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-lam-thi-ho-4pn-hem-xe-hoi-6-ty-tl-ddf2c12afec4",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/2hao-2c09da69-mb4gt482-23-9-2832e802-0275-43e5-9911-93bf57a8c11f.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/2hao-2c09da69-mb4gt482-23-9-2832e802-0275-43e5-9911-93bf57a8c11f.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hao-2c09da69-mb4gt482-26-10-be7e88a6-4222-4c32-ba36-d34064965299.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hao-2c09da69-mb4gt482-29-11-dc3b7a47-d6e9-4189-beba-548ed810aa7c.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hao-2c09da69-mb4gt482-33-12-0d94be73-0b40-4e12-bca0-888680983a76.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hao-2c09da69-mb4gt482-35-13-48bed819-3f3f-4421-a82f-5c807b0d575f.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/2hao-2c09da69-mb4gt482-36-14-4e867c0b-c139-4369-8441-bac44749a721.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 56.0,
+    "bedrooms": 4,
+    "price_ty": 6.0,
+    "price_text": "6 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Lâm Thị Hố, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 1 trệt, 1 lửng, 3 lầu, sân Thượng, 4PN, Phòng thờ, gara oto, tặng full nội thất xịn sò. Khách chỉ việc xách vali...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:43 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:14"
+  },
+  {
+    "id": "87eebb6e1c28",
+    "internal_code": "GV-65",
+    "title": "NHÀ BTCT LÊ ĐỨC THỌ, HẺM 6M 1 TRỤC ĐẾN NHÀ, 4PN, 5 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-btct-le-duc-tho-hem-6m-1-truc-den-nha-4pn-5-ty-hon-tl-87eebb6e1c28",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/1000012230-bc1a9cd2-0074-4012-a9e6-548c1b350018.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/1000012230-bc1a9cd2-0074-4012-a9e6-548c1b350018.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000012229-6b4bf50b-ca4d-4b4f-8d1f-2a41378e079b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000012228-76c26751-d8a0-4818-b650-65b135632d2f.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000012233-7e230597-9489-4c26-bcbd-44f756f8afeb.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000012232-b62254cb-e041-428b-b6c8-600993dda466.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000012234-a8a0c634-bf3c-48bf-b3de-f4bebc598ad2.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/1000012235-1bc2b3e7-2f98-4979-8de9-12079f1e37f0.jpg"
+    ],
+    "ward": "Phường An Hội Tây",
+    "district": "Gò Vấp",
+    "area_m2": 44.2,
+    "bedrooms": 4,
+    "price_ty": 5.99,
+    "price_text": "5.99 tỷ",
+    "frontage_m": 4.1,
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Lê Đức Thọ, gần đường Lê Văn Thọ, Phạm Văn Chiêu\n🧭 Trong bán kính 1-2km: chợ dân sinh, cầu Trường Đai, trường học các cấp.\n🏡 BTCT có thể ở ngay hoặc cải tạo. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi 6m 1 trục đến nhà.\n✅ Mã SP: GV-65\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:40 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:16"
+  },
+  {
+    "id": "fb7517da5422",
+    "internal_code": "TT3-371",
+    "title": "NHÀ NHỎ GẦN TÔ NGỌC VÂN SANG GÒ VẤP, 2PN 62m2, 2 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-nho-gan-to-ngoc-van-sang-go-vap-2pn-62m2-2-ty-hon-tl-fb7517da5422",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/11/26/1000010706-7c457413-e7a2-438c-bf28-ad75ae62716a.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/11/26/1000010706-7c457413-e7a2-438c-bf28-ad75ae62716a.jpg",
+      "https://cdn.nhadat247.vn/2026/11/26/1000010707-de10380e-32b7-4f93-84f9-fa13a192a834.jpg",
+      "https://cdn.nhadat247.vn/2026/11/26/1000010708-41667e65-1cbb-4173-8d38-494e93f30d90.jpg",
+      "https://cdn.nhadat247.vn/2026/11/26/1000010695-6e48a1af-e919-472f-8527-6e6a731e4a30.jpg"
+    ],
+    "ward": "Phường Thới An",
+    "district": "Quận 12",
+    "area_m2": 68.0,
+    "bedrooms": 2,
+    "price_ty": 2.6,
+    "price_text": "2.6 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 2.0,
+    "alley_type": "Hẻm xe máy (2m)",
+    "alley_category": "hem_xe_may",
+    "price_range": "duoi_3_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: gần trục đường Tô Ngọc Vân sang Gò Vấp\n🏡 1 trệt 1 lầu BTCT, mua về ở ngay hoặc cải tạo.\n✅ Mã SP: TT3-371\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤT CẢ CÁC QUẬN TPHCM - Alo Châu!",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:35 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:18"
+  },
+  {
+    "id": "3b7828bf5f9d",
+    "internal_code": "TT3-473",
+    "title": "NHÀ ĐẸP LÂM THỊ HỐ, HẺM 5M, NHÀ ĐẸP Ở NGAY, GẤP BÁN CÒN 4 TỶ NHỎ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-lam-thi-ho-hem-5m-nha-dep-o-ngay-gap-ban-con-4-ty-nho-tl-3b7828bf5f9d",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/11/24/6d3cb9a5-e49f-4d61-b42a-14c495a30620-cf4cee3f-e77e-4f2b-90a7-599a69176cc7.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/11/24/6d3cb9a5-e49f-4d61-b42a-14c495a30620-cf4cee3f-e77e-4f2b-90a7-599a69176cc7.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/858cb9e0-1043-4dc4-89f7-41bb49bae37a-2cfde544-a75c-46d2-b864-ef7c385e9a68.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/610bd103-b84c-49ef-9e5b-250f7befc4ff-5897f492-770e-477d-adff-d5be0fb77bbf.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/c5c2e3c7-3497-4033-80c3-6725b8feb855-9fda8f16-1dbf-460c-be34-7a5c272fb704.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/e215e5a2-ad38-4307-b0c8-0366c693044d-74d362a7-692b-46fb-9163-d0acec5896ca.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/6969f617-c8c2-4f07-8028-2443bed4925d-9a18477c-ab1b-42e9-8cc1-cb9ad5ebbe4a.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 52.0,
+    "bedrooms": 2,
+    "price_ty": 4.2,
+    "price_text": "4.2 tỷ",
+    "frontage_m": 4.3,
+    "alley_width_m": 4.5,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Lâm Thị Hố, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng, Hẻm 5m đến nhà, trẻ con chơi trong hẻm thoải mái. Gần mặt tiền đường ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:28 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:20"
+  },
+  {
+    "id": "c617c1290898",
+    "internal_code": "TT3-08",
+    "title": "NHÀ ĐẸP BTCT LÊ VĂN KHƯƠNG GIÁP GÒ VẤP, 3PN, HẺM THÔNG, GẤP BÁN CÒN 4 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-btct-le-van-khuong-giap-go-vap-3pn-hem-thong-gap-ban-con-4-ty-hon-tl-c617c1290898",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/11/24/a0cbaf68-83ef-4e40-b799-1d660a0a2acf-47db3163-1e91-42f9-93ef-fb33f593ad9d.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/11/24/a0cbaf68-83ef-4e40-b799-1d660a0a2acf-47db3163-1e91-42f9-93ef-fb33f593ad9d.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/21a91a02-f6c7-495e-9a13-95b0a71588db-fb13bbb6-24c1-4ed0-864c-f799dd921f22.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/d881e196-0a3c-4450-8fee-4d0b0abc77bd-37d4fa65-693f-4e39-875b-fba75ae2ab55.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/d1969a90-9e1d-4b0f-973b-6d01285951d5-1afd3c8d-984f-4485-b7f3-316f75447704.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/51933f64-9c4b-40b0-b35a-79bd34856196-8dc19080-b195-4266-8114-99a64abf8d5d.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/9b48b7dd-2c6e-4661-9548-211f4790cccb-f769915d-08ce-44af-95d4-cc5864a64c3f.jpg"
+    ],
+    "ward": "Phường Tân Thới Hiệp",
+    "district": "Quận 12",
+    "area_m2": 73.5,
+    "bedrooms": 3,
+    "price_ty": 4.55,
+    "price_text": "4.55 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 3.0,
+    "alley_type": "Hẻm ba gác (3-4m)",
+    "alley_category": "hem_ba_gac",
+    "price_range": "3_5_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Lê Văn Khương, gần Nguyễn Thị Kiểu, Nguyễn Thị Đặng, Dương Thị Mười, Trương Thị Hoa, hay đi Lê Đức Thọ qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: chợ Hạt Điều, Mega Hiệp Phú, Bệnh viện Quận 12, UBND Tân Thới Hiệp, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi v...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:25 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:22"
+  },
+  {
+    "id": "91661343a4f9",
+    "internal_code": "CT5-90",
+    "title": "NHÀ ĐẸP BỀ THẾ 6PN, MẶT TIỀN HẺM 8M LÂM THỊ HỐ, GẤP BÁN CÒN 7 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-be-the-6pn-mat-tien-hem-8m-lam-thi-ho-gap-ban-con-7-ty-hon-tl-91661343a4f9",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-702-16-7d890188-011a-464e-b569-51f62b113b47.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-702-16-7d890188-011a-464e-b569-51f62b113b47.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-751-17-d1d5c672-b6db-4e00-a646-83c3b77000ff.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-791-18-b7d13ac2-6b48-4cff-bef0-2ad4631ef762.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-840-19-a2a9863d-f472-4d98-b83d-0449be2ff219.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-888-20-5e10bc11-c723-4a74-98ed-ed5cda12d98c.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-1009-23-3b6c8032-5c6b-4ee7-bb15-3637bb52ff4a.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-1055-24-0f466d88-d164-4cca-ac9e-6933a8d65841.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-1095-25-5730f18b-532a-4995-b380-488c411dbdbb.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/2d2c-fea555e0-miszwcaa-1202-27-5dab6d45-df35-4b49-9320-ec690a7d5a44.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 60.0,
+    "bedrooms": 6,
+    "price_ty": 7.15,
+    "price_text": "7.15 tỷ",
+    "frontage_m": 4.8,
+    "alley_width_m": 8.0,
+    "alley_type": "Xe tải / Mặt tiền (>6m)",
+    "alley_category": "mat_tien",
+    "price_range": "7_10_ty",
+    "area_range": "40_60",
+    "description": "📍Vị trí: trục đường Lâm Thị Hố, gần Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT mới đẹp dọn vào ở ngay. Nhà đẹp lừng lững 5 tầng, ngang 4.8m khủng, xe hơi vào nhà. Khu cao tầng đồng bộ văn minh...",
+    "purposes": [
+      "dong_tien",
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "chdv",
+    "estimated_rent_text": "",
+    "updated_at": "08:22 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:24"
+  },
+  {
+    "id": "fccfdf1c6cd4",
+    "internal_code": "TT3-11",
+    "title": "NHÀ GẦN TÔ KÝ, HẺM XE HƠI, 3 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-gan-to-ky-hem-xe-hoi-3-ty-hon-tl-fccfdf1c6cd4",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/11/24/0786e9d5-cba7-44a0-adf1-65e8fe40dfa6-08dc6662-8e3c-4cf1-9a57-412dadcc860d.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/11/24/0786e9d5-cba7-44a0-adf1-65e8fe40dfa6-08dc6662-8e3c-4cf1-9a57-412dadcc860d.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/4cfc130b-d118-44d2-b031-a1504867c7e9-3e502bce-6c4c-4c98-9628-075045b6571c.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/d9563850-2724-4899-9473-120e1d0ab86d-f54774ab-9ae9-4d44-afdc-72b74bf28852.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/7f6d2bd6-beba-40b8-bbf9-0e230926462e-abc19d44-20d7-4ebb-be45-8db400a2f415.jpg",
+      "https://cdn.nhadat247.vn/2026/11/24/5d14b0ff-ab70-471a-9266-e3f380292b68-af9a2a2e-a2d0-4afe-bc86-f82d330926f4.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 37.7,
+    "bedrooms": 3,
+    "price_ty": 3.95,
+    "price_text": "3.95 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 4.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "3_5_ty",
+    "area_range": "duoi_40",
+    "description": "📍Vị trí: gần đường Tô Ký, Nguyễn Ảnh Thủ, Dương Thị Mười\n🧭 Trong bán kính 1-2km: ĐH Lao động Xã hội. ĐH Giao thông Vận tải, chợ Tân Chánh Hiệp, trường học 3 cấp, Coopmart Nguyễn Ảnh Thủ\n🏡 Hẻm sạch sẽ, thông thoáng, trẻ em chơi thoải mái.\n✅ Mã SP: TT3-11\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem nhà thực tế.\n🏡 NHẬN KÝ GỬI NHÀ ĐẤT TẤ...",
+    "purposes": [
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:14 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:27"
+  },
+  {
+    "id": "fa87fc89f9cd",
+    "internal_code": "CT8-02",
+    "title": "NHÀ ĐẸP FULL NỘI THẤT 5 TẦNG, CÓ THANG MÁY, TRẦN THỊ NĂM, GẤP BÁN GIẢM HƠN 1 TỶ CÒN 8 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-full-noi-that-5-tang-co-thang-may-tran-thi-nam-gap-ban-giam-hon-1-ty-con-8-ty-hon-tl-fa87fc89f9cd",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/c0af4a32-4d91-4739-ad9e-eb2f261470a0-bb95abeb-e94a-4df3-a4a2-008a9b2c0b46.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/c0af4a32-4d91-4739-ad9e-eb2f261470a0-bb95abeb-e94a-4df3-a4a2-008a9b2c0b46.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/a92843f4-1ad9-4d36-a4f6-4b4745e5e3dd-d848898d-9549-4d7f-b4d6-e09ec63ce7a1.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/92a0fd17-5289-48df-85d3-4a32a79b0f64-94e0fec6-531a-4c0c-8b04-644f912837fb.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/039deac4-5824-4058-a0e8-6616afde68d8-4bc5ca36-82ac-41b2-9a28-1c55e75e2489.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/797f9405-c984-4749-b9ff-4df5778a6240-9ac8dc8f-0b83-4496-a4ab-128b5a43c34a.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/48f47d44-6ab2-47bf-9e5c-62658757aae8-d500cf3c-55be-459d-a71a-9faca5f15ad8.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/fec615e4-aa0c-485b-b3ca-e2dc0163511f-1222a14c-7f57-4f24-ac8d-cfabcab84e02.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/42c4e1c9-2a55-46b5-b884-e9fcbf9fd679-7e82b353-3873-4f38-bd19-41da47b291b5.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/0a178274-10af-48f9-b82e-d2ae113e97d9-98d51779-14a3-4166-8237-08bf41eb3ac9.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/30b65e46-d955-41ef-a00b-50d6c92923cb-b3fbde8a-f73c-4fb2-b0c1-d4966145d949.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/dc37356b-527f-40cf-b81e-be85ef75bccf-f3ec1596-5e36-4c0a-92db-7819c9f9472f.jpg"
+    ],
+    "ward": "Phường Trung Mỹ Tây",
+    "district": "Quận 12",
+    "area_m2": 79.6,
+    "bedrooms": 4,
+    "price_ty": 8.6,
+    "price_text": "8.6 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 6.0,
+    "alley_type": "Xe tải / Mặt tiền (>6m)",
+    "alley_category": "mat_tien",
+    "price_range": "7_10_ty",
+    "area_range": "60_80",
+    "description": "📍Vị trí: trục đường Trần Thị Năm, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏠 Kết cấu: 5 tầng, có THANG MÁY, gồm: 4 PN, 6 WC. Nhà xây hiện đại, sân sau thoáng cực chill, 4 ban công giếng trời. Phòng thờ...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:11 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:29"
+  },
+  {
+    "id": "264691304554",
+    "internal_code": "CT5-143",
+    "title": "NHÀ RỘNG 92m2 NGUYỄN VĂN QUÁ, 5 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-mat-pho-ho-chi-minh/nha-rong-92m2-nguyen-van-qua-5-ty-hon-tl-264691304554",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/09/01/86d7d370-8f51-4ea4-b181-6d3cad5518d4-f9282a3c-6e69-43ae-b756-06b6d289b10b.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/09/01/86d7d370-8f51-4ea4-b181-6d3cad5518d4-f9282a3c-6e69-43ae-b756-06b6d289b10b.jpg",
+      "https://cdn.nhadat247.vn/2026/09/01/6d4b09c1-3f01-4309-a742-e39d20d244b5-07d9824c-13c0-4f28-8bae-12c6d777b053.jpg",
+      "https://cdn.nhadat247.vn/2026/11/26/1000010708-4784488a-4a48-4f27-8a35-98335b9189c6.jpg"
+    ],
+    "ward": "Phường Đông Hưng Thuận",
+    "district": "Quận 12",
+    "area_m2": 91.7,
+    "bedrooms": 4,
+    "price_ty": 5.7,
+    "price_text": "5.7 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 0.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "5_7_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: gần đường Nguyễn Văn Quá, Tô Ký, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 Nhà cũ có thể dọn vào ở ngay hoặc cải tạo, xây mới. Hẻm xe hơi đến nhà.\n✅ Mã SP: CT5-143\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông tin và xem ...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "08:07 26/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:31"
+  },
+  {
+    "id": "ed505782df0d",
+    "internal_code": "GV-276",
+    "title": "NHÀ BTCT 5PN RỘNG, HẺM XE HƠI THÔNG GẦN PHAN HUY ÍCH, 9 TỶ TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-btct-5pn-rong-hem-xe-hoi-thong-gan-phan-huy-ich-9-ty-tl-ed505782df0d",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/11/25/e4bc6458-c16d-4388-a952-e26a0ffea517-eff0bd56-6ae2-45a6-84bd-0f1b9883e265.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/11/25/e4bc6458-c16d-4388-a952-e26a0ffea517-eff0bd56-6ae2-45a6-84bd-0f1b9883e265.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/53cfba3b-2938-457e-b23b-b6312c66185a-ee0a44fa-4851-40f1-b7ae-d593f04e2f4a.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/579ae57f-7388-4171-8192-f398e54bdfb4-576cc7e9-4dc6-4cf4-aa2e-485df4e8f029.jpg"
+    ],
+    "ward": "Phường An Hội Tây",
+    "district": "Gò Vấp",
+    "area_m2": 95.0,
+    "bedrooms": 5,
+    "price_ty": 9.5,
+    "price_text": "9.5 tỷ",
+    "frontage_m": 7.0,
+    "alley_width_m": 5.0,
+    "alley_type": "Hẻm xe hơi (4-6m)",
+    "alley_category": "hem_xe_hoi",
+    "price_range": "7_10_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: gần trục đường Phan Huy Ích, tiện đi ra Quang Trung, Nguyễn Văn Khối, Trường Chinh (Tân Bình), Phan Văn Trị...\n🧭 Trong bán kính 1-2km: Emart Phan Huy Ích, trường học 3 cấp, phòng khám, mua sắm, chợ,...\n🏡 Ngang rộng, sân rộng để xe. BTCT cần sửa sang một chút khi mua về. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi 5m thông. Có thể vừa ở vừa l...",
+    "purposes": [
+      "dong_tien",
+      "de_o"
+    ],
+    "cashflow_subtype": "chdv",
+    "estimated_rent_text": "",
+    "updated_at": "21:23 25/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:33"
+  },
+  {
+    "id": "cec0cde60a27",
+    "internal_code": "GV-275",
+    "title": "NHÀ ĐẸP MẶT TIỀN HẺM THÔNG QUANG TRUNG, BTCT 4PN RỘNG, 8 TỶ HƠN TL",
+    "url": "https://nhadat247.vn/ban-nha-rieng-ho-chi-minh/nha-dep-mat-tien-hem-thong-quang-trung-btct-4pn-rong-8-ty-hon-tl-cec0cde60a27",
+    "transaction_type": "sale",
+    "image": "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-32-9-e23383a9-3a36-41e4-bda0-c8ac89662592.jpg",
+    "images": [
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-32-9-e23383a9-3a36-41e4-bda0-c8ac89662592.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-34-10-4d170df8-5eb4-4e6b-9f00-d155998a2367.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-38-12-51a52e97-595d-4c27-84b0-a81ab19e0a7c.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-40-13-cbfc30c3-8dd1-4deb-8d0e-661d741c585c.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-41-14-d6a75704-9d09-48d2-858e-fe0ab9a9883a.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-47-16-65574a1c-77be-484c-ac0a-3f6e057d87c6.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-51-17-e1385385-790a-4e89-89bc-7134b6f95e32.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-54-18-f876ab13-786e-4418-82f7-47e1b63db06f.jpg",
+      "https://cdn.nhadat247.vn/2026/11/25/4bl4-801cbda2-mf6uq8av-57-19-5991f4b4-f631-4be5-b403-4c824a56ff76.jpg"
+    ],
+    "ward": "Phường Thông Tây Hội",
+    "district": "Gò Vấp",
+    "area_m2": 81.3,
+    "bedrooms": 4,
+    "price_ty": 8.2,
+    "price_text": "8.2 tỷ",
+    "frontage_m": 4.0,
+    "alley_width_m": 6.0,
+    "alley_type": "Xe tải / Mặt tiền (>6m)",
+    "alley_category": "mat_tien",
+    "price_range": "7_10_ty",
+    "area_range": "80_100",
+    "description": "📍Vị trí: mặt tiền hẻm thông Quang Trung, tiện đi ra các trục đường lớn vào thành phố.\n🧭 Trong bán kính 1-2km: trụ sở hành chính, trường học 3 cấp, phòng khám, mua sắm, chợ Hạnh Thông Tây,...\n🏡 Mặt tiền hẻm xe hơi thông, tiện ở và kinh doanh. Khu dân cư cao tầng, 1 trục thẳng đến nhà.\n✅ Mã SP: GV-275\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm thông t...",
+    "purposes": [
+      "kinh_doanh",
+      "de_o"
+    ],
+    "cashflow_subtype": "",
+    "estimated_rent_text": "",
+    "updated_at": "21:19 25/11/2026",
+    "status": "active",
+    "is_sold": false,
+    "is_price_dropped": false,
+    "old_price_ty": null,
+    "drop_amount_ty": null,
+    "last_checked_at": "2026-11-26 07:25:36"
+  },
+  {
     "id": "1f1f80a16a14",
     "internal_code": "GV-274",
     "title": "NHÀ ĐẸP 5 TẦNG BỀ THẾ KHU PHÂN LÔ, HẺM 5M ĐẾN NHÀ, 6PN CÓ THANG MÁY, 9 TỶ HƠN TL",
@@ -43,7 +2464,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:09:42"
+    "last_checked_at": "2026-11-26 07:25:38"
   },
   {
     "id": "7777f93f3f46",
@@ -85,7 +2506,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:09:44"
+    "last_checked_at": "2026-11-26 07:25:40"
   },
   {
     "id": "796be5a5e06f",
@@ -127,7 +2548,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:09:46"
+    "last_checked_at": "2026-11-26 07:25:42"
   },
   {
     "id": "34e804e091b0",
@@ -173,7 +2594,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:09:48"
+    "last_checked_at": "2026-11-26 07:25:45"
   },
   {
     "id": "1c5e19169cdb",
@@ -217,7 +2638,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:09:51"
+    "last_checked_at": "2026-11-26 07:25:47"
   },
   {
     "id": "2d032d12044b",
@@ -261,7 +2682,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:09:53"
+    "last_checked_at": "2026-11-26 07:25:49"
   },
   {
     "id": "f7f416055593",
@@ -300,7 +2721,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:09:55"
+    "last_checked_at": "2026-11-26 07:25:52"
   },
   {
     "id": "61d38f263bce",
@@ -344,7 +2765,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:09:58"
+    "last_checked_at": "2026-11-26 07:25:55"
   },
   {
     "id": "cbd8ff90a54f",
@@ -383,7 +2804,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:00"
+    "last_checked_at": "2026-11-26 07:25:57"
   },
   {
     "id": "98ba7977dd40",
@@ -428,7 +2849,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:02"
+    "last_checked_at": "2026-11-26 07:26:00"
   },
   {
     "id": "fce77849e4d0",
@@ -470,7 +2891,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:04"
+    "last_checked_at": "2026-11-26 07:26:03"
   },
   {
     "id": "d8e7f987f034",
@@ -510,7 +2931,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:06"
+    "last_checked_at": "2026-11-26 07:26:05"
   },
   {
     "id": "102347fcca2e",
@@ -553,7 +2974,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:08"
+    "last_checked_at": "2026-11-26 07:26:08"
   },
   {
     "id": "67ba021f4f9a",
@@ -594,7 +3015,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:11"
+    "last_checked_at": "2026-11-26 07:26:10"
   },
   {
     "id": "fd2798f47d7f",
@@ -635,7 +3056,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:13"
+    "last_checked_at": "2026-11-26 07:26:12"
   },
   {
     "id": "a781bc7d5437",
@@ -678,7 +3099,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:15"
+    "last_checked_at": "2026-11-26 07:26:14"
   },
   {
     "id": "fa3e555f47e9",
@@ -722,7 +3143,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:17"
+    "last_checked_at": "2026-11-26 07:26:16"
   },
   {
     "id": "6b32b7718360",
@@ -763,7 +3184,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:19"
+    "last_checked_at": "2026-11-26 07:26:19"
   },
   {
     "id": "542aafb57b9e",
@@ -805,7 +3226,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:22"
+    "last_checked_at": "2026-11-26 07:26:21"
   },
   {
     "id": "c3f8693b5633",
@@ -846,7 +3267,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:24"
+    "last_checked_at": "2026-11-26 07:26:23"
   },
   {
     "id": "3200fe6a68bc",
@@ -888,7 +3309,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:27"
+    "last_checked_at": "2026-11-26 07:26:25"
   },
   {
     "id": "e0789a0f8079",
@@ -929,7 +3350,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:29"
+    "last_checked_at": "2026-11-26 07:26:27"
   },
   {
     "id": "8de1b33e1438",
@@ -972,7 +3393,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:31"
+    "last_checked_at": "2026-11-26 07:26:30"
   },
   {
     "id": "1d48c1bd7699",
@@ -1014,7 +3435,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:34"
+    "last_checked_at": "2026-11-26 07:26:32"
   },
   {
     "id": "1d34d1e86d9d",
@@ -1054,7 +3475,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:36"
+    "last_checked_at": "2026-11-26 07:26:34"
   },
   {
     "id": "3161f6f0958f",
@@ -1092,7 +3513,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:38"
+    "last_checked_at": "2026-11-26 07:26:36"
   },
   {
     "id": "f4d9279fa6d1",
@@ -1134,7 +3555,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:40"
+    "last_checked_at": "2026-11-26 07:26:39"
   },
   {
     "id": "11b011c5ac81",
@@ -1178,7 +3599,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:42"
+    "last_checked_at": "2026-11-26 07:26:41"
   },
   {
     "id": "5604beee0913",
@@ -1222,7 +3643,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:45"
+    "last_checked_at": "2026-11-26 07:26:43"
   },
   {
     "id": "23ef844b82b6",
@@ -1263,7 +3684,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:47"
+    "last_checked_at": "2026-11-26 07:26:45"
   },
   {
     "id": "890f9a744d9c",
@@ -1307,7 +3728,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:49"
+    "last_checked_at": "2026-11-26 07:26:47"
   },
   {
     "id": "fece78368ba7",
@@ -1346,7 +3767,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:51"
+    "last_checked_at": "2026-11-26 07:26:50"
   },
   {
     "id": "eb530d70b982",
@@ -1390,7 +3811,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:53"
+    "last_checked_at": "2026-11-26 07:26:52"
   },
   {
     "id": "6250d545bbad",
@@ -1434,7 +3855,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:55"
+    "last_checked_at": "2026-11-26 07:26:54"
   },
   {
     "id": "a522f4b42222",
@@ -1476,7 +3897,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:10:58"
+    "last_checked_at": "2026-11-26 07:26:56"
   },
   {
     "id": "4b65a76b2aea",
@@ -1520,7 +3941,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:00"
+    "last_checked_at": "2026-11-26 07:26:59"
   },
   {
     "id": "7d7217d01fa8",
@@ -1563,7 +3984,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:02"
+    "last_checked_at": "2026-11-26 07:27:01"
   },
   {
     "id": "5ee18e67476c",
@@ -1604,7 +4025,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:04"
+    "last_checked_at": "2026-11-26 07:27:03"
   },
   {
     "id": "a757519eb257",
@@ -1643,7 +4064,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:06"
+    "last_checked_at": "2026-11-26 07:27:05"
   },
   {
     "id": "e274aa268f39",
@@ -1685,7 +4106,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:09"
+    "last_checked_at": "2026-11-26 07:27:08"
   },
   {
     "id": "62e2517b6987",
@@ -1729,7 +4150,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:11"
+    "last_checked_at": "2026-11-26 07:27:10"
   },
   {
     "id": "7926a69d7a87",
@@ -1773,7 +4194,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:13"
+    "last_checked_at": "2026-11-26 07:27:12"
   },
   {
     "id": "9b16e4398a61",
@@ -1817,7 +4238,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:15"
+    "last_checked_at": "2026-11-26 07:27:14"
   },
   {
     "id": "61232e31c0cc",
@@ -1861,7 +4282,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:17"
+    "last_checked_at": "2026-11-26 07:27:16"
   },
   {
     "id": "a6c09efe1a00",
@@ -1905,7 +4326,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:19"
+    "last_checked_at": "2026-11-26 07:27:19"
   },
   {
     "id": "a5e586a746cb",
@@ -1946,7 +4367,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:22"
+    "last_checked_at": "2026-11-26 07:27:21"
   },
   {
     "id": "4f759e52ed10",
@@ -1990,7 +4411,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:24"
+    "last_checked_at": "2026-11-26 07:27:23"
   },
   {
     "id": "0bcaddc72d7c",
@@ -2032,7 +4453,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:26"
+    "last_checked_at": "2026-11-26 07:27:25"
   },
   {
     "id": "a76806cb0827",
@@ -2072,7 +4493,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:28"
+    "last_checked_at": "2026-11-26 07:27:27"
   },
   {
     "id": "805c1954dcb2",
@@ -2110,7 +4531,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:30"
+    "last_checked_at": "2026-11-26 07:27:30"
   },
   {
     "id": "367191cbf42a",
@@ -2151,7 +4572,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:32"
+    "last_checked_at": "2026-11-26 07:27:32"
   },
   {
     "id": "a3950469f5ab",
@@ -2192,7 +4613,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:35"
+    "last_checked_at": "2026-11-26 07:27:34"
   },
   {
     "id": "3cb567958126",
@@ -2234,7 +4655,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:37"
+    "last_checked_at": "2026-11-26 07:27:36"
   },
   {
     "id": "439b0befea7e",
@@ -2274,7 +4695,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:39"
+    "last_checked_at": "2026-11-26 07:27:38"
   },
   {
     "id": "173813875c9d",
@@ -2312,7 +4733,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:41"
+    "last_checked_at": "2026-11-26 07:27:41"
   },
   {
     "id": "48502e688f65",
@@ -2351,7 +4772,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:43"
+    "last_checked_at": "2026-11-26 07:27:43"
   },
   {
     "id": "9b8d5c0575ff",
@@ -2392,7 +4813,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:46"
+    "last_checked_at": "2026-11-26 07:27:45"
   },
   {
     "id": "75780bdc88fa",
@@ -2432,7 +4853,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:48"
+    "last_checked_at": "2026-11-26 07:27:47"
   },
   {
     "id": "4ef48b8ada23",
@@ -2472,7 +4893,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:50"
+    "last_checked_at": "2026-11-26 07:27:49"
   },
   {
     "id": "18b7828fb8f9",
@@ -2512,7 +4933,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:52"
+    "last_checked_at": "2026-11-26 07:27:52"
   },
   {
     "id": "bec0162e4ad6",
@@ -2553,7 +4974,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:54"
+    "last_checked_at": "2026-11-26 07:27:54"
   },
   {
     "id": "722796be6dd8",
@@ -2592,7 +5013,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:57"
+    "last_checked_at": "2026-11-26 07:27:56"
   },
   {
     "id": "1efe50b9af5d",
@@ -2634,7 +5055,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:11:59"
+    "last_checked_at": "2026-11-26 07:27:58"
   },
   {
     "id": "b87a28dd0161",
@@ -2676,7 +5097,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:01"
+    "last_checked_at": "2026-11-26 07:28:00"
   },
   {
     "id": "93d4e006260a",
@@ -2719,7 +5140,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:03"
+    "last_checked_at": "2026-11-26 07:28:03"
   },
   {
     "id": "a55cdb01aac3",
@@ -2762,7 +5183,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:05"
+    "last_checked_at": "2026-11-26 07:28:05"
   },
   {
     "id": "06b401b13770",
@@ -2805,7 +5226,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:08"
+    "last_checked_at": "2026-11-26 07:28:07"
   },
   {
     "id": "f6ffe5e73c23",
@@ -2848,7 +5269,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:10"
+    "last_checked_at": "2026-11-26 07:28:09"
   },
   {
     "id": "51b65fdc0eff",
@@ -2891,7 +5312,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:12"
+    "last_checked_at": "2026-11-26 07:28:11"
   },
   {
     "id": "2fe8449bbbaa",
@@ -2933,7 +5354,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:14"
+    "last_checked_at": "2026-11-26 07:28:14"
   },
   {
     "id": "55fa899e5ceb",
@@ -2975,7 +5396,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:16"
+    "last_checked_at": "2026-11-26 07:28:16"
   },
   {
     "id": "b5a84ad154fd",
@@ -3020,7 +5441,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:19"
+    "last_checked_at": "2026-11-26 07:28:18"
   },
   {
     "id": "2ef9ff2c99c6",
@@ -3044,13 +5465,13 @@
     "district": "Quận 12",
     "area_m2": 80.0,
     "bedrooms": 3,
-    "price_ty": 10.6,
-    "price_text": "10.6 tỷ",
+    "price_ty": 9.3,
+    "price_text": "9.3 tỷ",
     "frontage_m": 4.0,
     "alley_width_m": 6.0,
     "alley_type": "Xe tải / Mặt tiền (>6m)",
     "alley_category": "mat_tien",
-    "price_range": "tren_10_ty",
+    "price_range": "7_10_ty",
     "area_range": "60_80",
     "description": "📍Vị trí: gần đường Nguyễn Văn Quá, Tô Ký, đi Trường Chinh sang Tân Bình hay qua Gò Vấp đều tiện\n🧭 Trong bán kính 1-2km: Galaxy Cinema Nguyễn Văn Quá, chợ Cầu, trường học các cấp, mua sắm, ẩm thực,...\n🏡 BTCT mới đẹp dọn vào ở ngay. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi thông 6m có vỉa hè.\n✅ Mã SP: TT3-\n📞 Gọi/Zalo Châu 0783.515.486 để biết thêm t...",
     "purposes": [
@@ -3062,10 +5483,10 @@
     "updated_at": "16:06 24/11/2026",
     "status": "active",
     "is_sold": false,
-    "is_price_dropped": false,
-    "old_price_ty": null,
-    "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:21"
+    "is_price_dropped": true,
+    "old_price_ty": 10.6,
+    "drop_amount_ty": 1.3,
+    "last_checked_at": "2026-11-26 07:28:20"
   },
   {
     "id": "e339c40a3c5e",
@@ -3109,7 +5530,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:23"
+    "last_checked_at": "2026-11-26 07:28:23"
   },
   {
     "id": "5ad1a6dd3e54",
@@ -3151,7 +5572,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:25"
+    "last_checked_at": "2026-11-26 07:28:25"
   },
   {
     "id": "3903c246c9be",
@@ -3195,7 +5616,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:27"
+    "last_checked_at": "2026-11-26 07:28:27"
   },
   {
     "id": "9ef985201698",
@@ -3240,7 +5661,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:30"
+    "last_checked_at": "2026-11-26 07:28:29"
   },
   {
     "id": "341724ff42af",
@@ -3285,7 +5706,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:32"
+    "last_checked_at": "2026-11-26 07:28:32"
   },
   {
     "id": "3f3e77dc4075",
@@ -3326,7 +5747,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:34"
+    "last_checked_at": "2026-11-26 07:28:34"
   },
   {
     "id": "1ee5819322ae",
@@ -3349,8 +5770,8 @@
     "district": "Quận 12",
     "area_m2": 66.9,
     "bedrooms": 4,
-    "price_ty": 8.6,
-    "price_text": "8.6 tỷ",
+    "price_ty": 8.2,
+    "price_text": "8.2 tỷ",
     "frontage_m": 4.0,
     "alley_width_m": 6.0,
     "alley_type": "Xe tải / Mặt tiền (>6m)",
@@ -3367,10 +5788,10 @@
     "updated_at": "15:40 24/11/2026",
     "status": "active",
     "is_sold": false,
-    "is_price_dropped": false,
-    "old_price_ty": null,
-    "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:36"
+    "is_price_dropped": true,
+    "old_price_ty": 8.6,
+    "drop_amount_ty": 0.4,
+    "last_checked_at": "2026-11-26 07:28:36"
   },
   {
     "id": "dc1a3a10ddb2",
@@ -3417,7 +5838,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:38"
+    "last_checked_at": "2026-11-26 07:28:38"
   },
   {
     "id": "f325d7fc4782",
@@ -3464,7 +5885,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:40"
+    "last_checked_at": "2026-11-26 07:28:41"
   },
   {
     "id": "0785a0bab868",
@@ -3512,7 +5933,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:43"
+    "last_checked_at": "2026-11-26 07:28:43"
   },
   {
     "id": "e2e25266a843",
@@ -3556,7 +5977,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:45"
+    "last_checked_at": "2026-11-26 07:28:45"
   },
   {
     "id": "8be756929e94",
@@ -3595,7 +6016,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:47"
+    "last_checked_at": "2026-11-26 07:28:47"
   },
   {
     "id": "04411d8b5add",
@@ -3641,7 +6062,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:50"
+    "last_checked_at": "2026-11-26 07:28:50"
   },
   {
     "id": "29c57566cb3c",
@@ -3684,7 +6105,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:52"
+    "last_checked_at": "2026-11-26 07:28:52"
   },
   {
     "id": "126d05466a52",
@@ -3727,7 +6148,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:54"
+    "last_checked_at": "2026-11-26 07:28:54"
   },
   {
     "id": "97a7525bee22",
@@ -3772,7 +6193,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:56"
+    "last_checked_at": "2026-11-26 07:28:57"
   },
   {
     "id": "60894e92cc5b",
@@ -3812,7 +6233,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:12:59"
+    "last_checked_at": "2026-11-26 07:28:59"
   },
   {
     "id": "6f887a0ab298",
@@ -3851,7 +6272,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:01"
+    "last_checked_at": "2026-11-26 07:29:01"
   },
   {
     "id": "74aa56202569",
@@ -3891,7 +6312,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:04"
+    "last_checked_at": "2026-11-26 07:29:04"
   },
   {
     "id": "31b6d1a03dd6",
@@ -3935,7 +6356,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:06"
+    "last_checked_at": "2026-11-26 07:29:06"
   },
   {
     "id": "3007b3b3a916",
@@ -3977,7 +6398,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:08"
+    "last_checked_at": "2026-11-26 07:29:09"
   },
   {
     "id": "a55add20e89d",
@@ -4018,7 +6439,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:10"
+    "last_checked_at": "2026-11-26 07:29:11"
   },
   {
     "id": "16ef7d533156",
@@ -4060,7 +6481,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:13"
+    "last_checked_at": "2026-11-26 07:29:13"
   },
   {
     "id": "b67cc2d27e23",
@@ -4099,7 +6520,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:15"
+    "last_checked_at": "2026-11-26 07:29:16"
   },
   {
     "id": "6c4f7bd93bc8",
@@ -4138,7 +6559,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:17"
+    "last_checked_at": "2026-11-26 07:29:18"
   },
   {
     "id": "68937e1c7a9f",
@@ -4176,7 +6597,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:19"
+    "last_checked_at": "2026-11-26 07:29:20"
   },
   {
     "id": "2b813769ad7b",
@@ -4216,7 +6637,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:22"
+    "last_checked_at": "2026-11-26 07:29:22"
   },
   {
     "id": "d2a51d4ec578",
@@ -4255,7 +6676,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:24"
+    "last_checked_at": "2026-11-26 07:29:24"
   },
   {
     "id": "0d64457f0f1e",
@@ -4296,7 +6717,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:26"
+    "last_checked_at": "2026-11-26 07:29:27"
   },
   {
     "id": "d12c9548831c",
@@ -4338,7 +6759,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:28"
+    "last_checked_at": "2026-11-26 07:29:29"
   },
   {
     "id": "fe0e72f7f0dc",
@@ -4380,7 +6801,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:30"
+    "last_checked_at": "2026-11-26 07:29:32"
   },
   {
     "id": "6c2176cb2850",
@@ -4421,7 +6842,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:32"
+    "last_checked_at": "2026-11-26 07:29:34"
   },
   {
     "id": "be551e158423",
@@ -4463,7 +6884,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:35"
+    "last_checked_at": "2026-11-26 07:29:36"
   },
   {
     "id": "bf8a3a4ea551",
@@ -4481,13 +6902,13 @@
     "district": "Quận 12",
     "area_m2": 69.0,
     "bedrooms": 0,
-    "price_ty": 5.25,
-    "price_text": "5.25 tỷ",
+    "price_ty": 4.99,
+    "price_text": "4.99 tỷ",
     "frontage_m": 4.1,
     "alley_width_m": 6.0,
     "alley_type": "Xe tải / Mặt tiền (>6m)",
     "alley_category": "mat_tien",
-    "price_range": "5_7_ty",
+    "price_range": "3_5_ty",
     "area_range": "60_80",
     "description": "📍Vị trí: trục đường Lâm Thị Hố, gần đường Nguyễn Thị Búp, Nguyễn Ảnh Thủ, Trần Thị Năm, Dương Thị Mười\n🧭 Trong bán kính 1-2km: chợ dân sinh, trường học các cấp, bệnh viện Quận 12, UBND Phường Trung Mỹ Tây, chợ Hạt Điều, Hiệp Thành City\n🏡 BTCT dạng suốt trống, có thể làm kho, xưởng,.. Khu cao tầng đồng bộ văn minh. Hẻm xe hơi vào nhà.\n✅ Mã SP: TT3-2...",
     "purposes": [
@@ -4499,10 +6920,10 @@
     "updated_at": "11:15 24/11/2026",
     "status": "active",
     "is_sold": false,
-    "is_price_dropped": false,
-    "old_price_ty": null,
-    "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:37"
+    "is_price_dropped": true,
+    "old_price_ty": 5.25,
+    "drop_amount_ty": 0.26,
+    "last_checked_at": "2026-11-26 07:29:38"
   },
   {
     "id": "b27cc3b0bffa",
@@ -4544,7 +6965,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:39"
+    "last_checked_at": "2026-11-26 07:29:40"
   },
   {
     "id": "4e8fb5f8ec22",
@@ -4588,7 +7009,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:41"
+    "last_checked_at": "2026-11-26 07:29:43"
   },
   {
     "id": "3e9f624366d5",
@@ -4632,7 +7053,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:43"
+    "last_checked_at": "2026-11-26 07:29:45"
   },
   {
     "id": "bde92aa2eb4c",
@@ -4674,7 +7095,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:45"
+    "last_checked_at": "2026-11-26 07:29:47"
   },
   {
     "id": "51177cf4e4c8",
@@ -4716,7 +7137,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:48"
+    "last_checked_at": "2026-11-26 07:29:49"
   },
   {
     "id": "efd564625663",
@@ -4757,7 +7178,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:50"
+    "last_checked_at": "2026-11-26 07:29:51"
   },
   {
     "id": "fed8b5571260",
@@ -4797,7 +7218,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:52"
+    "last_checked_at": "2026-11-26 07:29:53"
   },
   {
     "id": "9a4911f1c6c3",
@@ -4838,7 +7259,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:54"
+    "last_checked_at": "2026-11-26 07:29:56"
   },
   {
     "id": "dae7835237cb",
@@ -4877,7 +7298,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:57"
+    "last_checked_at": "2026-11-26 07:29:58"
   },
   {
     "id": "6720cf858012",
@@ -4918,7 +7339,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:13:59"
+    "last_checked_at": "2026-11-26 07:30:00"
   },
   {
     "id": "c717598c8a38",
@@ -4958,7 +7379,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:01"
+    "last_checked_at": "2026-11-26 07:30:03"
   },
   {
     "id": "49a161d9ffd7",
@@ -4999,7 +7420,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:03"
+    "last_checked_at": "2026-11-26 07:30:05"
   },
   {
     "id": "a2e725bc1ab5",
@@ -5039,7 +7460,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:05"
+    "last_checked_at": "2026-11-26 07:30:07"
   },
   {
     "id": "77c1122a722e",
@@ -5079,7 +7500,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:08"
+    "last_checked_at": "2026-11-26 07:30:09"
   },
   {
     "id": "caffbd9c548a",
@@ -5120,7 +7541,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:10"
+    "last_checked_at": "2026-11-26 07:30:11"
   },
   {
     "id": "d65089a86340",
@@ -5162,7 +7583,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:12"
+    "last_checked_at": "2026-11-26 07:30:14"
   },
   {
     "id": "de0fbc9ba767",
@@ -5203,7 +7624,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:14"
+    "last_checked_at": "2026-11-26 07:30:16"
   },
   {
     "id": "9d576ceae4ea",
@@ -5244,7 +7665,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:16"
+    "last_checked_at": "2026-11-26 07:30:19"
   },
   {
     "id": "49820070c3cb",
@@ -5286,7 +7707,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:18"
+    "last_checked_at": "2026-11-26 07:30:21"
   },
   {
     "id": "3c05a32fd273",
@@ -5325,7 +7746,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:21"
+    "last_checked_at": "2026-11-26 07:30:24"
   },
   {
     "id": "5c5248129b51",
@@ -5365,7 +7786,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:23"
+    "last_checked_at": "2026-11-26 07:30:26"
   },
   {
     "id": "d7bc6d73097d",
@@ -5405,7 +7826,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:25"
+    "last_checked_at": "2026-11-26 07:30:28"
   },
   {
     "id": "96d10641bb20",
@@ -5446,7 +7867,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:27"
+    "last_checked_at": "2026-11-26 07:30:30"
   },
   {
     "id": "1c24683d5d9a",
@@ -5487,7 +7908,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:29"
+    "last_checked_at": "2026-11-26 07:30:33"
   },
   {
     "id": "3a4c14a90c57",
@@ -5528,7 +7949,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:32"
+    "last_checked_at": "2026-11-26 07:30:35"
   },
   {
     "id": "a2e626e68450",
@@ -5566,7 +7987,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:34"
+    "last_checked_at": "2026-11-26 07:30:37"
   },
   {
     "id": "5e1ef25f62e3",
@@ -5608,7 +8029,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:36"
+    "last_checked_at": "2026-11-26 07:30:39"
   },
   {
     "id": "7c358f748dd5",
@@ -5649,7 +8070,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:38"
+    "last_checked_at": "2026-11-26 07:30:41"
   },
   {
     "id": "b62b40464b09",
@@ -5691,7 +8112,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:40"
+    "last_checked_at": "2026-11-26 07:30:44"
   },
   {
     "id": "00c132e7f51b",
@@ -5730,7 +8151,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:42"
+    "last_checked_at": "2026-11-26 07:30:46"
   },
   {
     "id": "2a1036b7483e",
@@ -5772,7 +8193,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:45"
+    "last_checked_at": "2026-11-26 07:30:48"
   },
   {
     "id": "5de493f69cac",
@@ -5812,7 +8233,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:47"
+    "last_checked_at": "2026-11-26 07:30:51"
   },
   {
     "id": "b383a677a810",
@@ -5854,7 +8275,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:49"
+    "last_checked_at": "2026-11-26 07:30:53"
   },
   {
     "id": "70626b1d31d2",
@@ -5895,7 +8316,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:51"
+    "last_checked_at": "2026-11-26 07:30:55"
   },
   {
     "id": "93734bd56616",
@@ -5934,7 +8355,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:53"
+    "last_checked_at": "2026-11-26 07:30:57"
   },
   {
     "id": "82d77be45a0b",
@@ -5974,7 +8395,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:55"
+    "last_checked_at": "2026-11-26 07:30:59"
   },
   {
     "id": "20d6e2c9ce06",
@@ -6015,7 +8436,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:14:58"
+    "last_checked_at": "2026-11-26 07:31:02"
   },
   {
     "id": "2ae388651fbe",
@@ -6053,7 +8474,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:00"
+    "last_checked_at": "2026-11-26 07:31:04"
   },
   {
     "id": "f32eea9de56a",
@@ -6094,7 +8515,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:02"
+    "last_checked_at": "2026-11-26 07:31:06"
   },
   {
     "id": "41cfa808e353",
@@ -6135,7 +8556,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:04"
+    "last_checked_at": "2026-11-26 07:31:08"
   },
   {
     "id": "1b54202a085c",
@@ -6176,7 +8597,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:06"
+    "last_checked_at": "2026-11-26 07:31:10"
   },
   {
     "id": "40d6d44cb690",
@@ -6216,7 +8637,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:10"
+    "last_checked_at": "2026-11-26 07:31:12"
   },
   {
     "id": "9cd961453d14",
@@ -6256,7 +8677,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:12"
+    "last_checked_at": "2026-11-26 07:31:15"
   },
   {
     "id": "d9173c391a67",
@@ -6294,7 +8715,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:14"
+    "last_checked_at": "2026-11-26 07:31:17"
   },
   {
     "id": "21ea161d04dd",
@@ -6333,7 +8754,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:17"
+    "last_checked_at": "2026-11-26 07:31:19"
   },
   {
     "id": "fd6676c4c72a",
@@ -6373,7 +8794,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:19"
+    "last_checked_at": "2026-11-26 07:31:21"
   },
   {
     "id": "d3863c90b208",
@@ -6414,7 +8835,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:21"
+    "last_checked_at": "2026-11-26 07:31:23"
   },
   {
     "id": "3d6c69c41db0",
@@ -6454,7 +8875,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:23"
+    "last_checked_at": "2026-11-26 07:31:25"
   },
   {
     "id": "73482cc6fbae",
@@ -6492,7 +8913,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:25"
+    "last_checked_at": "2026-11-26 07:31:28"
   },
   {
     "id": "872d03a73f72",
@@ -6532,7 +8953,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:28"
+    "last_checked_at": "2026-11-26 07:31:30"
   },
   {
     "id": "4cf7c01d649d",
@@ -6571,7 +8992,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:30"
+    "last_checked_at": "2026-11-26 07:31:32"
   },
   {
     "id": "9a2f7763010b",
@@ -6611,7 +9032,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:32"
+    "last_checked_at": "2026-11-26 07:31:34"
   },
   {
     "id": "39c9a567a5fd",
@@ -6650,7 +9071,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:34"
+    "last_checked_at": "2026-11-26 07:31:36"
   },
   {
     "id": "d8aa7d850f76",
@@ -6689,7 +9110,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:36"
+    "last_checked_at": "2026-11-26 07:31:39"
   },
   {
     "id": "8d65689557a2",
@@ -6729,7 +9150,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:38"
+    "last_checked_at": "2026-11-26 07:31:41"
   },
   {
     "id": "49137468e4e3",
@@ -6771,7 +9192,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:41"
+    "last_checked_at": "2026-11-26 07:31:43"
   },
   {
     "id": "afaec7eb45a1",
@@ -6811,7 +9232,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:43"
+    "last_checked_at": "2026-11-26 07:31:46"
   },
   {
     "id": "3acd161669d0",
@@ -6851,7 +9272,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:45"
+    "last_checked_at": "2026-11-26 07:31:48"
   },
   {
     "id": "4aaaedbd35e1",
@@ -6892,7 +9313,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:47"
+    "last_checked_at": "2026-11-26 07:31:50"
   },
   {
     "id": "44a362e156f5",
@@ -6932,7 +9353,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:49"
+    "last_checked_at": "2026-11-26 07:31:52"
   },
   {
     "id": "c4dff0e66009",
@@ -6972,7 +9393,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:52"
+    "last_checked_at": "2026-11-26 07:31:54"
   },
   {
     "id": "a89771e78958",
@@ -7011,7 +9432,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:54"
+    "last_checked_at": "2026-11-26 07:31:57"
   },
   {
     "id": "d9a1aa999ea7",
@@ -7053,7 +9474,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:56"
+    "last_checked_at": "2026-11-26 07:31:59"
   },
   {
     "id": "2b1a335a0b2d",
@@ -7092,7 +9513,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:15:58"
+    "last_checked_at": "2026-11-26 07:32:01"
   },
   {
     "id": "091dcb84ca7c",
@@ -7132,7 +9553,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:00"
+    "last_checked_at": "2026-11-26 07:32:03"
   },
   {
     "id": "2ea6da1593f0",
@@ -7172,7 +9593,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:03"
+    "last_checked_at": "2026-11-26 07:32:06"
   },
   {
     "id": "b4585c1dd820",
@@ -7213,7 +9634,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:05"
+    "last_checked_at": "2026-11-26 07:32:08"
   },
   {
     "id": "be531662ec3b",
@@ -7254,7 +9675,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:07"
+    "last_checked_at": "2026-11-26 07:32:10"
   },
   {
     "id": "c0abe4d58f57",
@@ -7293,7 +9714,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:09"
+    "last_checked_at": "2026-11-26 07:32:12"
   },
   {
     "id": "315449a95242",
@@ -7336,7 +9757,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:12"
+    "last_checked_at": "2026-11-26 07:32:14"
   },
   {
     "id": "5df7520d4f14",
@@ -7378,7 +9799,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:14"
+    "last_checked_at": "2026-11-26 07:32:16"
   },
   {
     "id": "cf15f9aa134e",
@@ -7418,7 +9839,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:16"
+    "last_checked_at": "2026-11-26 07:32:19"
   },
   {
     "id": "896fcc37c7a1",
@@ -7458,7 +9879,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:19"
+    "last_checked_at": "2026-11-26 07:32:21"
   },
   {
     "id": "a3dccf8e03a1",
@@ -7499,7 +9920,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:21"
+    "last_checked_at": "2026-11-26 07:32:23"
   },
   {
     "id": "815585a97743",
@@ -7542,7 +9963,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:23"
+    "last_checked_at": "2026-11-26 07:32:25"
   },
   {
     "id": "c47fbd5b2a5c",
@@ -7582,7 +10003,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:25"
+    "last_checked_at": "2026-11-26 07:32:27"
   },
   {
     "id": "0c4251b779a6",
@@ -7621,7 +10042,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:27"
+    "last_checked_at": "2026-11-26 07:32:29"
   },
   {
     "id": "9f65ccca6ab1",
@@ -7661,7 +10082,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:30"
+    "last_checked_at": "2026-11-26 07:32:32"
   },
   {
     "id": "65e9eea61049",
@@ -7701,7 +10122,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:32"
+    "last_checked_at": "2026-11-26 07:32:34"
   },
   {
     "id": "5d0531cf1766",
@@ -7741,7 +10162,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:34"
+    "last_checked_at": "2026-11-26 07:32:36"
   },
   {
     "id": "227b5d3fb60f",
@@ -7781,7 +10202,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:36"
+    "last_checked_at": "2026-11-26 07:32:38"
   },
   {
     "id": "3292aad4e11b",
@@ -7821,7 +10242,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:38"
+    "last_checked_at": "2026-11-26 07:32:40"
   },
   {
     "id": "2327333c16ff",
@@ -7859,7 +10280,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:41"
+    "last_checked_at": "2026-11-26 07:32:42"
   },
   {
     "id": "944954102a6e",
@@ -7899,7 +10320,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:43"
+    "last_checked_at": "2026-11-26 07:32:45"
   },
   {
     "id": "4acad72ff621",
@@ -7939,7 +10360,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:45"
+    "last_checked_at": "2026-11-26 07:32:47"
   },
   {
     "id": "f60d85d56633",
@@ -7979,7 +10400,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:47"
+    "last_checked_at": "2026-11-26 07:32:49"
   },
   {
     "id": "b6aa4e89487a",
@@ -8019,7 +10440,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:50"
+    "last_checked_at": "2026-11-26 07:32:51"
   },
   {
     "id": "45eb43524bdd",
@@ -8061,7 +10482,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:52"
+    "last_checked_at": "2026-11-26 07:32:53"
   },
   {
     "id": "0747edfc1a29",
@@ -8101,7 +10522,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:54"
+    "last_checked_at": "2026-11-26 07:32:56"
   },
   {
     "id": "de7e7e2abe6c",
@@ -8141,7 +10562,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:57"
+    "last_checked_at": "2026-11-26 07:32:58"
   },
   {
     "id": "8d8f4287d31d",
@@ -8180,7 +10601,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:16:59"
+    "last_checked_at": "2026-11-26 07:33:01"
   },
   {
     "id": "24565e65f2a4",
@@ -8221,7 +10642,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:01"
+    "last_checked_at": "2026-11-26 07:33:03"
   },
   {
     "id": "70dee979f0e0",
@@ -8263,7 +10684,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:03"
+    "last_checked_at": "2026-11-26 07:33:05"
   },
   {
     "id": "22fedfe795a9",
@@ -8303,7 +10724,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:06"
+    "last_checked_at": "2026-11-26 07:33:08"
   },
   {
     "id": "8fa3718098f0",
@@ -8343,7 +10764,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:08"
+    "last_checked_at": "2026-11-26 07:33:10"
   },
   {
     "id": "c48e888a32ee",
@@ -8384,7 +10805,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:10"
+    "last_checked_at": "2026-11-26 07:33:12"
   },
   {
     "id": "9d012bcb78f1",
@@ -8425,7 +10846,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:12"
+    "last_checked_at": "2026-11-26 07:33:14"
   },
   {
     "id": "e51de3f3590c",
@@ -8464,7 +10885,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:15"
+    "last_checked_at": "2026-11-26 07:33:17"
   },
   {
     "id": "a1dc6fc5907d",
@@ -8504,7 +10925,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:17"
+    "last_checked_at": "2026-11-26 07:33:19"
   },
   {
     "id": "c7cf5a3777b4",
@@ -8545,7 +10966,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:19"
+    "last_checked_at": "2026-11-26 07:33:21"
   },
   {
     "id": "c5e4b9240724",
@@ -8586,7 +11007,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:22"
+    "last_checked_at": "2026-11-26 07:33:24"
   },
   {
     "id": "01a06b97",
@@ -8625,7 +11046,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:24"
+    "last_checked_at": "2026-11-26 07:33:26"
   },
   {
     "id": "01a0558d",
@@ -8663,7 +11084,7 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:26"
+    "last_checked_at": "2026-11-26 07:33:28"
   },
   {
     "id": "26977abe7b67",
@@ -8702,6 +11123,6 @@
     "is_price_dropped": false,
     "old_price_ty": null,
     "drop_amount_ty": null,
-    "last_checked_at": "2026-11-25 14:17:28"
+    "last_checked_at": "2026-11-26 07:33:31"
   }
 ]
