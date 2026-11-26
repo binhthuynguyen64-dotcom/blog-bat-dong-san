@@ -179,25 +179,8 @@ def track_and_alert_price_drops(
                     "pitch": pitch
                 })
 
-                # Gửi thông báo Telegram
-                telegram_msg = (
-                    f"🚨 <b>BÁO ĐỘNG NHÀ GIẢM CHÀO!</b>\n\n"
-                    f"🏠 <b>{item.get('title')}</b>\n"
-                    f"📍 Vị trí: {item.get('ward')}, {item.get('district')}\n"
-                    f"💰 Giá cũ: <s>{prev_price:g} tỷ</s> ➔ <b>{current_price:g} tỷ</b>\n"
-                    f"📉 <b>GIẢM MẠNH: -{diff_trieu:g} TRIỆU VNĐ!</b>\n"
-                    f"📐 DT: {item.get('area_m2')}m² | 🛏 {item.get('bedrooms')} PN | 🚗 {item.get('alley_type')}\n"
-                    f"🔗 <a href='{item.get('url')}'>Xem link tin gốc</a>\n\n"
-                    f"━━━━━━━━━━━━━━━━━━\n"
-                    f"📲 <b>MẪU TIN NHẮN GỬI KHÁCH NGAY:</b>\n\n"
-                    f"{pitch}"
-                )
-                send_telegram_alert(telegram_msg)
-
-                # Gửi Email thông báo
-                email_subject = f"🔥 [GIẢM CHÀO -{diff_trieu:g}Tr] {item.get('title')[:60]}"
-                email_html = f"<div style='font-family:sans-serif;line-height:1.6;'>{telegram_msg.replace(chr(10), '<br>')}</div>"
-                send_email_alert(email_subject, email_html)
+                # Gom thông tin vào dropped_items để main.py tổng hợp vào DUY NHẤT 1 tin nhắn cuối chu kỳ.
+                # Tuyệt đối không bắn tin nhắn lẻ từng căn để chống spam Telegram.
 
         else:
             # Lần đầu tiên thấy tin này

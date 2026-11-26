@@ -12,3 +12,5 @@ chrome_nhadat247_session/
 *.log
 test_*.py
 *.png
+github-token.txt
+*token*.txt

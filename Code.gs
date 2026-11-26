@@ -138,7 +138,13 @@ function doPost(e) {
       return createJsonResponse({ status: "success", message: "Đã cập nhật cột 'Đã đăng Nhadat247' trên " + updatedSheets + " sheet sản phẩm." });
     }
 
-    // TRƯỜNG HỢP 5: Khách hàng gửi đơn tư vấn từ Blogger (Mặc định)
+    // TRƯỜNG HỢP 5: Kiểm tra trạng thái tạm dừng của bot (check_bot_status)
+    if (action === "check_bot_status") {
+      var botPausedPost = PropertiesService.getScriptProperties().getProperty("BOT_PAUSED") === "true";
+      return createJsonResponse({ status: "success", bot_paused: botPausedPost });
+    }
+
+    // TRƯỜNG HỢP 6: Khách hàng gửi đơn tư vấn từ Blogger (Mặc định)
     var result = saveConsultationLead(data);
     return createJsonResponse(result);
 
@@ -195,6 +201,12 @@ function doGet(e) {
       }
       var updatedSheetsGet = markPostedNhadat247OnProductSheets();
       return createJsonResponse({ status: "success", message: "Đã cập nhật cột 'Đã đăng Nhadat247' trên " + updatedSheetsGet + " sheet sản phẩm." });
+    }
+
+    // 6. Kiểm tra trạng thái tạm dừng của bot (check_bot_status)
+    if (action === "check_bot_status") {
+      var botPausedGet = PropertiesService.getScriptProperties().getProperty("BOT_PAUSED") === "true";
+      return createJsonResponse({ status: "success", bot_paused: botPausedGet });
     }
 
     // Kiểm tra trạng thái server (Ping test)
@@ -1078,6 +1090,19 @@ function createJsonResponse(data, statusCode) {
  * Xử lý webhook update gửi từ Telegram Bot API
  */
 function handleTelegramWebhook(data) {
+  var updateId = data.update_id;
+  var scriptProps = PropertiesService.getScriptProperties();
+
+  // 1. Chống lặp tin do Telegram retry Webhook (update_id deduplication)
+  if (updateId) {
+    var lastUpdateId = parseInt(scriptProps.getProperty("LAST_TG_UPDATE_ID") || "0", 10);
+    if (updateId <= lastUpdateId) {
+      Logger.log("Bỏ qua duplicate update_id: " + updateId + " <= " + lastUpdateId);
+      return ContentService.createTextOutput("OK");
+    }
+    scriptProps.setProperty("LAST_TG_UPDATE_ID", String(updateId));
+  }
+
   var msg = data.message || {};
   var chatId = msg.chat ? msg.chat.id.toString() : "";
   var text = (msg.text || "").trim();
@@ -1085,65 +1110,107 @@ function handleTelegramWebhook(data) {
   // Kiểm tra bảo mật CHAT_ID: Chỉ cho phép tài khoản của chủ nhân điều khiển bot
   if (chatId !== CONFIG.TELEGRAM_CHAT_ID) {
     Logger.log("Từ chối truy cập từ chat_id không hợp lệ: " + chatId);
-    return createJsonResponse({ status: "ignored", reason: "unauthorized" });
+    return ContentService.createTextOutput("OK");
   }
 
   var lowerText = text.toLowerCase();
 
-  // 1. Lệnh ĐỒNG BỘ: /dongbo, /sync, /capnhat, đồng bộ, cập nhật tin
+  // =========================================================================
+  // LỆNH 1: DỪNG KHẨN CẤP (/dung, /stop, dừng, tat thong bao, tắt thông báo)
+  // =========================================================================
+  if (lowerText === "/dung" || lowerText === "/stop" || lowerText === "dừng" || lowerText === "dung" ||
+      lowerText === "tắt thông báo" || lowerText === "tat thong bao" || lowerText === "dừng lại" || lowerText === "stop") {
+    
+    scriptProps.setProperty("BOT_PAUSED", "true");
+    var cancelledRuns = cancelRunningGitHubWorkflows();
+
+    var stopMsg = "🛑 <b>ĐÃ DỪNG KHẨN CẤP THÀNH CÔNG!</b>\n\n" +
+      "• Đã hủy <b>" + cancelledRuns + " tiến trình đám mây</b> đang chạy / xếp hàng trên GitHub Actions.\n" +
+      "• Đã tạm khóa toàn bộ thông báo tự động từ hệ thống.\n\n" +
+      "👉 Khi bạn muốn bật lại, hãy nhắn <code>/dongbo</code> hoặc <code>/bat</code>.";
+    
+    sendTelegramMessage(chatId, stopMsg);
+    return ContentService.createTextOutput("OK");
+  }
+
+  // =========================================================================
+  // LỆNH 2: BẬT LẠI THÔNG BÁO (/bat, /start_bot, bật thông báo)
+  // =========================================================================
+  if (lowerText === "/bat" || lowerText === "bật" || lowerText === "bat" || lowerText === "bật thông báo" || lowerText === "bat thong bao") {
+    scriptProps.setProperty("BOT_PAUSED", "false");
+    sendTelegramMessage(chatId, "✅ <b>ĐÃ BẬT LẠI THÔNG BÁO!</b>\nHệ thống đã sẵn sàng nhận lệnh và gửi báo cáo chu kỳ bình thường.");
+    return ContentService.createTextOutput("OK");
+  }
+
+  // =========================================================================
+  // LỆNH 3: ĐỒNG BỘ (/dongbo, /sync, /capnhat, đồng bộ, cập nhật tin)
+  // =========================================================================
   if (lowerText === "/dongbo" || lowerText === "/sync" || lowerText === "/capnhat" ||
       lowerText === "đồng bộ" || lowerText === "dong bo" || lowerText === "cập nhật tin" || lowerText === "cap nhat tin") {
     
+    // Cooldown 180s (3 phút)
+    var lastSyncTs = parseInt(scriptProps.getProperty("LAST_SYNC_TRIGGER_TS") || "0", 10);
+    var now = Date.now();
+    if (now - lastSyncTs < 180000) {
+      var waitSeconds = Math.ceil((180000 - (now - lastSyncTs)) / 1000);
+      var cdMsg = "⏳ <b>HỆ THỐNG ĐANG XỬ LÝ ĐỒNG BỘ!</b>\n\n" +
+        "Bạn vừa kích hoạt lệnh cách đây ít phút. Để tránh quá tải và trùng lặp dữ liệu, vui lòng đợi thêm <b>" + waitSeconds + " giây</b> nữa trước khi gửi lệnh tiếp theo.\n\n" +
+        "💡 <i>Nếu bạn muốn hủy các tiến trình đang chạy, hãy nhắn <code>/dung</code></i>";
+      sendTelegramMessage(chatId, cdMsg);
+      return ContentService.createTextOutput("OK");
+    }
+
+    // Ghi nhận mốc thời gian đồng bộ và tự động mở khóa BOT_PAUSED
+    scriptProps.setProperty("LAST_SYNC_TRIGGER_TS", String(now));
+    scriptProps.setProperty("BOT_PAUSED", "false");
+
     // Kích hoạt đám mây GitHub Actions workflow_dispatch
     var ghRes = triggerGitHubWorkflow();
-
-    // Làm mới đối chiếu Đã bán và Đã đăng Nhadat247 trên Google Sheet
-    try {
-      markPostedNhadat247OnProductSheets();
-    } catch (eSheet) {
-      Logger.log("Lỗi làm mới sheet: " + eSheet);
-    }
 
     var reply = "";
     if (ghRes.success) {
       reply = "⏳ <b>ĐÃ NHẬN LỆNH ĐỒNG BỘ!</b>\n\n" +
-        "🚀 Hệ thống đám mây <b>GitHub Actions</b> đang được kích hoạt để:\n" +
-        "1. Cào toàn bộ tin mới từ Nhadat247.vn\n" +
-        "2. Đối chiếu tình trạng 'Đã bán/Đã cọc' từ 7 sheet phân khúc theo Mã SP\n" +
-        "3. Làm mới dữ liệu tab DATA_NHA & cập nhật trang Kho Nhà Blogger\n\n" +
-        "⏱ Quá trình chạy mất khoảng 1 - 2 phút. Báo cáo tổng kết sẽ tự động gửi về đây sau khi hoàn tất!";
+        "🚀 Hệ thống đám mây <b>GitHub Actions</b> đang cào tin mới từ Nhadat247, đối chiếu 'Đã bán' từ 7 sheet và cập nhật lên Blogger...\n\n" +
+        "⏱ Quá trình chạy khoảng 1 - 2 phút. Sau khi xong, hệ thống sẽ gửi <b>duy nhất 1 tin nhắn tổng hợp</b> về đây!";
     } else {
       reply = "⚠️ <b>KHÔNG THỂ KÍCH HOẠT GITHUB ACTIONS!</b>\n\n" +
         "Chi tiết: " + ghRes.message + "\n\n" +
-        "💡 <i>Vui lòng đảm bảo đã thêm <code>GITHUB_PAT</code> (GitHub Personal Access Token) vào Project Settings -> Script Properties trong Google Apps Script.</i>";
+        "💡 <i>Vui lòng kiểm tra lại <code>GITHUB_PAT</code> trong Script Properties.</i>";
     }
 
     sendTelegramMessage(chatId, reply);
-    return createJsonResponse({ status: "ok" });
+    return ContentService.createTextOutput("OK");
   }
 
-  // 2. Lệnh QUÉT THIẾU MÃ: /thieuma, /thieu_ma, quét thiếu mã, thiếu mã
+  // =========================================================================
+  // LỆNH 4: QUÉT THIẾU MÃ (/thieuma, /thieu_ma, quét thiếu mã, thiếu mã)
+  // =========================================================================
   if (lowerText === "/thieuma" || lowerText === "/thieu_ma" || lowerText === "quét thiếu mã" || lowerText === "thiếu mã" || lowerText === "thieu ma") {
     var report = getMissingCodeReport();
     sendTelegramMessage(chatId, report);
-    return createJsonResponse({ status: "ok" });
+    return ContentService.createTextOutput("OK");
   }
 
-  // 3. Lệnh TRỢ GIÚP: /help, /start, /menu, hướng dẫn
+  // =========================================================================
+  // LỆNH 5: TRỢ GIÚP (/help, /start, /menu, hướng dẫn)
+  // =========================================================================
   if (lowerText === "/help" || lowerText === "/start" || lowerText === "/menu" || lowerText === "menu" || lowerText === "hướng dẫn") {
     var helpMsg = "🤖 <b>BẢNG ĐIỀU KHIỂN TELEGRAM BOT - KHO NHÀ HỒNG CHÂU</b>\n\n" +
-      "📋 <b>CÁC LỆNH TỰ ĐỘNG 24/7:</b>\n" +
-      "• <code>/dongbo</code> hoặc <code>/sync</code>: Kích hoạt đám mây cào tin mới từ Nhadat247, đối chiếu 'Đã bán' từ 7 sheet và cập nhật lên Blogger.\n" +
-      "• <code>/thieuma</code>: Quét toàn bộ tin đang bán nhưng chưa có Mã SP để bổ sung.\n" +
-      "• <code>/khach Tên - SĐT - Nhu cầu</code>: Lưu nhanh khách hàng vào CRM (tab DS KHÁCH HÀNG).\n" +
-      "• <code>/menu</code> hoặc <code>/help</code>: Xem bảng hướng dẫn này.\n\n" +
-      "💡 <b>Mẹo nhập khách nhanh:</b>\n" +
-      "Bạn có thể nhắn tin tự nhiên chứa số điện thoại (ví dụ: <i>Chị Lan 0912345678 cần mua nhà Gò Vấp 6 tỷ</i>), Bot sẽ tự động nhận diện và lưu vào Sheet!";
+      "📋 <b>CÁC LỆNH TỰ ĐỘNG:</b>\n" +
+      "• <code>/dongbo</code>: Kích hoạt đồng bộ tin đám mây (cooldown 3 phút).\n" +
+      "• <code>/dung</code> hoặc <code>/stop</code>: Dừng khẩn cấp, hủy các tiến trình đang chạy & tạm tắt thông báo.\n" +
+      "• <code>/bat</code>: Mở lại thông báo tự động sau khi dừng.\n" +
+      "• <code>/thieuma</code>: Quét danh sách tin đang bán chưa có Mã SP.\n" +
+      "• <code>/khach Tên - SĐT - Nhu cầu</code>: Lưu khách hàng nhanh vào CRM.\n" +
+      "• <code>/menu</code>: Xem bảng hướng dẫn này.\n\n" +
+      "💡 <i>Mẹo: Nhắn tin tự nhiên chứa số điện thoại (ví dụ: Chị Lan 0912345678 cần mua nhà Gò Vấp 6 tỷ) để bot tự động lưu vào Sheet.</i>";
     sendTelegramMessage(chatId, helpMsg);
-    return createJsonResponse({ status: "ok" });
+    return ContentService.createTextOutput("OK");
   }
 
-  // 4. Lệnh / Nhắn tin NHẬP KHÁCH CRM: /khach ... HOẶC tin nhắn chứa SĐT 10 số
+  // =========================================================================
+  // LỆNH 6: NHẬP KHÁCH CRM (/khach ... HOẶC tin nhắn chứa SĐT 10 số)
+  // =========================================================================
   var isKhachCmd = lowerText.startsWith("/khach") || lowerText.startsWith("/crm") || lowerText.startsWith("/kh ");
   var hasPhone = /\b(0\d{9})\b/.test(text);
 
@@ -1151,7 +1218,7 @@ function handleTelegramWebhook(data) {
     var parsed = parseCustomerMessage(text);
     if (!parsed.phone) {
       sendTelegramMessage(chatId, "⚠️ <b>Chưa nhận diện được Số Điện Thoại!</b>\n\nVui lòng nhập SĐT 10 số bắt đầu bằng số 0.\n<i>Ví dụ:</i> <code>/khach Anh Minh - 0903123456 - Tìm nhà HXH 4-5 tỷ</code>");
-      return createJsonResponse({ status: "ok" });
+      return ContentService.createTextOutput("OK");
     }
 
     try {
@@ -1166,12 +1233,12 @@ function handleTelegramWebhook(data) {
     } catch (errSave) {
       sendTelegramMessage(chatId, "❌ <b>Lỗi lưu khách hàng:</b> " + errSave.toString());
     }
-    return createJsonResponse({ status: "ok" });
+    return ContentService.createTextOutput("OK");
   }
 
   // Phản hồi mặc định nếu tin nhắn không khớp lệnh nào
   sendTelegramMessage(chatId, "👋 Chào bạn! Gõ <code>/menu</code> hoặc <code>/help</code> để xem danh sách lệnh điều khiển hệ thống.");
-  return createJsonResponse({ status: "ok" });
+  return ContentService.createTextOutput("OK");
 }
 
 /**
@@ -1366,6 +1433,62 @@ function triggerGitHubWorkflow() {
   } catch (err) {
     return { success: false, message: "Lỗi kết nối GitHub API: " + err.toString() };
   }
+}
+
+/**
+ * Hủy toàn bộ các workflow GitHub Actions đang chạy hoặc xếp hàng chờ
+ */
+function cancelRunningGitHubWorkflows() {
+  var pat = PropertiesService.getScriptProperties().getProperty("GITHUB_PAT");
+  if (!pat) {
+    Logger.log("Chưa cấu hình GITHUB_PAT");
+    return 0;
+  }
+
+  var cancelledCount = 0;
+  var statuses = ["in_progress", "queued"];
+
+  for (var s = 0; s < statuses.length; s++) {
+    var status = statuses[s];
+    var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs?status=" + status;
+    try {
+      var response = UrlFetchApp.fetch(url, {
+        method: "get",
+        headers: {
+          "Authorization": "Bearer " + pat,
+          "Accept": "application/vnd.github.v3+json",
+          "User-Agent": "Google-Apps-Script-Telegram-Bot"
+        },
+        muteHttpExceptions: true
+      });
+
+      if (response.getResponseCode() === 200) {
+        var data = JSON.parse(response.getContentText());
+        var runs = data.workflow_runs || [];
+        for (var r = 0; r < runs.length; r++) {
+          var run = runs[r];
+          var runId = run.id;
+          var cancelUrl = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs/" + runId + "/cancel";
+          var cRes = UrlFetchApp.fetch(cancelUrl, {
+            method: "post",
+            headers: {
+              "Authorization": "Bearer " + pat,
+              "Accept": "application/vnd.github.v3+json",
+              "User-Agent": "Google-Apps-Script-Telegram-Bot"
+            },
+            muteHttpExceptions: true
+          });
+          if (cRes.getResponseCode() === 202 || cRes.getResponseCode() === 200) {
+            cancelledCount++;
+          }
+        }
+      }
+    } catch (err) {
+      Logger.log("Lỗi khi hủy workflow: " + err);
+    }
+  }
+
+  return cancelledCount;
 }
 
 /**

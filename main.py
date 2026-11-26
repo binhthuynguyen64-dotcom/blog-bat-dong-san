@@ -177,6 +177,27 @@ def fetch_traffic_report() -> dict:
     return default_report
 
 
+def check_bot_paused_from_gas() -> bool:
+    """
+    Kiểm tra xem bot có đang ở trạng thái tạm dừng (BOT_PAUSED) hay không
+    qua API của Google Apps Script Web App.
+    """
+    gas_url = os.getenv("GAS_WEBAPP_URL")
+    gas_key = os.getenv("GAS_API_KEY", "HongChauNhaUngY2026")
+    if not gas_url:
+        return False
+    try:
+        params = urlencode({"action": "check_bot_status", "api_key": gas_key})
+        req = urllib.request.Request(f"{gas_url}?{params}", headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            if data.get("status") == "success":
+                return bool(data.get("bot_paused"))
+    except Exception as e:
+        logger.warning(f"Không thể kiểm tra trạng thái bot từ GAS: {e}")
+    return False
+
+
 def audit_missing_internal_codes(listings: list) -> list:
     """
     Quét và báo cáo danh sách tin đăng đang mở bán nhưng thiếu Mã SP hợp lệ
@@ -245,9 +266,11 @@ def main():
         if item.get("status") == "active" and not item.get("is_sold") and (item["id"] not in old_ids or item.get("is_price_dropped"))
     ]
 
+    matched_houses_count = 0
     if new_active_listings:
         logger.info(f"Phát hiện {len(new_active_listings)} căn cần gợi ý khách (mới hoặc vừa giảm giá).")
-        match_new_listings_with_clients(new_active_listings, min_score=75.0)
+        matches = match_new_listings_with_clients(new_active_listings, min_score=75.0)
+        matched_houses_count = len(matches) if matches else 0
     else:
         logger.info("Không có tin mới hoặc giảm giá cần so khớp khách ở chu kỳ này.")
 
@@ -266,29 +289,51 @@ def main():
     else:
         logger.info("Môi trường đám mây/Actions không có token.json. Bỏ qua xuất bản HTML trực tiếp lên Blogger (Blogger nạp dữ liệu động từ listings.json).")
 
-    # 7. Bước 6: Gửi Báo Cáo Tổng Kết Hàng Ngày về Telegram
+    # 7. Bước 6: Gửi DUY NHẤT 1 Báo Cáo Tổng Hợp Chu Kỳ về Telegram (chống spam & tôn trọng BOT_PAUSED)
     try:
-        from price_tracker import send_telegram_alert
-        from datetime import datetime
-        today_vn = datetime.now().strftime("%d/%m/%Y")
-        traffic = fetch_traffic_report()
+        is_paused = check_bot_paused_from_gas()
+        if is_paused:
+            logger.info("🛑 Bot đang ở trạng thái TẠM DỪNG (BOT_PAUSED = True). Bỏ qua gửi báo cáo Telegram.")
+        else:
+            from price_tracker import send_telegram_alert
+            from datetime import datetime
+            today_vn = datetime.now().strftime("%d/%m/%Y")
+            traffic = fetch_traffic_report()
 
-        total_active = sum(1 for x in current_listings if x.get("status") == "active" and not x.get("is_sold"))
-        total_sold = sum(1 for x in current_listings if x.get("is_sold"))
-        new_count = len([x for x in current_listings if x.get("status") == "active" and not x.get("is_sold") and x["id"] not in old_ids])
-        drop_count = len(dropped_items) if dropped_items else 0
+            total_active = sum(1 for x in current_listings if x.get("status") == "active" and not x.get("is_sold"))
+            total_sold = sum(1 for x in current_listings if x.get("is_sold"))
+            new_count = len([x for x in current_listings if x.get("status") == "active" and not x.get("is_sold") and x["id"] not in old_ids])
+            drop_count = len(dropped_items) if dropped_items else 0
 
-        sold_info = f" | Đã bán: {total_sold}" if total_sold > 0 else ""
-        report_msg = (
-            f"📊 <b>BÁO CÁO KHO NHÀ HỒNG CHÂU ({today_vn})</b>\n\n"
-            f"👀 Khách vào xem Blog hôm nay: <b>{traffic.get('today_views', 0)} khách</b> "
-            f"({traffic.get('today_pageviews', 0)} lượt xem | Hôm qua: {traffic.get('yesterday_views', 0)} | Tổng: {traffic.get('total_views', 0)})\n"
-            f"📋 Khách mở form tư vấn hôm nay: <b>{traffic.get('today_drawer_opens', 0)} lượt</b>\n"
-            f"🏠 Tổng kho nhà đang mở bán: <b>{total_active} căn</b> ({sold_info}Tin mới hôm nay: +{new_count} | Giảm chào: {drop_count})\n"
-            f"🔗 <a href=\"https://hongchaunhaungy.blogspot.com/p/kho-nha-that-gia-tot.html\">Mở trang Kho Nhà</a>"
-        )
-        send_telegram_alert(report_msg)
-        logger.info("Đã gửi Báo Cáo Hàng Ngày qua Telegram Bot.")
+            sold_info = f" | Đã bán: {total_sold}" if total_sold > 0 else ""
+            
+            # Khối danh sách căn giảm chào tóm tắt nếu có
+            drop_summary = ""
+            if dropped_items:
+                drop_summary = "\n\n🔥 <b>CÁC CĂN GIẢM CHÀO MỚI:</b>\n"
+                for idx, d in enumerate(dropped_items[:5], 1):
+                    it = d["item"]
+                    drop_summary += f"{idx}. <b>{it.get('title')[:36]}</b>: <s>{d['old_price']:g} tỷ</s> ➔ <b>{d['new_price']:g} tỷ</b> (-{d['diff_trieu']:g}Tr)\n"
+                if len(dropped_items) > 5:
+                    drop_summary += f"<i>... và còn {len(dropped_items) - 5} căn khác vừa hạ giá.</i>\n"
+
+            # Khối tóm tắt gợi ý khách hàng CRM nếu có
+            match_summary = ""
+            if matched_houses_count > 0:
+                match_summary = f"\n🎯 <b>Gợi ý khách CRM:</b> Đã lưu <b>{matched_houses_count} căn khớp khách</b> vào tab GOI_Y_KHACH\n"
+
+            report_msg = (
+                f"📊 <b>BÁO CÁO KHO NHÀ HỒNG CHÂU ({today_vn})</b>\n\n"
+                f"👀 Khách vào xem Blog hôm nay: <b>{traffic.get('today_views', 0)} khách</b> "
+                f"({traffic.get('today_pageviews', 0)} lượt xem | Hôm qua: {traffic.get('yesterday_views', 0)} | Tổng: {traffic.get('total_views', 0)})\n"
+                f"📋 Khách mở form tư vấn hôm nay: <b>{traffic.get('today_drawer_opens', 0)} lượt</b>\n"
+                f"🏠 Tổng kho nhà đang mở bán: <b>{total_active} căn</b> ({sold_info}Tin mới: +{new_count} | Giảm chào: {drop_count})"
+                f"{drop_summary}"
+                f"{match_summary}\n"
+                f"🔗 <a href=\"https://hongchaunhaungy.blogspot.com/p/kho-nha-that-gia-tot.html\">Mở trang Kho Nhà</a>"
+            )
+            send_telegram_alert(report_msg)
+            logger.info("Đã gửi Báo Cáo Tổng Hợp qua Telegram Bot.")
     except Exception as e:
         logger.warning(f"Không thể gửi báo cáo Telegram: {e}")
 

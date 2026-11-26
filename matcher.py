@@ -432,10 +432,8 @@ def match_new_listings_with_clients(new_listings: list, min_score: float = 75.0)
                     "status": "Chưa gửi"
                 })
 
-            # Tắt gửi Telegram thông báo khớp khách hàng theo yêu cầu (chỉ ghi nhận vào Google Sheet)
-            enable_match_tg = os.getenv("ENABLE_MATCH_TELEGRAM", "false").lower() == "true"
-            if enable_match_tg:
-                send_telegram_alert(tg_text)
+            # Không gửi tin nhắn Telegram lẻ cho từng khách khớp (chống spam).
+            # Toàn bộ gợi ý đã được lưu vào Google Sheet tab GOI_Y_KHACH, và main.py sẽ tổng hợp vào 1 tin duy nhất.
 
             # send_email_alert(email_subject, email_html)
 
