@@ -1125,7 +1125,8 @@ function handleTelegramWebhook(data) {
     var cancelledRuns = cancelRunningGitHubWorkflows();
 
     var stopMsg = "🛑 <b>ĐÃ DỪNG KHẨN CẤP THÀNH CÔNG!</b>\n\n" +
-      "• Đã hủy <b>" + cancelledRuns + " tiến trình đám mây</b> đang chạy / xếp hàng trên GitHub Actions.\n" +
+      "• Đã quét hàng đợi (per_page=100) và hủy <b>" + cancelledRuns + " tiến trình đám mây</b> bằng cả cancel và force-cancel.\n" +
+      "• Đã tạm khóa (disable) workflow <code>" + CONFIG.GITHUB_WORKFLOW + "</code> trên GitHub Actions.\n" +
       "• Đã tạm khóa toàn bộ thông báo tự động từ hệ thống.\n\n" +
       "👉 Khi bạn muốn bật lại, hãy nhắn <code>/dongbo</code> hoặc <code>/bat</code>.";
     
@@ -1138,7 +1139,8 @@ function handleTelegramWebhook(data) {
   // =========================================================================
   if (lowerText === "/bat" || lowerText === "bật" || lowerText === "bat" || lowerText === "bật thông báo" || lowerText === "bat thong bao") {
     scriptProps.setProperty("BOT_PAUSED", "false");
-    sendTelegramMessage(chatId, "✅ <b>ĐÃ BẬT LẠI THÔNG BÁO!</b>\nHệ thống đã sẵn sàng nhận lệnh và gửi báo cáo chu kỳ bình thường.");
+    setGitHubWorkflowEnabled(true);
+    sendTelegramMessage(chatId, "✅ <b>ĐÃ BẬT LẠI THÔNG BÁO & WORKFLOW!</b>\nWorkflow <code>" + CONFIG.GITHUB_WORKFLOW + "</code> đã được mở khóa (enable) lại trên GitHub và hệ thống sẵn sàng hoạt động bình thường.");
     return ContentService.createTextOutput("OK");
   }
 
@@ -1160,9 +1162,10 @@ function handleTelegramWebhook(data) {
       return ContentService.createTextOutput("OK");
     }
 
-    // Ghi nhận mốc thời gian đồng bộ và tự động mở khóa BOT_PAUSED
+    // Ghi nhận mốc thời gian đồng bộ và tự động mở khóa BOT_PAUSED & enable workflow trên GitHub
     scriptProps.setProperty("LAST_SYNC_TRIGGER_TS", String(now));
     scriptProps.setProperty("BOT_PAUSED", "false");
+    setGitHubWorkflowEnabled(true);
 
     // Kích hoạt đám mây GitHub Actions workflow_dispatch
     var ghRes = triggerGitHubWorkflow();
@@ -1397,6 +1400,35 @@ function saveCustomerFromTelegram(clientName, clientPhone, clientNote) {
 }
 
 /**
+ * Bật hoặc tắt workflow trên GitHub Actions
+ * @param {boolean} enable - true để enable, false để disable
+ */
+function setGitHubWorkflowEnabled(enable) {
+  var pat = PropertiesService.getScriptProperties().getProperty("GITHUB_PAT");
+  if (!pat) return false;
+
+  var actionPath = enable ? "enable" : "disable";
+  var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/workflows/" + CONFIG.GITHUB_WORKFLOW + "/" + actionPath;
+  try {
+    var response = UrlFetchApp.fetch(url, {
+      method: "put",
+      headers: {
+        "Authorization": "Bearer " + pat,
+        "Accept": "application/vnd.github.v3+json",
+        "User-Agent": "Google-Apps-Script-Telegram-Bot"
+      },
+      muteHttpExceptions: true
+    });
+    var code = response.getResponseCode();
+    Logger.log("setGitHubWorkflowEnabled (" + actionPath + ") code: " + code);
+    return code === 204 || code === 200;
+  } catch (err) {
+    Logger.log("Lỗi khi " + actionPath + " workflow: " + err);
+    return false;
+  }
+}
+
+/**
  * Kích hoạt GitHub Actions qua REST API (workflow_dispatch)
  */
 function triggerGitHubWorkflow() {
@@ -1407,6 +1439,9 @@ function triggerGitHubWorkflow() {
       message: "Chưa cấu hình GITHUB_PAT trong Script Properties!"
     };
   }
+
+  // Đảm bảo workflow được bật (enable) trên GitHub trước khi kích hoạt
+  setGitHubWorkflowEnabled(true);
 
   var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/workflows/" + CONFIG.GITHUB_WORKFLOW + "/dispatches";
   var payload = JSON.stringify({ ref: "main" });
@@ -1436,7 +1471,8 @@ function triggerGitHubWorkflow() {
 }
 
 /**
- * Hủy toàn bộ các workflow GitHub Actions đang chạy hoặc xếp hàng chờ
+ * Hủy sạch 100% các workflow GitHub Actions đang chạy hoặc xếp hàng chờ
+ * Lấy per_page=100 và gọi lần lượt cả cancel lẫn force-cancel
  */
 function cancelRunningGitHubWorkflows() {
   var pat = PropertiesService.getScriptProperties().getProperty("GITHUB_PAT");
@@ -1445,31 +1481,47 @@ function cancelRunningGitHubWorkflows() {
     return 0;
   }
 
+  // 1. Tự động tạm khóa (disable) workflow ngay trên GitHub Actions
+  setGitHubWorkflowEnabled(false);
+
   var cancelledCount = 0;
-  var statuses = ["in_progress", "queued"];
+  var seenRunIds = {};
 
-  for (var s = 0; s < statuses.length; s++) {
-    var status = statuses[s];
-    var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs?status=" + status;
-    try {
-      var response = UrlFetchApp.fetch(url, {
-        method: "get",
-        headers: {
-          "Authorization": "Bearer " + pat,
-          "Accept": "application/vnd.github.v3+json",
-          "User-Agent": "Google-Apps-Script-Telegram-Bot"
-        },
-        muteHttpExceptions: true
-      });
+  // 2. Gọi GET lấy tối đa 100 lượt chạy mới nhất
+  var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs?per_page=100";
+  try {
+    var response = UrlFetchApp.fetch(url, {
+      method: "get",
+      headers: {
+        "Authorization": "Bearer " + pat,
+        "Accept": "application/vnd.github.v3+json",
+        "User-Agent": "Google-Apps-Script-Telegram-Bot"
+      },
+      muteHttpExceptions: true
+    });
 
-      if (response.getResponseCode() === 200) {
-        var data = JSON.parse(response.getContentText());
-        var runs = data.workflow_runs || [];
-        for (var r = 0; r < runs.length; r++) {
-          var run = runs[r];
+    if (response.getResponseCode() === 200) {
+      var data = JSON.parse(response.getContentText());
+      var runs = data.workflow_runs || [];
+
+      for (var r = 0; r < runs.length; r++) {
+        var run = runs[r];
+        var status = (run.status || "").toLowerCase();
+
+        // Lọc tất cả các run chưa kết thúc: in_progress, queued, waiting, requested, pending
+        var isActive = status === "in_progress" ||
+                       status === "queued" ||
+                       status === "waiting" ||
+                       status === "requested" ||
+                       status === "pending";
+
+        if (isActive && !seenRunIds[run.id]) {
+          seenRunIds[run.id] = true;
           var runId = run.id;
+
+          // Bước A: Gửi lệnh cancel tiêu chuẩn
           var cancelUrl = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs/" + runId + "/cancel";
-          var cRes = UrlFetchApp.fetch(cancelUrl, {
+          UrlFetchApp.fetch(cancelUrl, {
             method: "post",
             headers: {
               "Authorization": "Bearer " + pat,
@@ -1478,14 +1530,25 @@ function cancelRunningGitHubWorkflows() {
             },
             muteHttpExceptions: true
           });
-          if (cRes.getResponseCode() === 202 || cRes.getResponseCode() === 200) {
-            cancelledCount++;
-          }
+
+          // Bước B: Gửi lệnh force-cancel để ép GitHub dừng ngay lập tức
+          var forceCancelUrl = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs/" + runId + "/force-cancel";
+          UrlFetchApp.fetch(forceCancelUrl, {
+            method: "post",
+            headers: {
+              "Authorization": "Bearer " + pat,
+              "Accept": "application/vnd.github.v3+json",
+              "User-Agent": "Google-Apps-Script-Telegram-Bot"
+            },
+            muteHttpExceptions: true
+          });
+
+          cancelledCount++;
         }
       }
-    } catch (err) {
-      Logger.log("Lỗi khi hủy workflow: " + err);
     }
+  } catch (err) {
+    Logger.log("Lỗi khi quét và hủy workflow: " + err);
   }
 
   return cancelledCount;
