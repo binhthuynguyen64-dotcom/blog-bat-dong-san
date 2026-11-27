@@ -1,13 +1,13 @@
 {
+  "fb962fc72019": {
+    "price_ty": 5.1,
+    "title": "NHÀ BTCT PHẠM VĂN CHIÊU, GẤP BÁN CÒN 5 TỶ NHỎ TL",
+    "updated_at": "10:25 27/11/2026"
+  },
   "0352c609163e": {
     "price_ty": 5.2,
     "title": "NHÀ ĐẸP BTCT NGAY EMART PHAN HUY ÍCH, 3PN, HẺM XE HƠI ĐẾN NHÀ, 5 TỶ NHỎ TL",
     "updated_at": "09:30 27/11/2026"
-  },
-  "ebfeda516082": {
-    "price_ty": 5.35,
-    "title": "NHÀ BTCT PHẠM VĂN CHIÊU, GẤP BÁN CÒN 5 TỶ NHỎ TL",
-    "updated_at": "09:27 27/11/2026"
   },
   "1bdba3176dbb": {
     "price_ty": 5.4,
@@ -1633,5 +1633,10 @@
     "price_ty": 4.2,
     "title": "NHÀ HẺM XE HƠI THÔNG NGAY GALAXY NGUYỄN VĂN QUÁ, 52m2, 4 TỶ NHỎ TL",
     "updated_at": "11:26 25/07/2026"
+  },
+  "ebfeda516082": {
+    "price_ty": 5.35,
+    "title": "NHÀ BTCT PHẠM VĂN CHIÊU, GẤP BÁN CÒN 5 TỶ NHỎ TL",
+    "updated_at": "09:27 27/11/2026"
   }
 }
