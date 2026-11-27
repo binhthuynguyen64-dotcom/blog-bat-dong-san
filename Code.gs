@@ -6,7 +6,8 @@
  * Mục đích:
  * 1. Tiếp nhận đơn đăng ký tư vấn từ trang Blogger Hồng Châu -> Ghi vào tab `DS KHÁCH HÀNG`.
  * 2. Cung cấp API GET bảo mật (API Key) để script Python đọc danh sách khách so khớp.
- * 3. Tự động lưu trữ và đồng bộ kho tin vào tab `DATA_NHA`.
+ * 3. Tự động lưu trữ và đồng bộ kho tin vào tab `DATA_NHA` (kèm Tiêu Đề Sản Phẩm & Link Website).
+ * 4. Xử lý Telegram Webhook 24/7 (/dongbo, /dung, /bat, /thieuma, /khach, /menu).
  * ==============================================================================
  */
 
@@ -17,7 +18,7 @@ var CONFIG = {
 
   // Tên tab lưu trữ danh sách khách hàng CRM thực tế trong Sheet của bạn
   CUSTOMER_SHEET_NAME: "DS KHÁCH HÀNG",
-  
+
   // Tên tab lưu trữ dữ liệu các căn nhà được đồng bộ tự động từ scraper
   DATA_NHA_SHEET_NAME: "DATA_NHA",
 
@@ -27,7 +28,7 @@ var CONFIG = {
   // Tên tab lưu trữ thống kê truy cập trang web
   STATS_SHEET_NAME: "THONG_KE_TRUY_CAP",
 
-  // Danh sách 7 sheet sản phẩm thực tế để quét "Đã cọc/đã bán" và đánh dấu "Đã đăng Nhadat247"
+  // Danh sách 7 sheet sản phẩm thực tế để quét "Đã cọc/đã bán", lấy Tiêu đề + Link và đánh dấu "Đã đăng Nhadat247"
   PRODUCT_SHEETS: [
     "BDS TMT-TTH-3.5-6TY",
     "NHÀ GÒ VẤP 5-7TY",
@@ -48,10 +49,10 @@ var CONFIG = {
     "BDS 8-15 TỶ",
     "BDS 15-25 TỶ"
   ],
-  
+
   // Khóa bí mật API bảo vệ dữ liệu khách hàng khi gọi từ bên ngoài
   SECRET_API_KEY: "HongChauNhaUngY2026",
-  
+
   // Số điện thoại / Zalo môi giới
   BROKER_PHONE: "0783515486",
 
@@ -61,7 +62,10 @@ var CONFIG = {
 
   // Cấu hình GitHub Actions kích hoạt đồng bộ tự động
   GITHUB_REPO: "binhthuynguyen64-dotcom/blog-bat-dong-san",
-  GITHUB_WORKFLOW: "daily_sync.yml"
+  GITHUB_WORKFLOW: "daily_sync.yml",
+
+  // Đường dẫn Web App chính thức (/exec) để đăng ký Webhook Telegram chính xác
+  WEBAPP_URL: "https://script.google.com/macros/s/AKfycbyA3xWOq72d1H-GVqh9aZ3FXEFLpyKPcJD78KNB2kRp8GeVMeXggC9aCDd3bYAud6u6/exec"
 };
 
 /**
@@ -84,17 +88,17 @@ function getSpreadsheet() {
  */
 function doPost(e) {
   try {
-    var rawData = e.postData ? e.postData.contents : "";
+    var rawData = (e && e.postData && e.postData.contents) ? e.postData.contents : "";
     var data = {};
-    
+
     if (rawData) {
       try {
         data = JSON.parse(rawData);
       } catch (err) {
-        data = e.parameter || {};
+        data = (e && e.parameter) ? e.parameter : {};
       }
     } else {
-      data = e.parameter || {};
+      data = (e && e.parameter) ? e.parameter : {};
     }
 
     // TRƯỜNG HỢP 0: Telegram Webhook Update từ bot
@@ -235,13 +239,11 @@ function saveConsultationLead(payload) {
     sheet = ss.insertSheet(CONFIG.CUSTOMER_SHEET_NAME);
   }
 
-  // Đọc hàng tiêu đề (Row 1) để map đúng cột dù thứ tự các cột có thay đổi
   var lastRow = sheet.getLastRow();
   var headers = [];
   if (lastRow >= 1) {
     headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
   } else {
-    // Nếu sheet còn trống, tạo bộ tiêu đề chuẩn mẫu thực tế của bạn
     headers = [
       "STT", "Tên liên lạc", "Kênh liên lạc", "Yêu cầu của KH", "Phân loại",
       "Số điện thoại", "Kênh đăng tin dẫn KH", "Hành động ", "Sản phẩm khách liên lạc hỏi",
@@ -251,10 +253,9 @@ function saveConsultationLead(payload) {
     lastRow = 1;
   }
 
-  // Tìm vị trí các cột quan trọng
-  var nameColIdx = 1;   // Cột B (index 1)
-  var phoneColIdx = 5;  // Cột F (index 5)
-  var sttColIdx = 0;    // Cột A (index 0)
+  var nameColIdx = 1;
+  var phoneColIdx = 5;
+  var sttColIdx = 0;
 
   for (var c = 0; c < headers.length; c++) {
     var h = headers[c].toString().toLowerCase().trim();
@@ -263,8 +264,7 @@ function saveConsultationLead(payload) {
     if (h === "stt") sttColIdx = c;
   }
 
-  // Quét từ hàng 2 trở xuống để tìm hàng cuối cùng thực sự có dữ liệu khách hàng
-  var lastRealRow = 1; // Mặc định hàng 1 là tiêu đề
+  var lastRealRow = 1;
   var lastRealSTT = 0;
 
   if (lastRow > 1) {
@@ -272,15 +272,14 @@ function saveConsultationLead(payload) {
     var values = sheet.getRange(2, 1, numRowsToScan, headers.length).getValues();
 
     for (var r = 0; r < values.length; r++) {
-      var currentRowNum = r + 2; // Số thứ tự hàng thực tế trong Sheet
+      var currentRowNum = r + 2;
       var row = values[r];
       var nameVal = (nameColIdx >= 0 && row[nameColIdx] !== undefined) ? row[nameColIdx].toString().trim() : "";
       var phoneVal = (phoneColIdx >= 0 && row[phoneColIdx] !== undefined) ? row[phoneColIdx].toString().trim() : "";
 
-      // Một hàng được coi là có khách thực sự khi Cột B (Tên) HOẶC Cột F (SĐT) không trống
       if (nameVal !== "" || phoneVal !== "") {
         lastRealRow = currentRowNum;
-        var sttVal = parseInt(row[sttColIdx]);
+        var sttVal = parseInt(row[sttColIdx], 10);
         if (!isNaN(sttVal)) {
           lastRealSTT = sttVal;
         }
@@ -288,18 +287,15 @@ function saveConsultationLead(payload) {
     }
   }
 
-  // Xác định dòng ghi tiếp theo và STT mới
   var targetRow = lastRealRow + 1;
   var nextSTT = (lastRealSTT > 0) ? (lastRealSTT + 1) : (targetRow - 1);
   if (nextSTT < 1) nextSTT = 1;
 
-  // Chuẩn bị dữ liệu khách hàng
   var clientName = (payload.name || payload.client_name || "Khách ghé Web Blogger").toString().trim();
   var clientPhone = (payload.phone || payload.client_phone || "").toString().trim();
   var clientNote = (payload.note || payload.requirement || "Cần tư vấn chọn căn ưng ý").toString().trim();
   var selectedHomes = payload.selected_homes || payload.cart_items || [];
-  
-  // Tổng hợp sản phẩm khách hỏi
+
   var productDetails = [];
   for (var i = 0; i < selectedHomes.length; i++) {
     var h = selectedHomes[i];
@@ -308,8 +304,6 @@ function saveConsultationLead(payload) {
   var productsString = productDetails.length > 0 ? productDetails.join("\n") : "Khách để lại thông tin chung";
 
   var nowStr = Utilities.formatDate(new Date(), "Asia/Ho_Chi_Minh", "dd/MM/yyyy HH:mm");
-
-  // Map dữ liệu vào các cột theo tên tiêu đề
   var rowData = new Array(headers.length).fill("");
 
   function setColValue(keywordList, value) {
@@ -324,13 +318,12 @@ function saveConsultationLead(payload) {
     }
   }
 
-  // Gán giá trị vào đúng cột
   setColValue(["stt"], nextSTT);
   setColValue(["tên liên lạc", "tên"], clientName);
   setColValue(["kênh liên lạc"], "Web Blogger");
   setColValue(["yêu cầu của kh", "yêu cầu"], clientNote);
   setColValue(["phân loại"], "Tệp Web Mới");
-  setColValue(["số điện thoại", "sđt", "điện thoại"], "'" + clientPhone); // Thêm dấu ' để không mất số 0 đầu
+  setColValue(["số điện thoại", "sđt", "điện thoại"], "'" + clientPhone);
   setColValue(["kênh đăng tin"], "Blogger Hồng Châu - Nhà Ưng Ý");
   setColValue(["hành động"], "Cần liên hệ tư vấn giỏ hàng");
   setColValue(["sản phẩm khách liên lạc hỏi", "sản phẩm"], productsString);
@@ -340,12 +333,10 @@ function saveConsultationLead(payload) {
   setColValue(["số sp đã gửi"], selectedHomes.length);
   setColValue(["số sp đã xem"], selectedHomes.length);
 
-  // Đảm bảo bảng tính có đủ số dòng nếu targetRow vượt quá số dòng hiện tại
   if (targetRow > sheet.getMaxRows()) {
     sheet.insertRowAfter(sheet.getMaxRows());
   }
 
-  // Ghi trực tiếp vào dòng targetRow (giữ nguyên định dạng, dropdown có sẵn của hàng đó)
   sheet.getRange(targetRow, 1, 1, rowData.length).setValues([rowData]);
 
   return {
@@ -412,7 +403,8 @@ function getCustomersFromSheet() {
 }
 
 /**
- * Trích xuất danh sách mã sản phẩm các căn đã cọc / đã bán từ 7 tab nguồn
+ * Trích xuất danh sách mã sản phẩm các căn đã cọc / đã bán / dừng bán từ 7 tab nguồn
+ * Quét chuẩn xác cột TÍNH CHẤT NHÀ (mặc định Cột E = index 4) và kiểm tra dự phòng các cột B->G
  */
 function getSoldSignaturesFromSourceSheets() {
   var ss = getSpreadsheet();
@@ -438,32 +430,443 @@ function getSoldSignaturesFromSourceSheets() {
     if (data.length <= 1) continue;
 
     var header = data[0];
-    var natureCol = 3; // Mặc định Cột D (index 3)
-    var codeCol = 5;   // Mặc định Cột F (index 5)
+    var natureCol = 4; // Mặc định Cột E (index 4: TÍNH CHẤT NHÀ)
+    var codeCol = 5;   // Mặc định Cột F (index 5: MÃ SP QUẢN LÝ)
+
     for (var h = 0; h < header.length; h++) {
-      var hText = (header[h] || "").toString().toLowerCase().trim();
+      var hText = (header[h] || "").toString().toLowerCase().replace(/[\r\n\s]+/g, " ").trim();
       if (hText.indexOf("tính chất") !== -1 || hText.indexOf("tinh chat") !== -1) natureCol = h;
       if (hText.indexOf("mã sp") !== -1 || hText.indexOf("ma sp") !== -1) codeCol = h;
     }
 
     for (var r = 1; r < data.length; r++) {
       var row = data[r];
-      var nature = row[natureCol] ? row[natureCol].toString().toLowerCase().trim() : "";
-      var isSoldNature = nature.indexOf("đã cọc") !== -1 ||
-                         nature.indexOf("đã bán") !== -1 ||
-                         nature.indexOf("da coc") !== -1 ||
-                         nature.indexOf("da ban") !== -1;
+      var rawCode = (codeCol < row.length && row[codeCol]) ? row[codeCol].toString().trim().toUpperCase() : "";
+      var code = rawCode.replace(/\s+/g, "");
+      if (!code) continue;
 
-      if (isSoldNature) {
-        var rawCode = row[codeCol] ? row[codeCol].toString().trim().toUpperCase() : "";
-        var code = rawCode.replace(/\s+/g, "");
-        if (code) {
-          soldCodes[code] = true;
+      // Kiểm tra cột TÍNH CHẤT NHÀ và quét dự phòng các cột B -> G (index 1 -> 6)
+      var isStoppedOrSold = false;
+      var checkCols = [natureCol, 1, 2, 3, 4, 6];
+      for (var cIdx = 0; cIdx < checkCols.length; cIdx++) {
+        var col = checkCols[cIdx];
+        if (col >= 0 && col < row.length && row[col]) {
+          var cellLow = row[col].toString().toLowerCase().trim();
+          if (cellLow.indexOf("đã cọc") !== -1 ||
+              cellLow.indexOf("đã bán") !== -1 ||
+              cellLow.indexOf("dừng bán") !== -1 ||
+              cellLow.indexOf("da coc") !== -1 ||
+              cellLow.indexOf("da ban") !== -1 ||
+              cellLow.indexOf("dung ban") !== -1) {
+            isStoppedOrSold = true;
+            break;
+          }
         }
+      }
+
+      if (isStoppedOrSold) {
+        soldCodes[code] = true;
       }
     }
   }
   return Object.keys(soldCodes);
+}
+
+/**
+ * Quét các căn CHƯA ĐĂNG trên Nhadat247 từ các sheet nguồn (Bản sửa lỗi triệt để):
+ * 1. Bắt buộc cột "ĐI KHẢO SÁT" == "Đi rồi"
+ * 2. Loại bỏ tuyệt đối mọi dòng có tag "Đã cọc", "Đã bán", "Dừng bán" (quét Cột E và các cột B->G)
+ * 3. Loại bỏ mọi dòng mà cột "Đã đăng Nhadat247" trên sheet nguồn đã đánh dấu "✅ Đã đăng"
+ * 4. Đối chiếu chéo toàn diện với danh sách đã đăng (Mã SP + Link PropTech + Độ giống Tiêu Đề >= 78%)
+ */
+function getUnpostedProductsFromSourceSheets(postedCodesLookup, soldCodes, postedRecords) {
+  var ss = getSpreadsheet();
+  if (!ss) return [];
+
+  var prioritySheets = [
+    "BDS TMT-TTH-3.5-6TY",
+    "NHÀ GÒ VẤP 5-7TY",
+    "BDS 3.5-5 TỶ"
+  ];
+  var allSheets = CONFIG.PRODUCT_SHEETS || [];
+  var orderedSheets = prioritySheets.slice();
+  for (var i = 0; i < allSheets.length; i++) {
+    if (orderedSheets.indexOf(allSheets[i]) === -1) {
+      orderedSheets.push(allSheets[i]);
+    }
+  }
+
+  var soldLookup = {};
+  if (soldCodes && soldCodes.length > 0) {
+    for (var sc = 0; sc < soldCodes.length; sc++) {
+      soldLookup[soldCodes[sc]] = true;
+    }
+  }
+
+  // Xây dựng bộ đối chiếu trùng lặp từ các căn ĐÃ ĐĂNG trên Nhadat247
+  var postedLinksLookup = {};
+  var comparePool = []; // [{ code, title, normTitle, normLink }]
+
+  if (postedRecords && postedRecords.length > 0) {
+    for (var pr = 0; pr < postedRecords.length; pr++) {
+      var rec = postedRecords[pr];
+      var nLink = normalizePropTechUrl(rec.website_link);
+      if (nLink) {
+        postedLinksLookup[nLink] = rec.internal_code || "ĐÃ ĐĂNG";
+      }
+      var nTitle = normalizeProductTitleForCompare(rec.product_title);
+      if (nTitle) {
+        comparePool.push({
+          code: rec.internal_code || "ĐÃ ĐĂNG",
+          title: rec.product_title,
+          normTitle: nTitle,
+          normLink: nLink
+        });
+      }
+    }
+  }
+
+  var seenUnpostedCodes = {};
+  var cleanResults = [];
+  var suspectResults = [];
+
+  for (var s = 0; s < orderedSheets.length; s++) {
+    var sheetName = orderedSheets[s];
+    var sheet = ss.getSheetByName(sheetName);
+    if (!sheet) continue;
+
+    var range = sheet.getDataRange();
+    var data = range.getValues();
+    if (data.length <= 1) continue;
+
+    var richText = null;
+    try {
+      richText = range.getRichTextValues();
+    } catch (eRich) {}
+
+    var header = data[0];
+    var surveyCol = 2;     // Mặc định Cột C (index 2: ĐI KHẢO SÁT)
+    var natureCol = 4;     // Mặc định Cột E (index 4: TÍNH CHẤT NHÀ)
+    var codeCol = 5;       // Mặc định Cột F (index 5: MÃ SP QUẢN LÝ)
+    var titleCol = 8;      // Mặc định Cột I (index 8: TIÊU ĐỀ SẢN PHẨM)
+    var linkCol = 15;      // Mặc định Cột P (index 15: LINK WEBSITE)
+    var priceCol = 17;     // Mặc định Cột R (index 17: GIÁ)
+    var dropPriceCol = 18; // Mặc định Cột S (index 18: GIÁ GIẢM CHÀO)
+    var postedFlagCol = -1;
+
+    for (var h = 0; h < header.length; h++) {
+      var hText = (header[h] || "").toString().toLowerCase().replace(/[\r\n\s]+/g, " ").trim();
+      if (hText.indexOf("khảo sát") !== -1 || hText.indexOf("khao sat") !== -1) surveyCol = h;
+      if (hText.indexOf("tính chất") !== -1 || hText.indexOf("tinh chat") !== -1) natureCol = h;
+      if (hText.indexOf("mã sp") !== -1 || hText.indexOf("ma sp") !== -1) codeCol = h;
+      if (hText.indexOf("tiêu đề sản phẩm") !== -1 || hText.indexOf("tieu de san pham") !== -1) titleCol = h;
+      if (hText.indexOf("link website") !== -1 || hText.indexOf("link web") !== -1) linkCol = h;
+      if (hText === "giá" || hText === "gia") priceCol = h;
+      if (hText.indexOf("giá giảm") !== -1 || hText.indexOf("gia giam") !== -1) dropPriceCol = h;
+      if (hText.indexOf("đã đăng nhadat247") !== -1 || hText.indexOf("da dang nhadat247") !== -1) postedFlagCol = h;
+    }
+
+    for (var r = 1; r < data.length; r++) {
+      var row = data[r];
+      var rawCode = (codeCol < row.length && row[codeCol]) ? row[codeCol].toString().trim().toUpperCase() : "";
+      var normCode = rawCode.replace(/\s+/g, "");
+      if (!normCode) continue;
+
+      // 1. Bỏ qua nếu trùng Mã SP đã đăng trên DATA_NHA hoặc đã gom ở sheet ưu tiên phía trên
+      if (postedCodesLookup[normCode] || seenUnpostedCodes[normCode]) continue;
+
+      // 2. Bỏ qua nếu cột "Đã đăng Nhadat247" trên chính sheet nguồn này đã đánh dấu Đã đăng
+      if (postedFlagCol >= 0 && postedFlagCol < row.length && row[postedFlagCol]) {
+        var flagText = row[postedFlagCol].toString().toLowerCase().trim();
+        if (flagText.indexOf("đã đăng") !== -1 || flagText.indexOf("da dang") !== -1) {
+          continue;
+        }
+      }
+
+      // 3. Bắt buộc cột "ĐI KHẢO SÁT" phải là "Đi rồi"
+      var surveyStatus = (surveyCol < row.length && row[surveyCol]) ? row[surveyCol].toString().toLowerCase().trim() : "";
+      if (surveyStatus !== "đi rồi" && surveyStatus !== "di roi") continue;
+
+      // 4. Loại bỏ tuyệt đối mọi dòng có tag "Đã cọc", "Đã bán", "Dừng bán" (kiểm tra Cột E và dự phòng B->G)
+      var isInvalidNature = Boolean(soldLookup[normCode]);
+      if (!isInvalidNature) {
+        var checkCols = [natureCol, 1, 2, 3, 4, 6];
+        for (var cIdx = 0; cIdx < checkCols.length; cIdx++) {
+          var col = checkCols[cIdx];
+          if (col >= 0 && col < row.length && row[col]) {
+            var cellLow = row[col].toString().toLowerCase().trim();
+            if (cellLow.indexOf("đã cọc") !== -1 ||
+                cellLow.indexOf("đã bán") !== -1 ||
+                cellLow.indexOf("dừng bán") !== -1 ||
+                cellLow.indexOf("da coc") !== -1 ||
+                cellLow.indexOf("da ban") !== -1 ||
+                cellLow.indexOf("dung ban") !== -1) {
+              isInvalidNature = true;
+              break;
+            }
+          }
+        }
+      }
+      if (isInvalidNature) continue;
+
+      var titleVal = (titleCol < row.length && row[titleCol] !== null && row[titleCol] !== undefined)
+        ? row[titleCol].toString().trim()
+        : "";
+      if (!titleVal) continue;
+
+      // Lấy Link Website (ưu tiên link proptech.thienkhoi.com)
+      var linkVal = "";
+      if (linkCol < row.length) {
+        if (richText && richText[r] && richText[r][linkCol]) {
+          linkVal = (richText[r][linkCol].getLinkUrl() || "").trim();
+        }
+        if (!linkVal && row[linkCol]) {
+          linkVal = row[linkCol].toString().trim();
+        }
+      }
+      if (!linkVal || linkVal.indexOf("drive.google.com") !== -1) {
+        linkVal = "";
+        for (var c = 0; c < row.length; c++) {
+          var cellUrl = (richText && richText[r] && richText[r][c]) ? (richText[r][c].getLinkUrl() || "") : "";
+          var candidate = cellUrl || (row[c] || "").toString().trim();
+          if (candidate.indexOf("thienkhoi.com") !== -1) {
+            linkVal = candidate.trim();
+            break;
+          }
+        }
+      }
+
+      // 5. KIỂM TRA TRÙNG LẶP THÔNG MINH (Link PropTech + Độ giống Tiêu Đề >= 78%)
+      var normLinkVal = normalizePropTechUrl(linkVal);
+      if (normLinkVal && postedLinksLookup[normLinkVal]) {
+        continue;
+      }
+
+      var bestMatchPct = 0;
+      var bestMatchCode = "";
+      for (var cp = 0; cp < comparePool.length; cp++) {
+        var simPct = calculateStringSimilarityPercent(titleVal, comparePool[cp].title);
+        if (simPct > bestMatchPct) {
+          bestMatchPct = simPct;
+          bestMatchCode = comparePool[cp].code;
+        }
+        if (bestMatchPct >= 88) break;
+      }
+
+      if (bestMatchPct >= 88) {
+        continue;
+      }
+
+      // Quy đổi giá bán sang Tỷ
+      var rawPrice = (priceCol < row.length) ? row[priceCol] : 0;
+      var rawDrop = (dropPriceCol < row.length) ? row[dropPriceCol] : 0;
+      var numPrice = parseFloat(String(rawPrice).replace(/[^\d\.]/g, "")) || 0;
+      var numDrop = parseFloat(String(rawDrop).replace(/[^\d\.]/g, "")) || 0;
+
+      if (numPrice > 1000000) numPrice = Math.round((numPrice / 1000000000) * 100) / 100;
+      if (numDrop > 1000000) numDrop = Math.round((numDrop / 1000000000) * 100) / 100;
+
+      var finalPriceTy = (numDrop > 0 && numDrop < numPrice) ? numDrop : numPrice;
+      var priceText = finalPriceTy > 0 ? (finalPriceTy + " tỷ") : "";
+
+      seenUnpostedCodes[normCode] = true;
+      if (normLinkVal) {
+        postedLinksLookup[normLinkVal] = rawCode;
+      }
+      comparePool.push({
+        code: rawCode,
+        title: titleVal,
+        normTitle: normalizeProductTitleForCompare(titleVal),
+        normLink: normLinkVal
+      });
+
+      var isSuspectDup = (bestMatchPct >= 78 && bestMatchPct < 88);
+      var displayTitle = isSuspectDup
+        ? ("⚠️ Nghi trùng " + bestMatchPct + "% với mã " + bestMatchCode + " | " + titleVal)
+        : titleVal;
+
+      var itemRecord = {
+        sheet_name: sheetName,
+        internal_code: rawCode,
+        product_title: displayTitle,
+        website_link: linkVal,
+        price_ty: finalPriceTy,
+        price_text: priceText,
+        is_suspect_dup: isSuspectDup
+      };
+
+      if (isSuspectDup) {
+        suspectResults.push(itemRecord);
+      } else {
+        cleanResults.push(itemRecord);
+      }
+    }
+  }
+
+  return cleanResults.concat(suspectResults);
+}
+
+/**
+ * Chuẩn hóa URL website / proptech để đối chiếu trùng lặp
+ */
+function normalizePropTechUrl(url) {
+  if (!url) return "";
+  var s = url.toString().trim().toLowerCase();
+  s = s.replace(/^https?:\/\//i, "").replace(/^www\./i, "");
+  s = s.split("?")[0].split("#")[0];
+  s = s.replace(/\/+$/, "");
+  return s;
+}
+
+/**
+ * Chuẩn hóa tiêu đề sản phẩm để so sánh độ tương đồng (bỏ dấu tiếng Việt, ký tự đặc biệt)
+ */
+function normalizeProductTitleForCompare(title) {
+  if (!title) return "";
+  var str = title.toString().toLowerCase();
+  if (str.indexOf("nghi trùng") !== -1 && str.indexOf("|") !== -1) {
+    str = str.split("|").slice(1).join(" ");
+  }
+  str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+  str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+  str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+  str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+  str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+  str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+  str = str.replace(/đ/g, "d");
+  str = str.replace(/[^a-z0-9\s]/g, " ");
+  return str.replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Tính toán tỷ lệ tương đồng giữa 2 chuỗi tiêu đề sản phẩm (0 -> 100%)
+ */
+function calculateStringSimilarityPercent(str1, str2) {
+  if (!str1 || !str2) return 0;
+  var s1 = normalizeProductTitleForCompare(str1);
+  var s2 = normalizeProductTitleForCompare(str2);
+  if (s1 === s2) return 100;
+  if (!s1 || !s2) return 0;
+
+  var words1 = s1.split(" ").filter(function(w) { return w.length > 0; });
+  var words2 = s2.split(" ").filter(function(w) { return w.length > 0; });
+  if (words1.length === 0 || words2.length === 0) return 0;
+
+  var set1 = {};
+  for (var i = 0; i < words1.length; i++) set1[words1[i]] = true;
+  var common = 0;
+  for (var j = 0; j < words2.length; j++) {
+    if (set1[words2[j]]) common++;
+  }
+  var union = Object.keys(set1).length + words2.length - common;
+  var jaccard = union > 0 ? (common / union) : 0;
+
+  var len1 = s1.length;
+  var len2 = s2.length;
+  var matrix = [];
+  for (var r = 0; r <= len2; r++) matrix[r] = [r];
+  for (var c = 0; c <= len1; c++) matrix[0][c] = c;
+  for (var r = 1; r <= len2; r++) {
+    for (var c = 1; c <= len1; c++) {
+      if (s2.charAt(r - 1) === s1.charAt(c - 1)) {
+        matrix[r][c] = matrix[r - 1][c - 1];
+      } else {
+        matrix[r][c] = Math.min(matrix[r - 1][c - 1] + 1, matrix[r][c - 1] + 1, matrix[r - 1][c] + 1);
+      }
+    }
+  }
+  var dist = matrix[len2][len1];
+  var maxLen = Math.max(len1, len2);
+  var levSim = 1 - (dist / maxLen);
+
+  var combined = (jaccard * 0.6) + (levSim * 0.4);
+  return Math.round(combined * 100);
+}
+
+/**
+ * Render mảng Danh sách căn chưa đăng vào Cột Y -> AD (cột 25 -> 30) trên tab DATA_NHA
+ */
+function renderUnpostedProductsToDataNha(sheet, listings, soldCodes) {
+  if (!sheet) return 0;
+
+  var postedCodesLookup = {};
+  var postedRecords = [];
+
+  if (listings && listings.length > 0) {
+    for (var i = 0; i < listings.length; i++) {
+      var item = listings[i];
+      var rawC = (item.internal_code || "").toString().trim().toUpperCase();
+      var normC = rawC.replace(/\s+/g, "");
+      if (normC) postedCodesLookup[normC] = true;
+      postedRecords.push({
+        internal_code: rawC,
+        product_title: item.product_title || item.title || "",
+        website_link: item.website_link || item.url || ""
+      });
+    }
+  }
+
+  if (!soldCodes || soldCodes.length === 0) {
+    soldCodes = getSoldSignaturesFromSourceSheets();
+  }
+
+  var unpostedList = getUnpostedProductsFromSourceSheets(postedCodesLookup, soldCodes, postedRecords);
+
+  // Xóa vùng dữ liệu cũ ở mảng Cột Y -> AD (từ cột 25 đến cột 30)
+  var maxRows = Math.max(sheet.getLastRow(), 100);
+  try {
+    sheet.getRange(1, 25, maxRows, 6).clearContent().clearFormat();
+  } catch (eClear) {}
+
+  // Ghi tiêu đề Cột Y -> AD
+  var unpostedHeaders = [
+    "Sheet Nguồn", "Mã SP", "Tiêu Đề Sản Phẩm", "Link Website", "Giá Bán", "Ghi Chú Trùng Lặp"
+  ];
+  var unpostedHeaderRange = sheet.getRange(1, 25, 1, 6);
+  unpostedHeaderRange.setValues([unpostedHeaders]);
+  unpostedHeaderRange.setBackground("#1D4ED8")
+                     .setFontColor("#FFFFFF")
+                     .setFontWeight("bold")
+                     .setHorizontalAlignment("center");
+  sheet.setColumnWidth(25, 160);
+  sheet.setColumnWidth(26, 120);
+  sheet.setColumnWidth(27, 280);
+  sheet.setColumnWidth(28, 220);
+  sheet.setColumnWidth(29, 100);
+  sheet.setColumnWidth(30, 240);
+
+  if (!unpostedList || unpostedList.length === 0) return 0;
+
+  var unpostedRows = [];
+  for (var u = 0; u < unpostedList.length; u++) {
+    var up = unpostedList[u];
+    unpostedRows.push([
+      up.sheet_name || "",
+      up.internal_code || "",
+      up.product_title || "",
+      up.website_link || "",
+      up.price_text || (up.price_ty ? (up.price_ty + " tỷ") : ""),
+      up.is_suspect_dup ? "⚠️ Nghi trùng" : "✅ Sẵn sàng đăng"
+    ]);
+  }
+
+  sheet.getRange(2, 25, unpostedRows.length, 6).setValues(unpostedRows);
+  return unpostedRows.length;
+}
+
+/**
+ * Hàm kích hoạt thủ công từ Google Apps Script Editor để cập nhật riêng Cột Y -> AD
+ */
+function updateUnpostedProductsOnDataNha() {
+  var ss = getSpreadsheet();
+  if (!ss) return;
+  var sheet = ss.getSheetByName(CONFIG.DATA_NHA_SHEET_NAME);
+  if (!sheet) return;
+
+  var listings = getListingsFromSheet();
+  var soldCodes = getSoldSignaturesFromSourceSheets();
+  var count = renderUnpostedProductsToDataNha(sheet, listings, soldCodes);
+  Logger.log("Đã cập nhật " + count + " căn chưa đăng vào Cột Y -> AD trên tab DATA_NHA");
 }
 
 /**
@@ -502,7 +905,7 @@ function getSourceProductDetailsMap() {
     }
 
     var header = data[0];
-    var codeCol = 5;      // Mặc định Cột F (index 5)
+    var codeCol = 5; // Mặc định Cột F (index 5)
     var titleCol = -1;
     var linkCol = -1;
 
@@ -574,8 +977,6 @@ function getSourceProductDetailsMap() {
 
 /**
  * Tự động tạo & cập nhật cột "Đã đăng Nhadat247" trên 7 sheet sản phẩm
- * @param {Object|Array} postedCodesSet - Tập hợp hoặc mảng các Mã SP đã đăng trên nhadat247
- * @return {number} Số sheet đã cập nhật thành công
  */
 function markPostedNhadat247OnProductSheets(postedCodesSet) {
   var ss = getSpreadsheet();
@@ -591,7 +992,6 @@ function markPostedNhadat247OnProductSheets(postedCodesSet) {
     "BDS 15-25 TỶ"
   ];
 
-  // Chuẩn hóa postedCodesSet thành Object key-lookup
   var codeLookup = {};
   if (Array.isArray(postedCodesSet)) {
     for (var i = 0; i < postedCodesSet.length; i++) {
@@ -606,13 +1006,12 @@ function markPostedNhadat247OnProductSheets(postedCodesSet) {
     }
   }
 
-  // Nếu không truyền hoặc rỗng, tự động gom từ tab DATA_NHA
   if (Object.keys(codeLookup).length === 0) {
     var dataNhaSheet = ss.getSheetByName(CONFIG.DATA_NHA_SHEET_NAME);
     if (dataNhaSheet && dataNhaSheet.getLastRow() > 1) {
       var dVals = dataNhaSheet.getDataRange().getValues();
       for (var r = 1; r < dVals.length; r++) {
-        var code = (dVals[r][19] || "").toString().trim().toUpperCase(); // Cột 20: Mã SP
+        var code = (dVals[r][19] || "").toString().trim().toUpperCase();
         if (code) {
           codeLookup[code] = true;
         }
@@ -632,9 +1031,9 @@ function markPostedNhadat247OnProductSheets(postedCodesSet) {
     if (lastRow < 1 || lastCol < 1) continue;
 
     var headerValues = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
-    
-    var postedColIndex = -1; // 1-based
-    var codeColIndex = -1;   // 1-based
+
+    var postedColIndex = -1;
+    var codeColIndex = -1;
 
     for (var col = 0; col < headerValues.length; col++) {
       var hText = (headerValues[col] || "").toString().trim().toLowerCase();
@@ -646,12 +1045,10 @@ function markPostedNhadat247OnProductSheets(postedCodesSet) {
       }
     }
 
-    // Nếu không tìm thấy cột Mã SP theo tên, mặc định Cột F (index 6, tức 1-based col 6)
     if (codeColIndex === -1) {
       codeColIndex = 6;
     }
 
-    // Nếu chưa có cột "Đã đăng Nhadat247", tạo cột mới ngay sau cột có dữ liệu cuối cùng của hàng 1
     if (postedColIndex === -1) {
       postedColIndex = lastCol + 1;
       var headerCell = sheet.getRange(1, postedColIndex);
@@ -710,7 +1107,6 @@ function markPostedNhadat247OnProductSheets(postedCodesSet) {
 
 /**
  * Kiểm tra xem 1 tin đăng có khớp với danh sách căn đã cọc/đã bán không
- * CHỈ đối chiếu 100% theo Mã SP (internal_code) hoặc chọn tay trên tab DATA_NHA
  */
 function checkIfListingSold(item, soldCodes) {
   if (!item) return false;
@@ -739,13 +1135,11 @@ function checkIfListingSold(item, soldCodes) {
 }
 
 /**
- * Lưu toàn bộ danh sách căn nhà vào tab `DATA_NHA`
- * BẢO TOÀN toàn bộ chỉnh sửa tay của người dùng ở các cột Mục Đích, Phân Loại Dòng Tiền, Trạng Thái
- * (Cho phép ghi đè sạch Mục đích mới nếu overwritePurposes = true)
+ * Lưu toàn bộ danh sách căn nhà vào tab `DATA_NHA` (22 cột, kèm Tiêu Đề Sản Phẩm & Link Website)
  */
 function syncListingsToSheet(listings, overwritePurposes) {
   if (!listings || listings.length === 0) return 0;
-  
+
   var ss = getSpreadsheet();
   if (!ss) return 0;
 
@@ -753,7 +1147,7 @@ function syncListingsToSheet(listings, overwritePurposes) {
   if (!sheet) {
     sheet = ss.insertSheet(CONFIG.DATA_NHA_SHEET_NAME);
   }
-  
+
   // 1. Đọc dữ liệu chỉnh sửa tay hiện có trên tab DATA_NHA để BẢO TOÀN
   var existingMap = {};
   var oldData = sheet.getDataRange().getValues();
@@ -796,7 +1190,6 @@ function syncListingsToSheet(listings, overwritePurposes) {
     var itemId = item.id || "";
     var existing = existingMap[itemId] || null;
 
-    // Bảo toàn chỉnh sửa tay từ Sheet nếu đã có (Trừ khi overwritePurposes = true để làm sạch mục đích)
     var purposesStr = "";
     if (!overwritePurposes && existing && existing.purposes) {
       purposesStr = existing.purposes;
@@ -814,7 +1207,6 @@ function syncListingsToSheet(listings, overwritePurposes) {
     var internalCode = (item.internal_code || (existing ? existing.internal_code : "") || "").toString().trim().toUpperCase();
     var normCode = internalCode.replace(/\s+/g, "");
 
-    // Đối chiếu trạng thái đã bán (ƯU TIÊN 1: Kiểm tra soldCodes từ 7 sheet nguồn)
     var isSold = checkIfListingSold({
       id: itemId,
       internal_code: normCode,
@@ -822,7 +1214,6 @@ function syncListingsToSheet(listings, overwritePurposes) {
       is_sold: item.is_sold
     }, soldCodes);
 
-    // ƯU TIÊN 2: Nếu trên DATA_NHA người dùng đã chỉnh tay sang "🚫 Đã bán"
     if (existing && existing.status) {
       if (existing.status.indexOf("Đã bán") !== -1 || existing.status.indexOf("Đã cọc") !== -1) {
         isSold = true;
@@ -888,24 +1279,20 @@ function syncListingsToSheet(listings, overwritePurposes) {
   if (rows.length > 0) {
     sheet.getRange(2, 1, rows.length, headers.length).setValues(rows);
 
-    // Thiết lập Data Validation (Dropdown) cho Cột 15, 16, 19
     var totalDataRows = Math.max(rows.length, 50);
 
-    // Cột 15: Mục Đích (cho phép chọn hoặc nhập kết hợp)
     var rulePurposes = SpreadsheetApp.newDataValidation()
       .requireValueInList(["de_o", "dong_tien", "kinh_doanh", "dat", "de_o, kinh_doanh", "de_o, dong_tien", "dong_tien, kinh_doanh", "de_o, dong_tien, kinh_doanh"], true)
       .setAllowInvalid(true)
       .build();
     sheet.getRange(2, 15, totalDataRows, 1).setDataValidation(rulePurposes);
 
-    // Cột 16: Phân Loại Dòng Tiền
     var ruleCashflow = SpreadsheetApp.newDataValidation()
       .requireValueInList(["", "day_tro", "chdv", "tiem_nang_chdv"], true)
       .setAllowInvalid(true)
       .build();
     sheet.getRange(2, 16, totalDataRows, 1).setDataValidation(ruleCashflow);
 
-    // Cột 19: Trạng Thái
     var ruleStatus = SpreadsheetApp.newDataValidation()
       .requireValueInList(["Đang bán", "🚫 Đã bán"], true)
       .setAllowInvalid(false)
@@ -913,7 +1300,6 @@ function syncListingsToSheet(listings, overwritePurposes) {
     sheet.getRange(2, 19, totalDataRows, 1).setDataValidation(ruleStatus);
   }
 
-  // Tự động đối chiếu & đánh dấu cột "Đã đăng Nhadat247" trên 7 sheet sản phẩm
   try {
     var postedCodesMap = {};
     for (var l = 0; l < listings.length; l++) {
@@ -927,6 +1313,13 @@ function syncListingsToSheet(listings, overwritePurposes) {
     markPostedNhadat247OnProductSheets(postedCodesMap);
   } catch (errPost) {
     Logger.log("Lỗi khi cập nhật cột Đã đăng Nhadat247: " + errPost);
+  }
+
+  // 3. Tự động đồng bộ mảng "Danh sách căn chưa đăng" vào Cột Y -> AD trên tab DATA_NHA
+  try {
+    renderUnpostedProductsToDataNha(sheet, listings, soldCodes);
+  } catch (errUnposted) {
+    Logger.log("Lỗi khi render mảng căn chưa đăng vào Cột Y->AD: " + errUnposted);
   }
 
   return rows.length;
@@ -970,7 +1363,7 @@ function getListingsFromSheet() {
       is_price_dropped: r[4].toString().indexOf("GIẢM") !== -1,
       old_price_ty: parseFloat(r[5]) || null,
       area_m2: parseFloat(r[6]) || 0,
-      bedrooms: parseInt(r[7]) || 0,
+      bedrooms: parseInt(r[7], 10) || 0,
       alley_type: r[8],
       ward: r[9],
       district: r[10],
@@ -1092,7 +1485,6 @@ function recordTrafficView(payload) {
   var isUnique = (payload.is_unique === true || payload.is_unique === "true" || payload.is_unique === 1 || payload.is_unique === "1");
   var evt = payload.event || "page_view";
 
-  // Tìm dòng của ngày hôm nay
   var targetRow = -1;
   if (lastRow > 1) {
     var dates = sheet.getRange(2, 1, lastRow - 1, 1).getValues();
@@ -1111,22 +1503,19 @@ function recordTrafficView(payload) {
     }
   }
 
-  // Nếu chưa có dòng ngày hôm nay, tạo dòng mới với các số liệu ban đầu là 0
   if (targetRow === -1) {
     sheet.appendRow([todayStr, 0, 0, 0]);
     targetRow = sheet.getLastRow();
   }
 
-  // Đọc các giá trị hiện tại của ngày hôm nay
   var currentValues = sheet.getRange(targetRow, 2, 1, 3).getValues()[0];
-  var uniqueCount = parseInt(currentValues[0]) || 0;
-  var pageviewCount = parseInt(currentValues[1]) || 0;
-  var drawerCount = parseInt(currentValues[2]) || 0;
+  var uniqueCount = parseInt(currentValues[0], 10) || 0;
+  var pageviewCount = parseInt(currentValues[1], 10) || 0;
+  var drawerCount = parseInt(currentValues[2], 10) || 0;
 
   if (evt === "open_drawer" && isUnique) {
     drawerCount += 1;
   } else {
-    // Mặc định là page_view
     pageviewCount += 1;
     if (isUnique) {
       uniqueCount += 1;
@@ -1183,9 +1572,9 @@ function getTrafficReportFromSheet() {
       dStr = dVal ? dVal.toString().trim() : "";
     }
 
-    var uVal = parseInt(row[1]) || 0;
-    var pVal = parseInt(row[2]) || 0;
-    var drVal = parseInt(row[3]) || 0;
+    var uVal = parseInt(row[1], 10) || 0;
+    var pVal = parseInt(row[2], 10) || 0;
+    var drVal = parseInt(row[3], 10) || 0;
 
     total_views += uVal;
 
@@ -1245,7 +1634,7 @@ function handleTelegramWebhook(data) {
   var text = (msg.text || "").trim();
 
   // Kiểm tra bảo mật CHAT_ID: Chỉ cho phép tài khoản của chủ nhân điều khiển bot
-  if (chatId !== CONFIG.TELEGRAM_CHAT_ID) {
+  if (chatId !== String(CONFIG.TELEGRAM_CHAT_ID)) {
     Logger.log("Từ chối truy cập từ chat_id không hợp lệ: " + chatId);
     return ContentService.createTextOutput("OK");
   }
@@ -1257,17 +1646,16 @@ function handleTelegramWebhook(data) {
   // =========================================================================
   if (lowerText === "/dung" || lowerText === "/stop" || lowerText === "dừng" || lowerText === "dung" ||
       lowerText === "tắt thông báo" || lowerText === "tat thong bao" || lowerText === "dừng lại" || lowerText === "stop") {
-    
+
     scriptProps.setProperty("BOT_PAUSED", "true");
     var cancelledRuns = cancelRunningGitHubWorkflows();
 
     var stopMsg = "🛑 <b>ĐÃ DỪNG KHẨN CẤP THÀNH CÔNG!</b>\n\n" +
-      "• Đã hủy <b>" + cancelledRuns + " tiến trình đám mây</b> đang chạy / xếp hàng trên GitHub Actions.\n" +
-      "• Đã quét hàng đợi (per_page=100) và hủy <b>" + cancelledRuns + " tiến trình đám mây</b> bằng cả cancel và force-cancel.\n" +
+      "• Đã quét hàng đợi và hủy <b>" + cancelledRuns + " tiến trình đám mây</b> bằng cả cancel và force-cancel.\n" +
       "• Đã tạm khóa (disable) workflow <code>" + CONFIG.GITHUB_WORKFLOW + "</code> trên GitHub Actions.\n" +
       "• Đã tạm khóa toàn bộ thông báo tự động từ hệ thống.\n\n" +
       "👉 Khi bạn muốn bật lại, hãy nhắn <code>/dongbo</code> hoặc <code>/bat</code>.";
-    
+
     sendTelegramMessage(chatId, stopMsg);
     return ContentService.createTextOutput("OK");
   }
@@ -1277,7 +1665,6 @@ function handleTelegramWebhook(data) {
   // =========================================================================
   if (lowerText === "/bat" || lowerText === "bật" || lowerText === "bat" || lowerText === "bật thông báo" || lowerText === "bat thong bao") {
     scriptProps.setProperty("BOT_PAUSED", "false");
-    sendTelegramMessage(chatId, "✅ <b>ĐÃ BẬT LẠI THÔNG BÁO!</b>\nHệ thống đã sẵn sàng nhận lệnh và gửi báo cáo chu kỳ bình thường.");
     setGitHubWorkflowEnabled(true);
     sendTelegramMessage(chatId, "✅ <b>ĐÃ BẬT LẠI THÔNG BÁO & WORKFLOW!</b>\nWorkflow <code>" + CONFIG.GITHUB_WORKFLOW + "</code> đã được mở khóa (enable) lại trên GitHub và hệ thống sẵn sàng hoạt động bình thường.");
     return ContentService.createTextOutput("OK");
@@ -1288,8 +1675,7 @@ function handleTelegramWebhook(data) {
   // =========================================================================
   if (lowerText === "/dongbo" || lowerText === "/sync" || lowerText === "/capnhat" ||
       lowerText === "đồng bộ" || lowerText === "dong bo" || lowerText === "cập nhật tin" || lowerText === "cap nhat tin") {
-    
-    // Cooldown 180s (3 phút)
+
     var lastSyncTs = parseInt(scriptProps.getProperty("LAST_SYNC_TRIGGER_TS") || "0", 10);
     var now = Date.now();
     if (now - lastSyncTs < 180000) {
@@ -1301,19 +1687,16 @@ function handleTelegramWebhook(data) {
       return ContentService.createTextOutput("OK");
     }
 
-    // Ghi nhận mốc thời gian đồng bộ và tự động mở khóa BOT_PAUSED
-    // Ghi nhận mốc thời gian đồng bộ và tự động mở khóa BOT_PAUSED & enable workflow trên GitHub
     scriptProps.setProperty("LAST_SYNC_TRIGGER_TS", String(now));
     scriptProps.setProperty("BOT_PAUSED", "false");
     setGitHubWorkflowEnabled(true);
 
-    // Kích hoạt đám mây GitHub Actions workflow_dispatch
     var ghRes = triggerGitHubWorkflow();
 
     var reply = "";
     if (ghRes.success) {
       reply = "⏳ <b>ĐÃ NHẬN LỆNH ĐỒNG BỘ!</b>\n\n" +
-        "🚀 Hệ thống đám mây <b>GitHub Actions</b> đang cào tin mới từ Nhadat247, đối chiếu 'Đã bán' từ 7 sheet và cập nhật lên Blogger...\n\n" +
+        "🚀 Hệ thống đám mây <b>GitHub Actions</b> đang cào tin mới từ Nhadat247, đối chiếu 'Đã bán' + lấy Tiêu Đề Sản Phẩm & Link Website từ 7 sheet và cập nhật lên Blogger...\n\n" +
         "⏱ Quá trình chạy khoảng 1 - 2 phút. Sau khi xong, hệ thống sẽ gửi <b>duy nhất 1 tin nhắn tổng hợp</b> về đây!";
     } else {
       reply = "⚠️ <b>KHÔNG THỂ KÍCH HOẠT GITHUB ACTIONS!</b>\n\n" +
@@ -1379,7 +1762,6 @@ function handleTelegramWebhook(data) {
     return ContentService.createTextOutput("OK");
   }
 
-  // Phản hồi mặc định nếu tin nhắn không khớp lệnh nào
   sendTelegramMessage(chatId, "👋 Chào bạn! Gõ <code>/menu</code> hoặc <code>/help</code> để xem danh sách lệnh điều khiển hệ thống.");
   return ContentService.createTextOutput("OK");
 }
@@ -1389,11 +1771,10 @@ function handleTelegramWebhook(data) {
  */
 function parseCustomerMessage(text) {
   var cleanText = text.replace(/^\/(?:khach|crm|kh)\s*/i, "").trim();
-  
-  // Tìm số điện thoại 10 số (bắt đầu bằng 0)
+
   var phoneMatch = cleanText.match(/\b(0\d{9})\b/);
   var phone = phoneMatch ? phoneMatch[1] : "";
-  
+
   var name = "";
   var note = "";
 
@@ -1410,20 +1791,19 @@ function parseCustomerMessage(text) {
       note = parts[1];
     }
   } else if (cleanText.indexOf(",") !== -1) {
-    var parts = cleanText.split(",").map(function(s) { return s.trim(); });
-    if (parts.length >= 3) {
-      name = parts[0];
-      if (!phone && parts[1].match(/\b(0\d{9})\b/)) {
-        phone = parts[1].match(/\b(0\d{9})\b/)[1];
+    var partsComma = cleanText.split(",").map(function(s) { return s.trim(); });
+    if (partsComma.length >= 3) {
+      name = partsComma[0];
+      if (!phone && partsComma[1].match(/\b(0\d{9})\b/)) {
+        phone = partsComma[1].match(/\b(0\d{9})\b/)[1];
       }
-      note = parts.slice(2).join(", ");
-    } else if (parts.length === 2) {
-      name = parts[0];
-      note = parts[1];
+      note = partsComma.slice(2).join(", ");
+    } else if (partsComma.length === 2) {
+      name = partsComma[0];
+      note = partsComma[1];
     }
   }
 
-  // Nếu chưa tách được tên/nhu cầu, dùng vị trí của SĐT
   if ((!name || !note) && phoneMatch) {
     var pIdx = cleanText.indexOf(phone);
     var before = cleanText.substring(0, pIdx).replace(/[-:,]/g, "").trim();
@@ -1482,7 +1862,7 @@ function saveCustomerFromTelegram(clientName, clientPhone, clientNote) {
 
       if (nameVal !== "" || phoneVal !== "") {
         lastRealRow = currentRowNum;
-        var sttVal = parseInt(row[sttColIdx]);
+        var sttVal = parseInt(row[sttColIdx], 10);
         if (!isNaN(sttVal)) {
           lastRealSTT = sttVal;
         }
@@ -1541,7 +1921,6 @@ function saveCustomerFromTelegram(clientName, clientPhone, clientNote) {
 
 /**
  * Bật hoặc tắt workflow trên GitHub Actions
- * @param {boolean} enable - true để enable, false để disable
  */
 function setGitHubWorkflowEnabled(enable) {
   var pat = PropertiesService.getScriptProperties().getProperty("GITHUB_PAT");
@@ -1580,7 +1959,6 @@ function triggerGitHubWorkflow() {
     };
   }
 
-  // Đảm bảo workflow được bật (enable) trên GitHub trước khi kích hoạt
   setGitHubWorkflowEnabled(true);
 
   var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/workflows/" + CONFIG.GITHUB_WORKFLOW + "/dispatches";
@@ -1611,9 +1989,7 @@ function triggerGitHubWorkflow() {
 }
 
 /**
- * Hủy toàn bộ các workflow GitHub Actions đang chạy hoặc xếp hàng chờ
  * Hủy sạch 100% các workflow GitHub Actions đang chạy hoặc xếp hàng chờ
- * Lấy per_page=100 và gọi lần lượt cả cancel lẫn force-cancel
  */
 function cancelRunningGitHubWorkflows() {
   var pat = PropertiesService.getScriptProperties().getProperty("GITHUB_PAT");
@@ -1622,27 +1998,11 @@ function cancelRunningGitHubWorkflows() {
     return 0;
   }
 
-  // 1. Tự động tạm khóa (disable) workflow ngay trên GitHub Actions
   setGitHubWorkflowEnabled(false);
 
   var cancelledCount = 0;
-  var statuses = ["in_progress", "queued"];
   var seenRunIds = {};
 
-  for (var s = 0; s < statuses.length; s++) {
-    var status = statuses[s];
-    var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs?status=" + status;
-    try {
-      var response = UrlFetchApp.fetch(url, {
-        method: "get",
-        headers: {
-          "Authorization": "Bearer " + pat,
-          "Accept": "application/vnd.github.v3+json",
-          "User-Agent": "Google-Apps-Script-Telegram-Bot"
-        },
-        muteHttpExceptions: true
-      });
-  // 2. Gọi GET lấy tối đa 100 lượt chạy mới nhất
   var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs?per_page=100";
   try {
     var response = UrlFetchApp.fetch(url, {
@@ -1655,11 +2015,6 @@ function cancelRunningGitHubWorkflows() {
       muteHttpExceptions: true
     });
 
-      if (response.getResponseCode() === 200) {
-        var data = JSON.parse(response.getContentText());
-        var runs = data.workflow_runs || [];
-        for (var r = 0; r < runs.length; r++) {
-          var run = runs[r];
     if (response.getResponseCode() === 200) {
       var data = JSON.parse(response.getContentText());
       var runs = data.workflow_runs || [];
@@ -1668,7 +2023,6 @@ function cancelRunningGitHubWorkflows() {
         var run = runs[r];
         var status = (run.status || "").toLowerCase();
 
-        // Lọc tất cả các run chưa kết thúc: in_progress, queued, waiting, requested, pending
         var isActive = status === "in_progress" ||
                        status === "queued" ||
                        status === "waiting" ||
@@ -1679,9 +2033,7 @@ function cancelRunningGitHubWorkflows() {
           seenRunIds[run.id] = true;
           var runId = run.id;
 
-          // Bước A: Gửi lệnh cancel tiêu chuẩn
           var cancelUrl = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs/" + runId + "/cancel";
-          var cRes = UrlFetchApp.fetch(cancelUrl, {
           UrlFetchApp.fetch(cancelUrl, {
             method: "post",
             headers: {
@@ -1691,11 +2043,7 @@ function cancelRunningGitHubWorkflows() {
             },
             muteHttpExceptions: true
           });
-          if (cRes.getResponseCode() === 202 || cRes.getResponseCode() === 200) {
-            cancelledCount++;
-          }
 
-          // Bước B: Gửi lệnh force-cancel để ép GitHub dừng ngay lập tức
           var forceCancelUrl = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs/" + runId + "/force-cancel";
           UrlFetchApp.fetch(forceCancelUrl, {
             method: "post",
@@ -1710,8 +2058,6 @@ function cancelRunningGitHubWorkflows() {
           cancelledCount++;
         }
       }
-    } catch (err) {
-      Logger.log("Lỗi khi hủy workflow: " + err);
     }
   } catch (err) {
     Logger.log("Lỗi khi quét và hủy workflow: " + err);
@@ -1770,7 +2116,6 @@ function getMissingCodeReport() {
     var status = (row[18] || "").toString().trim();
     var code = (row[19] || "").toString().trim().toUpperCase().replace(/\s+/g, "");
 
-    // Chỉ xét các tin đang bán
     var isSold = status.indexOf("Đã bán") !== -1 || status.indexOf("Đã cọc") !== -1;
     if (!isSold) {
       var hasDigit = false;
@@ -1817,22 +2162,20 @@ function getMissingCodeReport() {
 
 /**
  * Đăng ký Webhook cho Telegram Bot kết nối tới Google Apps Script Web App
- * Chạy hàm này 1 lần duy nhất từ Apps Script Editor sau khi triển khai Web App
  */
 function setupTelegramWebhook() {
-  var webAppUrl = ScriptApp.getService().getUrl();
+  var webAppUrl = CONFIG.WEBAPP_URL || ScriptApp.getService().getUrl();
   if (!webAppUrl) {
     Logger.log("Chưa triển khai Web App hoặc không lấy được Web App URL.");
     return "Vui lòng triển khai Web App (Deploy as Web App) trước!";
   }
-  var url = "https://api.telegram.org/bot" + CONFIG.TELEGRAM_BOT_TOKEN + "/setWebhook?url=" + encodeURIComponent(webAppUrl);
+  var url = "https://api.telegram.org/bot" + CONFIG.TELEGRAM_BOT_TOKEN + "/setWebhook?url=" + encodeURIComponent(webAppUrl) + "&drop_pending_updates=true";
   var response = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
   var resText = response.getContentText();
   Logger.log("Kết quả setWebhook: " + resText);
-  
-  // Gửi thông báo test qua Telegram
+
   try {
-    sendTelegramMessage(CONFIG.TELEGRAM_CHAT_ID, "🚀 <b>Telegram Webhook đã được kích hoạt thành công!</b>\n\nSẵn sàng nhận lệnh:\n• <code>/dongbo</code> - Đồng bộ tin\n• <code>/thieuma</code> - Quét thiếu mã\n• <code>/khach</code> - Nhập CRM\n• <code>/menu</code> - Bảng hướng dẫn");
+    sendTelegramMessage(CONFIG.TELEGRAM_CHAT_ID, "🚀 <b>Telegram Webhook đã được kích hoạt thành công!</b>\n\nSẵn sàng nhận lệnh:\n• <code>/dongbo</code> - Đồng bộ tin (cooldown 3p)\n• <code>/dung</code> - Dừng khẩn cấp & hủy tiến trình\n• <code>/bat</code> - Bật lại thông báo & workflow\n• <code>/thieuma</code> - Quét thiếu mã\n• <code>/khach</code> - Nhập CRM\n• <code>/menu</code> - Bảng hướng dẫn");
   } catch (e) {}
 
   return resText;
