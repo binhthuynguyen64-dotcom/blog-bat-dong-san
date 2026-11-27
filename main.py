@@ -142,6 +142,12 @@ def sync_sheet_overrides_from_gas(listings: list) -> int:
                             else:
                                 item["internal_code"] = ""
 
+                        # 5. Tiêu đề sản phẩm & Link website từ 7 sheet nguồn
+                        if g_item.get("product_title"):
+                            item["product_title"] = str(g_item.get("product_title")).strip()
+                        if g_item.get("website_link"):
+                            item["website_link"] = str(g_item.get("website_link")).strip()
+
                 if override_count > 0:
                     logger.info(f"Đã đồng bộ {override_count} cập nhật trạng thái/mục đích/dòng tiền từ Google Sheet vào dữ liệu.")
                 return override_count

@@ -467,6 +467,112 @@ function getSoldSignaturesFromSourceSheets() {
 }
 
 /**
+ * Trích xuất bản đồ Tiêu đề sản phẩm và Link website từ 7 sheet nguồn theo Mã SP
+ * @return {Object} { "MÃ_SP_CHUẨN_HÓA": { title: "...", link: "..." } }
+ */
+function getSourceProductDetailsMap() {
+  var ss = getSpreadsheet();
+  if (!ss) return {};
+
+  var SOURCE_SHEETS = CONFIG.SOURCE_SHEETS || CONFIG.PRODUCT_SHEETS || [
+    "BDS TMT-TTH-3.5-6TY",
+    "NHÀ GÒ VẤP 5-7TY",
+    "BDS 3.5-5 TỶ",
+    "BDS DƯỚI 3.5 TỶ",
+    "BDS 5-8 TỶ",
+    "BDS 8-15 TỶ",
+    "BDS 15-25 TỶ"
+  ];
+  var detailsMap = {};
+
+  for (var s = 0; s < SOURCE_SHEETS.length; s++) {
+    var sheetName = SOURCE_SHEETS[s];
+    var sheet = ss.getSheetByName(sheetName);
+    if (!sheet) continue;
+
+    var range = sheet.getDataRange();
+    var data = range.getValues();
+    if (data.length <= 1) continue;
+
+    var richText = null;
+    try {
+      richText = range.getRichTextValues();
+    } catch (eRich) {
+      Logger.log("Không thể lấy getRichTextValues từ " + sheetName + ": " + eRich);
+    }
+
+    var header = data[0];
+    var codeCol = 5;      // Mặc định Cột F (index 5)
+    var titleCol = -1;
+    var linkCol = -1;
+
+    for (var h = 0; h < header.length; h++) {
+      var hText = (header[h] || "").toString().toLowerCase().trim();
+      if (hText.indexOf("mã sp") !== -1 || hText.indexOf("ma sp") !== -1) {
+        codeCol = h;
+      }
+      if (hText.indexOf("tiêu đề") !== -1 || hText.indexOf("tieu de") !== -1 ||
+          hText.indexOf("tên sản phẩm") !== -1 || hText.indexOf("ten san pham") !== -1 ||
+          hText.indexOf("tên nhà") !== -1 || hText.indexOf("ten nha") !== -1 ||
+          (hText.indexOf("sản phẩm") !== -1 && titleCol === -1)) {
+        titleCol = h;
+      }
+      if (hText.indexOf("link website") !== -1 || hText.indexOf("website") !== -1 ||
+          hText.indexOf("link web") !== -1 || hText.indexOf("link") !== -1 ||
+          hText.indexOf("url") !== -1) {
+        linkCol = h;
+      }
+    }
+
+    for (var r = 1; r < data.length; r++) {
+      var row = data[r];
+      var rawCode = row[codeCol] ? row[codeCol].toString().trim().toUpperCase() : "";
+      var normCode = rawCode.replace(/\s+/g, "");
+      if (!normCode) continue;
+
+      var titleVal = "";
+      if (titleCol >= 0 && row[titleCol] !== undefined && row[titleCol] !== null) {
+        titleVal = row[titleCol].toString().trim();
+      }
+
+      var linkVal = "";
+      if (linkCol >= 0) {
+        // Ưu tiên 1: Lấy hyperlink từ RichText nếu ô chứa anchor text gắn link
+        if (richText && richText[r] && richText[r][linkCol]) {
+          var richUrl = richText[r][linkCol].getLinkUrl();
+          if (richUrl) linkVal = richUrl.trim();
+        }
+        // Ưu tiên 2: Lấy chuỗi text thông thường nếu ô hiển thị URL trực tiếp
+        if (!linkVal && row[linkCol]) {
+          var rawLink = row[linkCol].toString().trim();
+          if (rawLink.indexOf("http") !== -1 || rawLink.indexOf(".vn") !== -1 || rawLink.indexOf(".com") !== -1) {
+            linkVal = rawLink;
+          }
+        }
+      }
+
+      // Dự phòng: nếu cột titleCol có gắn hyperlink trực tiếp vào chữ
+      if (!linkVal && titleCol >= 0 && richText && richText[r] && richText[r][titleCol]) {
+        var richTitleUrl = richText[r][titleCol].getLinkUrl();
+        if (richTitleUrl) linkVal = richTitleUrl.trim();
+      }
+
+      if (!detailsMap[normCode]) {
+        detailsMap[normCode] = {
+          title: titleVal,
+          link: linkVal
+        };
+      } else {
+        if (!detailsMap[normCode].title && titleVal) detailsMap[normCode].title = titleVal;
+        if (!detailsMap[normCode].link && linkVal) detailsMap[normCode].link = linkVal;
+      }
+    }
+  }
+
+  return detailsMap;
+}
+
+/**
  * Tự động tạo & cập nhật cột "Đã đăng Nhadat247" trên 7 sheet sản phẩm
  * @param {Object|Array} postedCodesSet - Tập hợp hoặc mảng các Mã SP đã đăng trên nhadat247
  * @return {number} Số sheet đã cập nhật thành công
@@ -660,7 +766,9 @@ function syncListingsToSheet(listings, overwritePurposes) {
           purposes: oRow[14] ? oRow[14].toString().trim() : "",
           cashflow_subtype: oRow[15] ? oRow[15].toString().trim() : "",
           status: oRow[18] ? oRow[18].toString().trim() : "",
-          internal_code: oRow[19] ? oRow[19].toString().trim() : ""
+          internal_code: oRow[19] ? oRow[19].toString().trim() : "",
+          product_title: oRow[20] ? oRow[20].toString().trim() : "",
+          website_link: oRow[21] ? oRow[21].toString().trim() : ""
         };
       }
     }
@@ -671,7 +779,8 @@ function syncListingsToSheet(listings, overwritePurposes) {
   var headers = [
     "Mã Tin", "Tiêu Đề", "Mức Giá (Tỷ)", "Giá Gốc", "Giảm Chào", "Giá Cũ (Tỷ)",
     "Diện Tích (m²)", "Số PN", "Hẻm / Đường", "Phường / Xã", "Quận", "Link Tin Gốc",
-    "Ảnh Đại Diện", "Mô Tả Ngắn", "Mục Đích", "Phân Loại Dòng Tiền", "Thu Nhập Thuê", "Cập Nhật Lúc", "Trạng Thái", "Mã SP"
+    "Ảnh Đại Diện", "Mô Tả Ngắn", "Mục Đích", "Phân Loại Dòng Tiền", "Thu Nhập Thuê", "Cập Nhật Lúc", "Trạng Thái", "Mã SP",
+    "Tiêu Đề Sản Phẩm", "Link Website"
   ];
   sheet.appendRow(headers);
 
@@ -679,6 +788,7 @@ function syncListingsToSheet(listings, overwritePurposes) {
   headerRange.setBackground("#059669").setFontColor("#FFFFFF").setFontWeight("bold");
 
   var soldCodes = getSoldSignaturesFromSourceSheets();
+  var sourceDetailsMap = getSourceProductDetailsMap();
   var rows = [];
 
   for (var i = 0; i < listings.length; i++) {
@@ -728,6 +838,27 @@ function syncListingsToSheet(listings, overwritePurposes) {
       statusDisplay = (item.status && item.status.indexOf("sold") !== -1) ? "🚫 Đã bán" : "Đang bán";
     }
 
+    // Tra cứu Tiêu đề sản phẩm & Link website từ 7 sheet nguồn
+    var srcDetail = (normCode && sourceDetailsMap[normCode]) ? sourceDetailsMap[normCode] : null;
+
+    var productTitle = "";
+    if (existing && existing.product_title) {
+      productTitle = existing.product_title;
+    } else if (srcDetail && srcDetail.title) {
+      productTitle = srcDetail.title;
+    } else {
+      productTitle = item.product_title || "";
+    }
+
+    var websiteLink = "";
+    if (existing && existing.website_link) {
+      websiteLink = existing.website_link;
+    } else if (srcDetail && srcDetail.link) {
+      websiteLink = srcDetail.link;
+    } else {
+      websiteLink = item.website_link || "";
+    }
+
     rows.push([
       itemId,
       item.title || "",
@@ -748,7 +879,9 @@ function syncListingsToSheet(listings, overwritePurposes) {
       item.estimated_rent_text || "",
       item.last_checked_at || item.updated_at || "",
       statusDisplay,
-      internalCode
+      internalCode,
+      productTitle,
+      websiteLink
     ]);
   }
 
@@ -824,6 +957,8 @@ function getListingsFromSheet() {
     var pArr = pStr ? pStr.split(",").map(function(s) { return s.trim(); }).filter(function(s) { return s.length > 0; }) : [];
     var statusVal = r[18] ? r[18].toString().trim() : "";
     var internalCode = r[19] ? r[19].toString().trim().toUpperCase() : "";
+    var productTitleVal = r[20] ? r[20].toString().trim() : "";
+    var websiteLinkVal = r[21] ? r[21].toString().trim() : "";
 
     var isSold = statusVal.indexOf("Đã bán") !== -1 || statusVal.indexOf("Đã cọc") !== -1;
 
@@ -847,7 +982,9 @@ function getListingsFromSheet() {
       estimated_rent_text: r[16] || "",
       updated_at: r[17] || "",
       status: statusVal || "Đang bán",
-      internal_code: internalCode
+      internal_code: internalCode,
+      product_title: productTitleVal,
+      website_link: websiteLinkVal
     };
 
     if (!isSold) {
@@ -1125,6 +1262,7 @@ function handleTelegramWebhook(data) {
     var cancelledRuns = cancelRunningGitHubWorkflows();
 
     var stopMsg = "🛑 <b>ĐÃ DỪNG KHẨN CẤP THÀNH CÔNG!</b>\n\n" +
+      "• Đã hủy <b>" + cancelledRuns + " tiến trình đám mây</b> đang chạy / xếp hàng trên GitHub Actions.\n" +
       "• Đã quét hàng đợi (per_page=100) và hủy <b>" + cancelledRuns + " tiến trình đám mây</b> bằng cả cancel và force-cancel.\n" +
       "• Đã tạm khóa (disable) workflow <code>" + CONFIG.GITHUB_WORKFLOW + "</code> trên GitHub Actions.\n" +
       "• Đã tạm khóa toàn bộ thông báo tự động từ hệ thống.\n\n" +
@@ -1139,6 +1277,7 @@ function handleTelegramWebhook(data) {
   // =========================================================================
   if (lowerText === "/bat" || lowerText === "bật" || lowerText === "bat" || lowerText === "bật thông báo" || lowerText === "bat thong bao") {
     scriptProps.setProperty("BOT_PAUSED", "false");
+    sendTelegramMessage(chatId, "✅ <b>ĐÃ BẬT LẠI THÔNG BÁO!</b>\nHệ thống đã sẵn sàng nhận lệnh và gửi báo cáo chu kỳ bình thường.");
     setGitHubWorkflowEnabled(true);
     sendTelegramMessage(chatId, "✅ <b>ĐÃ BẬT LẠI THÔNG BÁO & WORKFLOW!</b>\nWorkflow <code>" + CONFIG.GITHUB_WORKFLOW + "</code> đã được mở khóa (enable) lại trên GitHub và hệ thống sẵn sàng hoạt động bình thường.");
     return ContentService.createTextOutput("OK");
@@ -1162,6 +1301,7 @@ function handleTelegramWebhook(data) {
       return ContentService.createTextOutput("OK");
     }
 
+    // Ghi nhận mốc thời gian đồng bộ và tự động mở khóa BOT_PAUSED
     // Ghi nhận mốc thời gian đồng bộ và tự động mở khóa BOT_PAUSED & enable workflow trên GitHub
     scriptProps.setProperty("LAST_SYNC_TRIGGER_TS", String(now));
     scriptProps.setProperty("BOT_PAUSED", "false");
@@ -1471,6 +1611,7 @@ function triggerGitHubWorkflow() {
 }
 
 /**
+ * Hủy toàn bộ các workflow GitHub Actions đang chạy hoặc xếp hàng chờ
  * Hủy sạch 100% các workflow GitHub Actions đang chạy hoặc xếp hàng chờ
  * Lấy per_page=100 và gọi lần lượt cả cancel lẫn force-cancel
  */
@@ -1485,8 +1626,22 @@ function cancelRunningGitHubWorkflows() {
   setGitHubWorkflowEnabled(false);
 
   var cancelledCount = 0;
+  var statuses = ["in_progress", "queued"];
   var seenRunIds = {};
 
+  for (var s = 0; s < statuses.length; s++) {
+    var status = statuses[s];
+    var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs?status=" + status;
+    try {
+      var response = UrlFetchApp.fetch(url, {
+        method: "get",
+        headers: {
+          "Authorization": "Bearer " + pat,
+          "Accept": "application/vnd.github.v3+json",
+          "User-Agent": "Google-Apps-Script-Telegram-Bot"
+        },
+        muteHttpExceptions: true
+      });
   // 2. Gọi GET lấy tối đa 100 lượt chạy mới nhất
   var url = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs?per_page=100";
   try {
@@ -1500,6 +1655,11 @@ function cancelRunningGitHubWorkflows() {
       muteHttpExceptions: true
     });
 
+      if (response.getResponseCode() === 200) {
+        var data = JSON.parse(response.getContentText());
+        var runs = data.workflow_runs || [];
+        for (var r = 0; r < runs.length; r++) {
+          var run = runs[r];
     if (response.getResponseCode() === 200) {
       var data = JSON.parse(response.getContentText());
       var runs = data.workflow_runs || [];
@@ -1521,6 +1681,7 @@ function cancelRunningGitHubWorkflows() {
 
           // Bước A: Gửi lệnh cancel tiêu chuẩn
           var cancelUrl = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs/" + runId + "/cancel";
+          var cRes = UrlFetchApp.fetch(cancelUrl, {
           UrlFetchApp.fetch(cancelUrl, {
             method: "post",
             headers: {
@@ -1530,6 +1691,9 @@ function cancelRunningGitHubWorkflows() {
             },
             muteHttpExceptions: true
           });
+          if (cRes.getResponseCode() === 202 || cRes.getResponseCode() === 200) {
+            cancelledCount++;
+          }
 
           // Bước B: Gửi lệnh force-cancel để ép GitHub dừng ngay lập tức
           var forceCancelUrl = "https://api.github.com/repos/" + CONFIG.GITHUB_REPO + "/actions/runs/" + runId + "/force-cancel";
@@ -1546,6 +1710,8 @@ function cancelRunningGitHubWorkflows() {
           cancelledCount++;
         }
       }
+    } catch (err) {
+      Logger.log("Lỗi khi hủy workflow: " + err);
     }
   } catch (err) {
     Logger.log("Lỗi khi quét và hủy workflow: " + err);
